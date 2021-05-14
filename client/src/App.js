@@ -1,7 +1,15 @@
 import "./App.css";
 
 function App() {
-  return <div>Hello</div>;
+  return (
+    <div>
+      {/* Header component*/}
+
+      {/* Sidebar component*/}
+
+      {/* Footer component */}
+    </div>
+  );
 }
 
 export default App;
