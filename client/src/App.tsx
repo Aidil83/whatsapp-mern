@@ -1,8 +1,13 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import GlobalStyle from "./globalStyles";
 
 function App() {
-  return <h1>Hello</h1>;
+  return (
+    <>
+      <GlobalStyle />
+    </>
+  );
 }
 
 export default App;
