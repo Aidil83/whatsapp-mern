@@ -9,9 +9,6 @@ export default function Home() {
         <title>Whatsapp Mern</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <GlobalStyle />
-      <Header />
-      Home
     </>
   );
 }
