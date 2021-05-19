@@ -6,5 +6,6 @@ const defaultTheme = {
   primary: "#011627",
   secondary: "#ef476f",
 };
+
 export type ThemeType = typeof defaultTheme;
 export default defaultTheme;

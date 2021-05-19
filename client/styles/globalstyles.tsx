@@ -1,6 +1,11 @@
 import { createGlobalStyle } from "styled-components";
+import { ThemeType } from "./theme";
 
-const GlobalStyle = createGlobalStyle`
+interface Props {
+  theme: ThemeType;
+}
+
+const GlobalStyle = createGlobalStyle<Props>`
   * {
     box-sizing: border-box;
     width: 100%;
@@ -12,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: Open-Sans, Helvetica, Sans-Serif;
   }
   a {
-    color: inherit;
+    color: ${({ theme }) => theme.dark};
     text-decoration: none;
   }
 `;
