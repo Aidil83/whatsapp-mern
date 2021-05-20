@@ -1,5 +1,5 @@
-const index = () => {
+const Sidebar = () => {
   return <>Sidebar component</>;
 };
 
-export default index;
+export default Sidebar;

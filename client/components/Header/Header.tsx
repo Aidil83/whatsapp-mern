@@ -1,13 +1,24 @@
-import styled from "styled-components";
+import React from "react";
+import {
+  Container,
+  DescriptionName,
+  IconWrapper,
+  NameWrapper,
+  ProfilePic,
+  TitleName,
+} from "./Header.styles";
 
 const Header = () => {
-  return <Container>Header component</Container>;
+  return (
+    <Container>
+      <ProfilePic />
+      <NameWrapper>
+        <TitleName>Coders</TitleName>
+        <DescriptionName>Ali, Fitri, You</DescriptionName>
+      </NameWrapper>
+      <IconWrapper></IconWrapper>
+    </Container>
+  );
 };
-
-const Container = styled.h1`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
 
 export default Header;

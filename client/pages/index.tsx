@@ -11,8 +11,8 @@ export default function Home() {
       </Head>
       <GlobalStyle />
       <Header />
-      <Sidebar />
-      <Footer />
+      {/* <Sidebar />
+      <Footer /> */}
     </>
   );
 }

@@ -2,9 +2,10 @@
   "compilerOptions": {
     "target": "es5",
     "lib": [
+      "es6",
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext",
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -16,7 +17,11 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    // material UI
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
   },
   "include": [
     "next-env.d.ts",
