@@ -1,7 +1,8 @@
 import React from "react";
 import Head from "next/head";
 import GlobalStyle from "../styles/globalstyles";
-import { Header, Sidebar, Footer, Body } from "../components";
+import { Header, Sidebar, Body, Footer } from "../components";
+import styled from "styled-components";
 export default function Home() {
   return (
     <>
@@ -11,9 +12,16 @@ export default function Home() {
       </Head>
       <GlobalStyle />
       <Header />
-      <Body />
-      {/* <Sidebar />
-      <Footer /> */}
+      <HomeWrapper>
+        <Sidebar />
+        <Body />
+      </HomeWrapper>
     </>
   );
 }
+
+const HomeWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+`;
