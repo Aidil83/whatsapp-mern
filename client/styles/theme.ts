@@ -2,7 +2,7 @@ const defaultTheme = {
   white: "#fafafa",
   dark: "#293241",
   medium: "#555",
-  light: "#8d99ae",
+  light: "#999",
   primary: "#011627",
   secondary: "#ef476f",
 };

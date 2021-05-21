@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Image from "next/image";
 
 export const Container = styled.header`
   height: 59px;
@@ -6,13 +7,10 @@ export const Container = styled.header`
   display: flex;
   align-items: center;
   background-color: #ededed;
-  padding: 0.3em;
+  padding: 0.5em;
 `;
-export const ProfilePic = styled.img`
-  width: 50px;
-  height: 50px;
+export const ProfilePic = styled(Image)`
   border-radius: 50%;
-  background-color: gray;
 `;
 export const NameWrapper = styled.div`
   height: 100%;
@@ -25,9 +23,15 @@ export const NameWrapper = styled.div`
 `;
 export const TitleName = styled.h3`
   font-weight: 400;
-  color: #262626;
+  color: ${({ theme }) => theme.primary};
 `;
 export const DescriptionName = styled.span`
-  color: #868686;
+  color: ${({ theme }) => theme.light};
 `;
-export const IconWrapper = styled.div``;
+export const IconWrapper = styled.div`
+  width: 70px;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 15px;
+  color: ${({ theme }) => theme.light};
+`;
