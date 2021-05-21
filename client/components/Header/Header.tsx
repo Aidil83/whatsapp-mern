@@ -7,7 +7,6 @@ import {
   IconWrapper,
   NameWrapper,
   ProfilePic,
-  // ProfilePic,
   TitleName,
 } from "./Header.styles";
 

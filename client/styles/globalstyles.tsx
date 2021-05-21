@@ -12,13 +12,16 @@ const GlobalStyle = createGlobalStyle<Props>`
     padding: 0;
   }
   body {
-    width: 100%;
-    height: 100vh;
     font-family: Open-Sans, Helvetica, Sans-Serif;
   }
   a {
     color: ${({ theme }) => theme.dark};
     text-decoration: none;
+  }
+  #__next {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
   }
 `;
 
