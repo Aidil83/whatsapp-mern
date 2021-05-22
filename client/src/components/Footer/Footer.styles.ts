@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { InsertEmoticon, AttachFile } from "@material-ui/icons";
 import MicIcon from "@material-ui/icons/Mic";
 
-const sharedIconStyle = css`
+export const sharedIconStyle = css`
   color: ${({ theme }) => theme.light};
   margin: 0 0.25em;
   cursor: pointer;

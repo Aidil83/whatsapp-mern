@@ -1,10 +1,23 @@
 import React from "react";
-import { SidebarContainer } from "./Sidebar.styles";
+import {
+  MyProfilePic,
+  SidebarContainer,
+  SidebarHeader,
+} from "./Sidebar.styles";
 
 const Sidebar = () => {
   return (
     <>
-      <SidebarContainer>Sidebar</SidebarContainer>
+      <SidebarContainer>
+        <SidebarHeader>
+          <MyProfilePic
+            src=" https://source.unsplash.com/400x400/?face"
+            width={50}
+            height={50}
+            objectFit="cover"
+          />
+        </SidebarHeader>
+      </SidebarContainer>
     </>
   );
 };

@@ -4,6 +4,7 @@ const defaultTheme = {
   medium: "#555",
   light: "#999",
   lighter: "#f0f0f0",
+  gray500: "#ccc",
   primary: "#011627",
   secondary: "#ef476f",
 };
