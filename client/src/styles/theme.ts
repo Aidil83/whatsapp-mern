@@ -3,6 +3,7 @@ const defaultTheme = {
   dark: "#293241",
   medium: "#555",
   light: "#999",
+  lighter: "#f0f0f0",
   primary: "#011627",
   secondary: "#ef476f",
 };
