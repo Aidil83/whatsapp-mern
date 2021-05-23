@@ -1,0 +1,1 @@
+1) Work on the Sidebar Header icons. pass by prop from footer icons.

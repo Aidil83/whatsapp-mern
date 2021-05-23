@@ -1,13 +1,12 @@
 import React from "react";
-import SearchIcon from "@material-ui/icons/Search";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 import {
   Container,
   DescriptionName,
-  IconWrapper,
   NameWrapper,
   ProfilePic,
   TitleName,
+  StyledSearchIcon,
+  StyledMoreVertIcon,
 } from "./Header.styles";
 
 const Header = () => {
@@ -18,10 +17,8 @@ const Header = () => {
         <TitleName>Coders</TitleName>
         <DescriptionName>Ali, Fitri, You</DescriptionName>
       </NameWrapper>
-      <IconWrapper>
-        <SearchIcon />
-        <MoreVertIcon />
-      </IconWrapper>
+      <StyledSearchIcon />
+      <StyledMoreVertIcon />
     </Container>
   );
 };

@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import Image from "next/image";
+import SearchIcon from "@material-ui/icons/Search";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
+import { sharedIconStyle } from "../Footer/Footer.styles";
 
 export const Container = styled.header`
   height: 59px;
@@ -8,6 +11,7 @@ export const Container = styled.header`
   align-items: center;
   background-color: #ededed;
   padding: 0.5em;
+  padding-left: 1.2em;
 `;
 export const ProfilePic = styled(Image)`
   border-radius: 50%;
@@ -28,10 +32,16 @@ export const TitleName = styled.h3`
 export const DescriptionName = styled.span`
   color: ${({ theme }) => theme.light};
 `;
-export const IconWrapper = styled.div`
-  width: 70px;
-  display: flex;
-  justify-content: space-between;
-  margin-right: 15px;
-  color: ${({ theme }) => theme.light};
+// export const IconWrapper = styled.div`
+//   width: 70px;
+//   display: flex;
+//   justify-content: space-between;
+//   margin-right: 15px;
+//   color: ${({ theme }) => theme.light};
+// `;
+export const StyledSearchIcon = styled(SearchIcon)`
+  ${sharedIconStyle};
+`;
+export const StyledMoreVertIcon = styled(MoreVertIcon)`
+  ${sharedIconStyle};
 `;

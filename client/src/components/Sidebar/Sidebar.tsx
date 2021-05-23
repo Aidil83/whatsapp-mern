@@ -1,8 +1,11 @@
 import React from "react";
+import { StyledMoreVertIcon } from "../Header/Header.styles";
 import {
   MyProfilePic,
   SidebarContainer,
   SidebarHeader,
+  StyledChatIcon,
+  StyledStatusIcon,
 } from "./Sidebar.styles";
 
 const Sidebar = () => {
@@ -11,11 +14,14 @@ const Sidebar = () => {
       <SidebarContainer>
         <SidebarHeader>
           <MyProfilePic
-            src=" https://source.unsplash.com/400x400/?face"
-            width={50}
-            height={50}
+            src=" https://source.unsplash.com/random/200x200/"
+            width={40}
+            height={40}
             objectFit="cover"
           />
+          <StyledStatusIcon />
+          <StyledChatIcon />
+          <StyledMoreVertIcon />
         </SidebarHeader>
       </SidebarContainer>
     </>
