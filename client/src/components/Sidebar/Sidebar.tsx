@@ -2,10 +2,13 @@ import { IconButton } from "@material-ui/core";
 import React from "react";
 import { StyledMoreVertIcon } from "../Header/Header.styles";
 import {
+  InputSection,
   MyProfilePic,
+  PaneSide,
   SidebarContainer,
   SidebarHeader,
   SidebarHeaderRight,
+  SidebarSearchIcon,
   StyledChatIcon,
   StyledStatusIcon,
 } from "./Sidebar.styles";
@@ -33,6 +36,12 @@ const Sidebar = () => {
             </IconButton>
           </SidebarHeaderRight>
         </SidebarHeader>
+        <InputSection>
+          <PaneSide>
+            <SidebarSearchIcon />
+            <input placeholder="Search or start new chat..." />
+          </PaneSide>
+        </InputSection>
       </SidebarContainer>
     </>
   );

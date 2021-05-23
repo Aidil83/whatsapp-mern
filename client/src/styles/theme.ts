@@ -1,5 +1,6 @@
 const defaultTheme = {
-  white: "#fafafa",
+  white: "#fff",
+  softWhite: "#fafafa",
   dark: "#293241",
   medium: "#555",
   light: "#999",
