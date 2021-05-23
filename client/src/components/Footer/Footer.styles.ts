@@ -4,10 +4,6 @@ import MicIcon from "@material-ui/icons/Mic";
 
 export const sharedIconStyle = css`
   color: ${({ theme }) => theme.light};
-  cursor: pointer;
-  &:hover {
-    color: ${({ theme }) => theme.medium};
-  }
 `;
 export const FooterContainer = styled.div`
   height: 50px;
