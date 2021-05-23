@@ -1,6 +1,7 @@
 import { IconButton } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 import { StyledMoreVertIcon } from "../Header/Header.styles";
+import SidebarDrawer from "../SidebarDrawer/SidebarDrawer";
 import {
   InputSection,
   MyProfilePic,
@@ -14,22 +15,30 @@ import {
 } from "./Sidebar.styles";
 
 const Sidebar = () => {
+  const [isDrawer, setIsDrawer] = useState<boolean>(false);
+
+  const handleDrawer = () => {
+    setIsDrawer(!isDrawer);
+  };
+
   return (
     <>
       <SidebarContainer>
+        <SidebarDrawer isDrawer={isDrawer} />
         <SidebarHeader>
           <MyProfilePic
             src=" https://source.unsplash.com/random/200x200/"
             width={40}
             height={40}
             objectFit="cover"
+            alt="my-profile"
           />
           <SidebarHeaderRight>
             <IconButton>
               <StyledStatusIcon />
             </IconButton>
             <IconButton>
-              <StyledChatIcon />
+              <StyledChatIcon onClick={handleDrawer} />
             </IconButton>
             <IconButton>
               <StyledMoreVertIcon />
