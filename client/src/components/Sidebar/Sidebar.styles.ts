@@ -19,6 +19,11 @@ export const SidebarHeader = styled(Container)`
 export const MyProfilePic = styled(ProfilePic)`
   cursor: pointer;
 `;
+export const SidebarHeaderRight = styled.div`
+  width: 200px;
+  display: flex;
+  justify-content: flex-end;
+`;
 export const StyledStatusIcon = styled(DataUsageIcon)`
   ${sharedIconStyle};
 `;

@@ -1,9 +1,11 @@
+import { IconButton } from "@material-ui/core";
 import React from "react";
 import { StyledMoreVertIcon } from "../Header/Header.styles";
 import {
   MyProfilePic,
   SidebarContainer,
   SidebarHeader,
+  SidebarHeaderRight,
   StyledChatIcon,
   StyledStatusIcon,
 } from "./Sidebar.styles";
@@ -19,9 +21,17 @@ const Sidebar = () => {
             height={40}
             objectFit="cover"
           />
-          <StyledStatusIcon />
-          <StyledChatIcon />
-          <StyledMoreVertIcon />
+          <SidebarHeaderRight>
+            <IconButton>
+              <StyledStatusIcon />
+            </IconButton>
+            <IconButton>
+              <StyledChatIcon />
+            </IconButton>
+            <IconButton>
+              <StyledMoreVertIcon />
+            </IconButton>
+          </SidebarHeaderRight>
         </SidebarHeader>
       </SidebarContainer>
     </>

@@ -1,3 +1,4 @@
+import { IconButton } from "@material-ui/core";
 import React from "react";
 import {
   FooterContainer,
@@ -10,10 +11,16 @@ import {
 const Footer = () => {
   return (
     <FooterContainer>
-      <StyledSmileIcons />
-      <StyledClipIcons />
+      <IconButton size="small">
+        <StyledSmileIcons />
+      </IconButton>
+      <IconButton size="small">
+        <StyledClipIcons />
+      </IconButton>
       <StyledInput placeholder="Type a message..." />
-      <StyledMicIcon />
+      <IconButton>
+        <StyledMicIcon />
+      </IconButton>
     </FooterContainer>
   );
 };

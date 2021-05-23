@@ -32,13 +32,6 @@ export const TitleName = styled.h3`
 export const DescriptionName = styled.span`
   color: ${({ theme }) => theme.light};
 `;
-// export const IconWrapper = styled.div`
-//   width: 70px;
-//   display: flex;
-//   justify-content: space-between;
-//   margin-right: 15px;
-//   color: ${({ theme }) => theme.light};
-// `;
 export const StyledSearchIcon = styled(SearchIcon)`
   ${sharedIconStyle};
 `;

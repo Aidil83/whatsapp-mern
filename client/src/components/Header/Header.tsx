@@ -1,3 +1,4 @@
+import { IconButton } from "@material-ui/core";
 import React from "react";
 import {
   Container,
@@ -17,8 +18,12 @@ const Header = () => {
         <TitleName>Coders</TitleName>
         <DescriptionName>Ali, Fitri, You</DescriptionName>
       </NameWrapper>
-      <StyledSearchIcon />
-      <StyledMoreVertIcon />
+      <IconButton>
+        <StyledSearchIcon />
+      </IconButton>
+      <IconButton>
+        <StyledMoreVertIcon />
+      </IconButton>
     </Container>
   );
 };
