@@ -10,6 +10,9 @@ export const DrawerContainer = styled.div`
   height: 100%;
   & .MuiButton-label {
     justify-content: flex-start;
+    padding: 0;
+    border-bottom: solid 1px ${({ theme }) => theme.lighter};
+    height: 70px;
   }
 `;
 export const DrawerHeader = styled.div`
