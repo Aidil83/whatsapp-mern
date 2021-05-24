@@ -9,9 +9,10 @@ import {
 
 interface Props {
   isDrawer: boolean;
+  toggleDrawer: any;
 }
 
-const SidebarDrawer = ({ isDrawer }: Props) => {
+const SidebarDrawer = ({ isDrawer, toggleDrawer }: Props) => {
   return (
     <>
       <Drawer
@@ -22,7 +23,7 @@ const SidebarDrawer = ({ isDrawer }: Props) => {
       >
         <DrawerContainer>
           <DrawerHeader>
-            <StyledLeftArrowIcon />
+            <StyledLeftArrowIcon onClick={toggleDrawer} />
             <DrawerTitle>New chat</DrawerTitle>
           </DrawerHeader>
         </DrawerContainer>

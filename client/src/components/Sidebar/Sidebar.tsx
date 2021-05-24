@@ -23,7 +23,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <SidebarDrawer isDrawer={isDrawer} />
+      <SidebarDrawer isDrawer={isDrawer} toggleDrawer={toggleDrawer} />
       <SidebarContainer>
         <SidebarHeader>
           <MyProfilePic

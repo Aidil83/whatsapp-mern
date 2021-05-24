@@ -16,6 +16,7 @@ export const DrawerHeader = styled.div`
 export const StyledLeftArrowIcon = styled(ArrowBackIcon)`
   color: ${({ theme }) => theme.white};
   margin: 1em 0.6em 1em 1.2em;
+  cursor: pointer;
 `;
 export const DrawerTitle = styled.h3`
   color: ${({ theme }) => theme.white};
