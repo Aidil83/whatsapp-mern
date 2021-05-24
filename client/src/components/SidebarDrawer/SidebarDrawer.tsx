@@ -18,12 +18,7 @@ interface Props {
 const SidebarDrawer = ({ isDrawer, toggleDrawer }: Props) => {
   return (
     <>
-      <Drawer
-        BackdropProps={{ invisible: true }}
-        anchor="left"
-        open={isDrawer}
-        elevation={0}
-      >
+      <Drawer variant="persistent" anchor="left" open={isDrawer} elevation={0}>
         <DrawerContainer>
           <DrawerHeader>
             <StyledLeftArrowIcon onClick={toggleDrawer} />
