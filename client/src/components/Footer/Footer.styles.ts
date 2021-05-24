@@ -4,9 +4,10 @@ import MicIcon from "@material-ui/icons/Mic";
 
 export const sharedIconStyle = css`
   color: ${({ theme }) => theme.light};
+  cursor: pointer;
 `;
 export const FooterContainer = styled.div`
-  height: 50px;
+  height: 60px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -16,18 +17,18 @@ export const FooterContainer = styled.div`
 `;
 export const StyledSmileIcons = styled(InsertEmoticon)`
   ${sharedIconStyle};
-  margin: 0 0.25em;
+  margin: 0.15em 0.25em;
 `;
 export const StyledClipIcons = styled(AttachFile)`
   ${sharedIconStyle};
   margin-right: 0.5em;
   transform: rotate(-45deg);
-  margin: 0 0.25em;
+  margin: 0.15em 0.25em;
 `;
 export const StyledInput = styled.input`
   flex: 1;
   width: 100%;
-  padding: 0.7em 0.6em;
+  padding: 1em 1.2em;
   margin: 0 0.5em;
   border-radius: 20px;
   border: none;
