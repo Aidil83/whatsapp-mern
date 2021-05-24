@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import SwipeableViews from "react-swipeable-views";
 import { Drawer } from "@material-ui/core";
-import { borderBottom } from "@material-ui/system";
 import {
   ButtonCircle,
   DrawerContainer,
@@ -17,27 +17,51 @@ interface Props {
 }
 
 const SidebarDrawer = ({ isDrawer, toggleDrawer }: Props) => {
+  const [step, setStep] = useState(0);
   return (
     <>
       <Drawer variant="persistent" anchor="left" open={isDrawer} elevation={0}>
         <DrawerContainer>
-          <DrawerHeader>
-            <StyledLeftArrowIcon onClick={toggleDrawer} />
-            <DrawerTitle>New chat</DrawerTitle>
-          </DrawerHeader>
-          <StyledButton>
-            <ButtonCircle>
-              <StyledGroupAddIcon />
-            </ButtonCircle>
-            <div
-              style={{
-                textTransform: "capitalize",
-                fontSize: 17,
-              }}
-            >
-              New group
+          <SwipeableViews index={step}>
+            <div>
+              <DrawerHeader>
+                <StyledLeftArrowIcon onClick={toggleDrawer} />
+                <DrawerTitle>Old chat</DrawerTitle>
+              </DrawerHeader>
+              <StyledButton onClick={() => setStep((prev) => prev + 1)}>
+                <ButtonCircle>
+                  <StyledGroupAddIcon />
+                </ButtonCircle>
+                <div
+                  style={{
+                    textTransform: "capitalize",
+                    fontSize: 17,
+                  }}
+                >
+                  old group
+                </div>
+              </StyledButton>
             </div>
-          </StyledButton>
+            <div>
+              <DrawerHeader>
+                <StyledLeftArrowIcon onClick={toggleDrawer} />
+                <DrawerTitle>New chat</DrawerTitle>
+              </DrawerHeader>
+              <StyledButton onClick={() => setStep((prev) => prev + 1)}>
+                <ButtonCircle>
+                  <StyledGroupAddIcon />
+                </ButtonCircle>
+                <div
+                  style={{
+                    textTransform: "capitalize",
+                    fontSize: 17,
+                  }}
+                >
+                  New group
+                </div>
+              </StyledButton>
+            </div>
+          </SwipeableViews>
         </DrawerContainer>
       </Drawer>
     </>
