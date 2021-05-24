@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import GlobalStyle from "../styles/globalstyles";
-import { Sidebar, Body, Footer } from "../components";
+import { Sidebar, Body } from "../components";
 import styled from "styled-components";
 export default function Home() {
   return (

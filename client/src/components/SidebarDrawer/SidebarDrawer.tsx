@@ -1,6 +1,11 @@
 import React from "react";
 import { Drawer } from "@material-ui/core";
-import { DrawerContainer } from "./SidebarDrawer.styles";
+import {
+  DrawerContainer,
+  DrawerHeader,
+  DrawerTitle,
+  StyledLeftArrowIcon,
+} from "./SidebarDrawer.styles";
 
 interface Props {
   isDrawer: boolean;
@@ -15,7 +20,12 @@ const SidebarDrawer = ({ isDrawer }: Props) => {
         open={isDrawer}
         elevation={0}
       >
-        <DrawerContainer></DrawerContainer>
+        <DrawerContainer>
+          <DrawerHeader>
+            <StyledLeftArrowIcon />
+            <DrawerTitle>New chat</DrawerTitle>
+          </DrawerHeader>
+        </DrawerContainer>
       </Drawer>
     </>
   );

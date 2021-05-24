@@ -9,7 +9,9 @@ import ChatIcon from "@material-ui/icons/Chat";
 import { sharedIconStyle } from "../Footer/Footer.styles";
 
 export const SidebarContainer = styled.div`
-  width: 500px;
+  min-width: 500px;
+  width: 20vw;
+  max-width: 500px;
   height: 100%;
   background-color: ${({ theme }) => theme.white};
   overflow: auto;

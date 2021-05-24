@@ -8,6 +8,7 @@ const defaultTheme = {
   gray500: "#ccc",
   primary: "#011627",
   secondary: "#ef476f",
+  greenChat: "#00BFA5",
 };
 
 export type ThemeType = typeof defaultTheme;

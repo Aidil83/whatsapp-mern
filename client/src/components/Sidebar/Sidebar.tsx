@@ -17,17 +17,17 @@ import {
 const Sidebar = () => {
   const [isDrawer, setIsDrawer] = useState<boolean>(false);
 
-  const handleDrawer = () => {
+  const toggleDrawer = () => {
     setIsDrawer(!isDrawer);
   };
 
   return (
     <>
+      <SidebarDrawer isDrawer={isDrawer} />
       <SidebarContainer>
-        <SidebarDrawer isDrawer={isDrawer} />
         <SidebarHeader>
           <MyProfilePic
-            src=" https://source.unsplash.com/random/200x200/"
+            src="/static/images/coder.jpg"
             width={40}
             height={40}
             objectFit="cover"
@@ -38,7 +38,7 @@ const Sidebar = () => {
               <StyledStatusIcon />
             </IconButton>
             <IconButton>
-              <StyledChatIcon onClick={handleDrawer} />
+              <StyledChatIcon onClick={toggleDrawer} />
             </IconButton>
             <IconButton>
               <StyledMoreVertIcon />
