@@ -20,7 +20,7 @@ const NewGroup = ({ toggleDrawer, setStep }: Props) => {
         <StyledLeftArrowIcon onClick={toggleDrawer} />
         <DrawerTitle>New chat</DrawerTitle>
       </DrawerHeader>
-      <StyledButton onClick={() => setStep((prev: any) => prev + 1)}>
+      <StyledButton onClick={() => setStep((prev: number) => prev + 1)}>
         <ButtonCircle>
           <StyledGroupAddIcon />
         </ButtonCircle>

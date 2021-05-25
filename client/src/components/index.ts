@@ -5,3 +5,4 @@ export { default as Body } from "./Body/Body";
 export { default as SidebarDrawer } from "./SidebarDrawer/SidebarDrawer";
 export { default as NewChat } from "./NewChat/NewChat";
 export { default as NewGroup } from "./NewGroup/NewGroup";
+export { default as Contact } from "./Contact/Contact";

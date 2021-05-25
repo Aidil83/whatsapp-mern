@@ -1,4 +1,5 @@
 import React from "react";
+import { Contact } from "..";
 import {
   DrawerHeader,
   StyledLeftArrowIcon,
@@ -16,22 +17,12 @@ const NewChat = ({ setStep }: Props) => {
   return (
     <div>
       <DrawerHeader>
-        <StyledLeftArrowIcon onClick={() => setStep((prev: any) => prev - 1)} />
+        <StyledLeftArrowIcon
+          onClick={() => setStep((prev: number) => prev - 1)}
+        />
         <DrawerTitle>Add group participants</DrawerTitle>
       </DrawerHeader>
-      <StyledButton onClick={() => setStep((prev: any) => prev - 1)}>
-        <ButtonCircle>
-          <StyledGroupAddIcon />
-        </ButtonCircle>
-        <div
-          style={{
-            textTransform: "capitalize",
-            fontSize: 17,
-          }}
-        >
-          New group
-        </div>
-      </StyledButton>
+      <Contact />
     </div>
   );
 };
