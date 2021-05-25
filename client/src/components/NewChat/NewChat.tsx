@@ -1,4 +1,5 @@
-import React from "react";
+import { Chip } from "@material-ui/core";
+import React, { Fragment } from "react";
 import { Contact } from "..";
 import {
   DrawerHeader,
@@ -6,7 +7,6 @@ import {
   DrawerTitle,
   StyledButton,
   ButtonCircle,
-  StyledGroupAddIcon,
   StyledAddPersonIcon,
 } from "../SidebarDrawer/SidebarDrawer.styles";
 
@@ -15,6 +15,16 @@ interface Props {
 }
 
 const NewChat = ({ setStep }: Props) => {
+  const handleDelete = () => {};
+
+  const defaultTitle = [
+    { title: "Ali" },
+    { title: "Arthur" },
+    { title: "Marvin" },
+    { title: "Jake" },
+    { title: "Daniel" },
+  ];
+
   return (
     <div>
       <DrawerHeader>
@@ -23,6 +33,7 @@ const NewChat = ({ setStep }: Props) => {
         />
         <DrawerTitle>Add group participants</DrawerTitle>
       </DrawerHeader>
+      <Chip size="small" onDelete={handleDelete} />
       <StyledButton>
         <ButtonCircle>
           <StyledAddPersonIcon />
@@ -36,10 +47,13 @@ const NewChat = ({ setStep }: Props) => {
           Add contact
         </div>
       </StyledButton>
-      <Contact title="Ali" />
-      <Contact title="Arthur" />
-      <Contact title="Marvin" />
-      <Contact title="Jake" />
+      {defaultTitle.map((item, index) => {
+        return (
+          <Fragment key={index}>
+            <Contact title={item.title} />;
+          </Fragment>
+        );
+      })}
     </div>
   );
 };

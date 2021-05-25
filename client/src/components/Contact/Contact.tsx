@@ -1,10 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { ProfilePic } from "../Header/Header.styles";
-import {
-  StyledButton,
-  ButtonCircle,
-} from "../SidebarDrawer/SidebarDrawer.styles";
+import { StyledButton } from "../SidebarDrawer/SidebarDrawer.styles";
 
 interface Props {
   title: string;
