@@ -7,6 +7,7 @@ import {
   StyledButton,
   ButtonCircle,
   StyledGroupAddIcon,
+  StyledAddPersonIcon,
 } from "../SidebarDrawer/SidebarDrawer.styles";
 
 interface Props {
@@ -22,7 +23,23 @@ const NewChat = ({ setStep }: Props) => {
         />
         <DrawerTitle>Add group participants</DrawerTitle>
       </DrawerHeader>
-      <Contact />
+      <StyledButton>
+        <ButtonCircle>
+          <StyledAddPersonIcon />
+        </ButtonCircle>
+        <div
+          style={{
+            textTransform: "capitalize",
+            fontSize: 17,
+          }}
+        >
+          Add contact
+        </div>
+      </StyledButton>
+      <Contact title="Ali" />
+      <Contact title="Arthur" />
+      <Contact title="Marvin" />
+      <Contact title="Jake" />
     </div>
   );
 };

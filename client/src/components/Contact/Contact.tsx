@@ -1,27 +1,36 @@
 import React from "react";
+import styled from "styled-components";
+import { ProfilePic } from "../Header/Header.styles";
 import {
   StyledButton,
   ButtonCircle,
-  StyledGroupAddIcon,
-  StyledAddPersonIcon,
 } from "../SidebarDrawer/SidebarDrawer.styles";
 
-const Contacts = () => {
+interface Props {
+  title: string;
+}
+
+const Contacts = ({ title }: Props) => {
   return (
-    <StyledButton>
-      <ButtonCircle>
-        <StyledAddPersonIcon />
-      </ButtonCircle>
+    <StyledContactButton>
+      <ProfilePic src="/static/images/coder.jpg" width={50} height={50} />
       <div
         style={{
           textTransform: "capitalize",
           fontSize: 17,
+          padding: "0 1em",
         }}
       >
-        Add contact
+        {title}
       </div>
-    </StyledButton>
+    </StyledContactButton>
   );
 };
+
+const StyledContactButton = styled(StyledButton)`
+  & .MuiButton-label {
+    padding-left: 1em;
+  }
+`;
 
 export default Contacts;
