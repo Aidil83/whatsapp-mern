@@ -1,7 +1,7 @@
 import { IconButton } from "@material-ui/core";
 import React, { useState } from "react";
+import { SidebarDrawer } from "..";
 import { StyledMoreVertIcon } from "../Header/Header.styles";
-import SidebarDrawer from "../SidebarDrawer/SidebarDrawer";
 import {
   InputSection,
   MyProfilePic,

@@ -9,7 +9,7 @@ import {
 } from "../SidebarDrawer/SidebarDrawer.styles";
 
 interface Props {
-  setStep: any;
+  setStep: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const NewChat = ({ setStep }: Props) => {

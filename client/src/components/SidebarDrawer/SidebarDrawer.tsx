@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import SwipeableViews from "react-swipeable-views";
 import { Drawer } from "@material-ui/core";
 import { DrawerContainer } from "./SidebarDrawer.styles";
-import NewGroup from "../NewGroup/NewGroup";
-import NewChat from "../NewChat/NewChat";
+import { NewGroup, NewChat } from "..";
 
 interface Props {
   isDrawer: boolean;
-  toggleDrawer: any;
+  toggleDrawer: () => void;
 }
 
 const SidebarDrawer = ({ isDrawer, toggleDrawer }: Props) => {
