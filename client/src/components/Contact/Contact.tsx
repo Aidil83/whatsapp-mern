@@ -19,18 +19,27 @@ const Contacts = ({ title }: Props) => {
           textTransform: "capitalize",
           fontSize: 17,
           padding: "0 1em",
+          textAlign: "left",
         }}
       >
         {title}
+        <SubText>Hey there! I am using Whatsapp.</SubText>
       </div>
     </StyledContactButton>
   );
 };
 
-const StyledContactButton = styled(StyledButton)`
+export const StyledContactButton = styled(StyledButton)`
   & .MuiButton-label {
     padding-left: 1em;
   }
+`;
+export const SubText = styled.div`
+  color: ${({ theme }) => theme.light};
+  font-size: 13px;
+  font-family: "Segoe UI", "Helvetica Neue", Helvetica, "Lucida Grande", Arial;
+  font-weight: 400;
+  text-transform: none;
 `;
 
 export default Contacts;
