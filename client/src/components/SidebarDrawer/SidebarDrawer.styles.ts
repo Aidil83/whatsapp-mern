@@ -3,7 +3,6 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { Button } from "@material-ui/core";
 import GroupAddIcon from "@material-ui/icons/GroupAdd";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
-import { sharedIconStyle } from "../Footer/Footer.styles";
 
 export const DrawerContainer = styled.div`
   min-width: 500px;

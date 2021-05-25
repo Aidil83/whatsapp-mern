@@ -49,7 +49,7 @@ const NewChat = ({ setStep }: Props) => {
       </StyledButton>
       {defaultTitle.map(({ title }, index) => (
         <Fragment key={index}>
-          <Contact title={title} />;
+          <Contact title={title} />
         </Fragment>
       ))}
     </div>
