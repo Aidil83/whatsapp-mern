@@ -1,5 +1,5 @@
 import { Chip } from "@material-ui/core";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Contact } from "..";
 import {
   DrawerHeader,
@@ -10,21 +10,20 @@ import {
   StyledAddPersonIcon,
 } from "../SidebarDrawer/SidebarDrawer.styles";
 
+export const defaultContacts = [
+  { id: 0, title: "Ali" },
+  { id: 1, title: "Arthur" },
+  { id: 2, title: "Marvin" },
+  { id: 3, title: "Jake" },
+  { id: 4, title: "Daniel" },
+];
+
 interface Props {
   setStep: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const NewChat = ({ setStep }: Props) => {
-  const handleDelete = () => {};
-
-  const defaultTitle = [
-    { title: "Ali" },
-    { title: "Arthur" },
-    { title: "Marvin" },
-    { title: "Jake" },
-    { title: "Daniel" },
-  ];
-
+  const [storedContacts, setStoredContacts] = useState(defaultContacts);
   return (
     <div>
       <DrawerHeader>
@@ -33,7 +32,7 @@ const NewChat = ({ setStep }: Props) => {
         />
         <DrawerTitle>Add group participants</DrawerTitle>
       </DrawerHeader>
-      <Chip size="small" onDelete={handleDelete} />
+      <Chip size="small" />
       <StyledButton>
         <ButtonCircle>
           <StyledAddPersonIcon />
@@ -47,9 +46,14 @@ const NewChat = ({ setStep }: Props) => {
           Add contact
         </div>
       </StyledButton>
-      {defaultTitle.map(({ title }, index) => (
-        <Fragment key={index}>
-          <Contact title={title} />
+      {storedContacts.map(({ title, id }) => (
+        <Fragment key={id}>
+          <Contact
+            title={title}
+            id={id}
+            storedContacts={storedContacts}
+            setStoredContacts={setStoredContacts}
+          />
         </Fragment>
       ))}
     </div>

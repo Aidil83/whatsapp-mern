@@ -1,15 +1,34 @@
 import React from "react";
 import styled from "styled-components";
 import { ProfilePic } from "../Header/Header.styles";
+import { defaultContacts } from "../NewChat/NewChat";
 import { StyledButton } from "../SidebarDrawer/SidebarDrawer.styles";
 
 interface Props {
+  id: number;
   title: string;
+  storedContacts: {
+    id: number;
+    title: string;
+  }[];
+  setStoredContacts: React.Dispatch<
+    React.SetStateAction<
+      {
+        id: number;
+        title: string;
+      }[]
+    >
+  >;
 }
 
-const Contacts = ({ title }: Props) => {
+const Contacts = ({ id, title, storedContacts, setStoredContacts }: Props) => {
+  const removeContact = (id: number) => {
+    const res = storedContacts.filter((item) => item.id !== id);
+    setStoredContacts(res);
+  };
+
   return (
-    <StyledContactButton>
+    <StyledContactButton onClick={() => removeContact(id)}>
       <ProfilePic src="/static/images/coder.jpg" width={50} height={50} />
       <div
         style={{
