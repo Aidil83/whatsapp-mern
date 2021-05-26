@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { Chip } from "@material-ui/core";
 import React, { Fragment, useState } from "react";
 import { Contact } from "..";
@@ -47,13 +48,16 @@ const NewChat = ({ setStep }: Props) => {
         />
         <DrawerTitle>Add group participants</DrawerTitle>
       </DrawerHeader>
-      {storedChips.map((chip: IChip) => (
-        <Chip
-          size="small"
-          label={chip.title}
-          onDelete={() => handleDelete(chip)}
-        />
-      ))}
+      <ChipsContainer>
+        {storedChips.map((chip: IChip) => (
+          <Chip
+            size="small"
+            label={chip.title}
+            onDelete={() => handleDelete(chip)}
+            style={{ width: "min-content", margin: ".2em 0" }}
+          />
+        ))}
+      </ChipsContainer>
       <StyledButton>
         <ButtonCircle>
           <StyledAddPersonIcon />
@@ -81,5 +85,12 @@ const NewChat = ({ setStep }: Props) => {
     </div>
   );
 };
+
+const ChipsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  padding: 1em 0 0.5em 1.5em;
+`;
 
 export default NewChat;
