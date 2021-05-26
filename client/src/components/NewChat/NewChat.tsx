@@ -10,7 +10,12 @@ import {
   StyledAddPersonIcon,
 } from "../SidebarDrawer/SidebarDrawer.styles";
 
-export const defaultContacts = [
+export interface IChip {
+  id: number;
+  title: string;
+}
+
+export const defaultContacts: IChip[] = [
   { id: 0, title: "Ali" },
   { id: 1, title: "Arthur" },
   { id: 2, title: "Marvin" },
@@ -24,6 +29,10 @@ interface Props {
 
 const NewChat = ({ setStep }: Props) => {
   const [storedContacts, setStoredContacts] = useState(defaultContacts);
+  const [storedChips, setStoredChips] = useState<IChip[]>([]);
+
+  const handleDelete = () => {};
+
   return (
     <div>
       <DrawerHeader>
@@ -32,7 +41,9 @@ const NewChat = ({ setStep }: Props) => {
         />
         <DrawerTitle>Add group participants</DrawerTitle>
       </DrawerHeader>
-      <Chip size="small" />
+      {storedChips.map(({ title }) => (
+        <Chip size="small" label={title} onDelete={handleDelete} />
+      ))}
       <StyledButton>
         <ButtonCircle>
           <StyledAddPersonIcon />
@@ -53,6 +64,7 @@ const NewChat = ({ setStep }: Props) => {
             id={id}
             storedContacts={storedContacts}
             setStoredContacts={setStoredContacts}
+            setStoredChips={setStoredChips}
           />
         </Fragment>
       ))}

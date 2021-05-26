@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { ProfilePic } from "../Header/Header.styles";
-import { defaultContacts } from "../NewChat/NewChat";
 import { StyledButton } from "../SidebarDrawer/SidebarDrawer.styles";
+import { IChip } from "../NewChat/NewChat";
 
 interface Props {
   id: number;
@@ -19,12 +19,27 @@ interface Props {
       }[]
     >
   >;
+  setStoredChips: React.Dispatch<
+    React.SetStateAction<
+      {
+        id: number;
+        title: string;
+      }[]
+    >
+  >;
 }
 
-const Contacts = ({ id, title, storedContacts, setStoredContacts }: Props) => {
+const Contacts = ({
+  id,
+  title,
+  storedContacts,
+  setStoredContacts,
+  setStoredChips,
+}: Props) => {
   const removeContact = (id: number) => {
-    const res = storedContacts.filter((item) => item.id !== id);
-    setStoredContacts(res);
+    const filteredContacts = storedContacts.filter((item) => item.id !== id);
+    setStoredContacts(filteredContacts);
+    setStoredChips((prev: IChip[]) => [...prev, { id, title }]);
   };
 
   return (
