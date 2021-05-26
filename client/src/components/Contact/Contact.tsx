@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { ProfilePic } from "../Header/Header.styles";
 import { StyledButton } from "../SidebarDrawer/SidebarDrawer.styles";
-import { IChip } from "../NewChat/NewChat";
+import { IChip as IContact } from "../NewChat/NewChat";
 
 interface Props {
   id: number;
@@ -36,14 +36,16 @@ const Contacts = ({
   setStoredContacts,
   setStoredChips,
 }: Props) => {
-  const removeContact = (id: number) => {
-    const filteredContacts = storedContacts.filter((item) => item.id !== id);
+  const removeContact = (contact: IContact) => {
+    const filteredContacts = storedContacts.filter(
+      (item) => item.id !== contact.id
+    );
     setStoredContacts(filteredContacts);
-    setStoredChips((prev: IChip[]) => [...prev, { id, title }]);
+    setStoredChips((prev: IContact[]) => [...prev, contact]);
   };
 
   return (
-    <StyledContactButton onClick={() => removeContact(id)}>
+    <StyledContactButton onClick={() => removeContact({ id, title })}>
       <ProfilePic src="/static/images/coder.jpg" width={50} height={50} />
       <div
         style={{

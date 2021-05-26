@@ -31,7 +31,13 @@ const NewChat = ({ setStep }: Props) => {
   const [storedContacts, setStoredContacts] = useState(defaultContacts);
   const [storedChips, setStoredChips] = useState<IChip[]>([]);
 
-  const handleDelete = () => {};
+  const handleDelete = (chip: IChip) => {
+    const filteredChip = storedChips.filter(
+      (item: IChip) => item.id !== chip.id
+    );
+    setStoredChips(filteredChip);
+    setStoredContacts((prev: IChip[]) => [...prev, chip]);
+  };
 
   return (
     <div>
@@ -41,8 +47,12 @@ const NewChat = ({ setStep }: Props) => {
         />
         <DrawerTitle>Add group participants</DrawerTitle>
       </DrawerHeader>
-      {storedChips.map(({ title }) => (
-        <Chip size="small" label={title} onDelete={handleDelete} />
+      {storedChips.map((chip: IChip) => (
+        <Chip
+          size="small"
+          label={chip.title}
+          onDelete={() => handleDelete(chip)}
+        />
       ))}
       <StyledButton>
         <ButtonCircle>
@@ -57,7 +67,7 @@ const NewChat = ({ setStep }: Props) => {
           Add contact
         </div>
       </StyledButton>
-      {storedContacts.map(({ title, id }) => (
+      {storedContacts.map(({ id, title }) => (
         <Fragment key={id}>
           <Contact
             title={title}
