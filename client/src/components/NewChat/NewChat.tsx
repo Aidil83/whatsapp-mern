@@ -90,6 +90,7 @@ const NewChat = ({ setStep }: Props) => {
       <SidebarFooterContainer>
         {storedChips.length > 0 && (
           <Fab
+            onClick={() => setStep((prev: number) => prev + 1)}
             size="medium"
             aria-label="next"
             style={{ backgroundColor: "#09E85E", color: "#fff" }}
