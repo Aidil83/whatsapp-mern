@@ -37,8 +37,8 @@ const Sidebar = () => {
             <IconButton>
               <StyledStatusIcon />
             </IconButton>
-            <IconButton>
-              <StyledChatIcon onClick={toggleDrawer} />
+            <IconButton onClick={toggleDrawer}>
+              <StyledChatIcon />
             </IconButton>
             <IconButton>
               <StyledMoreVertIcon />
