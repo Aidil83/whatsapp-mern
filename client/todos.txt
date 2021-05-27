@@ -1,1 +1,1 @@
-1) Work on the sidebar-cell-frame-container.
+1) Work on group setting or customize group component.

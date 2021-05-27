@@ -1,7 +1,10 @@
 import React from "react";
 import { ProfilePic } from "../Header/Header.styles";
-import { IChip as IContact } from "../NewChat/NewChat";
-import { StyledContactButton, SubText } from "../NewChat/NewChat.styles";
+import { IChip as IContact } from "../CreateGroup/CreateGroup";
+import {
+  StyledContactButton,
+  SubText,
+} from "../CreateGroup/CreateGroup.styles";
 
 interface Props {
   id: number;

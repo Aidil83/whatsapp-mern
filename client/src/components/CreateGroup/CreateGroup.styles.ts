@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { FooterContainer } from "../Footer/Footer.styles";
 import { StyledButton } from "../SidebarDrawer/SidebarDrawer.styles";
 
-export const NewChatContainer = styled.div`
+export const CreateGroupContainer = styled.div`
   height: 100vh;
 `;
 export const ChipsContainer = styled.div`
