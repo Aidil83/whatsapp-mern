@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { Chip } from "@material-ui/core";
 import React, { Fragment, useState } from "react";
 import { Contact } from "..";
@@ -10,6 +9,11 @@ import {
   ButtonCircle,
   StyledAddPersonIcon,
 } from "../SidebarDrawer/SidebarDrawer.styles";
+import {
+  ChipsContainer,
+  NewChatContainer,
+  SidebarFooterContainer,
+} from "./NewChat.styles";
 
 export interface IChip {
   id: number;
@@ -41,7 +45,7 @@ const NewChat = ({ setStep }: Props) => {
   };
 
   return (
-    <div>
+    <NewChatContainer>
       <DrawerHeader>
         <StyledLeftArrowIcon
           onClick={() => setStep((prev: number) => prev - 1)}
@@ -54,11 +58,11 @@ const NewChat = ({ setStep }: Props) => {
             size="small"
             label={chip.title}
             onDelete={() => handleDelete(chip)}
-            style={{ width: "min-content", margin: ".2em 0" }}
+            style={{ width: "min-content", margin: ".5em 0 0 0" }}
           />
         ))}
       </ChipsContainer>
-      <StyledButton>
+      <StyledButton disabled>
         <ButtonCircle>
           <StyledAddPersonIcon />
         </ButtonCircle>
@@ -82,15 +86,9 @@ const NewChat = ({ setStep }: Props) => {
           />
         </Fragment>
       ))}
-    </div>
+      <SidebarFooterContainer></SidebarFooterContainer>
+    </NewChatContainer>
   );
 };
-
-const ChipsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  padding: 1em 0 0.5em 1.5em;
-`;
 
 export default NewChat;
