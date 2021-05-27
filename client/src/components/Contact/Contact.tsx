@@ -1,8 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 import { ProfilePic } from "../Header/Header.styles";
-import { StyledButton } from "../SidebarDrawer/SidebarDrawer.styles";
 import { IChip as IContact } from "../NewChat/NewChat";
+import { StyledContactButton, SubText } from "../NewChat/NewChat.styles";
 
 interface Props {
   id: number;
@@ -61,18 +60,5 @@ const Contacts = ({
     </StyledContactButton>
   );
 };
-
-export const StyledContactButton = styled(StyledButton)`
-  & .MuiButton-label {
-    padding-left: 1em;
-  }
-`;
-export const SubText = styled.div`
-  color: ${({ theme }) => theme.light};
-  font-size: 13px;
-  font-family: "Segoe UI", "Helvetica Neue", Helvetica, "Lucida Grande", Arial;
-  font-weight: 400;
-  text-transform: none;
-`;
 
 export default Contacts;
