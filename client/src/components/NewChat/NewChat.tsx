@@ -1,4 +1,5 @@
-import { Chip } from "@material-ui/core";
+import { Chip, Fab } from "@material-ui/core";
+import { ArrowForward } from "@material-ui/icons";
 import React, { Fragment, useState } from "react";
 import { Contact } from "..";
 import {
@@ -86,7 +87,17 @@ const NewChat = ({ setStep }: Props) => {
           />
         </Fragment>
       ))}
-      <SidebarFooterContainer></SidebarFooterContainer>
+      <SidebarFooterContainer>
+        {storedChips.length > 0 && (
+          <Fab
+            size="medium"
+            aria-label="next"
+            style={{ backgroundColor: "#09E85E", color: "#fff" }}
+          >
+            <ArrowForward />
+          </Fab>
+        )}
+      </SidebarFooterContainer>
     </NewChatContainer>
   );
 };
