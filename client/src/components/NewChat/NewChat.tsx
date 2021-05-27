@@ -9,8 +9,8 @@ import {
 } from "../SidebarDrawer/SidebarDrawer.styles";
 
 interface Props {
-  toggleDrawer: any;
-  setStep: any;
+  toggleDrawer: () => void;
+  setStep: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const NewChat = ({ toggleDrawer, setStep }: Props) => {

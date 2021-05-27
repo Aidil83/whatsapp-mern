@@ -21,6 +21,10 @@ export interface IChip {
   title: string;
 }
 
+export interface ISetStep {
+  setStep: React.Dispatch<React.SetStateAction<number>>;
+}
+
 export const defaultContacts: IChip[] = [
   { id: 0, title: "Ali" },
   { id: 1, title: "Arthur" },
@@ -29,11 +33,7 @@ export const defaultContacts: IChip[] = [
   { id: 4, title: "Daniel" },
 ];
 
-interface Props {
-  setStep: React.Dispatch<React.SetStateAction<number>>;
-}
-
-const CreateGroup = ({ setStep }: Props) => {
+const CreateGroup = ({ setStep }: ISetStep) => {
   const [storedContacts, setStoredContacts] = useState(defaultContacts);
   const [storedChips, setStoredChips] = useState<IChip[]>([]);
 

@@ -9,6 +9,7 @@ const defaultTheme = {
   primary: "#011627",
   secondary: "#ef476f",
   greenChat: "#00BFA5",
+  sidebarGray: "#EDEDED",
 };
 
 export type ThemeType = typeof defaultTheme;

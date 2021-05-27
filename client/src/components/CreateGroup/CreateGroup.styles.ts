@@ -4,6 +4,7 @@ import { StyledButton } from "../SidebarDrawer/SidebarDrawer.styles";
 
 export const CreateGroupContainer = styled.div`
   height: 100vh;
+  background-color: ${({ theme }) => theme.sidebarGray};
 `;
 export const ChipsContainer = styled.div`
   display: flex;
