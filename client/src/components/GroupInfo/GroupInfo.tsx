@@ -1,4 +1,6 @@
-import React from "react";
+import { PhotoCamera } from "@material-ui/icons";
+import Image from "next/image";
+import React, { useState } from "react";
 import { ISetStep } from "../CreateGroup/CreateGroup";
 import { CreateGroupContainer } from "../CreateGroup/CreateGroup.styles";
 import {
@@ -6,8 +8,17 @@ import {
   StyledLeftArrowIcon,
   DrawerTitle,
 } from "../SidebarDrawer/SidebarDrawer.styles";
+import { CreateGroupWrapper, StyledUploadWrapper } from "./GroupInfo.styles";
 
 const GroupInfo = ({ setStep }: ISetStep) => {
+  const [image, setImage] = useState<any>(null);
+
+  const fileHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let selected = e?.target?.files?.[0];
+    console.log(selected);
+    setImage(URL.createObjectURL(selected));
+  };
+
   return (
     <CreateGroupContainer>
       <DrawerHeader>
@@ -16,6 +27,21 @@ const GroupInfo = ({ setStep }: ISetStep) => {
         />
         <DrawerTitle>New group</DrawerTitle>
       </DrawerHeader>
+      <CreateGroupWrapper>
+        <StyledUploadWrapper centerRipple>
+          <input
+            accept="image/gif,image/jpeg,image/jpg,image/png"
+            id="icon-button-file"
+            type="file"
+            onChange={fileHandler}
+          />
+          <label htmlFor="icon-button-file">
+            {image && <img src={image} />}
+            <PhotoCamera />
+          </label>
+          {/* {image && <img src={image} width={200} height={200} />} */}
+        </StyledUploadWrapper>
+      </CreateGroupWrapper>
     </CreateGroupContainer>
   );
 };

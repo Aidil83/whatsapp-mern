@@ -1,3 +1,4 @@
+import { ButtonBase } from "@material-ui/core";
 import styled from "styled-components";
 import { FooterContainer } from "../Footer/Footer.styles";
 import { StyledButton } from "../SidebarDrawer/SidebarDrawer.styles";
@@ -16,7 +17,6 @@ export const SidebarFooterContainer = styled(FooterContainer)`
   position: absolute;
   bottom: 0;
 `;
-
 export const StyledContactButton = styled(StyledButton)`
   & .MuiButton-label {
     padding-left: 1em;

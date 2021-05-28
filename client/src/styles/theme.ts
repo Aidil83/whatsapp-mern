@@ -10,6 +10,7 @@ const defaultTheme = {
   secondary: "#ef476f",
   greenChat: "#00BFA5",
   sidebarGray: "#EDEDED",
+  uploadColor: "#7F8080",
 };
 
 export type ThemeType = typeof defaultTheme;
