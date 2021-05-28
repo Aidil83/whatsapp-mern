@@ -27,15 +27,11 @@ export const StyledLabel = styled.label<LabelType>`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.uploadColor};
-  color: ${({ theme }) => theme.white};
-  border-radius: 50%;
   background-image: url(${({ bgImage }: LabelType) => bgImage});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  & img {
-    width: 100%;
-    height: 100%;
-  }
+  background-color: ${({ theme }) => theme.uploadColor};
+  color: ${({ theme }) => theme.white};
+  border-radius: 50%;
 `;

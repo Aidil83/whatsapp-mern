@@ -42,7 +42,6 @@ const GroupInfo = ({ setStep }: ISetStep) => {
           <StyledLabel htmlFor="icon-button-file" bgImage={image}>
             {!image && <PhotoCamera />}
           </StyledLabel>
-          {/* {image && <img src={image} width={200} height={200} />} */}
         </StyledUploadWrapper>
       </CreateGroupWrapper>
     </CreateGroupContainer>
