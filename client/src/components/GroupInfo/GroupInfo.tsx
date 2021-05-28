@@ -8,7 +8,11 @@ import {
   StyledLeftArrowIcon,
   DrawerTitle,
 } from "../SidebarDrawer/SidebarDrawer.styles";
-import { CreateGroupWrapper, StyledUploadWrapper } from "./GroupInfo.styles";
+import {
+  CreateGroupWrapper,
+  StyledLabel,
+  StyledUploadWrapper,
+} from "./GroupInfo.styles";
 
 const GroupInfo = ({ setStep }: ISetStep) => {
   const [image, setImage] = useState<any>(null);
@@ -35,10 +39,9 @@ const GroupInfo = ({ setStep }: ISetStep) => {
             type="file"
             onChange={fileHandler}
           />
-          <label htmlFor="icon-button-file">
-            {image && <img src={image} />}
-            <PhotoCamera />
-          </label>
+          <StyledLabel htmlFor="icon-button-file" bgImage={image}>
+            {!image && <PhotoCamera />}
+          </StyledLabel>
           {/* {image && <img src={image} width={200} height={200} />} */}
         </StyledUploadWrapper>
       </CreateGroupWrapper>
