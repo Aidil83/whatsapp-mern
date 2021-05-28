@@ -1,8 +1,9 @@
-import { ButtonBase } from "@material-ui/core";
 import styled from "styled-components";
+import { ButtonBase } from "@material-ui/core";
+import { HiUserGroup } from "react-icons/hi";
 
 type LabelType = {
-  bgImage?: string; ///Passing Optional Props
+  bgImage: string | null; ///Passing Optional Props
 };
 
 export const CreateGroupWrapper = styled.div`
@@ -25,6 +26,7 @@ export const StyledLabel = styled.label<LabelType>`
   height: 100%;
   cursor: pointer;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-image: url(${({ bgImage }: LabelType) => bgImage});
@@ -34,4 +36,23 @@ export const StyledLabel = styled.label<LabelType>`
   background-color: ${({ theme }) => theme.uploadColor};
   color: ${({ theme }) => theme.white};
   border-radius: 50%;
+  & .profile-layer {
+    width: 100px;
+    position: absolute;
+    left: auto;
+    right: auto;
+    z-index: 1000;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin-top: 10px;
+  }
+`;
+export const GroupIcon = styled(HiUserGroup)`
+  position: absolute;
+  z-index: 0;
+  top: 23px;
+  font-size: 9em;
+  color: ${({ theme }) => theme.gray500};
+  opacity: 0.1;
 `;

@@ -1,5 +1,4 @@
 import { PhotoCamera } from "@material-ui/icons";
-import Image from "next/image";
 import React, { useState } from "react";
 import { ISetStep } from "../CreateGroup/CreateGroup";
 import { CreateGroupContainer } from "../CreateGroup/CreateGroup.styles";
@@ -10,17 +9,21 @@ import {
 } from "../SidebarDrawer/SidebarDrawer.styles";
 import {
   CreateGroupWrapper,
+  GroupIcon,
   StyledLabel,
   StyledUploadWrapper,
 } from "./GroupInfo.styles";
 
 const GroupInfo = ({ setStep }: ISetStep) => {
-  const [image, setImage] = useState<any>(null);
+  const [image, setImage] = useState<string | null>(null);
 
   const fileHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     let selected = e?.target?.files?.[0];
-    console.log(selected);
-    setImage(URL.createObjectURL(selected));
+    try {
+      setImage(URL.createObjectURL(selected));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -34,13 +37,21 @@ const GroupInfo = ({ setStep }: ISetStep) => {
       <CreateGroupWrapper>
         <StyledUploadWrapper centerRipple>
           <input
-            accept="image/gif,image/jpeg,image/jpg,image/png"
+            accept="image/*"
             id="icon-button-file"
             type="file"
             onChange={fileHandler}
           />
           <StyledLabel htmlFor="icon-button-file" bgImage={image}>
-            {!image && <PhotoCamera />}
+            {!image && (
+              <>
+                <GroupIcon />
+                <div className="profile-layer">
+                  <PhotoCamera />
+                  <div>ADD GROUP ICON</div>
+                </div>
+              </>
+            )}
           </StyledLabel>
         </StyledUploadWrapper>
       </CreateGroupWrapper>
