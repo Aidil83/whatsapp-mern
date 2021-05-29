@@ -6,19 +6,20 @@ import { NewChat, CreateGroup, GroupInfo } from "..";
 
 interface Props {
   isDrawer: boolean;
-  toggleDrawer: () => void;
+  setIsDrawer: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const SidebarDrawer = ({ isDrawer, toggleDrawer }: Props) => {
+const SidebarDrawer = ({ isDrawer, setIsDrawer }: Props) => {
   const [step, setStep] = useState<number>(0);
+
   return (
     <>
       <Drawer variant="persistent" anchor="left" open={isDrawer} elevation={0}>
         <DrawerContainer>
           <SwipeableViews index={step}>
-            <NewChat toggleDrawer={toggleDrawer} setStep={setStep} />
+            <NewChat setIsDrawer={setIsDrawer} setStep={setStep} />
             <CreateGroup setStep={setStep} />
-            <GroupInfo setStep={setStep} toggleDrawer={toggleDrawer} />
+            <GroupInfo setStep={setStep} setIsDrawer={setIsDrawer} />
           </SwipeableViews>
         </DrawerContainer>
       </Drawer>

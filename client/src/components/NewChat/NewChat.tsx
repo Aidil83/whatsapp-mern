@@ -9,15 +9,15 @@ import {
 } from "../SidebarDrawer/SidebarDrawer.styles";
 
 interface Props {
-  toggleDrawer: () => void;
+  setIsDrawer: React.Dispatch<React.SetStateAction<boolean>>;
   setStep: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const NewChat = ({ toggleDrawer, setStep }: Props) => {
+const NewChat = ({ setIsDrawer, setStep }: Props) => {
   return (
     <div>
       <DrawerHeader>
-        <StyledLeftArrowIcon onClick={toggleDrawer} />
+        <StyledLeftArrowIcon onClick={() => setIsDrawer(false)} />
         <DrawerTitle>New chat</DrawerTitle>
       </DrawerHeader>
       <StyledButton onClick={() => setStep((prev: number) => prev + 1)}>

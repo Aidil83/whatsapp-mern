@@ -1,6 +1,6 @@
 import { Fab } from "@material-ui/core";
 import { ArrowForward, PhotoCamera } from "@material-ui/icons";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ISetStep } from "../CreateGroup/CreateGroup";
 import { CreateGroupContainer } from "../CreateGroup/CreateGroup.styles";
 import {
@@ -16,7 +16,7 @@ import {
   StyledUploadWrapper,
 } from "./GroupInfo.styles";
 
-const GroupInfo = ({ setStep, toggleDrawer }: ISetStep) => {
+const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
   const [image, setImage] = useState<string | null>(null);
 
   const fileHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,8 +29,8 @@ const GroupInfo = ({ setStep, toggleDrawer }: ISetStep) => {
   };
 
   const handleLastStep = () => {
-    setStep(0);
-    toggleDrawer?.();
+    setTimeout(() => setStep(0), 250);
+    setIsDrawer(false);
   };
 
   return (
@@ -64,7 +64,6 @@ const GroupInfo = ({ setStep, toggleDrawer }: ISetStep) => {
         </form>
         <Fab
           onClick={handleLastStep}
-          // onClick={toggleDrawer}
           size="medium"
           aria-label="next"
           style={{

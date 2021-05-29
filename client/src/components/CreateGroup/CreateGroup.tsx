@@ -23,7 +23,7 @@ export interface IChip {
 
 export interface ISetStep {
   setStep: React.Dispatch<React.SetStateAction<number>>;
-  toggleDrawer?: () => void;
+  setIsDrawer: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const defaultContacts: IChip[] = [
@@ -34,7 +34,7 @@ export const defaultContacts: IChip[] = [
   { id: 4, title: "Daniel" },
 ];
 
-const CreateGroup = ({ setStep }: ISetStep) => {
+const CreateGroup = ({ setStep }: Pick<ISetStep, "setStep">) => {
   const [storedContacts, setStoredContacts] = useState(defaultContacts);
   const [storedChips, setStoredChips] = useState<IChip[]>([]);
 
@@ -55,12 +55,13 @@ const CreateGroup = ({ setStep }: ISetStep) => {
         <DrawerTitle>Add group participants</DrawerTitle>
       </DrawerHeader>
       <ChipsContainer>
-        {storedChips.map((chip: IChip) => (
+        {storedChips.map((chip: IChip, idx) => (
           <Chip
             size="small"
             label={chip.title}
             onDelete={() => handleDelete(chip)}
             style={{ width: "min-content", margin: ".5em 0 0 0" }}
+            key={idx}
           />
         ))}
       </ChipsContainer>
