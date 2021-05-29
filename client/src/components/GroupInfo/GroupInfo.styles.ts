@@ -48,20 +48,24 @@ export const StyledLabel = styled.label<LabelType>`
   background-color: ${({ theme }) => theme.uploadColor};
   color: ${({ theme }) => theme.white};
   border-radius: 50%;
-  &:hover {
-    background-color: ${({ theme }) => theme.medium};
-    background-blend-mode: multiply;
-    opacity: 0.5;
-    transition: .2s;
-    .profile-layer {
-      opacity: 1;
-    }
-  }
+  ${({ bgImage }) =>
+    bgImage &&
+    css`
+      &:hover {
+        background-color: ${({ theme }) => theme.medium};
+        background-blend-mode: multiply;
+        opacity: 0.5;
+        transition: 0.2s;
+        .profile-layer {
+          opacity: 1;
+        }
+      }
+    `};
   & .profile-layer {
     ${profileLayerCSS};
-    opacity: 0;
+    opacity: ${({ bgImage }) => (!bgImage ? 1 : 0)};
     transition: 0.2s;
-  
+  }
 `;
 export const GroupIcon = styled(HiUserGroup)`
   position: absolute;
