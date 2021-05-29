@@ -31,12 +31,15 @@ export const CreateGroupWrapper = styled.div`
 export const StyledUploadWrapper = styled(ButtonBase)`
   width: 200px;
   height: 200px;
-  border-radius: 50%;
+  &.MuiButtonBase-root {
+    border-radius: 50%;
+  }
 `;
 export const StyledLabel = styled.label<LabelType>`
   width: 100%;
   height: 100%;
   cursor: pointer;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -53,8 +56,8 @@ export const StyledLabel = styled.label<LabelType>`
     css`
       &:hover {
         background-color: ${({ theme }) => theme.medium};
-        background-blend-mode: multiply;
-        opacity: 0.5;
+        background-blend-mode: overlay;
+        opacity: 0.7;
         transition: 0.2s;
         .profile-layer {
           opacity: 1;
