@@ -23,6 +23,7 @@ export interface IChip {
 
 export interface ISetStep {
   setStep: React.Dispatch<React.SetStateAction<number>>;
+  toggleDrawer?: () => void;
 }
 
 export const defaultContacts: IChip[] = [

@@ -18,7 +18,7 @@ const SidebarDrawer = ({ isDrawer, toggleDrawer }: Props) => {
           <SwipeableViews index={step}>
             <NewChat toggleDrawer={toggleDrawer} setStep={setStep} />
             <CreateGroup setStep={setStep} />
-            <GroupInfo setStep={setStep} />
+            <GroupInfo setStep={setStep} toggleDrawer={toggleDrawer} />
           </SwipeableViews>
         </DrawerContainer>
       </Drawer>

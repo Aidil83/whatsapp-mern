@@ -4,7 +4,7 @@ import { ButtonBase } from "@material-ui/core";
 import { HiUserGroup } from "react-icons/hi";
 
 type LabelType = {
-  bgImage: string | null; ///Passing Optional Props
+  bgImage: string | null; // Passing Optional Props
 };
 
 const profileLayerCSS = css`
@@ -21,7 +21,7 @@ const profileLayerCSS = css`
 
 export const CreateGroupWrapper = styled.div`
   width: 100%;
-  height: 350px;
+  height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;

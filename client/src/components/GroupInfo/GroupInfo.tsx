@@ -1,4 +1,5 @@
-import { PhotoCamera } from "@material-ui/icons";
+import { Fab } from "@material-ui/core";
+import { ArrowForward, PhotoCamera } from "@material-ui/icons";
 import React, { useState } from "react";
 import { ISetStep } from "../CreateGroup/CreateGroup";
 import { CreateGroupContainer } from "../CreateGroup/CreateGroup.styles";
@@ -15,7 +16,7 @@ import {
   StyledUploadWrapper,
 } from "./GroupInfo.styles";
 
-const GroupInfo = ({ setStep }: ISetStep) => {
+const GroupInfo = ({ setStep, toggleDrawer }: ISetStep) => {
   const [image, setImage] = useState<string | null>(null);
 
   const fileHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,6 +26,11 @@ const GroupInfo = ({ setStep }: ISetStep) => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleLastStep = () => {
+    setStep(0);
+    toggleDrawer?.();
   };
 
   return (
@@ -54,8 +60,21 @@ const GroupInfo = ({ setStep }: ISetStep) => {
           </StyledLabel>
         </StyledUploadWrapper>
         <form style={{ width: "80%" }}>
-          <StyledTextField label="Group Subject" classes={{ root: "label" }} />
+          <StyledTextField label="Group Subject" />
         </form>
+        <Fab
+          onClick={handleLastStep}
+          // onClick={toggleDrawer}
+          size="medium"
+          aria-label="next"
+          style={{
+            backgroundColor: "#09E85E",
+            color: "#fff",
+            marginTop: "5em",
+          }}
+        >
+          <ArrowForward />
+        </Fab>
       </CreateGroupWrapper>
     </CreateGroupContainer>
   );
