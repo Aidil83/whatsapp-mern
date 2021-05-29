@@ -43,15 +43,11 @@ const GroupInfo = ({ setStep }: ISetStep) => {
             onChange={fileHandler}
           />
           <StyledLabel htmlFor="icon-button-file" bgImage={image}>
-            {!image && (
-              <>
-                <GroupIcon />
-                <div className="profile-layer">
-                  <PhotoCamera />
-                  <div>ADD GROUP ICON</div>
-                </div>
-              </>
-            )}
+            <div className="profile-layer">
+              <PhotoCamera />
+              {!image && <div>ADD GROUP ICON</div>}
+              {image && <div>CHANGE GROUP ICON</div>}
+            </div>
           </StyledLabel>
         </StyledUploadWrapper>
       </CreateGroupWrapper>

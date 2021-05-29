@@ -1,10 +1,22 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { ButtonBase } from "@material-ui/core";
 import { HiUserGroup } from "react-icons/hi";
 
 type LabelType = {
   bgImage: string | null; ///Passing Optional Props
 };
+
+const profileLayerCSS = css`
+  width: 100px;
+  position: absolute;
+  left: auto;
+  right: auto;
+  z-index: 1000;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 400;
+  margin-top: 10px;
+`;
 
 export const CreateGroupWrapper = styled.div`
   width: 100%;
@@ -36,23 +48,29 @@ export const StyledLabel = styled.label<LabelType>`
   background-color: ${({ theme }) => theme.uploadColor};
   color: ${({ theme }) => theme.white};
   border-radius: 50%;
-  & .profile-layer {
-    width: 100px;
-    position: absolute;
-    left: auto;
-    right: auto;
-    z-index: 1000;
-    text-align: center;
-    font-size: 0.75rem;
-    font-weight: 400;
-    margin-top: 10px;
+  &:hover {
+    background-color: ${({ theme }) => theme.medium};
+    background-blend-mode: multiply;
+    opacity: 0.5;
+    transition: .2s;
+    .profile-layer {
+      opacity: 1;
+    }
   }
+  & .profile-layer {
+    ${profileLayerCSS};
+    opacity: 0;
+    transition: 0.2s;
+  
 `;
 export const GroupIcon = styled(HiUserGroup)`
   position: absolute;
   z-index: 0;
-  top: 23px;
+  top: -43px;
+  left: 0;
   font-size: 9em;
   color: ${({ theme }) => theme.gray500};
   opacity: 0.1;
+  width: 100px;
+  height: 110px;
 `;
