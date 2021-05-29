@@ -90,4 +90,7 @@ export const StyledTextField = styled(TextField)`
   && .MuiInput-underline:hover:before {
     border-bottom: 2px solid ${({ theme }) => theme.greenChat};
   }
+  label.Mui-focused {
+    color: #838383;
+  }
 `;

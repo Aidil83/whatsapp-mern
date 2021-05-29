@@ -54,7 +54,7 @@ const GroupInfo = ({ setStep }: ISetStep) => {
           </StyledLabel>
         </StyledUploadWrapper>
         <form style={{ width: "80%" }}>
-          <StyledTextField />
+          <StyledTextField label="Group Subject" classes={{ root: "label" }} />
         </form>
       </CreateGroupWrapper>
     </CreateGroupContainer>
