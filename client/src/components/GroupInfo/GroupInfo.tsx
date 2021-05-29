@@ -18,8 +18,9 @@ import {
 
 const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
   const [image, setImage] = useState<string | null>(null);
+  const [groupName, setGroupName] = useState({ text: "" });
 
-  const fileHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const fileHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     let selected = e?.target?.files?.[0];
     try {
       setImage(URL.createObjectURL(selected));
@@ -32,6 +33,20 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
     setTimeout(() => setStep(0), 250);
     setIsDrawer(false);
   };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    let var1 = "text";
+    setGroupName((prev) => ({
+      ...prev,
+      [var1]: e.target.value || "",
+    }));
+  };
+
+  console.log(groupName.text);
 
   return (
     <CreateGroupContainer>
@@ -59,8 +74,13 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
             </div>
           </StyledLabel>
         </StyledUploadWrapper>
-        <form style={{ width: "80%" }}>
-          <StyledTextField label="Group Subject" />
+        <form style={{ width: "80%" }} onSubmit={handleSubmit}>
+          <StyledTextField
+            value={groupName.text}
+            label="Group Subject"
+            onChange={handleChange}
+            name="text"
+          />
         </form>
         <Fab
           onClick={handleLastStep}
