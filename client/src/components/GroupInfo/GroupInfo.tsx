@@ -11,6 +11,7 @@ import {
   CreateGroupWrapper,
   GroupIcon,
   StyledLabel,
+  StyledTextField,
   StyledUploadWrapper,
 } from "./GroupInfo.styles";
 
@@ -37,6 +38,7 @@ const GroupInfo = ({ setStep }: ISetStep) => {
       <CreateGroupWrapper>
         <StyledUploadWrapper centerRipple>
           <input
+            className="hide-input"
             accept="image/*"
             id="icon-button-file"
             type="file"
@@ -50,8 +52,10 @@ const GroupInfo = ({ setStep }: ISetStep) => {
               {image && <div>CHANGE GROUP ICON</div>}
             </div>
           </StyledLabel>
-          <input type="submit" value="" />
         </StyledUploadWrapper>
+        <form style={{ width: "80%" }}>
+          <StyledTextField />
+        </form>
       </CreateGroupWrapper>
     </CreateGroupContainer>
   );

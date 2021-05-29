@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import TextField from "@material-ui/core/TextField";
 import { ButtonBase } from "@material-ui/core";
 import { HiUserGroup } from "react-icons/hi";
 
@@ -22,17 +23,18 @@ export const CreateGroupWrapper = styled.div`
   width: 100%;
   height: 350px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding-top: 2em;
-  & input {
-    display: none;
-  }
 `;
 export const StyledUploadWrapper = styled(ButtonBase)`
   width: 200px;
   height: 200px;
   &.MuiButtonBase-root {
     border-radius: 50%;
+  }
+  & input {
+    display: none;
   }
 `;
 export const StyledLabel = styled.label<LabelType>`
@@ -80,4 +82,12 @@ export const GroupIcon = styled(HiUserGroup)`
   opacity: 0.1;
   width: 100px;
   height: 110px;
+`;
+export const StyledTextField = styled(TextField)`
+  width: 100%;
+  .MuiInput-underline:before,
+  .MuiInput-underline:after,
+  && .MuiInput-underline:hover:before {
+    border-bottom: 2px solid ${({ theme }) => theme.greenChat};
+  }
 `;
