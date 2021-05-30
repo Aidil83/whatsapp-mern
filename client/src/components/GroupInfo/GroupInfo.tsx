@@ -1,6 +1,6 @@
 import { Fab } from "@material-ui/core";
 import { ArrowForward, PhotoCamera } from "@material-ui/icons";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ISetStep } from "../CreateGroup/CreateGroup";
 import { CreateGroupContainer } from "../CreateGroup/CreateGroup.styles";
 import {
@@ -18,7 +18,8 @@ import {
 
 const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
   const [image, setImage] = useState<string | null>(null);
-  const [groupName, setGroupName] = useState({ text: "" });
+  const [group, setGroup] = useState({ name: "", image: "" });
+  const [storeGroup, setStoreGroup] = useState([]);
 
   const fileHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     let selected = e?.target?.files?.[0];
@@ -30,22 +31,26 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
   };
 
   const handleLastStep = () => {
-    setTimeout(() => setStep(0), 250);
+    setTimeout(() => setStep(0), 250); // Wait for the drawer to close first.
     setIsDrawer(false);
+    setGroup((prev: any) => ({
+      ...prev,
+      image: image,
+    }));
+    console.log(group);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    handleLastStep();
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setGroupName((prev) => ({
+    setGroup((prev) => ({
       ...prev,
       [e.target.name]: e.target.value || "",
     }));
   };
-
-  console.log(groupName.text);
 
   return (
     <CreateGroupContainer>
@@ -75,10 +80,10 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
         </StyledUploadWrapper>
         <form style={{ width: "80%" }} onSubmit={handleSubmit}>
           <StyledTextField
-            value={groupName.text}
+            value={group.name}
             label="Group Subject"
             onChange={handleChange}
-            name="text"
+            name="name"
           />
         </form>
         <Fab
