@@ -1,6 +1,6 @@
 import { Fab } from "@material-ui/core";
 import { ArrowForward, PhotoCamera } from "@material-ui/icons";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ISetStep } from "../CreateGroup/CreateGroup";
 import { CreateGroupContainer } from "../CreateGroup/CreateGroup.styles";
 import {
@@ -16,15 +16,24 @@ import {
   StyledUploadWrapper,
 } from "./GroupInfo.styles";
 
+interface IGroup {
+  name: string;
+  image: string;
+}
+
 const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
   const [image, setImage] = useState<string | null>(null);
-  const [group, setGroup] = useState({ name: "", image: "" });
-  const [storeGroup, setStoreGroup] = useState([]);
+  const [group, setGroup] = useState<IGroup>({ name: "", image: "" });
+  const [storeGroup, setStoreGroup] = useState<IGroup[]>([]);
 
   const fileHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     let selected = e?.target?.files?.[0];
     try {
       setImage(URL.createObjectURL(selected));
+      setGroup({
+        ...group,
+        image: URL.createObjectURL(selected) || "",
+      });
     } catch (error) {
       console.log(error);
     }
@@ -33,16 +42,12 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
   const handleLastStep = () => {
     setTimeout(() => setStep(0), 250); // Wait for the drawer to close first.
     setIsDrawer(false);
-    setGroup((prev: any) => ({
-      ...prev,
-      image: image,
-    }));
-    console.log(group);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     handleLastStep();
+    setStoreGroup([...storeGroup, group]);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -51,6 +56,10 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
       [e.target.name]: e.target.value || "",
     }));
   };
+
+  useEffect(() => {
+    console.log(storeGroup);
+  }, [storeGroup]);
 
   return (
     <CreateGroupContainer>
