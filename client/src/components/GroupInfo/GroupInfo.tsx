@@ -39,10 +39,9 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    let var1 = "text";
     setGroupName((prev) => ({
       ...prev,
-      [var1]: e.target.value || "",
+      [e.target.name]: e.target.value || "",
     }));
   };
 
