@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
-import { InsertEmoticon, AttachFile } from "@material-ui/icons";
+import InsertEmoticon from "@material-ui/icons/InsertEmoticon";
+import AttachFile from "@material-ui/icons/AttachFile";
 import MicIcon from "@material-ui/icons/Mic";
 
 export const sharedIconStyle = css`
