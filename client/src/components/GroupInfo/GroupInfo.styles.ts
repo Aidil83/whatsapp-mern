@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import TextField from "@material-ui/core/TextField";
-import { ButtonBase } from "@material-ui/core";
+import ButtonBase from "@material-ui/core/ButtonBase";
 import { HiUserGroup } from "react-icons/hi";
 
 type LabelType = {

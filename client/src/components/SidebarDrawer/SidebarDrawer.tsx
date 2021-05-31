@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SwipeableViews from "react-swipeable-views";
-import { Drawer } from "@material-ui/core";
+import Drawer from "@material-ui/core/Drawer";
 import { DrawerContainer } from "./SidebarDrawer.styles";
 import { NewChat, CreateGroup, GroupInfo } from "..";
 

@@ -1,4 +1,5 @@
-import { Chip, Fab } from "@material-ui/core";
+import Chip from "@material-ui/core/Chip";
+import Fab from "@material-ui/core/Fab";
 import { ArrowForward } from "@material-ui/icons";
 import React, { Fragment, useState } from "react";
 import { Contact } from "..";

@@ -1,4 +1,3 @@
-import { ButtonBase } from "@material-ui/core";
 import styled from "styled-components";
 import { FooterContainer } from "../Footer/Footer.styles";
 import { StyledButton } from "../SidebarDrawer/SidebarDrawer.styles";

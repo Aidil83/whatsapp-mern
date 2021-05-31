@@ -1,5 +1,6 @@
-import { Fab } from "@material-ui/core";
-import { ArrowForward, PhotoCamera } from "@material-ui/icons";
+import Fab from "@material-ui/core/Fab";
+import PhotoCamera from "@material-ui/icons/ArrowForward";
+import ArrowForward from "@material-ui/icons/PhotoCamera";
 import React, { useEffect, useState } from "react";
 import { ISetStep } from "../CreateGroup/CreateGroup";
 import { CreateGroupContainer } from "../CreateGroup/CreateGroup.styles";

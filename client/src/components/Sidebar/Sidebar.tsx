@@ -1,4 +1,4 @@
-import { IconButton } from "@material-ui/core";
+import IconButton from "@material-ui/core/IconButton";
 import React, { useState } from "react";
 import { SidebarDrawer } from "..";
 import { StyledMoreVertIcon } from "../Header/Header.styles";

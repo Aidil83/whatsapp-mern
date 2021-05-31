@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import { Button } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
 import GroupAddIcon from "@material-ui/icons/GroupAdd";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 
