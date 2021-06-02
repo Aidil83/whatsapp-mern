@@ -40,14 +40,12 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
     }
   };
 
-  const handleLastStep = () => {
-    setTimeout(() => setStep(0), 250); // Wait for the drawer to close first.
-    setIsDrawer(false);
+  const handleLastStep = (): void => {
+    setStoreGroup([...storeGroup, group]);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    handleLastStep();
     setStoreGroup([...storeGroup, group]);
   };
 
@@ -59,7 +57,9 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
   };
 
   useEffect(() => {
-    console.log(storeGroup);
+    setTimeout(() => setStep(0), 250); // Wait for the drawer to close first.
+    setIsDrawer(false);
+    // console.log(storeGroup);
   }, [storeGroup]);
 
   return (
