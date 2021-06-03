@@ -47,9 +47,8 @@ const Contacts = ({
     setStoredContacts(filteredContacts);
     setStoredChips((prev: IContact[]) => [...prev, contact]);
   };
-
   return (
-    <StyledContactButton onClick={() => removeContact({ id, title })}>
+    <StyledContactButton onClick={() => removeContact({ id, title, image })}>
       <ProfilePic
         src={image || ""}
         width={50}
