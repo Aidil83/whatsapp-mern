@@ -6,6 +6,7 @@ import {
   InputSection,
   MyProfilePic,
   PaneSide,
+  SidebarBodyContainer,
   SidebarContainer,
   SidebarHeader,
   SidebarHeaderRight,
@@ -47,6 +48,7 @@ const Sidebar = () => {
             <input placeholder="Search or start new chat..." />
           </PaneSide>
         </InputSection>
+        {/* <SidebarBodyContainer></SidebarBodyContainer> */}
       </SidebarContainer>
     </>
   );
