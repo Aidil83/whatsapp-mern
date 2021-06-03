@@ -48,7 +48,7 @@ const Sidebar = () => {
             <input placeholder="Search or start new chat..." />
           </PaneSide>
         </InputSection>
-        {/* <SidebarBodyContainer></SidebarBodyContainer> */}
+        <SidebarBodyContainer></SidebarBodyContainer>
       </SidebarContainer>
     </>
   );

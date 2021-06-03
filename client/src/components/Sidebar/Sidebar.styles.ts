@@ -9,7 +9,7 @@ import ChatIcon from "@material-ui/icons/Chat";
 import { sharedIconStyle } from "../Footer/Footer.styles";
 
 export const SidebarContainer = styled.div`
-  min-width: 450px;
+  min-width: 500px;
   width: 20vw;
   max-width: 500px;
   height: 100%;
