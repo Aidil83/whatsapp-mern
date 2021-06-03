@@ -1,10 +1,17 @@
+import React, { useEffect, useState } from "react";
+import { ISetStep } from "../CreateGroup/CreateGroup";
+/* Material UI */
 import Fab from "@material-ui/core/Fab";
 import PhotoCamera from "@material-ui/icons/ArrowForward";
 import ArrowForward from "@material-ui/icons/PhotoCamera";
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { setGroupInfo } from "../../redux/slices/counter";
-import { ISetStep } from "../CreateGroup/CreateGroup";
+/* Redux */
+import { useDispatch, useSelector } from "react-redux";
+import {
+  groupInfoSelector,
+  IGroupInfoStore,
+  setGroupInfo,
+} from "../../redux/slices/groupInfo.slice";
+/* Styled components */
 import { CreateGroupContainer } from "../CreateGroup/CreateGroup.styles";
 import {
   DrawerHeader,
@@ -19,16 +26,11 @@ import {
   StyledUploadWrapper,
 } from "./GroupInfo.styles";
 
-interface IGroup {
-  name: string;
-  image: string;
-}
-
 const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
   const [image, setImage] = useState<string | null>(null);
-  const [group, setGroup] = useState<IGroup>({ name: "", image: "" });
-  const [storeGroup, setStoreGroup] = useState<IGroup[]>([]);
+  const [group, setGroup] = useState<IGroupInfoStore>({ title: "", image: "" });
 
+  const data = useSelector(groupInfoSelector); // Pull data from redux slice.
   const dispatch = useDispatch();
 
   const fileHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -45,13 +47,12 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
   };
 
   const handleLastStep = (): void => {
-    setStoreGroup([...storeGroup, group]);
-    dispatch(setGroupInfo({ name: "Studying Group", image: "Deku" }));
+    dispatch(setGroupInfo(group));
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    setStoreGroup([...storeGroup, group]);
+    dispatch(setGroupInfo(group));
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -64,8 +65,7 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
   useEffect(() => {
     setTimeout(() => setStep(0), 250); // Wait for the drawer to close first.
     setIsDrawer(false);
-    // console.log(storeGroup);
-  }, [storeGroup]);
+  }, [data]);
 
   return (
     <CreateGroupContainer>
@@ -95,10 +95,10 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
         </StyledUploadWrapper>
         <form style={{ width: "80%" }} onSubmit={handleSubmit}>
           <StyledTextField
-            value={group.name}
+            value={group.title}
             label="Group Subject"
             onChange={handleChange}
-            name="name"
+            name="title"
           />
         </form>
         <Fab
