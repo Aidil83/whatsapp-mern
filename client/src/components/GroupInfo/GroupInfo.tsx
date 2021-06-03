@@ -2,6 +2,8 @@ import Fab from "@material-ui/core/Fab";
 import PhotoCamera from "@material-ui/icons/ArrowForward";
 import ArrowForward from "@material-ui/icons/PhotoCamera";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { setGroupInfo } from "../../redux/slices/counter";
 import { ISetStep } from "../CreateGroup/CreateGroup";
 import { CreateGroupContainer } from "../CreateGroup/CreateGroup.styles";
 import {
@@ -27,6 +29,8 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
   const [group, setGroup] = useState<IGroup>({ name: "", image: "" });
   const [storeGroup, setStoreGroup] = useState<IGroup[]>([]);
 
+  const dispatch = useDispatch();
+
   const fileHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     let selected = e?.target?.files?.[0];
     try {
@@ -42,6 +46,7 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
 
   const handleLastStep = (): void => {
     setStoreGroup([...storeGroup, group]);
+    dispatch(setGroupInfo({ name: "Studying Group", image: "Deku" }));
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
