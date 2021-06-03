@@ -9,6 +9,7 @@ import {
 interface Props {
   id: number;
   title: string;
+  image: string | undefined;
   storedContacts: {
     id: number;
     title: string;
@@ -34,6 +35,7 @@ interface Props {
 const Contacts = ({
   id,
   title,
+  image,
   storedContacts,
   setStoredContacts,
   setStoredChips,
@@ -48,7 +50,12 @@ const Contacts = ({
 
   return (
     <StyledContactButton onClick={() => removeContact({ id, title })}>
-      <ProfilePic src="/static/images/coder.jpg" width={50} height={50} />
+      <ProfilePic
+        src={image || ""}
+        width={50}
+        height={50}
+        alt="profile-image"
+      />
       <div
         style={{
           textTransform: "capitalize",
