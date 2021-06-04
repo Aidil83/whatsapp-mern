@@ -75,6 +75,3 @@ export const SidebarSearchIcon = styled(StyledSearchIcon)`
     cursor: pointer;
   }
 `;
-export const SidebarBodyContainer = styled.div`
-  background-color: orange;
-`;

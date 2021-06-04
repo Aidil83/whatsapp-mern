@@ -14,6 +14,7 @@ export const groupInfoSlice = createSlice({
   initialState,
   reducers: {
     setGroupInfo: (state, { payload }: PayloadAction<IGroupInfoStore>) => {
+      payload.image;
       state.push(payload);
     },
   },

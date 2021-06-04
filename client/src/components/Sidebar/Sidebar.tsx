@@ -1,12 +1,13 @@
 import IconButton from "@material-ui/core/IconButton";
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { SidebarDrawer } from "..";
+import { groupInfoSelector } from "../../redux/slices/groupInfo.slice";
 import { StyledMoreVertIcon } from "../Header/Header.styles";
 import {
   InputSection,
   MyProfilePic,
   PaneSide,
-  SidebarBodyContainer,
   SidebarContainer,
   SidebarHeader,
   SidebarHeaderRight,
@@ -14,9 +15,11 @@ import {
   StyledChatIcon,
   StyledStatusIcon,
 } from "./Sidebar.styles";
+import SidebarChat from "./SidebarChat/SidebarChat";
 
 const Sidebar = () => {
   const [isDrawer, setIsDrawer] = useState<boolean>(false);
+  const data = useSelector(groupInfoSelector);
 
   return (
     <>
@@ -48,7 +51,9 @@ const Sidebar = () => {
             <input placeholder="Search or start new chat..." />
           </PaneSide>
         </InputSection>
-        <SidebarBodyContainer></SidebarBodyContainer>
+        {data.map((item, idx) => (
+          <SidebarChat item={item} key={idx} />
+        ))}
       </SidebarContainer>
     </>
   );
