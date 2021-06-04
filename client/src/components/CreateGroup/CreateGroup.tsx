@@ -2,7 +2,9 @@ import Chip from "@material-ui/core/Chip";
 import Fab from "@material-ui/core/Fab";
 import ArrowForward from "@material-ui/icons/ArrowForward";
 import React, { Fragment, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Contact } from "..";
+import { setMembers } from "../../redux/slices/members.slice";
 import {
   DrawerHeader,
   StyledLeftArrowIcon,
@@ -40,12 +42,19 @@ const CreateGroup = ({ setStep }: Pick<ISetStep, "setStep">) => {
   const [storedContacts, setStoredContacts] = useState(defaultContacts);
   const [storedChips, setStoredChips] = useState<IChip[]>([]);
 
+  const dispatch = useDispatch();
+
   const handleDelete = (chip: IChip) => {
     const filteredChip = storedChips.filter(
       (item: IChip) => item.id !== chip.id
     );
     setStoredChips(filteredChip);
     setStoredContacts((prev: IChip[]) => [...prev, chip]);
+  };
+
+  const handleNextBtn = (): void => {
+    dispatch(setMembers(storedChips));
+    setStep((prev: number) => prev + 1);
   };
 
   return (
@@ -95,7 +104,7 @@ const CreateGroup = ({ setStep }: Pick<ISetStep, "setStep">) => {
       <SidebarFooterContainer>
         {storedChips.length > 0 && (
           <Fab
-            onClick={() => setStep((prev: number) => prev + 1)}
+            onClick={handleNextBtn}
             size="medium"
             aria-label="next"
             style={{ backgroundColor: "#09E85E", color: "#fff" }}

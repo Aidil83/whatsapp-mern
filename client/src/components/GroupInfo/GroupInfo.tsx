@@ -7,7 +7,6 @@ import ArrowForward from "@material-ui/icons/PhotoCamera";
 /* Redux */
 import { useDispatch, useSelector } from "react-redux";
 import {
-  groupInfoSelector,
   IGroupInfoStore,
   setGroupInfo,
 } from "../../redux/slices/groupInfo.slice";
@@ -25,12 +24,17 @@ import {
   StyledTextField,
   StyledUploadWrapper,
 } from "./GroupInfo.styles";
+import { membersSelector } from "../../redux/slices/members.slice";
 
 const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
   const [image, setImage] = useState<string | null>(null);
-  const [group, setGroup] = useState<IGroupInfoStore>({ title: "", image: "" });
+  const [group, setGroup] = useState<IGroupInfoStore>({
+    title: "",
+    image: "",
+    members: [{ id: 1, name: "Aidil", image: "Coder" }],
+  });
 
-  const data = useSelector(groupInfoSelector); // Pull data from redux slice.
+  const data = useSelector(membersSelector); // Pull data from redux slice.
   const dispatch = useDispatch();
 
   const fileHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
