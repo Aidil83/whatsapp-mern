@@ -18,8 +18,13 @@ export const membersSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
-    addGroup: (state, { payload }: PayloadAction<IMembers>) => {
-      console.log(payload);
+    addTitle: (state, { payload }: PayloadAction<string>) => {
+      console.log("title", payload);
+      state.title = payload;
+    },
+    addImage: (state, { payload }: PayloadAction<string>) => {
+      console.log("image", payload);
+      state.image = payload;
     },
     setMembers: (state, { payload }: PayloadAction<IMembers>) => {
       state.members = { payload };
@@ -27,6 +32,6 @@ export const membersSlice = createSlice({
   },
 });
 
-export const { addGroup, setMembers } = membersSlice.actions;
+export const { addTitle, addImage, setMembers } = membersSlice.actions;
 export const membersSelector = (state: RootState) => state.membersReducer; // ts needed
 export default membersSlice.reducer;

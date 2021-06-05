@@ -24,7 +24,11 @@ import {
   StyledTextField,
   StyledUploadWrapper,
 } from "./GroupInfo.styles";
-import { membersSelector } from "../../redux/slices/members.slice";
+import {
+  addImage,
+  addTitle,
+  membersSelector,
+} from "../../redux/slices/members.slice";
 
 const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
   const [image, setImage] = useState<string | null>(null);
@@ -41,6 +45,7 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
     let selected = e?.target?.files?.[0];
     try {
       setImage(URL.createObjectURL(selected));
+      dispatch(addImage(URL.createObjectURL(selected)));
       setGroup({
         ...group,
         image: URL.createObjectURL(selected) || "",
@@ -51,12 +56,16 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
   };
 
   const handleLastStep = (): void => {
-    dispatch(setGroupInfo(group));
+    dispatch(setGroupInfo(data));
+    setTimeout(() => setStep(0), 250); // Wait for the drawer to close first.
+    setIsDrawer(false);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    dispatch(setGroupInfo(group));
+    dispatch(setGroupInfo(data));
+    setTimeout(() => setStep(0), 250); // Wait for the drawer to close first.
+    setIsDrawer(false);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -64,12 +73,11 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
       ...prev,
       [e.target.name]: e.target.value || "",
     }));
+    dispatch(addTitle(e.target.value));
   };
 
-  useEffect(() => {
-    setTimeout(() => setStep(0), 250); // Wait for the drawer to close first.
-    setIsDrawer(false);
-  }, [data]);
+  // useEffect(() => {
+  // }, [data]);
 
   return (
     <CreateGroupContainer>
