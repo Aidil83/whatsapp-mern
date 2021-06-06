@@ -7,7 +7,8 @@ interface Props {
 }
 
 const SidebarChat = ({ item }: Props) => {
-  console.log(item);
+  console.log("item ->", item);
+  const { members } = item;
   return (
     <>
       {item.image && (
@@ -25,10 +26,19 @@ const SidebarChat = ({ item }: Props) => {
               fontSize: 17,
               padding: "0 1em",
               textAlign: "left",
+              height: 50,
             }}
           >
-            {item?.title}
-            <SubText>Hey there! I am using Whatsapp.</SubText>
+            <div>{item.title}</div>
+            <div style={{ display: "flex" }}>
+              {members.payload?.map((member: any, idx: any) => {
+                return (
+                  <div key={idx} style={{ display: "flex" }}>
+                    <SubText>{(idx ? ", " : "") + member.title}</SubText>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </StyledContact>
       )}

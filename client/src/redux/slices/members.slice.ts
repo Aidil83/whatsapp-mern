@@ -19,11 +19,9 @@ export const membersSlice = createSlice({
   initialState,
   reducers: {
     addTitle: (state, { payload }: PayloadAction<string>) => {
-      console.log("title", payload);
       state.title = payload;
     },
     addImage: (state, { payload }: PayloadAction<string>) => {
-      console.log("image", payload);
       state.image = payload;
     },
     setMembers: (state, { payload }: PayloadAction<IMembers>) => {
