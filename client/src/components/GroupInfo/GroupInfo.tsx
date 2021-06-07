@@ -37,7 +37,6 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
     image: "",
     members: [{ id: 1, name: "Aidil", image: "Coder" }],
   });
-
   const data = useSelector(membersSelector); // Pull data from redux slice.
   const dispatch = useDispatch();
 
@@ -55,12 +54,6 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
     }
   };
 
-  const handleLastStep = (): void => {
-    dispatch(setGroupInfo(data));
-    setTimeout(() => setStep(0), 250); // Wait for the drawer to close first.
-    setIsDrawer(false);
-  };
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     dispatch(setGroupInfo(data));
@@ -75,9 +68,6 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
     }));
     dispatch(addTitle(e.target.value));
   };
-
-  // useEffect(() => {
-  // }, [data]);
 
   return (
     <CreateGroupContainer>
@@ -113,18 +103,6 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
             name="title"
           />
         </form>
-        <Fab
-          onClick={handleLastStep}
-          size="medium"
-          aria-label="next"
-          style={{
-            backgroundColor: "#09E85E",
-            color: "#fff",
-            marginTop: "5em",
-          }}
-        >
-          <ArrowForward />
-        </Fab>
       </CreateGroupWrapper>
     </CreateGroupContainer>
   );
