@@ -101,6 +101,7 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
             label="Group Subject"
             onChange={handleChange}
             name="title"
+            required
           />
         </form>
       </CreateGroupWrapper>

@@ -1,6 +1,6 @@
 import { IGroupInfoStore } from "../../../redux/slices/groupInfo.slice";
 import { SubText } from "../../CreateGroup/CreateGroup.styles";
-import { StyledContact } from "./SidebarChat.styles";
+import { DefaultImage, StyledContact } from "./SidebarChat.styles";
 
 interface Props {
   item: IGroupInfoStore;
@@ -11,15 +11,18 @@ const SidebarChat = ({ item }: Props) => {
   const { members } = item;
   return (
     <>
-      {item.image && (
+      {item.title && (
         <StyledContact>
-          <img
-            src={item?.image}
-            width={50}
-            height={50}
-            alt="profile-image"
-            style={{ borderRadius: "50%" }}
-          />
+          {!item.image && <DefaultImage />}
+          {item.image && (
+            <img
+              src={item?.image}
+              width={50}
+              height={50}
+              alt="profile-image"
+              style={{ borderRadius: "50%" }}
+            />
+          )}
           <div
             style={{
               textTransform: "capitalize",
