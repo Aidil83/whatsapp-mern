@@ -5,23 +5,13 @@ import {
   StyledContactButton,
   SubText,
 } from "../CreateGroup/CreateGroup.styles";
+import {useDispatch, useSelector} from "react-redux";
+import {filteredStoredContacts, setStoredContacts, storedContactsSelector} from "../../redux/slices/storedContacts.slice";
 
 interface Props {
   id: number;
   title: string;
   image: string | undefined;
-  storedContacts: {
-    id: number;
-    title: string;
-  }[];
-  setStoredContacts: React.Dispatch<
-    React.SetStateAction<
-      {
-        id: number;
-        title: string;
-      }[]
-    >
-  >;
   setStoredChips: React.Dispatch<
     React.SetStateAction<
       {
@@ -36,15 +26,20 @@ const Contacts = ({
   id,
   title,
   image,
-  storedContacts,
-  setStoredContacts,
   setStoredChips,
 }: Props) => {
+  const storedContacts = useSelector(storedContactsSelector);
+  const dispatch = useDispatch();
+
   const removeContact = (contact: IContact) => {
-    const filteredContacts = storedContacts.filter(
-      (item) => item.id !== contact.id
+    console.log("<storedContacts>", storedContacts);
+    const filteredContacts = storedContacts.filter((item) => {
+          return item.id !== contact.id
+        }
     );
-    setStoredContacts(filteredContacts);
+    // setStoredContacts(filteredContacts);
+    console.log("<filteredContacts>", filteredContacts)
+    dispatch(filteredStoredContacts(filteredContacts));
     setStoredChips((prev: IContact[]) => [...prev, contact]);
   };
   return (

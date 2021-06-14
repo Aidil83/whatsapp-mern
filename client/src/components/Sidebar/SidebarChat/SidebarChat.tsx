@@ -62,7 +62,6 @@ const SidebarChat = ({ item }: Props) => {
 
 const TextWrapper = styled(Truncate)`
   display: flex;
-  /* width: 100%; */
   color: ${({ theme }) => theme.light};
   font-size: 13px;
   font-family: "Segoe UI", "Helvetica Neue", Helvetica, "Lucida Grande", Arial;
