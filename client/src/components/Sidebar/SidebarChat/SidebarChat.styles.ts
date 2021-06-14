@@ -8,7 +8,6 @@ export const StyledContact = styled(StyledContactButton)`
     justify-content: start;
   }
 `;
-
 export const DefaultImage = styled(GroupIcon)`
   position: revert;
   opacity: 1;

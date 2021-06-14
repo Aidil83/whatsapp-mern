@@ -1,14 +1,24 @@
+import { useState } from "react";
+import styled from "styled-components";
 import { IGroupInfoStore } from "../../../redux/slices/groupInfo.slice";
-import { SubText } from "../../CreateGroup/CreateGroup.styles";
-import { DefaultImage, StyledContact } from "./SidebarChat.styles";
+import {
+  DefaultImage,
+  StyledContact,
+  StyledSubtext,
+} from "./SidebarChat.styles";
+import Truncate from "react-truncate";
 
 interface Props {
   item: IGroupInfoStore;
 }
 
 const SidebarChat = ({ item }: Props) => {
-  console.log("item ->", item);
+  const [trunk, setTrunk] = useState(false);
   const { members } = item;
+
+  const handleTruncate = (truncated: any) => {
+    setTrunk(truncated);
+  };
   return (
     <>
       {item.title && (
@@ -33,20 +43,32 @@ const SidebarChat = ({ item }: Props) => {
             }}
           >
             <div>{item.title}</div>
-            <div style={{ display: "flex" }}>
+            <TextWrapper
+              style={{ display: "flex" }}
+              lines={0}
+              ellipsis={<span>... </span>}
+              onTruncate={handleTruncate}
+            >
               {members.payload?.map((member: any, idx: any) => {
-                return (
-                  <div key={idx} style={{ display: "flex" }}>
-                    <SubText>{(idx ? ", " : "") + member.title}</SubText>
-                  </div>
-                );
+                return (idx ? ", " : "") + member.title;
               })}
-            </div>
+            </TextWrapper>
           </div>
         </StyledContact>
       )}
     </>
   );
 };
+
+const TextWrapper = styled(Truncate)`
+  display: flex;
+  /* width: 100%; */
+  color: ${({ theme }) => theme.light};
+  font-size: 13px;
+  font-family: "Segoe UI", "Helvetica Neue", Helvetica, "Lucida Grande", Arial;
+  font-weight: 400;
+  text-transform: none;
+  line-height: 1.1;
+`;
 
 export default SidebarChat;
