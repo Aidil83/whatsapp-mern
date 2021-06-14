@@ -22,8 +22,7 @@ export const storedContactsSlice = createSlice({
       state = initialState;
     },
     filteredStoredContacts: ((state, { payload }: PayloadAction<any>) => {
-      // state = payload;
-      // (state:any) => payload
+      return payload;
     })
   },
 });
