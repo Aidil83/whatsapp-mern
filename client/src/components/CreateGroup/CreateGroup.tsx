@@ -53,8 +53,9 @@ const CreateGroup = ({ setStep }: Pick<ISetStep, "setStep">) => {
     const filteredChip = storedChips.filter(
       (item: IChip) => item.id !== chip.id
     );
+    // remove chip.
     setStoredChips(filteredChip);
-    // setStoredContacts((prev: IChip[]) => [...prev, chip]);
+    // Restore contact.
     dispatch(setStoredContacts(chip));
   };
 

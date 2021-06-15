@@ -27,6 +27,7 @@ import {
   addTitle,
   membersSelector,
 } from "../../redux/slices/members.slice";
+import { resetStoredContacts } from "../../redux/slices/storedContacts.slice";
 
 const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
   const [image, setImage] = useState<string | null>(null);
@@ -55,6 +56,7 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     dispatch(setGroupInfo(data));
+    dispatch(resetStoredContacts());
     setTimeout(() => setStep(0), 250); // Wait for the drawer to close first.
     setIsDrawer(false);
   };

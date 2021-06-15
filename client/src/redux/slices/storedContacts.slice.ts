@@ -16,11 +16,10 @@ export const storedContactsSlice = createSlice({
   initialState,
   reducers: {
     setStoredContacts: (state, { payload }: PayloadAction<IChip>) => {
-      // return ((state: IChip[]) => [...state, payload]);
       state.push(payload);
     },
     resetStoredContacts: (state) => {
-      state = initialState;
+      return initialState;
     },
     filteredStoredContacts: (state, { payload }: PayloadAction<any>) => {
       return payload;
