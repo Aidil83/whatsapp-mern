@@ -28,6 +28,7 @@ import {
   membersSelector,
 } from "../../redux/slices/members.slice";
 import { resetStoredContacts } from "../../redux/slices/storedContacts.slice";
+import { resetChip } from "../../redux/slices/chip.slice";
 
 const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
   const [image, setImage] = useState<string | null>(null);
@@ -57,6 +58,7 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
     e.preventDefault();
     dispatch(setGroupInfo(data));
     dispatch(resetStoredContacts());
+    dispatch(resetChip());
     setTimeout(() => setStep(0), 250); // Wait for the drawer to close first.
     setIsDrawer(false);
   };
