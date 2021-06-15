@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {IChip} from "../../components/CreateGroup/CreateGroup";
+import { IChip } from "../../components/CreateGroup/CreateGroup";
 import { RootState } from "../configureStore";
 
 const initialState: IChip[] = [
@@ -16,17 +16,23 @@ export const storedContactsSlice = createSlice({
   initialState,
   reducers: {
     setStoredContacts: (state, { payload }: PayloadAction<IChip>) => {
-      (state: IChip[]) => [...state, payload]
+      // return ((state: IChip[]) => [...state, payload]);
+      state.push(payload);
     },
-    resetStoredContacts: state => {
+    resetStoredContacts: (state) => {
       state = initialState;
     },
-    filteredStoredContacts: ((state, { payload }: PayloadAction<any>) => {
+    filteredStoredContacts: (state, { payload }: PayloadAction<any>) => {
       return payload;
-    })
+    },
   },
 });
 
-export const {setStoredContacts, resetStoredContacts, filteredStoredContacts} = storedContactsSlice.actions;
-export const storedContactsSelector = (state: RootState) => state.storedContactsReducer; // ts needed
+export const {
+  setStoredContacts,
+  resetStoredContacts,
+  filteredStoredContacts,
+} = storedContactsSlice.actions;
+export const storedContactsSelector = (state: RootState) =>
+  state.storedContactsReducer; // ts needed
 export default storedContactsSlice.reducer;
