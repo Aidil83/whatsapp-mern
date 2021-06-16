@@ -1,24 +1,15 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { IGroupInfoStore } from "../../../redux/slices/groupInfo.slice";
-import {
-  DefaultImage,
-  StyledContact,
-  StyledSubtext,
-} from "./SidebarChat.styles";
-import Truncate from "react-truncate";
+import { DefaultImage, StyledContact } from "./SidebarChat.styles";
 
 interface Props {
   item: IGroupInfoStore;
 }
 
 const SidebarChat = ({ item }: Props) => {
-  const [trunk, setTrunk] = useState(false);
   const { members } = item;
 
-  const handleTruncate = (truncated: any) => {
-    setTrunk(truncated);
-  };
   return (
     <>
       {item.title && (
@@ -43,13 +34,8 @@ const SidebarChat = ({ item }: Props) => {
             }}
           >
             <div>{item.title}</div>
-            <TextWrapper
-              style={{ display: "flex" }}
-              lines={0}
-              ellipsis={<span>... </span>}
-              onTruncate={handleTruncate}
-            >
-              {members.payload?.map((member: any, idx: any) => {
+            <TextWrapper style={{ display: "flex" }}>
+              {members.map((member: any, idx: any) => {
                 return (idx ? ", " : "") + member.title;
               })}
             </TextWrapper>
@@ -60,7 +46,7 @@ const SidebarChat = ({ item }: Props) => {
   );
 };
 
-const TextWrapper = styled(Truncate)`
+const TextWrapper = styled.div`
   display: flex;
   color: ${({ theme }) => theme.light};
   font-size: 13px;

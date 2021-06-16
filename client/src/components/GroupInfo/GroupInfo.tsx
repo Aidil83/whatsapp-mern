@@ -35,9 +35,9 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
   const [group, setGroup] = useState<IGroupInfoStore>({
     title: "",
     image: "",
-    members: [{ id: 1, name: "Aidil", image: "Coder" }],
+    members: [{ id: 1, title: "Aidil", image: "Coder" }],
   });
-  const data = useSelector(membersSelector); // Pull data from redux slice.
+  const data = useSelector(membersSelector); // Pull data from redux member slice.
   const dispatch = useDispatch();
 
   const fileHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {

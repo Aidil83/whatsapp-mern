@@ -1,16 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IChip } from "../../components/CreateGroup/CreateGroup";
 import { RootState } from "../configureStore";
-
-interface IMembers {
-  id: number | null;
-  name: string;
-  image: string;
-}
 
 export interface IGroupInfoStore {
   title: string;
   image: string;
-  members: IMembers[];
+  members: IChip[];
 }
 
 const initialState: IGroupInfoStore[] = [];
@@ -23,13 +18,9 @@ export const groupInfoSlice = createSlice({
     setGroupInfo: (state, { payload }: PayloadAction<IGroupInfoStore>) => {
       state.push(payload);
     },
-    // setMembers: (state, { payload }: PayloadAction<IMembers[]>) => {
-    //   // console.log("setMembers", payload);
-    //   // state.push(members: payload);
-    // },
   },
 });
 
-export const { setGroupInfo, setMembers } = groupInfoSlice.actions;
+export const { setGroupInfo } = groupInfoSlice.actions;
 export const groupInfoSelector = (state: RootState) => state.groupInfoReducer; // ts needed
 export default groupInfoSlice.reducer;

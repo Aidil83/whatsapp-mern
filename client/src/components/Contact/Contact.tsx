@@ -8,10 +8,9 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import {
   filteredStoredContacts,
-  setStoredContacts,
   storedContactsSelector,
 } from "../../redux/slices/storedContacts.slice";
-import { addChip, setStoredChips } from "../../redux/slices/chip.slice";
+import { addChip } from "../../redux/slices/chip.slice";
 
 interface Props {
   id: number;
@@ -24,14 +23,10 @@ const Contacts = ({ id, title, image }: Props) => {
   const dispatch = useDispatch();
 
   const removeContact = (contact: IContact) => {
-    console.log("<storedContacts>", storedContacts);
     const filteredContacts = storedContacts.filter((item) => {
       return item.id !== contact.id;
     });
-    // setStoredContacts(filteredContacts);
-    console.log("<filteredContacts>", filteredContacts);
     dispatch(filteredStoredContacts(filteredContacts));
-    // setStoredChips((prev: IContact[]) => [...prev, contact]);
     dispatch(addChip(contact));
   };
   return (

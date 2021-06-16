@@ -1,16 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IChip } from "../../components/CreateGroup/CreateGroup";
 import { RootState } from "../configureStore";
 
 export interface IMembers {
   title: string;
   image: string;
-  members: [{ id: number | null; name: string; image: string }];
+  members: IChip[];
 }
 
 const initialState: IMembers = {
   title: "",
   image: "",
-  members: [{ id: null, name: "", image: "" }],
+  members: [{ id: 0, title: "", image: "" }],
 };
 
 // These are all the actions:
@@ -24,8 +25,8 @@ export const membersSlice = createSlice({
     addImage: (state, { payload }: PayloadAction<string>) => {
       state.image = payload;
     },
-    setMembers: (state, { payload }: PayloadAction<IMembers>) => {
-      state.members = { payload };
+    setMembers: (state, { payload }: PayloadAction<IChip[]>) => {
+      state.members = payload;
     },
   },
 });

@@ -45,8 +45,6 @@ export const defaultContacts: IChip[] = [
 ];
 
 const CreateGroup = ({ setStep }: Pick<ISetStep, "setStep">) => {
-  // const [storedContacts, setStoredContacts] = useState(defaultContacts);
-  // const [storedChips, setStoredChips] = useState<IChip[]>([]);
   const storedContacts = useSelector(storedContactsSelector);
   const storedChips = useSelector(chipSelector);
   const dispatch = useDispatch();
@@ -56,7 +54,6 @@ const CreateGroup = ({ setStep }: Pick<ISetStep, "setStep">) => {
       (item: IChip) => item.id !== chip.id
     );
     // remove chip.
-    // setStoredChips(filteredChip);
     dispatch(setStoredChips(filteredChip));
     // Restore contact.
     dispatch(setStoredContacts(chip));
