@@ -8,7 +8,7 @@ const Message = ({
   message: string;
 }) => {
   return (
-    <Card style={{ backgroundColor: `${bgColor}`, margin: ".5em" }}>
+    <Card style={{ backgroundColor: `${bgColor}`, margin: ".25em" }}>
       <CardContent>
         <Typography color="primary" variant="h6" component="h2">
           {message || ""}

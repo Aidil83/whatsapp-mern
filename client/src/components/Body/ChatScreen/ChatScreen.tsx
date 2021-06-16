@@ -10,7 +10,6 @@ const ChatScreen = () => {
     <BodyWallpaper>
       <LeftChat>
         {messages.map((message, idx) => {
-          console.log("message>", message);
           return <Message key={idx} message={message.text} bgColor="#fff" />;
         })}
       </LeftChat>

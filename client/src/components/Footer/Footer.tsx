@@ -22,6 +22,7 @@ const Footer = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     dispatch(setMessages(input));
+    setInput("");
   };
 
   return (
