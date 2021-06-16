@@ -30,13 +30,15 @@ import {
 import { resetStoredContacts } from "../../redux/slices/storedContacts.slice";
 import { resetChip } from "../../redux/slices/chip.slice";
 
+const defaultValues = {
+  title: "",
+  image: "",
+  members: [{ id: 1, title: "Aidil", image: "Coder" }],
+};
+
 const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
   const [image, setImage] = useState<string | null>(null);
-  const [group, setGroup] = useState<IGroupInfoStore>({
-    title: "",
-    image: "",
-    members: [{ id: 1, title: "Aidil", image: "Coder" }],
-  });
+  const [group, setGroup] = useState<IGroupInfoStore>(defaultValues);
   const data = useSelector(membersSelector); // Pull data from redux member slice.
   const dispatch = useDispatch();
 
@@ -59,6 +61,8 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
     dispatch(setGroupInfo(data));
     dispatch(resetStoredContacts());
     dispatch(resetChip());
+    setImage(null);
+    setGroup(defaultValues);
     setTimeout(() => setStep(0), 250); // Wait for the drawer to close first.
     setIsDrawer(false);
   };
