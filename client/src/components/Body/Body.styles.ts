@@ -8,6 +8,7 @@ export const BodyContainer = styled.div`
 export const BodyWallpaper = styled.div`
   background-image: url("/static/images/ws-wallpaper.png");
   width: 100%;
+  padding: 1em;
   flex: 1;
   background-repeat: repeat;
 `;
