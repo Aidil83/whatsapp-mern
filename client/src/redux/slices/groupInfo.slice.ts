@@ -12,7 +12,7 @@ const initialState: IGroupInfoStore[] = [];
 
 // These are all the actions:
 export const groupInfoSlice = createSlice({
-  name: "counter",
+  name: "groupInfo",
   initialState,
   reducers: {
     setGroupInfo: (state, { payload }: PayloadAction<IGroupInfoStore>) => {

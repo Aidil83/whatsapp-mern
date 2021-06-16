@@ -20,6 +20,7 @@ import SidebarChat from "./SidebarChat/SidebarChat";
 const Sidebar = () => {
   const [isDrawer, setIsDrawer] = useState<boolean>(false);
   const data = useSelector(groupInfoSelector);
+  console.log("<data>", data);
 
   return (
     <>

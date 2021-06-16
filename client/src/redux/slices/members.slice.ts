@@ -28,9 +28,13 @@ export const membersSlice = createSlice({
     setMembers: (state, { payload }: PayloadAction<IChip[]>) => {
       state.members = payload;
     },
+    resetImage: (state) => {
+      state.image = "";
+    },
   },
 });
 
-export const { addTitle, addImage, setMembers } = membersSlice.actions;
+export const { addTitle, addImage, setMembers, resetImage } =
+  membersSlice.actions;
 export const membersSelector = (state: RootState) => state.membersReducer; // ts needed
 export default membersSlice.reducer;

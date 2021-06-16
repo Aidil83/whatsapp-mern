@@ -1,6 +1,6 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { IGroupInfoStore } from "../../../redux/slices/groupInfo.slice";
+import { IChip } from "../../CreateGroup/CreateGroup";
 import { DefaultImage, StyledContact } from "./SidebarChat.styles";
 
 interface Props {
@@ -35,7 +35,7 @@ const SidebarChat = ({ item }: Props) => {
           >
             <div>{item.title}</div>
             <TextWrapper style={{ display: "flex" }}>
-              {members.map((member: any, idx: any) => {
+              {members.map((member: IChip, idx: number) => {
                 return (idx ? ", " : "") + member.title;
               })}
             </TextWrapper>
