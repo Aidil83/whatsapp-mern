@@ -1,16 +1,20 @@
 import styled from "styled-components";
 import { BodyWallpaper } from "../Body.styles";
 import Message from "../Message/Message";
+import { useSelector } from "react-redux";
+import { messagesSelector } from "../../../redux/slices/messages.slice";
 
 const ChatScreen = () => {
+  const messages = useSelector(messagesSelector);
   return (
     <BodyWallpaper>
       <LeftChat>
-        <Message bgColor="#fff" />
+        {messages.map((message, idx) => {
+          console.log("message>", message);
+          return <Message key={idx} message={message.text} bgColor="#fff" />;
+        })}
       </LeftChat>
-      <RightChat>
-        <Message bgColor="#DCF8C6" />
-      </RightChat>
+      <RightChat>{/* <Message bgColor="#DCF8C6" /> */}</RightChat>
     </BodyWallpaper>
   );
 };

@@ -3,6 +3,7 @@ import groupInfoReducer from "./slices/groupInfo.slice";
 import membersReducer from "./slices/members.slice";
 import storedContactsReducer from "./slices/storedContacts.slice";
 import chipReducer from "./slices/chip.slice";
+import messagesReducer from "./slices/messages.slice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     membersReducer,
     storedContactsReducer,
     chipReducer,
+    messagesReducer,
   },
 });
 
