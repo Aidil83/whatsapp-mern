@@ -4,6 +4,7 @@ import ArrowForward from "@material-ui/icons/ArrowForward";
 import React, { Fragment, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Contact } from "..";
+import { chipSelector, setStoredChips } from "../../redux/slices/chip.slice";
 import { setMembers } from "../../redux/slices/members.slice";
 import {
   setStoredContacts,
@@ -45,8 +46,9 @@ export const defaultContacts: IChip[] = [
 
 const CreateGroup = ({ setStep }: Pick<ISetStep, "setStep">) => {
   // const [storedContacts, setStoredContacts] = useState(defaultContacts);
-  const [storedChips, setStoredChips] = useState<IChip[]>([]);
+  // const [storedChips, setStoredChips] = useState<IChip[]>([]);
   const storedContacts = useSelector(storedContactsSelector);
+  const storedChips = useSelector(chipSelector);
   const dispatch = useDispatch();
 
   const handleDelete = (chip: IChip) => {
@@ -54,7 +56,8 @@ const CreateGroup = ({ setStep }: Pick<ISetStep, "setStep">) => {
       (item: IChip) => item.id !== chip.id
     );
     // remove chip.
-    setStoredChips(filteredChip);
+    // setStoredChips(filteredChip);
+    dispatch(setStoredChips(filteredChip));
     // Restore contact.
     dispatch(setStoredContacts(chip));
   };
@@ -98,12 +101,7 @@ const CreateGroup = ({ setStep }: Pick<ISetStep, "setStep">) => {
       </StyledButton>
       {storedContacts.map(({ id, title, image }: IChip) => (
         <Fragment key={id}>
-          <Contact
-            title={title}
-            id={id}
-            setStoredChips={setStoredChips}
-            image={image}
-          />
+          <Contact title={title} id={id} image={image} />
         </Fragment>
       ))}
       <SidebarFooterContainer>
