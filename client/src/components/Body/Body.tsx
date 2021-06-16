@@ -1,35 +1,17 @@
-import styled from "styled-components";
 import { Footer, Header } from "..";
-import { BodyContainer, BodyWallpaper } from "./Body.styles";
+import { BodyContainer } from "./Body.styles";
+import ChatScreen from "./ChatScreen/ChatScreen";
 
 const Body = () => {
   return (
     <>
       <BodyContainer>
         <Header />
-        <BodyWallpaper>
-          <LeftChat></LeftChat>
-          <RightChat></RightChat>
-        </BodyWallpaper>
+        <ChatScreen />
         <Footer />
       </BodyContainer>
     </>
   );
 };
-
-const LeftChat = styled.div`
-  margin-right: auto;
-  width: 200px;
-  height: 50px;
-  border-radius: 8px;
-  background-color: white;
-`;
-const RightChat = styled.div`
-  margin-left: auto;
-  width: 200px;
-  height: 50px;
-  border-radius: 10px;
-  background-color: ${({ theme }) => theme.greenChat};
-`;
 
 export default Body;
