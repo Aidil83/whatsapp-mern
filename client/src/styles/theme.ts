@@ -9,6 +9,7 @@ const defaultTheme = {
   primary: "#011627",
   secondary: "#ef476f",
   greenChat: "#00BFA5",
+  greenUser: "#DCF8C6",
   sidebarGray: "#EDEDED",
   uploadColor: "#7F8080",
 };

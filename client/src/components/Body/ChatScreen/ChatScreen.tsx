@@ -10,10 +10,9 @@ const ChatScreen = () => {
     <BodyWallpaper>
       <LeftChat>
         {messages.map((message, idx) => {
-          return <Message key={idx} message={message.text} bgColor="#fff" />;
+          return <Message key={idx} message={message} />;
         })}
       </LeftChat>
-      <RightChat>{/* <Message bgColor="#DCF8C6" /> */}</RightChat>
     </BodyWallpaper>
   );
 };
