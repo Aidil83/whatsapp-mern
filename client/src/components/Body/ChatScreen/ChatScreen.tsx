@@ -8,11 +8,11 @@ const ChatScreen = () => {
   const messages = useSelector(messagesSelector);
   return (
     <BodyWallpaper>
-      <LeftChat>
-        {messages.map((message, idx) => {
-          return <Message key={idx} message={message} />;
-        })}
-      </LeftChat>
+      {/* <LeftChat> */}
+      {messages.map((message, idx) => {
+        return <Message key={idx} message={message} />;
+      })}
+      {/* </LeftChat> */}
     </BodyWallpaper>
   );
 };

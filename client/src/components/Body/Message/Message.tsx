@@ -19,9 +19,11 @@ const Message = ({ message }: { message: IMessages }) => {
 };
 
 const StyledCard = styled(Card)`
+  width: fit-content;
+  margin: 0.25em;
+  ${({ isUser }: { isUser: boolean }) => isUser && "margin-left: auto"};
   background-color: ${({ isUser }: { isUser: boolean }) =>
     isUser ? "#DCF8C6 !important" : "#fff !important"};
-  margin: 0.25em;
   & .MuiTypography-colorPrimary {
     color: ${({ theme }) => theme.primary};
   }
