@@ -1,5 +1,8 @@
 import IconButton from "@material-ui/core/IconButton";
 import React from "react";
+import { useSelector } from "react-redux";
+import { clickChatSelector } from "../../redux/slices/clickChat.slice";
+import { IChip } from "../CreateGroup/CreateGroup";
 import {
   Container,
   DescriptionName,
@@ -11,12 +14,18 @@ import {
 } from "./Header.styles";
 
 const Header = () => {
+  const { title, image, members } = useSelector(clickChatSelector);
   return (
     <Container>
-      <ProfilePic src="/static/images/coder.jpg" width={50} height={50} />
+      <ProfilePic src={image} width={50} height={50} />
       <NameWrapper>
-        <TitleName>Coders</TitleName>
-        <DescriptionName>Ali, Fitri, You</DescriptionName>
+        <TitleName>{title}</TitleName>
+        <DescriptionName>
+          {members &&
+            members.map(
+              (member: IChip, id: number) => (id ? ", " : "") + member.title
+            )}
+        </DescriptionName>
       </NameWrapper>
       <IconButton>
         <StyledSearchIcon />

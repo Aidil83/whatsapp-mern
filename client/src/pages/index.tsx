@@ -19,7 +19,7 @@ export default function Home() {
   );
 }
 
-const HomeWrapper = styled.div`
+export const HomeWrapper = styled.div`
   display: flex;
   width: 100%;
   height: 100%;

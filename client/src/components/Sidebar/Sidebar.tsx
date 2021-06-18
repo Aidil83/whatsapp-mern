@@ -20,7 +20,6 @@ import SidebarChat from "./SidebarChat/SidebarChat";
 const Sidebar = () => {
   const [isDrawer, setIsDrawer] = useState<boolean>(false);
   const data = useSelector(groupInfoSelector);
-  console.log("<data>", data);
 
   return (
     <>
@@ -52,8 +51,8 @@ const Sidebar = () => {
             <input placeholder="Search or start new chat..." />
           </PaneSide>
         </InputSection>
-        {data.map((item, idx) => (
-          <SidebarChat item={item} key={idx} />
+        {data.map((item, id: number) => (
+          <SidebarChat item={item} key={id} id={id} />
         ))}
       </SidebarContainer>
     </>

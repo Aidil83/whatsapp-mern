@@ -5,6 +5,7 @@ import storedContactsReducer from "./slices/storedContacts.slice";
 import chipReducer from "./slices/chip.slice";
 import messagesReducer from "./slices/messages.slice";
 import usernameReducer from "./slices/username.slice";
+import clickChatReducer from "./slices/clickChat.slice";
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     chipReducer,
     messagesReducer,
     usernameReducer,
+    clickChatReducer,
   },
 });
 

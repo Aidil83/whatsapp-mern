@@ -2,18 +2,30 @@ import styled from "styled-components";
 import { IGroupInfoStore } from "../../../redux/slices/groupInfo.slice";
 import { IChip } from "../../CreateGroup/CreateGroup";
 import { DefaultImage, StyledContact } from "./SidebarChat.styles";
+import { useRouter } from "next/dist/client/router";
+import { useDispatch } from "react-redux";
+import { goToChat } from "../../../redux/slices/clickChat.slice";
 
 interface Props {
   item: IGroupInfoStore;
+  id: number;
 }
 
-const SidebarChat = ({ item }: Props) => {
+const SidebarChat = ({ item, id }: Props) => {
   const { members } = item;
+  const router = useRouter();
+  const dispatch = useDispatch();
+
+  const openChat = (c_id: number): void => {
+    router.push(`/chat/${c_id}`);
+    console.log("<item>", item);
+    dispatch(goToChat(item));
+  };
 
   return (
     <>
       {item.title && (
-        <StyledContact>
+        <StyledContact onClick={() => openChat(id)}>
           {!item.image && <DefaultImage />}
           {item.image && (
             <img

@@ -13,7 +13,7 @@ export const Container = styled.header`
   padding: 0.5em;
   padding-left: 1.2em;
 `;
-export const ProfilePic = styled(Image)`
+export const ProfilePic = styled.img`
   border-radius: 50%;
 `;
 export const NameWrapper = styled.div`
