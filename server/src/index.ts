@@ -3,14 +3,13 @@ import mongoose from "mongoose";
 import cors from "cors";
 import morgan from "morgan";
 import helmet from "helmet";
+import dotenv from "dotenv";
 import Messages, { IUser } from "./dbMessages";
 
 // App Config
 const app = express();
-const port = process.env.PORT || 9000;
-const uri =
-  "mongodb+srv://admin:CoRrtKEm0AY60fbn@cluster0.cqopk.mongodb.net/whatsappdb?retryWrites=true&w=majority";
-
+dotenv.config();
+const port = process.env.PORT;
 // Middlewares
 app.use(express.json());
 app.use(cors());
@@ -18,13 +17,13 @@ app.use(morgan("common"));
 app.use(helmet());
 
 /* DB config */
-mongoose.connect(uri, {
+mongoose.connect(process.env.DATABASE_URL!, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
 // API routes
-app.get("/messages/sync", (req, res) => {
+app.get("/messages/sync", (_, res: Response) => {
   Messages.find((err, data) => {
     if (err) {
       res.status(500).send(err);
@@ -35,7 +34,7 @@ app.get("/messages/sync", (req, res) => {
 });
 
 // API Endpoints
-app.get("/", (req: Request, res: Response) => {
+app.get("/", (_, res: Response) => {
   return res.status(200).send("HELLO EVERYONE");
 });
 app.post("/messages/new", (req: Request, res: Response) => {
