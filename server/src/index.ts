@@ -17,14 +17,14 @@ const pusher = new Pusher({
   key: process.env.PUSHER_KEY!,
   secret: process.env.PUSHER_SECRET!,
   cluster: process.env.CLUSTER!,
-  encrypted: true,
+  useTLS: true,
 });
 
 // Middlewares
 app.use(express.json());
-app.use(cors());
 app.use(morgan("common"));
 app.use(helmet());
+app.use(cors());
 
 /* DB config */
 mongoose.connect(process.env.DATABASE_URL!, {
