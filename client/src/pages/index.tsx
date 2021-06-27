@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 import GlobalStyle from "../styles/globalstyles";
 import { Sidebar, Body } from "../components";
 import styled from "styled-components";
+import Pusher from "pusher-js";
+
 export default function Home() {
+  useEffect(() => {
+    const pusher = new Pusher("c1016e2807f8be6e793c", {
+      cluster: "us2",
+    });
+
+    const channel = pusher.subscribe("messages");
+    channel.bind("inserted", (data: any): void => {
+      alert(JSON.stringify(data));
+    });
+  }, []);
   return (
     <>
       <Head>
