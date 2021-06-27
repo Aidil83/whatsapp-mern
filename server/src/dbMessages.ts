@@ -14,5 +14,6 @@ const whatsappSchema = new mongoose.Schema<IUser>({
   received: { type: Boolean, required: true },
 });
 
-const Messages = mongoose.model<IUser>("messageContent", whatsappSchema);
+// Collection
+const Messages = mongoose.model<IUser>("messagecontents", whatsappSchema);
 export default Messages;

@@ -3,13 +3,23 @@ import mongoose from "mongoose";
 import cors from "cors";
 import morgan from "morgan";
 import helmet from "helmet";
-import dotenv from "dotenv";
+import "dotenv/config";
 import Messages, { IUser } from "./dbMessages";
+import Pusher from "pusher";
 
 // App Config
 const app = express();
-dotenv.config();
-const port = process.env.PORT;
+const PORT = process.env.PORT;
+
+// pusher Config
+const pusher = new Pusher({
+  appId: process.env.PUSHER_ID!,
+  key: process.env.PUSHER_KEY!,
+  secret: process.env.PUSHER_SECRET!,
+  cluster: process.env.CLUSTER!,
+  encrypted: true,
+});
+
 // Middlewares
 app.use(express.json());
 app.use(cors());
@@ -20,6 +30,30 @@ app.use(helmet());
 mongoose.connect(process.env.DATABASE_URL!, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+});
+
+const db = mongoose.connection;
+
+db.once("open", () => {
+  console.log("DB connected");
+
+  const msgCollection = db.collection("messagecontents");
+  const changeStream = msgCollection.watch();
+
+  changeStream.on("change", (change) => {
+    console.log(change);
+    if (change.operationType === "insert") {
+      (async () => {
+        const messageDetails = change.fullDocument;
+        await pusher.trigger("messages", "inserted", {
+          name: messageDetails.user,
+          message: messageDetails.message,
+        });
+      })();
+    } else {
+      console.log("Error triggering Pusher");
+    }
+  });
 });
 
 // API routes
@@ -49,6 +83,6 @@ app.post("/messages/new", (req: Request, res: Response) => {
   });
 });
 // Listener
-app.listen(port, () => {
-  console.log(`Server Running on port ${port}!`);
+app.listen(PORT, () => {
+  console.log(`Server Running on port ${PORT}!`);
 });
