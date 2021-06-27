@@ -46,7 +46,7 @@ db.once("open", () => {
       (async () => {
         const messageDetails = change.fullDocument;
         await pusher.trigger("messages", "inserted", {
-          name: messageDetails.user,
+          name: messageDetails.name,
           message: messageDetails.message,
         });
       })();
