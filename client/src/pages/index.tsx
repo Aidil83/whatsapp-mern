@@ -4,9 +4,14 @@ import GlobalStyle from "../styles/globalstyles";
 import { Sidebar, Body } from "../components";
 import styled from "styled-components";
 import Pusher from "pusher-js";
+import { useQuery } from "react-query";
+import axios from "../api/axios";
 
 export default function Home() {
-  useEffect(() => {}, []);
+  const { isLoading, error, data } = useQuery("messagesData", async () => {
+    const { data } = await axios("/messages/sync");
+    return data;
+  });
 
   useEffect(() => {
     const pusher = new Pusher("c1016e2807f8be6e793c", {
@@ -18,6 +23,9 @@ export default function Home() {
       alert(JSON.stringify(data));
     });
   }, []);
+
+  console.log("data:", data);
+
   return (
     <>
       <Head>
