@@ -16,11 +16,9 @@ export const messagesSlice = createSlice({
   initialState,
   reducers: {
     getMessages: (state, { payload }: PayloadAction<IMessages[] | any>) => {
-      console.log("payloads: ", payload);
       return payload;
     },
     setMessage: (state, { payload }: PayloadAction<IMessages | any>) => {
-      console.log("single: ", payload);
       state.push(payload);
     },
   },

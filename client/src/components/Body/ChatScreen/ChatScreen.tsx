@@ -6,7 +6,6 @@ import FlipMove from "react-flip-move";
 
 const ChatScreen = () => {
   const messages = useSelector(messagesSelector);
-  console.log(messages);
 
   return (
     <BodyWallpaper>

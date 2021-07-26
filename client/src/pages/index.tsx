@@ -13,13 +13,10 @@ import {
 } from "../redux/slices/messages.slice";
 
 export default function Home() {
-  const [messagesData, setMessagesData] = useState<any>([]);
   const dispatch = useDispatch();
-  const storedMessages = useSelector(messagesSelector);
 
   useEffect(() => {
     api.getMessages.get("/messages/sync").then((res) => {
-      // setMessages(res.data);
       dispatch(getMessages(res.data));
     });
   }, []);
@@ -31,7 +28,6 @@ export default function Home() {
 
     const channel = pusher.subscribe("messages");
     channel.bind("inserted", (newMessages: any): void => {
-      // setMessagesData([...messagesData, newMessages]);
       console.log(newMessages);
       dispatch(setMessage(newMessages));
     });
