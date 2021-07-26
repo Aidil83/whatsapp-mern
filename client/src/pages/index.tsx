@@ -5,13 +5,17 @@ import { Sidebar, Body } from "../components";
 import styled from "styled-components";
 import Pusher from "pusher-js";
 import * as api from "../api/messagesApi";
+import { useDispatch } from "react-redux";
+import { setMessages } from "../redux/slices/messages.slice";
 
 export default function Home() {
-  const [messages, setMessages] = useState<any>([]);
+  const [messagesData, setMessagesData] = useState<any>([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     api.getMessages.get("/messages/sync").then((res) => {
       setMessages(res.data);
+      dispatch(setMessages(res.data));
     });
   }, []);
 
@@ -22,16 +26,16 @@ export default function Home() {
 
     const channel = pusher.subscribe("messages");
     channel.bind("inserted", (newMessages: any): void => {
-      alert(JSON.stringify(newMessages));
-      setMessages([...messages, newMessages]);
+      // setMessagesData([...messagesData, newMessages]);
+      console.log(newMessages);
     });
     return () => {
       channel.unbind_all();
       channel.unsubscribe();
     };
-  }, [messages]);
+  }, [messagesData]);
 
-  console.log("data:", messages);
+  // console.log(messages);
 
   return (
     <>

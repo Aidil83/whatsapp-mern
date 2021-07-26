@@ -6,11 +6,13 @@ import FlipMove from "react-flip-move";
 
 const ChatScreen = () => {
   const messages = useSelector(messagesSelector);
+  console.log(messages);
+
   return (
     <BodyWallpaper>
       <FlipMove duration={250} easing="ease-out">
-        {messages.map((message) => (
-          <Message message={message} />
+        {messages.map((message, idx) => (
+          <Message key={idx} message={message} />
         ))}
       </FlipMove>
     </BodyWallpaper>

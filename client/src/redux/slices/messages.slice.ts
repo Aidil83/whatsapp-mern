@@ -2,8 +2,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../configureStore";
 
 export interface IMessages {
-  username: string;
-  text: string;
+  message: string;
+  name: string;
+  received: boolean;
+  __v?: number;
+  _id?: string;
 }
 
 const initialState: IMessages[] = [];
@@ -12,8 +15,8 @@ export const messagesSlice = createSlice({
   name: "messages",
   initialState,
   reducers: {
-    setMessages: (state, { payload }: PayloadAction<IMessages>) => {
-      state.push(payload);
+    setMessages: (state, { payload }: PayloadAction<IMessages | any>) => {
+      return payload;
     },
   },
 });

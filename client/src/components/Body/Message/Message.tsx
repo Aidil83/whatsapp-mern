@@ -5,15 +5,15 @@ import { IMessages } from "../../../redux/slices/messages.slice";
 import { useSelector } from "react-redux";
 import { usernameSelector } from "../../../redux/slices/username.slice";
 
-// FC do not have a ref, which is needed by react-flip-move to work. Hence, forwardRef is needed.
+// FC do not have a ref, which is needed for react-flip-move to work. Hence, forwardRef is needed.
 const Message = forwardRef(({ message }: { message: IMessages }, ref) => {
   const username = useSelector(usernameSelector);
-  const isUser = username === message.username;
+  const isUser = username === message.name;
   return (
-    <StyledCard isUser={isUser} ref={ref}>
+    <StyledCard user={isUser.toString()} ref={ref}>
       <CardContent>
         <Typography color="primary" variant="h6" component="h2">
-          {message.text || ""}
+          {message.message || ""}
         </Typography>
       </CardContent>
     </StyledCard>
@@ -23,9 +23,9 @@ const Message = forwardRef(({ message }: { message: IMessages }, ref) => {
 const StyledCard = styled(Card)`
   width: fit-content;
   margin: 0.25em;
-  ${({ isUser }: { isUser: boolean }) => isUser && "margin-left: auto"};
-  background-color: ${({ isUser }: { isUser: boolean }) =>
-    isUser ? "#DCF8C6 !important" : "#fff !important"};
+  ${({ user }: { user: string }) => user == "true" && "margin-left: auto"};
+  background-color: ${({ user }: { user: string }) =>
+    user == "true" ? "#DCF8C6 !important" : "#fff !important"};
   & .MuiTypography-colorPrimary {
     color: ${({ theme }) => theme.primary};
   }
