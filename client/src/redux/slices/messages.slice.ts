@@ -15,12 +15,17 @@ export const messagesSlice = createSlice({
   name: "messages",
   initialState,
   reducers: {
-    setMessages: (state, { payload }: PayloadAction<IMessages | any>) => {
+    getMessages: (state, { payload }: PayloadAction<IMessages[] | any>) => {
+      console.log("payloads: ", payload);
       return payload;
+    },
+    setMessage: (state, { payload }: PayloadAction<IMessages | any>) => {
+      console.log("single: ", payload);
+      state.push(payload);
     },
   },
 });
 
-export const { setMessages } = messagesSlice.actions;
+export const { getMessages, setMessage } = messagesSlice.actions;
 export const messagesSelector = (state: RootState) => state.messagesReducer;
 export default messagesSlice.reducer;
