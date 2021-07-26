@@ -1,17 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import GlobalStyle from "../styles/globalstyles";
 import { Sidebar, Body } from "../components";
 import styled from "styled-components";
 import Pusher from "pusher-js";
-import { useQuery } from "react-query";
-import axios from "../api/axios";
+import * as api from "../api/messagesApi";
 
 export default function Home() {
-  const { isLoading, error, data } = useQuery("messagesData", async () => {
-    const { data } = await axios("/messages/sync");
-    return data;
-  });
+  const [messages, setMessages] = useState<any>([]);
+
+  useEffect(() => {
+    api.getMessages.get("/messages/sync").then((res) => {
+      setMessages(res.data);
+    });
+  }, []);
 
   useEffect(() => {
     const pusher = new Pusher("c1016e2807f8be6e793c", {
@@ -19,12 +21,17 @@ export default function Home() {
     });
 
     const channel = pusher.subscribe("messages");
-    channel.bind("inserted", (data: any): void => {
-      alert(JSON.stringify(data));
+    channel.bind("inserted", (newMessages: any): void => {
+      alert(JSON.stringify(newMessages));
+      setMessages([...messages, newMessages]);
     });
-  }, []);
+    return () => {
+      channel.unbind_all();
+      channel.unsubscribe();
+    };
+  }, [messages]);
 
-  console.log("data:", data);
+  console.log("data:", messages);
 
   return (
     <>
