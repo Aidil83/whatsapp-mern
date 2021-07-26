@@ -48,6 +48,7 @@ db.once("open", () => {
         await pusher.trigger("messages", "inserted", {
           name: messageDetails.name,
           message: messageDetails.message,
+          timestamp: messageDetails.timestamp,
         });
       })();
     } else {
@@ -84,5 +85,5 @@ app.post("/messages/new", (req: Request, res: Response) => {
 });
 // Listener
 app.listen(PORT, () => {
-  console.log(`Server Running on port ${PORT}!`);
+  console.log(`Server is running on port ${PORT}!`);
 });

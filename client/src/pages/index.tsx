@@ -6,6 +6,8 @@ import styled from "styled-components";
 import Pusher from "pusher-js";
 
 export default function Home() {
+  useEffect(() => {}, []);
+
   useEffect(() => {
     const pusher = new Pusher("c1016e2807f8be6e793c", {
       cluster: "us2",
