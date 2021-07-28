@@ -24,7 +24,7 @@ const SidebarChat = ({ item, id }: Props) => {
 
   return (
     <>
-      {item.title && (
+      {item.roomName && (
         <StyledContact onClick={() => openChat(id)}>
           {!item.image && <DefaultImage />}
           {item.image && (
@@ -45,7 +45,7 @@ const SidebarChat = ({ item, id }: Props) => {
               height: 50,
             }}
           >
-            <div>{item.title}</div>
+            <div>{item.roomName}</div>
             <TextWrapper style={{ display: "flex" }}>
               {members.map((member: IChip, idx: number) => {
                 return (idx ? ", " : "") + member.title;

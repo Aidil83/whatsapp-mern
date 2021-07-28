@@ -23,9 +23,9 @@ const Footer = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(setUsername(prompt("Please enter your name") ?? "Guest"));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(setUsername(prompt("Please enter your name") ?? "Guest"));
+  // }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setInput(e.target.value);

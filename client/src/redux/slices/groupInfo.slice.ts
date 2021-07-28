@@ -3,7 +3,7 @@ import { IChip } from "../../components/CreateGroup/CreateGroup";
 import { RootState } from "../configureStore";
 
 export interface IGroupInfoStore {
-  title: string;
+  roomName: string;
   image: string;
   members: IChip[];
 }

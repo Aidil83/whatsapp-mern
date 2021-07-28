@@ -5,12 +5,8 @@ import { Sidebar, Body } from "../components";
 import styled from "styled-components";
 import Pusher from "pusher-js";
 import * as api from "../api/messagesApi";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  messagesSelector,
-  getMessages,
-  setMessage,
-} from "../redux/slices/messages.slice";
+import { useDispatch } from "react-redux";
+import { getMessages, setMessage } from "../redux/slices/messages.slice";
 
 export default function Home() {
   const dispatch = useDispatch();

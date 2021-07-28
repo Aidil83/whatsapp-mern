@@ -3,13 +3,13 @@ import { IChip } from "../../components/CreateGroup/CreateGroup";
 import { RootState } from "../configureStore";
 
 export interface IMembers {
-  title: string;
+  roomName: string;
   image: string;
   members: IChip[];
 }
 
 const initialState: IMembers = {
-  title: "",
+  roomName: "",
   image: "",
   members: [{ id: 0, title: "", image: "" }],
 };
@@ -20,7 +20,7 @@ export const membersSlice = createSlice({
   initialState,
   reducers: {
     addTitle: (state, { payload }: PayloadAction<string>) => {
-      state.title = payload;
+      state.roomName = payload;
     },
     addImage: (state, { payload }: PayloadAction<string>) => {
       state.image = payload;

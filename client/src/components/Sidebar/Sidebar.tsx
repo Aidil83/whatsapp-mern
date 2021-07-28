@@ -30,7 +30,6 @@ const Sidebar = () => {
             src="/static/images/coder.jpg"
             width={40}
             height={40}
-            objectFit="cover"
             alt="my-profile"
           />
           <SidebarHeaderRight>

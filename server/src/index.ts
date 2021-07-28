@@ -5,6 +5,7 @@ import morgan from "morgan";
 import helmet from "helmet";
 import "dotenv/config";
 import Messages, { IUser } from "./dbMessages";
+import Rooms, { IRoom } from "./dbRooms";
 import Pusher from "pusher";
 
 // App Config
@@ -56,9 +57,12 @@ db.once("open", () => {
       console.log("Error triggering Pusher");
     }
   });
+
+  const roomCollection = db.collection("roomContents");
 });
 
-// API routes
+/* ------------------------------- API routes ------------------------------- */
+// messages
 app.get("/messages/sync", (_, res: Response) => {
   Messages.find((err, data) => {
     if (err) {
@@ -69,10 +73,6 @@ app.get("/messages/sync", (_, res: Response) => {
   });
 });
 
-// API Endpoints
-app.get("/", (_, res: Response) => {
-  return res.status(200).send("HELLO EVERYONE");
-});
 app.post("/messages/new", (req: Request, res: Response) => {
   const dbMessage = req.body;
 
@@ -84,6 +84,35 @@ app.post("/messages/new", (req: Request, res: Response) => {
     }
   });
 });
+
+// Rooms
+app.get("/rooms/sync", (_, res: Response) => {
+  Rooms.find((err, data) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(data);
+    }
+  });
+});
+
+app.post("/rooms/new", async (req: Request, res: Response) => {
+  const dbRoom = req.body;
+
+  await Rooms.create(dbRoom, (err: Error, data: IUser) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(201).send(data);
+    }
+  });
+});
+
+// API Endpoints
+app.get("/", (_, res: Response) => {
+  return res.status(200).send("HELLO EVERYONE");
+});
+
 // Listener
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}!`);
