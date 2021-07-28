@@ -26,7 +26,7 @@ import {
 
 export interface IChip {
   id: number;
-  title: string;
+  name: string;
   image?: string;
 }
 
@@ -36,12 +36,12 @@ export interface ISetStep {
 }
 
 export const defaultContacts: IChip[] = [
-  { id: 0, title: "Ali", image: "/static/images/coder.jpg" },
-  { id: 1, title: "Arthur", image: "/static/images/coder.jpg" },
-  { id: 2, title: "Marvin", image: "/static/images/coder.jpg" },
-  { id: 3, title: "Jake", image: "/static/images/coder.jpg" },
-  { id: 4, title: "Daniel", image: "/static/images/coder.jpg" },
-  { id: 5, title: "Brian", image: "/static/images/coder.jpg" },
+  { id: 0, name: "Ali", image: "/static/images/coder.jpg" },
+  { id: 1, name: "Arthur", image: "/static/images/coder.jpg" },
+  { id: 2, name: "Marvin", image: "/static/images/coder.jpg" },
+  { id: 3, name: "Jake", image: "/static/images/coder.jpg" },
+  { id: 4, name: "Daniel", image: "/static/images/coder.jpg" },
+  { id: 5, name: "Brian", image: "/static/images/coder.jpg" },
 ];
 
 const CreateGroup = ({ setStep }: Pick<ISetStep, "setStep">) => {
@@ -76,7 +76,7 @@ const CreateGroup = ({ setStep }: Pick<ISetStep, "setStep">) => {
         {storedChips.map((chip: IChip, idx) => (
           <Chip
             size="small"
-            label={chip.title}
+            label={chip.name}
             onDelete={() => handleDelete(chip)}
             style={{ width: "min-content", margin: ".5em 0 0 0" }}
             key={idx}
@@ -96,9 +96,9 @@ const CreateGroup = ({ setStep }: Pick<ISetStep, "setStep">) => {
           Add contact
         </div>
       </StyledButton>
-      {storedContacts.map(({ id, title, image }: IChip) => (
+      {storedContacts.map(({ id, name, image }: IChip) => (
         <Fragment key={id}>
-          <Contact title={title} id={id} image={image} />
+          <Contact name={name} id={id} image={image} />
         </Fragment>
       ))}
       <SidebarFooterContainer>

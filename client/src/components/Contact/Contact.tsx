@@ -14,11 +14,11 @@ import { addChip } from "../../redux/slices/chip.slice";
 
 interface Props {
   id: number;
-  title: string;
+  name: string;
   image: string | undefined;
 }
 
-const Contacts = ({ id, title, image }: Props) => {
+const Contacts = ({ id, name, image }: Props) => {
   const storedContacts = useSelector(storedContactsSelector);
   const dispatch = useDispatch();
 
@@ -30,7 +30,7 @@ const Contacts = ({ id, title, image }: Props) => {
     dispatch(addChip(contact));
   };
   return (
-    <StyledContactButton onClick={() => removeContact({ id, title, image })}>
+    <StyledContactButton onClick={() => removeContact({ id, name, image })}>
       <ProfilePic
         src={image || ""}
         width={50}
@@ -45,7 +45,7 @@ const Contacts = ({ id, title, image }: Props) => {
           textAlign: "left",
         }}
       >
-        {title}
+        {name}
         <SubText>Hey there! I am using Whatsapp.</SubText>
       </div>
     </StyledContactButton>

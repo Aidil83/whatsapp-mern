@@ -11,7 +11,7 @@ export interface IMembers {
 const initialState: IMembers = {
   roomName: "",
   image: "",
-  members: [{ id: 0, title: "", image: "" }],
+  members: [{ id: 0, name: "", image: "" }],
 };
 
 // These are all the actions:

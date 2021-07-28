@@ -48,7 +48,7 @@ const SidebarChat = ({ item, id }: Props) => {
             <div>{item.roomName}</div>
             <TextWrapper style={{ display: "flex" }}>
               {members.map((member: IChip, idx: number) => {
-                return (idx ? ", " : "") + member.title;
+                return (idx ? ", " : "") + member.name;
               })}
             </TextWrapper>
           </div>

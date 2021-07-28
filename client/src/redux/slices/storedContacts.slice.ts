@@ -3,12 +3,12 @@ import { IChip } from "../../components/CreateGroup/CreateGroup";
 import { RootState } from "../configureStore";
 
 const initialState: IChip[] = [
-  { id: 0, title: "Ali", image: "/static/images/coder.jpg" },
-  { id: 1, title: "Arthur", image: "/static/images/coder.jpg" },
-  { id: 2, title: "Marvin", image: "/static/images/coder.jpg" },
-  { id: 3, title: "Jake", image: "/static/images/coder.jpg" },
-  { id: 4, title: "Daniel", image: "/static/images/coder.jpg" },
-  { id: 5, title: "Brian", image: "/static/images/coder.jpg" },
+  { id: 0, name: "Ali", image: "/static/images/coder.jpg" },
+  { id: 1, name: "Arthur", image: "/static/images/coder.jpg" },
+  { id: 2, name: "Marvin", image: "/static/images/coder.jpg" },
+  { id: 3, name: "Jake", image: "/static/images/coder.jpg" },
+  { id: 4, name: "Daniel", image: "/static/images/coder.jpg" },
+  { id: 5, name: "Brian", image: "/static/images/coder.jpg" },
 ];
 
 export const storedContactsSlice = createSlice({
