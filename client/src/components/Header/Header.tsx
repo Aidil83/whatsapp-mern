@@ -23,7 +23,7 @@ const Header = () => {
         <DescriptionName>
           {members &&
             members.map(
-              (member: IChip, id: number) => (id ? ", " : "") + member.title
+              (member: IChip, id: number) => (id ? ", " : "") + member.name
             )}
         </DescriptionName>
       </NameWrapper>

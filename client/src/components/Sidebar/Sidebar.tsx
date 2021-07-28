@@ -1,9 +1,14 @@
 import IconButton from "@material-ui/core/IconButton";
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { SidebarDrawer } from "..";
-import { groupInfoSelector } from "../../redux/slices/groupInfo.slice";
+import {
+  groupInfoSelector,
+  loadGroupInfo,
+  setGroupInfo,
+} from "../../redux/slices/groupInfo.slice";
 import { StyledMoreVertIcon } from "../Header/Header.styles";
+import * as api from "../../api/wsApi";
 import {
   InputSection,
   MyProfilePic,
@@ -20,6 +25,14 @@ import SidebarChat from "./SidebarChat/SidebarChat";
 const Sidebar = () => {
   const [isDrawer, setIsDrawer] = useState<boolean>(false);
   const data = useSelector(groupInfoSelector);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    api.baseUrl.get("/rooms/sync").then((res: any) => {
+      console.log(res.data);
+      dispatch(loadGroupInfo(res.data));
+    });
+  }, []);
 
   return (
     <>

@@ -15,12 +15,15 @@ export const groupInfoSlice = createSlice({
   name: "groupInfo",
   initialState,
   reducers: {
+    loadGroupInfo: (state, { payload }: PayloadAction<any>) => {
+      return payload;
+    },
     setGroupInfo: (state, { payload }: PayloadAction<IGroupInfoStore>) => {
       state.push(payload);
     },
   },
 });
 
-export const { setGroupInfo } = groupInfoSlice.actions;
+export const { loadGroupInfo, setGroupInfo } = groupInfoSlice.actions;
 export const groupInfoSelector = (state: RootState) => state.groupInfoReducer; // ts needed
 export default groupInfoSlice.reducer;

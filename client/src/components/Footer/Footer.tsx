@@ -9,12 +9,11 @@ import {
   StyledSmileIcons,
 } from "./Footer.styles";
 import { useDispatch, useSelector } from "react-redux";
-import { getMessages } from "../../redux/slices/messages.slice";
 import {
   setUsername,
   usernameSelector,
 } from "../../redux/slices/username.slice";
-import * as api from "../../api/messagesApi";
+import * as api from "../../api/wsApi";
 
 const Footer = () => {
   const [input, setInput] = useState<string>("");
@@ -33,7 +32,7 @@ const Footer = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await api.getMessages.post("/messages/new", {
+    await api.baseUrl.post("/messages/new", {
       name: username,
       message: input,
       timestamp: "new timestamp",
