@@ -30,11 +30,12 @@ import {
 } from "../../redux/slices/members.slice";
 import { resetStoredContacts } from "../../redux/slices/storedContacts.slice";
 import { resetChip } from "../../redux/slices/chip.slice";
+import * as api from "../../api/wsApi";
 
 const defaultValues = {
-  title: "",
+  roomName: "",
   image: "",
-  members: [{ id: 1, title: "", image: "" }],
+  members: [{ id: 1, name: "", image: "" }],
 };
 
 const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
@@ -42,6 +43,10 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
   const [group, setGroup] = useState<IGroupInfoStore>(defaultValues);
   const data = useSelector(membersSelector); // Pull data from redux member slice.
   const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   api.getRooms;
+  // }, []);
 
   const fileHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     let selected = e?.target?.files?.[0];
@@ -105,7 +110,7 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
         </StyledUploadWrapper>
         <form style={{ width: "80%" }} onSubmit={handleSubmit}>
           <StyledTextField
-            value={group.title}
+            value={group.roomName}
             label="Group Subject"
             onChange={handleChange}
             name="title"

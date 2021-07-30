@@ -21,18 +21,20 @@ import {
   StyledStatusIcon,
 } from "./Sidebar.styles";
 import SidebarChat from "./SidebarChat/SidebarChat";
+import { useQuery } from "react-query";
 
 const Sidebar = () => {
   const [isDrawer, setIsDrawer] = useState<boolean>(false);
-  const data = useSelector(groupInfoSelector);
-  const dispatch = useDispatch();
+  const groupInfoData = useSelector(groupInfoSelector);
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    api.baseUrl.get("/rooms/sync").then((res: any) => {
-      console.log(res.data);
-      dispatch(loadGroupInfo(res.data));
-    });
-  }, []);
+  const { data, isLoading } = useQuery("rooms", api.getRooms);
+  // useEffect(() => {
+  //   api.baseUrl.get("/rooms/sync").then((res: any) => {
+  //     console.log(res.groupInfoData);
+  //     dispatch(loadGroupInfo(res.groupInfoData));
+  //   });
+  // }, []);
 
   return (
     <>
@@ -63,9 +65,10 @@ const Sidebar = () => {
             <input placeholder="Search or start new chat..." />
           </PaneSide>
         </InputSection>
-        {data.map((item, id: number) => (
-          <SidebarChat item={item} key={id} id={id} />
-        ))}
+        {!isLoading &&
+          data.map((item: any, id: number) => (
+            <SidebarChat item={item} key={id} id={id} />
+          ))}
       </SidebarContainer>
     </>
   );

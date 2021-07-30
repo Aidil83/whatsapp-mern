@@ -11,11 +11,11 @@ import { getMessages, setMessage } from "../redux/slices/messages.slice";
 export default function Home() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    api.baseUrl.get("/messages/sync").then((res) => {
-      dispatch(getMessages(res.data));
-    });
-  }, []);
+  // useEffect(() => {
+  //   api.baseUrl.get("/messages/sync").then((res) => {
+  //     dispatch(getMessages(res.data));
+  //   });
+  // }, []);
 
   useEffect(() => {
     const pusher = new Pusher("c1016e2807f8be6e793c", {

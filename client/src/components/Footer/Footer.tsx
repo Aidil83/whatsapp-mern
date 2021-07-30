@@ -32,12 +32,12 @@ const Footer = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await api.baseUrl.post("/messages/new", {
-      name: username,
-      message: input,
-      timestamp: "new timestamp",
-      received: true,
-    });
+    // await api.baseUrl.post("/messages/new", {
+    //   name: username,
+    //   message: input,
+    //   timestamp: "new timestamp",
+    //   received: true,
+    // });
     setInput("");
   };
 

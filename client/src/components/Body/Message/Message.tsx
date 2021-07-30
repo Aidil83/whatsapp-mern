@@ -6,19 +6,21 @@ import { useSelector } from "react-redux";
 import { usernameSelector } from "../../../redux/slices/username.slice";
 
 // FC do not have a ref, which is needed for react-flip-move to work. Hence, forwardRef is needed.
-const Message = forwardRef(({ message }: { message: IMessages }, ref) => {
-  const username = useSelector(usernameSelector);
-  const isUser = username === message.name;
-  return (
-    <StyledCard user={isUser.toString()} ref={ref}>
-      <CardContent>
-        <Typography color="primary" variant="h6" component="h2">
-          {message.message || ""}
-        </Typography>
-      </CardContent>
-    </StyledCard>
-  );
-});
+const Message = forwardRef(
+  ({ messageData }: { messageData: IMessages }, ref) => {
+    const username = useSelector(usernameSelector);
+    const isUser = username === messageData.name;
+    return (
+      <StyledCard user={isUser.toString()} ref={ref}>
+        <CardContent>
+          <Typography color="primary" variant="h6" component="h2">
+            {messageData.message || ""}
+          </Typography>
+        </CardContent>
+      </StyledCard>
+    );
+  }
+);
 
 const StyledCard = styled(Card)`
   width: fit-content;
