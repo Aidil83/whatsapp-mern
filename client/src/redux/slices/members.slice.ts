@@ -20,6 +20,7 @@ export const membersSlice = createSlice({
   initialState,
   reducers: {
     addTitle: (state, { payload }: PayloadAction<string>) => {
+      console.log("roomName: ", payload);
       state.roomName = payload;
     },
     addImage: (state, { payload }: PayloadAction<string>) => {

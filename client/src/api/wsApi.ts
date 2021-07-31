@@ -8,3 +8,5 @@ export const getMessages = () =>
   api.get("/messages/sync").then((res) => res.data);
 
 export const getRooms = () => api.get("/rooms/sync").then((res) => res.data);
+
+export const postRoom = () => api.post("/rooms/new").then((res) => res.data);

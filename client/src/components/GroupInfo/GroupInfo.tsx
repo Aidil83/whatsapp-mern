@@ -41,12 +41,9 @@ const defaultValues = {
 const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
   const [image, setImage] = useState<string | null>(null);
   const [group, setGroup] = useState<IGroupInfoStore>(defaultValues);
+
   const data = useSelector(membersSelector); // Pull data from redux member slice.
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   api.getRooms;
-  // }, []);
 
   const fileHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     let selected = e?.target?.files?.[0];
@@ -62,6 +59,14 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
     }
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setGroup((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value || "",
+    }));
+    dispatch(addTitle(e.target.value));
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     dispatch(setGroupInfo(data));
@@ -72,14 +77,6 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
     setGroup(defaultValues);
     setTimeout(() => setStep(0), 250); // Wait for the drawer to close first.
     setIsDrawer(false);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setGroup((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value || "",
-    }));
-    dispatch(addTitle(e.target.value));
   };
 
   return (
@@ -113,7 +110,7 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
             value={group.roomName}
             label="Group Subject"
             onChange={handleChange}
-            name="title"
+            name="roomName"
             required
           />
         </form>

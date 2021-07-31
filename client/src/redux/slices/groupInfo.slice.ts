@@ -19,6 +19,7 @@ export const groupInfoSlice = createSlice({
       return payload;
     },
     setGroupInfo: (state, { payload }: PayloadAction<IGroupInfoStore>) => {
+      console.log("setGroupInfo: ", payload);
       state.push(payload);
     },
   },
