@@ -31,7 +31,6 @@ import {
 import { resetStoredContacts } from "../../redux/slices/storedContacts.slice";
 import { resetChip } from "../../redux/slices/chip.slice";
 import * as api from "../../api/wsApi";
-import axios from "axios";
 import { useMutation } from "react-query";
 /* --------------- Convert image to base64 for mongodb to work -------------- */
 import imageFileToBase64 from "image-file-to-base64-exif";
