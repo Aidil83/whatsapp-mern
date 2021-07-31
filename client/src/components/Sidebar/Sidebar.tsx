@@ -25,17 +25,9 @@ import { useQuery } from "react-query";
 
 const Sidebar = () => {
   const [isDrawer, setIsDrawer] = useState<boolean>(false);
-  const groupInfoData = useSelector(groupInfoSelector);
-  // const dispatch = useDispatch();
+  // const groupInfoData = useSelector(groupInfoSelector);
 
   const { data, isLoading } = useQuery("rooms", api.getRooms);
-  // useEffect(() => {
-  //   api.baseUrl.get("/rooms/sync").then((res: any) => {
-  //     console.log(res.groupInfoData);
-  //     dispatch(loadGroupInfo(res.groupInfoData));
-  //   });
-  // }, []);
-  console.log(data);
 
   return (
     <>
