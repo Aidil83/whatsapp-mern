@@ -18,7 +18,6 @@ const SidebarChat = ({ item, id }: Props) => {
 
   const openChat = (c_id: number): void => {
     router.push(`/chat/${c_id}`);
-    console.log("<item>", item);
     dispatch(goToChat(item));
   };
 

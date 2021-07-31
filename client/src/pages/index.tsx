@@ -7,31 +7,28 @@ import Pusher from "pusher-js";
 import * as api from "../api/wsApi";
 import { useDispatch } from "react-redux";
 import { getMessages, setMessage } from "../redux/slices/messages.slice";
+import { useQuery } from "react-query";
 
 export default function Home() {
   const dispatch = useDispatch();
 
+  const { data, isLoading } = useQuery("messages", api.getMessagesData);
+
   // useEffect(() => {
-  //   api.baseUrl.get("/messages/sync").then((res) => {
-  //     dispatch(getMessages(res.data));
+  //   const pusher = new Pusher("c1016e2807f8be6e793c", {
+  //     cluster: "us2",
   //   });
-  // }, []);
 
-  useEffect(() => {
-    const pusher = new Pusher("c1016e2807f8be6e793c", {
-      cluster: "us2",
-    });
-
-    const channel = pusher.subscribe("messages");
-    channel.bind("inserted", (newMessages: any): void => {
-      console.log(newMessages);
-      dispatch(setMessage(newMessages));
-    });
-    return () => {
-      channel.unbind_all();
-      channel.unsubscribe();
-    };
-  }, [setMessage]);
+  //   const channel = pusher.subscribe("messages");
+  //   channel.bind("inserted", (newMessages: any): void => {
+  //     console.log(newMessages);
+  //     dispatch(setMessage(newMessages));
+  //   });
+  //   return () => {
+  //     channel.unbind_all();
+  //     channel.unsubscribe();
+  //   };
+  // }, [setMessage, data]);
 
   return (
     <>

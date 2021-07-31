@@ -1,9 +1,9 @@
 import { forwardRef } from "react";
 import styled from "styled-components";
 import { Typography, CardContent, Card } from "@material-ui/core";
-import { IMessages } from "../../../redux/slices/messages.slice";
 import { useSelector } from "react-redux";
 import { usernameSelector } from "../../../redux/slices/username.slice";
+import { IMessages } from "../../../interfaces/types";
 
 // FC do not have a ref, which is needed for react-flip-move to work. Hence, forwardRef is needed.
 const Message = forwardRef(

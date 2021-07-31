@@ -14,11 +14,19 @@ import {
   usernameSelector,
 } from "../../redux/slices/username.slice";
 import * as api from "../../api/wsApi";
+import { useMutation, useQueryClient } from "react-query";
 
 const Footer = () => {
   const [input, setInput] = useState<string>("");
   // const [username, setUsername] = useState<string>("Guest");
   const username = useSelector(usernameSelector);
+
+  const queryClient = useQueryClient();
+  const { isLoading, mutate } = useMutation(api.postMessage, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("messages");
+    },
+  });
 
   const dispatch = useDispatch();
 
@@ -32,12 +40,11 @@ const Footer = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // await api.baseUrl.post("/messages/new", {
-    //   name: username,
-    //   message: input,
-    //   timestamp: "new timestamp",
-    //   received: true,
-    // });
+    mutate({
+      name: username,
+      message: input,
+      received: true,
+    });
     setInput("");
   };
 

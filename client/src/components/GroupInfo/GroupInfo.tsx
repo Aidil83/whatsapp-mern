@@ -1,14 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { ISetStep } from "../CreateGroup/CreateGroup";
-/* Material UI */
+import { useMutation } from "react-query";
+/* ------------------------------- Material UI ------------------------------ */
 import PhotoCamera from "@material-ui/icons/ArrowForward";
-/* Redux */
+/* ---------------------------------- Redux --------------------------------- */
 import { useDispatch, useSelector } from "react-redux";
 import {
   IGroupInfoStore,
   setGroupInfo,
 } from "../../redux/slices/groupInfo.slice";
-/* Styled components */
+import {
+  addImage,
+  addTitle,
+  membersSelector,
+  resetImage,
+} from "../../redux/slices/members.slice";
+import { resetStoredContacts } from "../../redux/slices/storedContacts.slice";
+import { resetChip } from "../../redux/slices/chip.slice";
+import * as api from "../../api/wsApi";
+/* ---------------------------- Styled components --------------------------- */
 import { CreateGroupContainer } from "../CreateGroup/CreateGroup.styles";
 import {
   DrawerHeader,
@@ -22,17 +32,7 @@ import {
   StyledTextField,
   StyledUploadWrapper,
 } from "./GroupInfo.styles";
-import {
-  addImage,
-  addTitle,
-  membersSelector,
-  resetImage,
-} from "../../redux/slices/members.slice";
-import { resetStoredContacts } from "../../redux/slices/storedContacts.slice";
-import { resetChip } from "../../redux/slices/chip.slice";
-import * as api from "../../api/wsApi";
-import { useMutation } from "react-query";
-/* --------------- Convert image to base64 for mongodb to work -------------- */
+/* --------------- Convert image to base64 for mongodb to accept image -------------- */
 import imageFileToBase64 from "image-file-to-base64-exif";
 
 const defaultValues = {

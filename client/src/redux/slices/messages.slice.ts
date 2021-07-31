@@ -1,13 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IMessages } from "../../interfaces/types";
 import { RootState } from "../configureStore";
-
-export interface IMessages {
-  message: string;
-  name: string;
-  received: boolean;
-  __v?: number;
-  _id?: string;
-}
 
 const initialState: IMessages[] = [];
 
