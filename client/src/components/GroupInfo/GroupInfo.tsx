@@ -31,6 +31,9 @@ import {
 import { resetStoredContacts } from "../../redux/slices/storedContacts.slice";
 import { resetChip } from "../../redux/slices/chip.slice";
 import * as api from "../../api/wsApi";
+import axios from "axios";
+import { useMutation } from "react-query";
+import imageFileToBase64 from "image-file-to-base64-exif";
 
 const defaultValues = {
   roomName: "",
@@ -44,16 +47,26 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
 
   const data = useSelector(membersSelector); // Pull data from redux member slice.
   const dispatch = useDispatch();
+  const { isLoading, mutate } = useMutation(api.postRoom);
 
   const fileHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
     let selected = e?.target?.files?.[0];
     try {
       setImage(URL.createObjectURL(selected));
-      dispatch(addImage(URL.createObjectURL(selected)));
-      setGroup({
-        ...group,
-        image: URL.createObjectURL(selected) || "",
-      });
+      // dispatch(addImage(URL.createObjectURL(selected)));
+      // setGroup({
+      //   ...group,
+      //   image: URL.createObjectURL(selected) || "",
+      // });
+      const converted = imageFileToBase64(selected, 200, 200, 0.8).then(
+        (image: any) => {
+          setGroup({
+            ...group,
+            image,
+          });
+          dispatch(addImage(image));
+        }
+      );
     } catch (error) {
       console.log(error);
     }
@@ -70,6 +83,8 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     dispatch(setGroupInfo(data));
+    console.log("data -->", data);
+    mutate(data);
     dispatch(resetStoredContacts());
     dispatch(resetChip());
     dispatch(resetImage());

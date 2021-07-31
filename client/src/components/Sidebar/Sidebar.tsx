@@ -35,6 +35,7 @@ const Sidebar = () => {
   //     dispatch(loadGroupInfo(res.groupInfoData));
   //   });
   // }, []);
+  console.log(data);
 
   return (
     <>

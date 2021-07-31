@@ -36,12 +36,12 @@ export interface ISetStep {
 }
 
 export const defaultContacts: IChip[] = [
-  { id: 0, name: "Ali", image: "/static/images/coder.jpg" },
-  { id: 1, name: "Arthur", image: "/static/images/coder.jpg" },
-  { id: 2, name: "Marvin", image: "/static/images/coder.jpg" },
-  { id: 3, name: "Jake", image: "/static/images/coder.jpg" },
-  { id: 4, name: "Daniel", image: "/static/images/coder.jpg" },
-  { id: 5, name: "Brian", image: "/static/images/coder.jpg" },
+  { id: 0, name: "Ali", image: "" },
+  { id: 1, name: "Arthur", image: "" },
+  { id: 2, name: "Marvin", image: "" },
+  { id: 3, name: "Jake", image: "" },
+  { id: 4, name: "Daniel", image: "" },
+  { id: 5, name: "Brian", image: "" },
 ];
 
 const CreateGroup = ({ setStep }: Pick<ISetStep, "setStep">) => {

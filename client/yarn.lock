@@ -1071,6 +1071,11 @@ evp_bytestokey@^1.0.0, evp_bytestokey@^1.0.3:
     md5.js "^1.3.4"
     safe-buffer "^5.1.1"
 
+exif-js@^2.2.1:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/exif-js/-/exif-js-2.3.0.tgz#9d10819bf571f873813e7640241255ab9ce1a814"
+  integrity sha1-nRCBm/Vx+HOBPnZAJBJVq5zhqBQ=
+
 fill-range@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/fill-range/-/fill-range-7.0.1.tgz#1919a6a7c75fe38b2c7c77e5198535da9acdda40"
@@ -1274,6 +1279,13 @@ ieee754@^1.1.4:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.2.1.tgz#8eb7a10a63fff25d15a57b001586d177d1b0d352"
   integrity sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==
+
+image-file-to-base64-exif@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/image-file-to-base64-exif/-/image-file-to-base64-exif-1.0.3.tgz#4ba3973ba60ff50a5a45fc092efce1451c096001"
+  integrity sha512-CL17GynTvGGgH24HOFEEhdCLbG6x0P8aa7RiO7aXCPefyXBPZPRxgX5j5m6lD7/j+lNpZ1xyRqVjfFlu3/egrw==
+  dependencies:
+    exif-js "^2.2.1"
 
 immer@^8.0.1:
   version "8.0.4"
