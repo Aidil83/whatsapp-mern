@@ -33,6 +33,7 @@ export const SidebarHeader = styled(Container)`
 `;
 export const MyProfilePic = styled(ProfilePic)`
   cursor: pointer;
+  object-fit: cover;
 `;
 export const SidebarHeaderRight = styled.div`
   width: 200px;

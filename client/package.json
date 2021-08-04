@@ -12,6 +12,7 @@
     "@material-ui/icons": "^4.11.2",
     "@reduxjs/toolkit": "^1.5.1",
     "axios": "^0.21.1",
+    "cloudinary-react": "^1.7.0",
     "image-file-to-base64-exif": "^1.0.3",
     "next": "10.2.0",
     "pusher-js": "^7.0.3",

@@ -12,8 +12,6 @@ import { useQuery } from "react-query";
 export default function Home() {
   const dispatch = useDispatch();
 
-  const { data, isLoading } = useQuery("messages", api.getMessagesData);
-
   // useEffect(() => {
   //   const pusher = new Pusher("c1016e2807f8be6e793c", {
   //     cluster: "us2",

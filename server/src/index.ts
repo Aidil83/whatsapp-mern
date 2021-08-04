@@ -22,10 +22,10 @@ const pusher = new Pusher({
 });
 
 // Middlewares
+app.use(cors());
 app.use(express.json());
 app.use(morgan("common"));
 app.use(helmet());
-app.use(cors());
 
 /* DB config */
 mongoose.connect(process.env.DATABASE_URL!, {

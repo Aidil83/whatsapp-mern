@@ -4,7 +4,8 @@ import ButtonBase from "@material-ui/core/ButtonBase";
 import { HiUserGroup } from "react-icons/hi";
 
 type LabelType = {
-  bgImage: string | null; // Passing Optional Props
+  // bgImage: string | Blob; // Passing Optional Props
+  bgImage: any; // Passing Optional Props
 };
 
 const profileLayerCSS = css`

@@ -34,6 +34,7 @@ import {
 } from "./GroupInfo.styles";
 /* --------------- Convert image to base64 for mongodb to accept image -------------- */
 import imageFileToBase64 from "image-file-to-base64-exif";
+import axios from "axios";
 
 const defaultValues = {
   roomName: "",
@@ -42,27 +43,13 @@ const defaultValues = {
 };
 
 const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
-  const [image, setImage] = useState<string | null>(null);
+  const [image, setImage] = useState<string | Blob>("");
+  const [previewImage, setPreviewImage] = useState<string | Blob>("");
   const [group, setGroup] = useState<IGroupInfoStore>(defaultValues);
 
   const data = useSelector(membersSelector); // Pull data from redux member slice.
   const dispatch = useDispatch();
   const { isLoading, mutate } = useMutation(api.postRoom);
-
-  const fileHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    let selected = e?.target?.files?.[0];
-    try {
-      imageFileToBase64(selected, 200, 200, 0.8).then((image: string) => {
-        setGroup({
-          ...group,
-          image,
-        });
-        dispatch(addImage(image));
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setGroup((prev) => ({
@@ -72,15 +59,39 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
     dispatch(addTitle(e.target.value));
   };
 
+  const selectImage = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    let selected = e?.target?.files?.[0];
+    try {
+      setImage(selected as string | Blob);
+      setPreviewImage(URL.createObjectURL(selected));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-    e.preventDefault();
-    dispatch(setGroupInfo(data));
-    mutate(data);
+    const formData = new FormData();
+    formData.append("file", image);
+    formData.append("upload_preset", "eyklpgtq");
+    axios
+      .post("https://api.cloudinary.com/v1_1/aidil-inc/image/upload", formData)
+      .then((res) => {
+        const imageSelected: string = res.data.url;
+        const addGroupImage: IGroupInfoStore = {
+          ...data,
+          image: imageSelected,
+        };
+        setGroup(addGroupImage);
+        dispatch(setGroupInfo(addGroupImage));
+        mutate({ ...data, image: imageSelected });
+      });
+
     dispatch(resetStoredContacts());
     dispatch(resetChip());
     dispatch(resetImage());
     setImage("");
     setGroup(defaultValues);
+    e.preventDefault();
     setTimeout(() => setStep(0), 250); // Wait for the drawer to close first.
     setIsDrawer(false);
   };
@@ -100,9 +111,9 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
             accept="image/*"
             id="icon-button-file"
             type="file"
-            onChange={fileHandler}
+            onChange={selectImage}
           />
-          <StyledLabel htmlFor="icon-button-file" bgImage={image}>
+          <StyledLabel htmlFor="icon-button-file" bgImage={previewImage}>
             <div className="profile-layer">
               <PhotoCamera />
               {!image && <div>ADD GROUP ICON</div>}
