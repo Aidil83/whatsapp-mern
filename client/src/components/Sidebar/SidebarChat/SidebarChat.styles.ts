@@ -11,9 +11,8 @@ export const StyledContact = styled(StyledContactButton)`
 export const DefaultImage = styled(GroupIcon)`
   position: revert;
   opacity: 1;
-  background-color: gray;
+  background-color: rgb(160 160 160 / 90%);
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  font-size: 5em;
 `;

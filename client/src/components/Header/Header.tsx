@@ -3,6 +3,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { clickChatSelector } from "../../redux/slices/clickChat.slice";
 import { IChip } from "../CreateGroup/CreateGroup";
+import { DefaultImage } from "../Sidebar/SidebarChat/SidebarChat.styles";
 import {
   Container,
   DescriptionName,
@@ -17,7 +18,8 @@ const Header = () => {
   const { title, image, members } = useSelector(clickChatSelector);
   return (
     <Container>
-      <ProfilePic src={image} width={50} height={50} />
+      {!image && <DefaultImage />}
+      {image && <ProfilePic src={image} width={50} height={50} />}
       <NameWrapper>
         <TitleName>{title}</TitleName>
         <DescriptionName>

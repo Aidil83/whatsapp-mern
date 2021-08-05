@@ -32,7 +32,7 @@ const SidebarChat = ({ item, id }: Props) => {
               src={item?.image}
               width={50}
               height={50}
-              alt="my-profile"
+              placeholder="my-profile"
             />
           )}
           <div
