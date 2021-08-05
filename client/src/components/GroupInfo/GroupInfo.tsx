@@ -71,7 +71,9 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
     formData.append("file", image);
     formData.append("upload_preset", "eyklpgtq");
 
-    if (data.image != "") {
+    if (!previewImage) {
+      mutate(data);
+    } else {
       axios
         .post(
           "https://api.cloudinary.com/v1_1/aidil-inc/image/upload",
@@ -90,8 +92,6 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
         .catch((err) => {
           console.error(err);
         });
-    } else {
-      mutate(data);
     }
 
     dispatch(resetStoredContacts());
