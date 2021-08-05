@@ -70,18 +70,29 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
     const formData = new FormData();
     formData.append("file", image);
     formData.append("upload_preset", "eyklpgtq");
-    axios
-      .post("https://api.cloudinary.com/v1_1/aidil-inc/image/upload", formData)
-      .then((res) => {
-        const imageSelected: string = res.data.url;
-        const addGroupImage: IGroupInfoStore = {
-          ...data,
-          image: imageSelected,
-        };
-        setGroup(addGroupImage);
-        dispatch(setGroupInfo(addGroupImage));
-        mutate({ ...data, image: imageSelected });
-      });
+
+    if (data.image != "") {
+      axios
+        .post(
+          "https://api.cloudinary.com/v1_1/aidil-inc/image/upload",
+          formData
+        )
+        .then((res) => {
+          const imageSelected: string = res.data.url;
+          const addGroupImage: IGroupInfoStore = {
+            ...data,
+            image: imageSelected,
+          };
+          setGroup(addGroupImage);
+          dispatch(setGroupInfo(addGroupImage));
+          mutate({ ...data, image: imageSelected });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    } else {
+      mutate(data);
+    }
 
     dispatch(resetStoredContacts());
     dispatch(resetChip());
