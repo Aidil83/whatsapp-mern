@@ -21,6 +21,7 @@ export const NameWrapper = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: center;
   padding: 0.75em;

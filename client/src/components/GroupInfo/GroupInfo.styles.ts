@@ -73,11 +73,11 @@ export const StyledLabel = styled.label<LabelType>`
   }
 `;
 export const GroupIcon = styled(HiUserGroup)`
-  position: absolute;
-  z-index: 0;
-  top: -43px;
-  left: 0;
-  font-size: 9em;
+  /* position: absolute;
+  z-index: 0; */
+  /* top: -43px; */
+  /* left: 0; */
+  /* font-size: 9em; */
   color: ${({ theme }) => theme.gray500};
   opacity: 0.1;
   width: 100px;

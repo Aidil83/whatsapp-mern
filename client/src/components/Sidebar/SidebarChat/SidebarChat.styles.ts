@@ -9,7 +9,7 @@ export const StyledContact = styled(StyledContactButton)`
   }
 `;
 export const DefaultImage = styled(GroupIcon)`
-  position: revert;
+  /* position: revert; */
   opacity: 1;
   background-color: rgb(160 160 160 / 90%);
   border-radius: 50%;
