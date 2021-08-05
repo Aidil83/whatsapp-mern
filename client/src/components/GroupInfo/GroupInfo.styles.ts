@@ -4,8 +4,7 @@ import ButtonBase from "@material-ui/core/ButtonBase";
 import { HiUserGroup } from "react-icons/hi";
 
 type LabelType = {
-  // bgImage: string | Blob; // Passing Optional Props
-  bgImage: any; // Passing Optional Props
+  bgImage: string | Blob; // Passing Optional Props
 };
 
 const profileLayerCSS = css`
@@ -47,14 +46,14 @@ export const StyledLabel = styled.label<LabelType>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url(${({ bgImage }: LabelType) => bgImage});
+  background-image: url(${({ bgImage }: any) => bgImage});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   background-color: ${({ theme }) => theme.uploadColor};
   color: ${({ theme }) => theme.white};
   border-radius: 50%;
-  ${({ bgImage }) =>
+  ${({ bgImage }: LabelType) =>
     bgImage &&
     css`
       &:hover {
@@ -69,7 +68,7 @@ export const StyledLabel = styled.label<LabelType>`
     `};
   & .profile-layer {
     ${profileLayerCSS};
-    opacity: ${({ bgImage }) => (!bgImage ? 1 : 0)};
+    opacity: ${({ bgImage }: LabelType) => (!bgImage ? 1 : 0)};
     transition: 0.2s;
   }
 `;

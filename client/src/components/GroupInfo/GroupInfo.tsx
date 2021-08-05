@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ISetStep } from "../CreateGroup/CreateGroup";
 import { useMutation } from "react-query";
+import axios from "axios";
 /* ------------------------------- Material UI ------------------------------ */
 import PhotoCamera from "@material-ui/icons/ArrowForward";
 /* ---------------------------------- Redux --------------------------------- */
@@ -10,7 +11,6 @@ import {
   setGroupInfo,
 } from "../../redux/slices/groupInfo.slice";
 import {
-  addImage,
   addTitle,
   membersSelector,
   resetImage,
@@ -32,9 +32,6 @@ import {
   StyledTextField,
   StyledUploadWrapper,
 } from "./GroupInfo.styles";
-/* --------------- Convert image to base64 for mongodb to accept image -------------- */
-import imageFileToBase64 from "image-file-to-base64-exif";
-import axios from "axios";
 
 const defaultValues = {
   roomName: "",

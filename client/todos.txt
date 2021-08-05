@@ -1,3 +1,4 @@
 1) Work on group setting or customize group component.
 2) Work on post request room after user submit sidebar.
    a) Make it realtime with pusher.
+[] Work on default image on body header component.

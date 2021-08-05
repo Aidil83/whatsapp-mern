@@ -18,7 +18,6 @@ import { useMutation, useQueryClient } from "react-query";
 
 const Footer = () => {
   const [input, setInput] = useState<string>("");
-  // const [username, setUsername] = useState<string>("Guest");
   const username = useSelector(usernameSelector);
 
   const queryClient = useQueryClient();
