@@ -11,4 +11,5 @@ export const BodyWallpaper = styled.div`
   padding: 1em;
   flex: 1;
   background-repeat: repeat;
+  overflow-y: auto;
 `;
