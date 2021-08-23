@@ -4,24 +4,11 @@ import { BodyContainer } from "./Body.styles";
 import ChatScreen from "./ChatScreen/ChatScreen";
 
 const Body = () => {
-  let bottomRef = useRef(null);
-
-  const scrollToBottom = () => {
-    if (bottomRef && bottomRef.current) {
-      bottomRef.current.scrollIntoView();
-    }
-  };
-
-  useEffect(scrollToBottom);
-
-  // useEffect(() => {
-  //   console.log(bottomRef.current, "body.tsx");
-  // }, []);
   return (
     <>
       <BodyContainer>
         <Header />
-        <ChatScreen forwardedRef={bottomRef} />
+        <ChatScreen />
         <Footer />
       </BodyContainer>
     </>

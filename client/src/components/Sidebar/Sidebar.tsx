@@ -22,10 +22,12 @@ import {
 } from "./Sidebar.styles";
 import SidebarChat from "./SidebarChat/SidebarChat";
 import { useQuery } from "react-query";
+import { useRouter } from "next/dist/client/router";
 
 const Sidebar = () => {
   const [isDrawer, setIsDrawer] = useState<boolean>(false);
   // const groupInfoData = useSelector(groupInfoSelector);
+  const router = useRouter();
 
   const { data, isLoading } = useQuery("rooms", api.getRooms);
 
@@ -41,7 +43,7 @@ const Sidebar = () => {
             alt="my-profile"
           />
           <SidebarHeaderRight>
-            <IconButton>
+            <IconButton onClick={() => router.push("/")}>
               <StyledStatusIcon />
             </IconButton>
             <IconButton onClick={() => setIsDrawer(true)}>
