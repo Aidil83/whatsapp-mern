@@ -15,13 +15,13 @@ import {
 } from "./Header.styles";
 
 const Header = () => {
-  const { title, image, members } = useSelector(clickChatSelector);
+  const { roomName, image, members } = useSelector(clickChatSelector);
   return (
     <Container>
       {!image && <DefaultImage />}
       {image && <ProfilePic src={image} width={50} height={50} />}
       <NameWrapper>
-        <TitleName>{title}</TitleName>
+        <TitleName>{roomName}</TitleName>
         <DescriptionName>
           {members &&
             members.map(
