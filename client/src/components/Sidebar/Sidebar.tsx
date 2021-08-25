@@ -23,13 +23,32 @@ import {
 import SidebarChat from "./SidebarChat/SidebarChat";
 import { useQuery } from "react-query";
 import { useRouter } from "next/dist/client/router";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import Fade from "@material-ui/core/Fade";
 
 const Sidebar = () => {
   const [isDrawer, setIsDrawer] = useState<boolean>(false);
   // const groupInfoData = useSelector(groupInfoSelector);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+
   const router = useRouter();
 
   const { data, isLoading } = useQuery("rooms", api.getRooms);
+
+  const options = ["Profile", "My account", "Sign in"];
+
+  const handleClick = (event: any) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = (id: number) => {
+    if (id === 2) {
+      router.push(`/login`);
+    }
+    setAnchorEl(null);
+  };
 
   return (
     <>
@@ -37,11 +56,24 @@ const Sidebar = () => {
       <SidebarContainer>
         <SidebarHeader>
           <MyProfilePic
+            onClick={handleClick}
             src="/static/images/coder.jpg"
             width={40}
             height={40}
             alt="my-profile"
           />
+          <Menu
+            id="fade-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={open}
+            onClose={handleClose}
+            TransitionComponent={Fade}
+          >
+            <MenuItem onClick={() => handleClose(0)}>Profile</MenuItem>
+            <MenuItem onClick={() => handleClose(1)}>My account</MenuItem>
+            <MenuItem onClick={() => handleClose(2)}>Sign in</MenuItem>
+          </Menu>
           <SidebarHeaderRight>
             <IconButton onClick={() => router.push("/")}>
               <StyledStatusIcon />
