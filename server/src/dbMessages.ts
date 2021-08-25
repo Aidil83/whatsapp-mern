@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 export interface IUser extends mongoose.Document {
+  roomName: string;
   name: string;
   message: string;
   timestamp: string;
@@ -8,6 +9,7 @@ export interface IUser extends mongoose.Document {
 }
 
 const whatsappSchema = new mongoose.Schema<IUser>({
+  roomName: { type: String, required: false },
   name: { type: String, required: true },
   message: { type: String, required: true },
   timestamp: { type: String },

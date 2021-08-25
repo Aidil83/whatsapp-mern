@@ -1,5 +1,6 @@
 1) Work on group setting or customize group component.
-2) Work on post request room after user submit sidebar.
+[] Work on post request room after user submit sidebar.
    a) Make it realtime with pusher.
-[] Work on default image on body header component.
-[] Work on default chat to fix scroll issues too.
+   b) If roomName == "...", then diplay messages.
+[] Work on default image on header body component.
+[x] Work on default chat to fix scroll issues too.

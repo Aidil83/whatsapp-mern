@@ -15,10 +15,12 @@ import {
 } from "../../redux/slices/username.slice";
 import * as api from "../../api/wsApi";
 import { useMutation, useQueryClient } from "react-query";
+import { clickChatSelector } from "../../redux/slices/clickChat.slice";
 
 const Footer = () => {
   const [input, setInput] = useState<string>("");
   const username = useSelector(usernameSelector);
+  const { roomName } = useSelector(clickChatSelector);
 
   const queryClient = useQueryClient();
   const { isLoading, mutate } = useMutation(api.postMessage, {
@@ -40,6 +42,7 @@ const Footer = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     mutate({
+      roomName,
       name: username,
       message: input,
       received: true,

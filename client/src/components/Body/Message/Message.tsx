@@ -4,20 +4,27 @@ import { Typography, CardContent, Card } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { usernameSelector } from "../../../redux/slices/username.slice";
 import { IMessages } from "../../../interfaces/types";
+import { clickChatSelector } from "../../../redux/slices/clickChat.slice";
 
 // FC do not have a ref, which is needed for react-flip-move to work. Hence, forwardRef is needed.
 const Message = forwardRef(
   ({ messageData }: { messageData: IMessages }, ref) => {
     const username = useSelector(usernameSelector);
+    const chat = useSelector(clickChatSelector);
     const isUser = username === messageData.name;
+    const isChatName = messageData.roomName === chat.roomName;
     return (
-      <StyledCard user={isUser.toString()} ref={ref}>
-        <CardContent>
-          <Typography color="primary" variant="h6" component="h2">
-            {messageData.message || ""}
-          </Typography>
-        </CardContent>
-      </StyledCard>
+      <>
+        {isChatName && (
+          <StyledCard user={isUser.toString()} ref={ref}>
+            <CardContent>
+              <Typography color="primary" variant="h6" component="h2">
+                {messageData.message}
+              </Typography>
+            </CardContent>
+          </StyledCard>
+        )}
+      </>
     );
   }
 );

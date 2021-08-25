@@ -1,4 +1,5 @@
 export interface IMessages {
+  roomName: string;
   message: string;
   name: string;
   received: boolean;
