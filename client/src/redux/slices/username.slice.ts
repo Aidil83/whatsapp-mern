@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../configureStore";
 
-const initialState: string = "Guest";
+const initialState: string = "You";
 
 export const usernameSlice = createSlice({
   name: "user_message",
