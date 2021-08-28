@@ -46,6 +46,7 @@ const Footer = () => {
       name: username,
       message: input,
       received: true,
+      updatedAt: new Date(),
     });
     setInput("");
   };

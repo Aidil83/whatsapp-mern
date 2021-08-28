@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { usernameSelector } from "../../../redux/slices/username.slice";
 import { IMessages } from "../../../interfaces/types";
 import { clickChatSelector } from "../../../redux/slices/clickChat.slice";
+import moment from "moment";
 
 // FC do not have a ref, which is needed for react-flip-move to work. Hence, forwardRef is needed.
 const Message = forwardRef(
@@ -34,7 +35,11 @@ const Message = forwardRef(
                   bottom: 2,
                 }}
               >
-                timestamp
+                <Timestamp>
+                  {messageData.updatedAt
+                    ? moment(messageData.updatedAt).format("LT")
+                    : ""}
+                </Timestamp>
               </h5>
             </CardContent>
           </StyledCard>
@@ -67,11 +72,15 @@ const StyledCard = styled(Card)`
     padding-bottom: 0;
   }
 `;
-
 const MessageDesc = styled.span`
   font-size: 0.8em;
   font-weight: bold;
   color: blue;
+`;
+const Timestamp = styled.span`
+  font-size: 0.7rem;
+  font-weight: normal;
+  color: gray;
 `;
 
 export default Message;
