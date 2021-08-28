@@ -22,7 +22,9 @@ const Message = forwardRef(
             <CardContent>
               <MessageDesc>{messageData.name}</MessageDesc>
               <Typography color="primary" variant="h6" component="h2">
-                <em style={{ fontWeight: "normal" }}>{messageData.message}</em>
+                <em style={{ fontWeight: "normal", fontSize: "1.15rem" }}>
+                  {messageData.message}
+                </em>
               </Typography>
               <h5
                 style={{
@@ -70,6 +72,13 @@ const StyledCard = styled(Card)`
   }
   & .MuiCardContent-root:last-child {
     padding-bottom: 0;
+  }
+  & .MuiTypography-h6 {
+    font-size: 1.15rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: 0.0075em;
   }
 `;
 const MessageDesc = styled.span`
