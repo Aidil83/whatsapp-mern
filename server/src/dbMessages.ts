@@ -4,17 +4,20 @@ export interface IUser extends mongoose.Document {
   roomName: string;
   name: string;
   message: string;
-  timestamp: string;
+  created_at: number;
+  updated_at: number;
   received: boolean;
 }
 
-const whatsappSchema = new mongoose.Schema<IUser>({
-  roomName: { type: String, required: false },
-  name: { type: String, required: true },
-  message: { type: String, required: true },
-  timestamp: { type: String },
-  received: { type: Boolean, required: true },
-});
+const whatsappSchema = new mongoose.Schema<IUser>(
+  {
+    roomName: { type: String, required: false },
+    name: { type: String, required: true },
+    message: { type: String, required: true },
+    received: { type: Boolean, required: true },
+  },
+  { timestamps: true }
+);
 
 // Collection
 const Messages = mongoose.model<IUser>("messagecontents", whatsappSchema);

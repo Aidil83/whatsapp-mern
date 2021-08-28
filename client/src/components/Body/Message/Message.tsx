@@ -13,6 +13,7 @@ const Message = forwardRef(
     const chat = useSelector(clickChatSelector);
     const isUser = username === messageData.name;
     const isChatName = messageData.roomName === chat.roomName;
+    console.log("messageData->", messageData);
     return (
       <>
         {isChatName && (
