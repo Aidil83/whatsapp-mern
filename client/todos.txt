@@ -4,4 +4,5 @@
    b) If roomName == "...", then diplay messages.
 [ ] Work on default image on header body component.
 [x] Work on default chat to fix scroll issues too.
-[ ] Work on message's description.
+[x] Work on message's description.
+[x] Work on message's name color.

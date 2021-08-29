@@ -5,16 +5,18 @@ import { useSelector } from "react-redux";
 import { usernameSelector } from "../../../redux/slices/username.slice";
 import { IMessages } from "../../../interfaces/types";
 import { clickChatSelector } from "../../../redux/slices/clickChat.slice";
-import moment from "moment";
+import { DateTime } from "luxon";
 
 // FC do not have a ref, which is needed for react-flip-move to work. Hence, forwardRef is needed.
 const Message = forwardRef(
   ({ messageData }: { messageData: IMessages }, ref) => {
     const username = useSelector(usernameSelector);
     const chat = useSelector(clickChatSelector);
+
     const isUser = username === messageData.name;
     const isChatName = messageData.roomName === chat.roomName;
-    console.log("messageData->", messageData);
+
+    const dt = DateTime.fromISO(messageData.updatedAt);
     return (
       <>
         {isChatName && (
@@ -38,8 +40,9 @@ const Message = forwardRef(
                 }}
               >
                 <Timestamp>
+                  {/* Converts unix time to international time */}
                   {messageData.updatedAt
-                    ? moment(messageData.updatedAt).format("LT")
+                    ? dt.toLocaleString(DateTime.TIME_SIMPLE)
                     : ""}
                 </Timestamp>
               </h5>
