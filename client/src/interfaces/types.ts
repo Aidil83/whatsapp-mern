@@ -3,7 +3,7 @@ export interface IMessages {
   message: string;
   name: string;
   received: boolean;
-  updatedAt: string;
+  updatedAt: Date;
   __v?: number;
   _id?: string;
 }
