@@ -36,7 +36,7 @@ import {
 const defaultValues = {
   roomName: "",
   image: "",
-  members: [{ id: 1, name: "", image: "" }],
+  members: [{ id: 1, name: "", image: "", nameColor: "" }],
 };
 
 const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {

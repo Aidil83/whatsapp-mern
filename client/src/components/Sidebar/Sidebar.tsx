@@ -93,7 +93,7 @@ const Sidebar = () => {
           </PaneSide>
         </InputSection>
         {!isLoading &&
-          data.map((item: any, id: number) => (
+          data?.map((item: any, id: number) => (
             <SidebarChat item={item} key={id} id={id} />
           ))}
       </SidebarContainer>

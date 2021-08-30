@@ -28,6 +28,7 @@ export interface IChip {
   id: number;
   name: string;
   image?: string;
+  nameColor: string;
 }
 
 export interface ISetStep {
@@ -35,14 +36,14 @@ export interface ISetStep {
   setIsDrawer: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const defaultContacts: IChip[] = [
-  { id: 0, name: "Ali", image: "" },
-  { id: 1, name: "Arthur", image: "" },
-  { id: 2, name: "Marvin", image: "" },
-  { id: 3, name: "Jake", image: "" },
-  { id: 4, name: "Daniel", image: "" },
-  { id: 5, name: "Brian", image: "" },
-];
+// export const defaultContacts: IChip[] = [
+//   { id: 0, name: "Ali", image: "" },
+//   { id: 1, name: "Arthur", image: "" },
+//   { id: 2, name: "Marvin", image: "" },
+//   { id: 3, name: "Jake", image: "" },
+//   { id: 4, name: "Daniel", image: "" },
+//   { id: 5, name: "Brian", image: "" },
+// ];
 
 const CreateGroup = ({ setStep }: Pick<ISetStep, "setStep">) => {
   const storedContacts = useSelector(storedContactsSelector);
@@ -102,6 +103,7 @@ const CreateGroup = ({ setStep }: Pick<ISetStep, "setStep">) => {
         </Fragment>
       ))}
       <SidebarFooterContainer>
+        {/* NOTE: display button if length is greater than 0 */}
         {storedChips.length > 0 && (
           <Fab
             onClick={handleNextBtn}

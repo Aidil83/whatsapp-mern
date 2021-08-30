@@ -6,7 +6,6 @@ import { usernameSelector } from "../../../redux/slices/username.slice";
 import { IMessages } from "../../../interfaces/types";
 import { clickChatSelector } from "../../../redux/slices/clickChat.slice";
 import { DateTime } from "luxon";
-import randomColor from "randomcolor";
 
 // FC do not have a ref, which is needed for react-flip-move to work. Hence, forwardRef is needed.
 const Message = forwardRef(
@@ -18,13 +17,14 @@ const Message = forwardRef(
     const isChatName = messageData.roomName === chat.roomName;
 
     const dt = DateTime.fromISO(messageData.updatedAt.toString());
-    const color = randomColor({ luminosity: "dark" });
     return (
       <>
         {isChatName && (
           <StyledCard user={isUser.toString()} ref={ref}>
             <CardContent>
-              <MessageDesc color={color}>{messageData.name}</MessageDesc>
+              <MessageDesc color={messageData.nameColor}>
+                {messageData.name}
+              </MessageDesc>
               <Typography color="primary" variant="h6" component="h2">
                 <em style={{ fontWeight: "normal", fontSize: "1.15rem" }}>
                   {messageData.message}

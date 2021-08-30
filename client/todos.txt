@@ -1,8 +1,9 @@
-1) Work on group setting or customize group component.
-[] Work on post request room after user submit sidebar.
-   a) Make it realtime with pusher.
-   b) If roomName == "...", then diplay messages.
+[ ] Create the add new contact functionality. Make sure to pass in the object the color prop. 
+[ ] Work on post request room after user submit sidebar.
+   [ ] Make it realtime with pusher.
+   [x] If roomName == "...", then diplay messages.
 [ ] Work on default image on header body component.
+[ ] Work on message's name color.
+[ ] Work on group setting or customize group component.
 [x] Work on default chat to fix scroll issues too.
 [x] Work on message's description.
-[x] Work on message's name color.

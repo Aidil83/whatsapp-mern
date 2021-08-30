@@ -11,6 +11,7 @@ import {
   storedContactsSelector,
 } from "../../redux/slices/storedContacts.slice";
 import { addChip } from "../../redux/slices/chip.slice";
+import randomColor from "randomcolor";
 
 interface Props {
   id: number;
@@ -21,8 +22,9 @@ interface Props {
 const Contacts = ({ id, name, image }: Props) => {
   const storedContacts = useSelector(storedContactsSelector);
   const dispatch = useDispatch();
+  const nameColor = randomColor({ luminosity: "random", hue: "random" });
 
-  const removeContact = (contact: IContact) => {
+  const selectedContact = (contact: IContact) => {
     const filteredContacts = storedContacts.filter((item) => {
       return item.id !== contact.id;
     });
@@ -30,7 +32,9 @@ const Contacts = ({ id, name, image }: Props) => {
     dispatch(addChip(contact));
   };
   return (
-    <StyledContactButton onClick={() => removeContact({ id, name, image })}>
+    <StyledContactButton
+      onClick={() => selectedContact({ id, name, image, nameColor })}
+    >
       <ProfilePic
         src={image || ""}
         width={50}
