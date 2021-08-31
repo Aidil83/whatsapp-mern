@@ -1,4 +1,4 @@
-[ ] Create the add new contact functionality. Make sure to pass in the object the color prop. 
+[ ] Remove repeating names and my name just like in Whatsapp.
 [ ] Work on post request room after user submit sidebar.
    [ ] Make it realtime with pusher.
    [x] If roomName == "...", then diplay messages.
@@ -7,3 +7,4 @@
 [ ] Work on group setting or customize group component.
 [x] Work on default chat to fix scroll issues too.
 [x] Work on message's description.
+[x] Create the add new contact functionality. Make sure to pass in the object the color prop. 

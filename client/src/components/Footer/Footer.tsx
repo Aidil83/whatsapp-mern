@@ -19,9 +19,12 @@ import { clickChatSelector } from "../../redux/slices/clickChat.slice";
 import { IChip } from "../CreateGroup/CreateGroup";
 
 const Footer = () => {
-  const [input, setInput] = useState<string>("");
   const username = useSelector(usernameSelector);
   const { roomName, members } = useSelector(clickChatSelector);
+  const [trackName, setTrackName] = useState<string>(username);
+  const [nameDisplay, setNameDisplay] = useState<boolean>(true);
+  const [count, setCount] = useState<number>(0);
+  const [input, setInput] = useState<string>("");
 
   const queryClient = useQueryClient();
   const { isLoading, mutate } = useMutation(api.postMessage, {
@@ -42,21 +45,37 @@ const Footer = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    let isDisplay = nameDisplay;
+
+    setTrackName(username);
+
+    // Ali === Jake
+    if (trackName === username) {
+      if (count === 0) {
+        setCount(count + 1);
+      } else if (count > 0) {
+        setNameDisplay(false);
+        isDisplay = false;
+      }
+    } else {
+      setNameDisplay(true);
+      isDisplay = true;
+      setCount(0);
+    }
+
     const color = members.filter((member: IChip) => {
       if (member.name === username) {
-        console.log(member.name, username);
         return member.nameColor;
       }
     });
 
-    console.log(color);
     const nameColor = color[0].nameColor;
-    console.log(nameColor);
 
     if (nameColor) {
       mutate({
         roomName,
         nameColor,
+        isDisplay,
         name: username,
         message: input,
         received: true,
