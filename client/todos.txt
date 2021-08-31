@@ -1,10 +1,12 @@
-[ ] Remove repeating names and my name just like in Whatsapp.
+[ ] Add some margin top/bottom on non-repeating subsequent names.
+[ ] Work on add new contact.
 [ ] Work on post request room after user submit sidebar.
    [ ] Make it realtime with pusher.
    [x] If roomName == "...", then diplay messages.
 [ ] Work on default image on header body component.
-[ ] Work on message's name color.
 [ ] Work on group setting or customize group component.
 [x] Work on default chat to fix scroll issues too.
 [x] Work on message's description.
 [x] Create the add new contact functionality. Make sure to pass in the object the color prop. 
+[x] Remove repeating names and my name just like in Whatsapp.
+[x] Work on message's name color.

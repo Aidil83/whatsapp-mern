@@ -25,7 +25,10 @@ const Message = forwardRef(
         {isChatName && (
           <StyledCard user={isUser.toString()} ref={ref}>
             <CardContent>
-              <MessageDesc color={messageData.nameColor}>
+              <MessageDesc
+                color={messageData.nameColor}
+                isDisplay={messageData.isDisplay}
+              >
                 {messageData.name}
               </MessageDesc>
               <Typography color="primary" variant="h6" component="h2">
@@ -90,6 +93,8 @@ const StyledCard = styled(Card)`
   }
 `;
 const MessageDesc = styled.span`
+  display: ${({ isDisplay }: { isDisplay: boolean }) =>
+    isDisplay ? "inline" : "none"};
   font-size: 0.8em;
   font-weight: bold;
   color: ${({ color }) => color};
