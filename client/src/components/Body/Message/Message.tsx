@@ -23,7 +23,11 @@ const Message = forwardRef(
     return (
       <>
         {isChatName && (
-          <StyledCard user={isUser.toString()} ref={ref}>
+          <StyledCard
+            user={isUser.toString()}
+            ref={ref}
+            isDisplay={messageData.isDisplay}
+          >
             <CardContent>
               <MessageDesc
                 color={messageData.nameColor}
@@ -62,12 +66,22 @@ const Message = forwardRef(
   }
 );
 
-const StyledCard = styled(Card)`
+interface StyleProps {
+  user: string;
+  isDisplay: boolean;
+  color?: string;
+}
+
+type isDisplayColor = Pick<StyleProps, "isDisplay" | "color">;
+
+const StyledCard = styled(Card)<StyleProps>`
   width: fit-content;
   margin: 0.25em;
   padding: 0.3em;
-  ${({ user }: { user: string }) => user == "true" && "margin-left: auto"};
-  background-color: ${({ user }: { user: string }) =>
+  margin-top: ${({ isDisplay }) => (isDisplay ? "0.85em" : "0em")};
+  ${({ user }) => user == "true" && "margin-left: auto"};
+  margin-bottom: 3px;
+  background-color: ${({ user }) =>
     user == "true" ? "#DCF8C6 !important" : "#fff !important"};
   &.MuiPaper-rounded {
     border-radius: 12px;
@@ -92,9 +106,8 @@ const StyledCard = styled(Card)`
     letter-spacing: 0.0075em;
   }
 `;
-const MessageDesc = styled.span`
-  display: ${({ isDisplay }: { isDisplay: boolean }) =>
-    isDisplay ? "inline" : "none"};
+const MessageDesc = styled.span<isDisplayColor>`
+  display: ${({ isDisplay }) => (isDisplay ? "inline" : "none")};
   font-size: 0.8em;
   font-weight: bold;
   color: ${({ color }) => color};
