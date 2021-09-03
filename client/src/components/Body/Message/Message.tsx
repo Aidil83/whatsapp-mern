@@ -38,28 +38,19 @@ const Message = forwardRef(
 
               <InnerContent>
                 <Typography color="primary" variant="h6" component="h2">
-                  <em style={{ fontWeight: "normal", fontSize: "1.15rem" }}>
+                  <h3 style={{ fontWeight: "normal", fontSize: "1.15rem" }}>
                     {messageData.message}
-                  </em>
+                  </h3>
                 </Typography>
-                <h5
-                  style={{
-                    width: "fit-content",
-                    fontSize: ".7rem",
-                    marginLeft: "auto",
-                    color: "gray",
-                    position: "absolute",
-                    right: 5,
-                    bottom: 2,
-                  }}
-                >
+
+                <MessageTime>
                   <Timestamp>
                     {/* Converts unix time to international time */}
                     {messageData.updatedAt
                       ? dt.toLocaleString(DateTime.TIME_SIMPLE)
                       : ""}
                   </Timestamp>
-                </h5>
+                </MessageTime>
               </InnerContent>
             </CardContent>
           </StyledCard>
@@ -109,6 +100,15 @@ const StyledCard = styled(Card)<StyleProps>`
     line-height: 1.3;
     letter-spacing: 0.0075em;
   }
+`;
+const MessageTime = styled.h5`
+  width: fit-content;
+  font-size: 0.7rem;
+  margin-left: auto;
+  color: gray;
+  position: absolute;
+  right: 5px;
+  bottom: 2px;
 `;
 
 const InnerContent = styled.div`

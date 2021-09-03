@@ -1,5 +1,4 @@
 [ ] Work on the color in users.
-[ ] Truncate when messages get lengthy.
 [ ] Work on add new contact.
 [ ] Work on post request room after user submit sidebar.
    [ ] Make it realtime with pusher.
@@ -12,3 +11,4 @@
 [x] Remove repeating names and my name just like in Whatsapp.
 [x] Work on message's name color.
 [x] Add some margin top/bottom on non-repeating subsequent names.
+[x] Truncate when messages get lengthy.
