@@ -116,8 +116,6 @@ const InnerContent = styled.div`
   max-width: 400px;
   display: flex;
   flex-flow: column wrap;
-  /* justify-content: space-between; */
-  /* align-items: flex-start; */
 `;
 
 const MessageDesc = styled.span<isDisplayColor>`

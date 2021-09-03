@@ -1,6 +1,6 @@
 import React from "react";
 import { ProfilePic } from "../Header/Header.styles";
-import { IChip as IContact } from "../CreateGroup/CreateGroup";
+import { IChip, IChip as IContact } from "../CreateGroup/CreateGroup";
 import {
   StyledContactButton,
   SubText,
@@ -22,12 +22,18 @@ interface Props {
 const Contacts = ({ id, name, image }: Props) => {
   const storedContacts = useSelector(storedContactsSelector);
   const dispatch = useDispatch();
-  const nameColor = randomColor({ luminosity: "random", hue: "random" });
+  const nameColor = randomColor({
+    luminosity: "dark",
+    format: "rgba",
+    alpha: 0.5,
+  });
 
   const selectedContact = (contact: IContact) => {
-    const filteredContacts = storedContacts.filter((item) => {
-      return item.id !== contact.id;
-    });
+    const filteredContacts: IChip[] = storedContacts.filter(
+      (item: IChip): boolean => {
+        return item.id !== contact.id;
+      }
+    );
     dispatch(filteredStoredContacts(filteredContacts));
     dispatch(addChip(contact));
   };
