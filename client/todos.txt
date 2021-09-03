@@ -1,4 +1,5 @@
-[ ] Add some margin top/bottom on non-repeating subsequent names.
+[ ] Work on the color in users.
+[ ] Truncate when messages get lengthy.
 [ ] Work on add new contact.
 [ ] Work on post request room after user submit sidebar.
    [ ] Make it realtime with pusher.
@@ -10,3 +11,4 @@
 [x] Create the add new contact functionality. Make sure to pass in the object the color prop. 
 [x] Remove repeating names and my name just like in Whatsapp.
 [x] Work on message's name color.
+[x] Add some margin top/bottom on non-repeating subsequent names.

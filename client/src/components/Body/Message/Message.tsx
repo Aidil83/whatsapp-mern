@@ -35,29 +35,32 @@ const Message = forwardRef(
               >
                 {messageData.name}
               </MessageDesc>
-              <Typography color="primary" variant="h6" component="h2">
-                <em style={{ fontWeight: "normal", fontSize: "1.15rem" }}>
-                  {messageData.message}
-                </em>
-              </Typography>
-              <h5
-                style={{
-                  width: "fit-content",
-                  fontSize: ".7rem",
-                  marginLeft: "auto",
-                  color: "gray",
-                  position: "absolute",
-                  right: 5,
-                  bottom: 2,
-                }}
-              >
-                <Timestamp>
-                  {/* Converts unix time to international time */}
-                  {messageData.updatedAt
-                    ? dt.toLocaleString(DateTime.TIME_SIMPLE)
-                    : ""}
-                </Timestamp>
-              </h5>
+
+              <InnerContent>
+                <Typography color="primary" variant="h6" component="h2">
+                  <em style={{ fontWeight: "normal", fontSize: "1.15rem" }}>
+                    {messageData.message}
+                  </em>
+                </Typography>
+                <h5
+                  style={{
+                    width: "fit-content",
+                    fontSize: ".7rem",
+                    marginLeft: "auto",
+                    color: "gray",
+                    position: "absolute",
+                    right: 5,
+                    bottom: 2,
+                  }}
+                >
+                  <Timestamp>
+                    {/* Converts unix time to international time */}
+                    {messageData.updatedAt
+                      ? dt.toLocaleString(DateTime.TIME_SIMPLE)
+                      : ""}
+                  </Timestamp>
+                </h5>
+              </InnerContent>
             </CardContent>
           </StyledCard>
         )}
@@ -76,6 +79,7 @@ type isDisplayColor = Pick<StyleProps, "isDisplay" | "color">;
 
 const StyledCard = styled(Card)<StyleProps>`
   width: fit-content;
+  max-width: 500px;
   margin: 0.25em;
   padding: 0.3em;
   margin-top: ${({ isDisplay }) => (isDisplay ? "0.85em" : "0em")};
@@ -106,6 +110,16 @@ const StyledCard = styled(Card)<StyleProps>`
     letter-spacing: 0.0075em;
   }
 `;
+
+const InnerContent = styled.div`
+  width: fit-content;
+  max-width: 400px;
+  display: flex;
+  flex-flow: column wrap;
+  /* justify-content: space-between; */
+  /* align-items: flex-start; */
+`;
+
 const MessageDesc = styled.span<isDisplayColor>`
   display: ${({ isDisplay }) => (isDisplay ? "inline" : "none")};
   font-size: 0.8em;

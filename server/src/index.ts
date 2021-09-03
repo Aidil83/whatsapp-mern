@@ -64,7 +64,7 @@ db.once("open", () => {
 /* ------------------------------- API routes ------------------------------- */
 // messages
 app.get("/messages/sync", (_, res: Response) => {
-  Messages.find((err, data) => {
+  Messages.find((err, data: IUser[]) => {
     if (err) {
       res.status(500).send(err);
     } else {

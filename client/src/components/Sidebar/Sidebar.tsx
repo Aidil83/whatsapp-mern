@@ -39,7 +39,7 @@ const Sidebar = () => {
 
   const options = ["Profile", "My account", "Sign in"];
 
-  const handleClick = (event: any) => {
+  const handleClick = (event: any): void => {
     setAnchorEl(event.currentTarget);
   };
 
