@@ -17,6 +17,7 @@ import * as api from "../../api/wsApi";
 import { useMutation, useQueryClient } from "react-query";
 import { clickChatSelector } from "../../redux/slices/clickChat.slice";
 import { IChip } from "../CreateGroup/CreateGroup";
+import UserPrompt from "./UserPrompt/UserPrompt";
 
 const Footer = () => {
   const username = useSelector(usernameSelector);
@@ -50,11 +51,13 @@ const Footer = () => {
     );
     let isDisplay = nameDisplay;
     if (!isMember) {
-      const _name =
-        prompt(
-          "Only members of this group are allowed to type here! Please enter the existing member name"
-        ) ?? "Guest";
-      dispatch(setUsername(_name));
+      // const _name =
+      //   prompt(
+      //     "Only members of this group are allowed to type here! Please enter the existing member name"
+      //   ) ?? "Guest";
+
+      // return <UserPrompt />;
+      // dispatch(setUsername(_name));
       setInput("");
       return;
     }
