@@ -45,11 +45,23 @@ const Footer = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const isMember: boolean = members.find(
+      (member: IChip): boolean => member.name === username
+    );
     let isDisplay = nameDisplay;
+    if (!isMember) {
+      const _name =
+        prompt(
+          "Only members of this group are allowed to type here! Please enter the existing member name"
+        ) ?? "Guest";
+      dispatch(setUsername(_name));
+      setInput("");
+      return;
+    }
 
     setTrackName(username);
 
-    // Ali === Jake
+    // example: Ali === Jake
     if (trackName === username) {
       if (count === 0) {
         setCount(count + 1);
@@ -63,7 +75,7 @@ const Footer = () => {
       setCount(0);
     }
 
-    const color = members.filter((member: IChip) => {
+    const color = members.filter((member: IChip): string | void => {
       if (member.name === username) {
         return member.nameColor;
       }

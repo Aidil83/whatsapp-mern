@@ -1,10 +1,9 @@
-[ ] Work on the color in users.
-[ ] Work on add new contact.
 [ ] Work on post request room after user submit sidebar.
    [ ] Make it realtime with pusher.
    [x] If roomName == "...", then diplay messages.
+[ ] Work on add new contact.
+[ ] Work on group setting or customize group component. (Fitri's)
 [ ] Work on default image on header body component.
-[ ] Work on group setting or customize group component.
 [x] Work on default chat to fix scroll issues too.
 [x] Work on message's description.
 [x] Create the add new contact functionality. Make sure to pass in the object the color prop. 
@@ -12,3 +11,4 @@
 [x] Work on message's name color.
 [x] Add some margin top/bottom on non-repeating subsequent names.
 [x] Truncate when messages get lengthy.
+[x] Work on the color in users.
