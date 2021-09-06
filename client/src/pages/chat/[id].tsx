@@ -2,6 +2,7 @@ import Head from "next/head";
 import styled from "styled-components";
 import { HomeWrapper } from "..";
 import { Sidebar, Body } from "../../components";
+import UserPrompt from "../../components/Footer/UserPrompt/UserPrompt";
 import GlobalStyle from "../../styles/globalstyles";
 
 const Chat = () => {
@@ -16,6 +17,7 @@ const Chat = () => {
         <HomeWrapper>
           <Sidebar />
           <Body />
+          <UserPrompt />
         </HomeWrapper>
       </Container>
     </>

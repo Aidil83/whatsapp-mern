@@ -10,6 +10,7 @@ import {
 } from "./Footer.styles";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  setIsOpen,
   setUsername,
   usernameSelector,
 } from "../../redux/slices/username.slice";
@@ -17,10 +18,9 @@ import * as api from "../../api/wsApi";
 import { useMutation, useQueryClient } from "react-query";
 import { clickChatSelector } from "../../redux/slices/clickChat.slice";
 import { IChip } from "../CreateGroup/CreateGroup";
-import UserPrompt from "./UserPrompt/UserPrompt";
 
 const Footer = () => {
-  const username = useSelector(usernameSelector);
+  const { username } = useSelector(usernameSelector);
   const { roomName, members } = useSelector(clickChatSelector);
   const [trackName, setTrackName] = useState<string>(username);
   const [nameDisplay, setNameDisplay] = useState<boolean>(true);
@@ -46,7 +46,7 @@ const Footer = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const isMember: boolean = members.find(
+    const isMember = members.find(
       (member: IChip): boolean => member.name === username
     );
     let isDisplay = nameDisplay;
@@ -58,6 +58,8 @@ const Footer = () => {
 
       // return <UserPrompt />;
       // dispatch(setUsername(_name));
+
+      dispatch(setIsOpen(true));
       setInput("");
       return;
     }

@@ -2,7 +2,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../configureStore";
 import { IMembers } from "./members.slice";
 
-const initialState: any = {};
+const initialState: IMembers = {
+  roomName: "",
+  image: "",
+  members: [],
+};
 
 // These are all the actions:
 export const clickChatSlice = createSlice({

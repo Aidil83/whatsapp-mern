@@ -11,8 +11,15 @@ import PersonIcon from "@material-ui/icons/Person";
 import Typography from "@material-ui/core/Typography";
 import { blue } from "@material-ui/core/colors";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setIsOpen,
+  setUsername,
+  usernameSelector,
+} from "../../../redux/slices/username.slice";
+import { clickChatSelector } from "../../../redux/slices/clickChat.slice";
+import { IChip } from "../../CreateGroup/CreateGroup";
 
-const emails = ["username@gmail.com", "user02@gmail.com"];
 const useStyles = makeStyles({
   avatar: {
     backgroundColor: blue[100],
@@ -29,13 +36,16 @@ export interface SimpleDialogProps {
 function SimpleDialog(props: SimpleDialogProps) {
   const classes = useStyles();
   const { onClose, selectedValue, open } = props;
+  const { isOpen } = useSelector(usernameSelector);
+  const { members } = useSelector(clickChatSelector);
+  const dispatch = useDispatch();
 
   const handleClose = () => {
     onClose(selectedValue);
   };
 
-  const handleListItemClick = (value: string) => {
-    // dispatch(setUsername(value));
+  const handleListItemClick = (value: string): void => {
+    dispatch(setUsername(value));
     onClose(value);
   };
 
@@ -43,22 +53,24 @@ function SimpleDialog(props: SimpleDialogProps) {
     <Dialog
       onClose={handleClose}
       aria-labelledby="simple-dialog-title"
-      open={open}
+      open={isOpen}
     >
-      <DialogTitle id="simple-dialog-title">Set backup account</DialogTitle>
+      <DialogTitle id="simple-dialog-title">
+        You are not signed in. Select a user.
+      </DialogTitle>
       <List>
-        {emails.map((email) => (
+        {members.map((member) => (
           <ListItem
             button
-            onClick={() => handleListItemClick(email)}
-            key={email}
+            onClick={() => handleListItemClick(member.name)}
+            key={member.id}
           >
             <ListItemAvatar>
               <Avatar className={classes.avatar}>
                 <PersonIcon />
               </Avatar>
             </ListItemAvatar>
-            <ListItemText primary={email} />
+            <ListItemText primary={member.name} />
           </ListItem>
         ))}
       </List>
@@ -66,29 +78,34 @@ function SimpleDialog(props: SimpleDialogProps) {
   );
 }
 
-export default function SimpleDialogDemo() {
-  const [open, setOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(emails[1]);
+export default function UserPrompt() {
+  // const [isopen, setOpen] = useState(false);
+  const { isOpen } = useSelector(usernameSelector);
+  const { members } = useSelector(clickChatSelector);
+  const [selectedValue, setSelectedValue] = useState<string>(members[1]?.name);
+  const dispatch = useDispatch();
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  // const handleClickOpen = () => {
+  //   // setOpen(true);
+  //   dispatch(setIsOpen(true));
+  // };
 
-  const handleClose = (value: string) => {
-    setOpen(false);
-    setSelectedValue(value);
+  const handleClose = () => {
+    dispatch(setIsOpen(false));
+    // setOpen(false);
+    // dispatch(setSelectedValue(value));
   };
 
   return (
     <div>
-      <Typography variant="subtitle1">Selected: {selectedValue}</Typography>
-      <br />
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      {/* <Typography variant="subtitle1">Selected: {selectedValue}</Typography> */}
+      {/* <br /> */}
+      {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         Open simple dialog
-      </Button>
+      </Button> */}
       <SimpleDialog
         selectedValue={selectedValue}
-        open={open}
+        open={isOpen}
         onClose={handleClose}
       />
     </div>

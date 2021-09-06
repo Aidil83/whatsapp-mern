@@ -12,7 +12,7 @@ import { useState } from "react";
 const Message = forwardRef(
   ({ messageData }: { messageData: IMessages }, ref) => {
     const [display, setDisplay] = useState(true);
-    const username = useSelector(usernameSelector);
+    const { username } = useSelector(usernameSelector);
     const chat = useSelector(clickChatSelector);
 
     const isUser = username === messageData.name;
