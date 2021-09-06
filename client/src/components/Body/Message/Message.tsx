@@ -24,7 +24,7 @@ const Message = forwardRef(
           <StyledCard
             user={isUser.toString()}
             ref={ref}
-            isDisplay={messageData.isDisplay}
+            isDisplay={!isUser && messageData.isDisplay}
           >
             <CardContent>
               <MessageDesc

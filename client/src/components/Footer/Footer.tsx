@@ -39,12 +39,16 @@ const Footer = () => {
     setInput(e.target.value);
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const isMember = members.find(
       (member: IChip): boolean => member.name === username
     );
+
     let isDisplay = nameDisplay;
+    let _trackName = trackName;
+
     if (!isMember) {
       dispatch(setIsOpen(true));
       setInput("");
@@ -52,9 +56,11 @@ const Footer = () => {
     }
 
     setTrackName(username);
+    _trackName = username;
+    console.log({ trackName }, { username }, { count }, { isDisplay });
 
     // example: Ali === Jake
-    if (trackName === username) {
+    if (_trackName === username) {
       if (count === 0) {
         setCount(count + 1);
       } else if (count > 0) {
