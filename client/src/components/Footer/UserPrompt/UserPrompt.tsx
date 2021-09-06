@@ -1,5 +1,4 @@
 import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -8,7 +7,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
 import PersonIcon from "@material-ui/icons/Person";
-import Typography from "@material-ui/core/Typography";
 import { blue } from "@material-ui/core/colors";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,7 +16,6 @@ import {
   usernameSelector,
 } from "../../../redux/slices/username.slice";
 import { clickChatSelector } from "../../../redux/slices/clickChat.slice";
-import { IChip } from "../../CreateGroup/CreateGroup";
 
 const useStyles = makeStyles({
   avatar: {
@@ -33,9 +30,8 @@ export interface SimpleDialogProps {
   onClose: (value: string) => void;
 }
 
-function SimpleDialog(props: SimpleDialogProps) {
+function SimpleDialog({ onClose, selectedValue }: SimpleDialogProps) {
   const classes = useStyles();
-  const { onClose, selectedValue, open } = props;
   const { isOpen } = useSelector(usernameSelector);
   const { members } = useSelector(clickChatSelector);
   const dispatch = useDispatch();
@@ -56,7 +52,8 @@ function SimpleDialog(props: SimpleDialogProps) {
       open={isOpen}
     >
       <DialogTitle id="simple-dialog-title">
-        You are not signed in. Select a user.
+        {/* You are not signed in. Select a user. */}
+        Only group members can send messages! Select user.
       </DialogTitle>
       <List>
         {members.map((member) => (
@@ -85,24 +82,12 @@ export default function UserPrompt() {
   const [selectedValue, setSelectedValue] = useState<string>(members[1]?.name);
   const dispatch = useDispatch();
 
-  // const handleClickOpen = () => {
-  //   // setOpen(true);
-  //   dispatch(setIsOpen(true));
-  // };
-
   const handleClose = () => {
     dispatch(setIsOpen(false));
-    // setOpen(false);
-    // dispatch(setSelectedValue(value));
   };
 
   return (
     <div>
-      {/* <Typography variant="subtitle1">Selected: {selectedValue}</Typography> */}
-      {/* <br /> */}
-      {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Open simple dialog
-      </Button> */}
       <SimpleDialog
         selectedValue={selectedValue}
         open={isOpen}

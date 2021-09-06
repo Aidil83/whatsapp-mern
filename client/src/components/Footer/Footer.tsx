@@ -1,6 +1,5 @@
 import { useState } from "react";
 import IconButton from "@material-ui/core/IconButton";
-import React from "react";
 import {
   FooterContainer,
   StyledClipIcons,
@@ -9,11 +8,7 @@ import {
   StyledSmileIcons,
 } from "./Footer.styles";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setIsOpen,
-  setUsername,
-  usernameSelector,
-} from "../../redux/slices/username.slice";
+import { setIsOpen, usernameSelector } from "../../redux/slices/username.slice";
 import * as api from "../../api/wsApi";
 import { useMutation, useQueryClient } from "react-query";
 import { clickChatSelector } from "../../redux/slices/clickChat.slice";
@@ -51,14 +46,6 @@ const Footer = () => {
     );
     let isDisplay = nameDisplay;
     if (!isMember) {
-      // const _name =
-      //   prompt(
-      //     "Only members of this group are allowed to type here! Please enter the existing member name"
-      //   ) ?? "Guest";
-
-      // return <UserPrompt />;
-      // dispatch(setUsername(_name));
-
       dispatch(setIsOpen(true));
       setInput("");
       return;
