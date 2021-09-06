@@ -52,7 +52,6 @@ function SimpleDialog({ onClose, selectedValue }: SimpleDialogProps) {
       open={isOpen}
     >
       <DialogTitle id="simple-dialog-title">
-        {/* You are not signed in. Select a user. */}
         Only group members can send messages! Select user.
       </DialogTitle>
       <List>

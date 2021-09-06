@@ -1,16 +1,18 @@
-[ ] Create UI for handling non-existing username before user submits message."
-   [ ] Use the username slice and create an object that contains username.
+[ ] Work on handling same user message name from appearing again.
 [ ] Work on post request room after user submit sidebar.
    [ ] Make it realtime with pusher.
    [x] If roomName == "...", then diplay messages.
 [ ] Work on add new contact.
-[ ] Work on group setting or customize group component. (Fitri's)
+[ ] Work on group setting or customize group component. (Fitri's method)
 [ ] Work on default image on header body component.
-[x] Work on default chat to fix scroll issues too.
-[x] Work on message's description.
-[x] Create the add new contact functionality. Make sure to pass in the object the color prop. 
-[x] Remove repeating names and my name just like in Whatsapp.
-[x] Work on message's name color.
-[x] Add some margin top/bottom on non-repeating subsequent names.
-[x] Truncate when messages get lengthy.
-[x] Work on the color in users.
+
+[x] Completed Todos.
+   [x] Work on default chat to fix scroll issues too.
+   [x] Work on message's description.
+   [x] Create the add new contact functionality. Make sure to pass in the object the color prop. 
+   [x] Remove repeating names and my name just like in Whatsapp.
+   [x] Work on message's name color.
+   [x] Add some margin top/bottom on non-repeating subsequent names.
+   [x] Truncate when messages get lengthy.
+   [x] Work on the color in users.
+      [x] Use the username slice and create an object that contains username.
