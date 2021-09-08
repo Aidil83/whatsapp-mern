@@ -19,10 +19,9 @@ const Footer = () => {
   const { roomName, members } = useSelector(clickChatSelector);
   const [trackName, setTrackName] = useState<string>(username);
   const [nameDisplay, setNameDisplay] = useState<boolean>(true);
-  const [count, setCount] = useState<number>(0);
   const [input, setInput] = useState<string>("");
 
-  const { data: latest_message } = useQuery(
+  const { data: latestMessage } = useQuery(
     "currentMessage",
     api.getLatestMessageData
   );
@@ -31,6 +30,7 @@ const Footer = () => {
   const { isLoading, mutate } = useMutation(api.postMessage, {
     onSuccess: () => {
       queryClient.invalidateQueries("messages");
+      queryClient.invalidateQueries("currentMessage");
     },
   });
 
@@ -52,7 +52,6 @@ const Footer = () => {
     );
 
     let isDisplay = nameDisplay;
-    let _trackName = trackName;
 
     if (!isMember) {
       dispatch(setIsOpen(true));
@@ -61,20 +60,15 @@ const Footer = () => {
     }
 
     setTrackName(username);
-    _trackName = username;
+    console.log(latestMessage.name, { username });
 
     // example: Ali === Jake
-    if (_trackName === username) {
-      if (count === 0) {
-        setCount(count + 1);
-      } else if (count > 0) {
-        setNameDisplay(false);
-        isDisplay = false;
-      }
+    if (latestMessage.name === username) {
+      setNameDisplay(false);
+      isDisplay = false;
     } else {
       setNameDisplay(true);
       isDisplay = true;
-      setCount(0);
     }
 
     const color = members.filter((member: IChip): string | void => {

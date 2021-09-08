@@ -79,6 +79,9 @@ app.get("/latest_message/sync", (_, res: Response) => {
     .limit(1)
     .then((message: IUser[]) => {
       res.status(200).send(message[0]);
+    })
+    .catch((err) => {
+      res.status(500).send(err);
     });
 });
 
