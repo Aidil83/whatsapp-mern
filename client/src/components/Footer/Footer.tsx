@@ -57,7 +57,6 @@ const Footer = () => {
 
     setTrackName(username);
     _trackName = username;
-    console.log({ trackName }, { username }, { count }, { isDisplay });
 
     // example: Ali === Jake
     if (_trackName === username) {

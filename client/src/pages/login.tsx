@@ -13,7 +13,6 @@ import { Button } from "@material-ui/core";
 import { clickChatSelector } from "../redux/slices/clickChat.slice";
 
 function Login() {
-  const contacts = useSelector(storedContactsSelector);
   const { members } = useSelector(clickChatSelector);
   const dispatch = useDispatch();
   const router = useRouter();
