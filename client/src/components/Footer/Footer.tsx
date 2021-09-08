@@ -17,7 +17,6 @@ import { IChip } from "../CreateGroup/CreateGroup";
 const Footer = () => {
   const { username } = useSelector(usernameSelector);
   const { roomName, members } = useSelector(clickChatSelector);
-  const [trackName, setTrackName] = useState<string>(username);
   const [nameDisplay, setNameDisplay] = useState<boolean>(true);
   const [input, setInput] = useState<string>("");
 
@@ -59,7 +58,6 @@ const Footer = () => {
       return;
     }
 
-    setTrackName(username);
     console.log(latestMessage.name, { username });
 
     // example: Ali === Jake
