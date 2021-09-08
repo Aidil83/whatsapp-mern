@@ -10,7 +10,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { setIsOpen, usernameSelector } from "../../redux/slices/username.slice";
 import * as api from "../../api/wsApi";
-import { useMutation, useQueryClient } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { clickChatSelector } from "../../redux/slices/clickChat.slice";
 import { IChip } from "../CreateGroup/CreateGroup";
 
@@ -21,6 +21,11 @@ const Footer = () => {
   const [nameDisplay, setNameDisplay] = useState<boolean>(true);
   const [count, setCount] = useState<number>(0);
   const [input, setInput] = useState<string>("");
+
+  const { data: latest_message } = useQuery(
+    "currentMessage",
+    api.getLatestMessageData
+  );
 
   const queryClient = useQueryClient();
   const { isLoading, mutate } = useMutation(api.postMessage, {

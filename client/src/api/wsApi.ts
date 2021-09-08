@@ -9,6 +9,9 @@ const api = axios.create({
 export const getMessagesData = () =>
   api.get("/messages/sync").then((res) => res.data);
 
+export const getLatestMessageData = () =>
+  api.get("/latest_message/sync").then((res) => res.data);
+
 export const postMessage = (postMessage: IMessages) =>
   api.post("/messages/new", postMessage).then((res) => res.data);
 

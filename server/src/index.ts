@@ -73,6 +73,15 @@ app.get("/messages/sync", (_, res: Response) => {
   });
 });
 
+app.get("/latest_message/sync", (_, res: Response) => {
+  Messages.find({})
+    .sort({ _id: -1 })
+    .limit(1)
+    .then((message: IUser[]) => {
+      res.status(200).send(message[0]);
+    });
+});
+
 app.post("/messages/new", (req: Request, res: Response) => {
   const dbMessage = req.body;
 
