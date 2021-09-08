@@ -10,9 +10,11 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import { Button } from "@material-ui/core";
+import { clickChatSelector } from "../redux/slices/clickChat.slice";
 
 function Login() {
   const contacts = useSelector(storedContactsSelector);
+  const { members } = useSelector(clickChatSelector);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -50,7 +52,7 @@ function Login() {
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
-              {contacts.map(({ id, name }) => (
+              {members.map(({ id, name }) => (
                 <MenuItem key={id} value={name}>
                   {name}
                 </MenuItem>

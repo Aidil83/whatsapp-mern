@@ -1,5 +1,5 @@
 [ ] Work on repeating names from appearing.
-   [ ] Work on same user on white text. same user refresh problem.
+   [ ] Work on same user margin-top on white text. same user refresh problem.
    [x] Work on handling same user message name from appearing again.
 [ ] Work on post request room after user submit sidebar.
    [ ] Make it realtime with pusher.
