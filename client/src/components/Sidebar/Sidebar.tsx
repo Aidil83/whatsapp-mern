@@ -1,12 +1,6 @@
 import IconButton from "@material-ui/core/IconButton";
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { SidebarDrawer } from "..";
-import {
-  groupInfoSelector,
-  loadGroupInfo,
-  setGroupInfo,
-} from "../../redux/slices/groupInfo.slice";
 import { StyledMoreVertIcon } from "../Header/Header.styles";
 import * as api from "../../api/wsApi";
 import {
@@ -26,6 +20,7 @@ import { useRouter } from "next/dist/client/router";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Fade from "@material-ui/core/Fade";
+import Avatar from "@material-ui/core/Avatar";
 
 const Sidebar = () => {
   const [isDrawer, setIsDrawer] = useState<boolean>(false);
@@ -55,13 +50,7 @@ const Sidebar = () => {
       <SidebarDrawer isDrawer={isDrawer} setIsDrawer={setIsDrawer} />
       <SidebarContainer>
         <SidebarHeader>
-          <MyProfilePic
-            onClick={handleClick}
-            src="/static/images/coder.jpg"
-            width={40}
-            height={40}
-            alt="my-profile"
-          />
+          <Avatar src="/static/images/coder.jpg">A</Avatar>
           <Menu
             id="fade-menu"
             anchorEl={anchorEl}

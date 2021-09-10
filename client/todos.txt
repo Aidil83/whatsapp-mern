@@ -1,6 +1,3 @@
-[ ] Work on repeating names from appearing.
-   [ ] Work on same user margin-top on white text. same user refresh problem.
-   [x] Work on handling same user message name from appearing again.
 [ ] Work on post request room after user submit sidebar.
    [ ] Make it realtime with pusher.
    [x] If roomName == "...", then diplay messages.
@@ -9,6 +6,9 @@
 [ ] Work on default image on header body component.
 
 [x] Completed Todos.
+   [x] Work on repeating names from appearing.
+      [x] Work on same user margin-top on white text. same user refresh problem.
+   [x] Work on handling same user message name from appearing again.
    [x] Work on default chat to fix scroll issues too.
    [x] Work on message's description.
    [x] Create the add new contact functionality. Make sure to pass in the object the color prop. 

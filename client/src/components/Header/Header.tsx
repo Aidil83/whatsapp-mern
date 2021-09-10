@@ -1,3 +1,4 @@
+import { Avatar } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -19,7 +20,11 @@ const Header = () => {
   return (
     <Container>
       {!image && <DefaultImage />}
-      {image && <ProfilePic src={image} width={50} height={50} />}
+      {image && (
+        <Avatar src={image} style={{ height: 50, width: 50 }}>
+          A
+        </Avatar>
+      )}
       <NameWrapper>
         <TitleName>{roomName}</TitleName>
         <DescriptionName>

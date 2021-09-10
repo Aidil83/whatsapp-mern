@@ -6,6 +6,7 @@ import { useRouter } from "next/dist/client/router";
 import { useDispatch } from "react-redux";
 import { goToChat } from "../../../redux/slices/clickChat.slice";
 import { MyProfilePic } from "../Sidebar.styles";
+import { Avatar } from "@material-ui/core";
 
 interface Props {
   item: IGroupInfoStore;
@@ -28,12 +29,9 @@ const SidebarChat = ({ item, id }: Props) => {
         <StyledContact onClick={() => openChat(id)}>
           {!item.image && <DefaultImage />}
           {item.image && (
-            <MyProfilePic
-              src={item?.image}
-              width={50}
-              height={50}
-              placeholder="my-profile"
-            />
+            <Avatar src={item?.image} alt="" style={{ height: 50, width: 50 }}>
+              A
+            </Avatar>
           )}
           <div
             style={{
