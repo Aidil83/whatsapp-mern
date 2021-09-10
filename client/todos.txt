@@ -1,3 +1,4 @@
+[ ] Work on gsap for members profile.
 [ ] Work on post request room after user submit sidebar.
    [ ] Make it realtime with pusher.
    [x] If roomName == "...", then diplay messages.

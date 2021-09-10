@@ -19,7 +19,7 @@ import OutsideClickHandler from "react-outside-click-handler";
 const Header = () => {
   const { roomName, image, members } = useSelector(clickChatSelector);
   const [isOpen, setIsOpen] = useState(false);
-  const [isDisabled, setIsDisabled] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(true);
 
   const handleClickProfile = () => {
     setIsDisabled(false);
@@ -28,20 +28,21 @@ const Header = () => {
 
   return (
     <Container>
-      {!image && <DefaultImage />}
-      {image && (
-        <Avatar
-          onClick={handleClickProfile}
-          src={image}
-          style={{ height: 50, width: 50, cursor: "pointer" }}
-        >
-          A
-        </Avatar>
-      )}
       <OutsideClickHandler
         onOutsideClick={() => setIsOpen(false)}
         disabled={isDisabled}
+        display={"flex"}
       >
+        {!image && <DefaultImage />}
+        {image && (
+          <Avatar
+            onClick={handleClickProfile}
+            src={image}
+            style={{ height: 50, width: 50, cursor: "pointer" }}
+          >
+            A
+          </Avatar>
+        )}
         {isOpen && (
           <GroupAvatars setIsOpen={setIsOpen} setIsDisabled={setIsDisabled} />
         )}
