@@ -20,7 +20,6 @@ const Header = () => {
   const { roomName, image, members } = useSelector(clickChatSelector);
   const [isOpen, setIsOpen] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
-
   const handleClickProfile = () => {
     setIsDisabled(false);
     setIsOpen(!isOpen);
@@ -43,9 +42,11 @@ const Header = () => {
             A
           </Avatar>
         )}
-        {isOpen && (
-          <GroupAvatars setIsOpen={setIsOpen} setIsDisabled={setIsDisabled} />
-        )}
+        <GroupAvatars
+          setIsOpen={setIsOpen}
+          isOpen={isOpen}
+          setIsDisabled={setIsDisabled}
+        />
       </OutsideClickHandler>
       <NameWrapper>
         <TitleName>{roomName}</TitleName>
