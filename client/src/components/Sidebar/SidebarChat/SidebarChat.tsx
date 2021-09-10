@@ -5,7 +5,6 @@ import { DefaultImage, StyledContact } from "./SidebarChat.styles";
 import { useRouter } from "next/dist/client/router";
 import { useDispatch } from "react-redux";
 import { goToChat } from "../../../redux/slices/clickChat.slice";
-import { MyProfilePic } from "../Sidebar.styles";
 import { Avatar } from "@material-ui/core";
 
 interface Props {

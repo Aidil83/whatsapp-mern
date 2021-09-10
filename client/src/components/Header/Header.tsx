@@ -1,15 +1,15 @@
 import { Avatar } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { clickChatSelector } from "../../redux/slices/clickChat.slice";
 import { IChip } from "../CreateGroup/CreateGroup";
 import { DefaultImage } from "../Sidebar/SidebarChat/SidebarChat.styles";
+import GroupAvatars from "./GroupAvatars/GroupAvatars";
 import {
   Container,
   DescriptionName,
   NameWrapper,
-  ProfilePic,
   TitleName,
   StyledSearchIcon,
   StyledMoreVertIcon,
@@ -17,14 +17,24 @@ import {
 
 const Header = () => {
   const { roomName, image, members } = useSelector(clickChatSelector);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClickProfile = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <Container>
       {!image && <DefaultImage />}
       {image && (
-        <Avatar src={image} style={{ height: 50, width: 50 }}>
+        <Avatar
+          onClick={handleClickProfile}
+          src={image}
+          style={{ height: 50, width: 50, cursor: "pointer" }}
+        >
           A
         </Avatar>
       )}
+      {isOpen && <GroupAvatars />}
       <NameWrapper>
         <TitleName>{roomName}</TitleName>
         <DescriptionName>
