@@ -1,5 +1,7 @@
+import { ListItemAvatar, ListItemText } from "@material-ui/core";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import Avatar from "@material-ui/core/Avatar";
 import { useDispatch } from "react-redux";
 import { setUsername } from "../../../redux/slices/username.slice";
 import { IChip } from "../../CreateGroup/CreateGroup";
@@ -31,10 +33,13 @@ export default function GroupModal({
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        {members?.map(({ id, name }: IChip) => {
+        {members?.map(({ id, name, image }: IChip) => {
           return (
             <MenuItem key={id} onClick={() => handleClose(name)}>
-              {name}
+              <ListItemAvatar>
+                <Avatar alt={name} src={image} />
+              </ListItemAvatar>
+              <ListItemText primary={name} />
             </MenuItem>
           );
         })}
