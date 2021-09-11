@@ -1,18 +1,21 @@
 import styled from "styled-components";
 import { AppearanceType, SizeType } from "@atlaskit/avatar";
 import Button from "@atlaskit/button/standard-button";
-import { groupData } from "./GroupData";
 import AvatarGroup from "@atlaskit/avatar-group";
-import { Fragment, useEffect, useRef } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import OutsideClickHandler from "react-outside-click-handler";
 import gsap from "gsap";
 import { clickChatSelector } from "../../../redux/slices/clickChat.slice";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { IChip } from "../../CreateGroup/CreateGroup";
+import { setUsername } from "../../../redux/slices/username.slice";
+import GroupModal from "./GroupModal";
 
 const ButtonGroup = styled.div`
   margin: 8px;
   text-align: center;
+  color: orange;
+  background-color: orange;
 `;
 
 interface IAvatarGroupProps {
@@ -26,10 +29,12 @@ const AvatarGroupOverridesExample = ({
   setIsDisabled,
   isOpen,
 }: IAvatarGroupProps) => {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { members } = useSelector(clickChatSelector);
+  const dispatch = useDispatch();
   let animateGroupAvatars = useRef(null);
 
-  const data = members.slice(0, 8).map((d: IChip) => ({
+  const data = members.map((d: IChip) => ({
     key: d.id,
     name: d.name,
     src: d.image,
@@ -37,6 +42,10 @@ const AvatarGroupOverridesExample = ({
     appearance: "circle" as AppearanceType,
     size: "medium" as SizeType,
     enableTooltip: true,
+    onClick: () => {
+      dispatch(setUsername(d.name));
+      setIsOpen(false);
+    },
   }));
 
   useEffect(() => {
@@ -69,7 +78,6 @@ const AvatarGroupOverridesExample = ({
       );
     }
   }, [isOpen]);
-
   return (
     <Container ref={(e: any) => (animateGroupAvatars = e)}>
       <AvatarGroup
@@ -77,31 +85,14 @@ const AvatarGroupOverridesExample = ({
         appearance="stack"
         data={data}
         size="large"
-        overrides={{
-          AvatarGroupItem: {
-            render: (Component, props, index) => {
-              const avatarItem = <Component {...props} key={index} />;
-              setIsDisabled(true);
-
-              return index === data.length - 1 ? (
-                <Fragment key={`${index}-overridden`}>
-                  {avatarItem}
-                  <ButtonGroup data-testid="load-more-actions">
-                    <OutsideClickHandler
-                      onOutsideClick={() => setIsOpen(false)}
-                    >
-                      <Button testId="load-more" css={undefined}>
-                        Load more
-                      </Button>
-                    </OutsideClickHandler>
-                  </ButtonGroup>
-                </Fragment>
-              ) : (
-                avatarItem
-              );
-            },
-          },
+        onMoreClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+          setAnchorEl(event.currentTarget);
         }}
+      />
+      <GroupModal
+        anchorEl={anchorEl}
+        setAnchorEl={setAnchorEl}
+        members={members}
       />
     </Container>
   );

@@ -58,8 +58,6 @@ const Footer = () => {
       return;
     }
 
-    console.log(latestMessage.name, { username });
-
     // example: Ali === Jake
     if (latestMessage.name === username) {
       setNameDisplay(false);
