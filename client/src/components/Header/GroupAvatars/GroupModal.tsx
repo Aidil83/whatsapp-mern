@@ -19,7 +19,12 @@ export default function GroupModal({
 }: IGroupModal) {
   const dispatch = useDispatch();
 
-  const handleClose = (name: string): void => {
+  const handleClose = (): void => {
+    setAnchorEl(null);
+  };
+
+  const handleClick = (name: string): void => {
+    console.log("name2", name);
     dispatch(setUsername(name));
     setAnchorEl(null);
   };
@@ -35,7 +40,7 @@ export default function GroupModal({
       >
         {members?.map(({ id, name, image }: IChip) => {
           return (
-            <MenuItem key={id} onClick={() => handleClose(name)}>
+            <MenuItem key={id} onClick={() => handleClick(name)}>
               <ListItemAvatar>
                 <Avatar alt={name} src={image} />
               </ListItemAvatar>

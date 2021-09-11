@@ -1,12 +1,13 @@
-[ ] Work on gsap for members profile.
+[ ] Fix warning error logs.
+[ ] Work on add new contact with image.
 [ ] Work on post request room after user submit sidebar.
    [ ] Make it realtime with pusher.
    [x] If roomName == "...", then diplay messages.
-[ ] Work on add new contact.
 [ ] Work on group setting or customize group component. (Fitri's method)
 [ ] Work on default image on header body component.
 
 [x] Completed Todos.
+   [x] Work on gsap for members profile.
    [x] Work on repeating names from appearing.
       [x] Work on same user margin-top on white text. same user refresh problem.
    [x] Work on handling same user message name from appearing again.
