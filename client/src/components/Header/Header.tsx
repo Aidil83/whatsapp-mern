@@ -1,6 +1,7 @@
 import { Avatar } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import OutsideClickHandler from "react-outside-click-handler";
 import { useSelector } from "react-redux";
 import { clickChatSelector } from "../../redux/slices/clickChat.slice";
 import { IChip } from "../CreateGroup/CreateGroup";
@@ -10,19 +11,26 @@ import {
   Container,
   DescriptionName,
   NameWrapper,
-  TitleName,
-  StyledSearchIcon,
   StyledMoreVertIcon,
+  StyledSearchIcon,
+  TitleName,
 } from "./Header.styles";
-import OutsideClickHandler from "react-outside-click-handler";
+import Searchbox from "./Searchbox/Searchbox";
 
 const Header = () => {
   const { roomName, image, members } = useSelector(clickChatSelector);
   const [isOpen, setIsOpen] = useState(false);
+  const [isSearchbox, setIsSearchbox] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
+  let searchboxRef = useRef(null);
+
   const handleClickProfile = () => {
     setIsDisabled(false);
     setIsOpen(!isOpen);
+  };
+
+  const handleClickSearchbox = () => {
+    setIsSearchbox(true);
   };
 
   return (
@@ -57,9 +65,14 @@ const Header = () => {
             )}
         </DescriptionName>
       </NameWrapper>
-      <IconButton>
-        <StyledSearchIcon />
-      </IconButton>
+      {!isSearchbox && (
+        <IconButton onClick={handleClickSearchbox}>
+          <StyledSearchIcon />
+        </IconButton>
+      )}
+      <OutsideClickHandler onOutsideClick={() => setIsSearchbox(false)}>
+        {isSearchbox && <Searchbox searchboxRef={searchboxRef} />}
+      </OutsideClickHandler>
       <IconButton>
         <StyledMoreVertIcon />
       </IconButton>
