@@ -71,7 +71,7 @@ const StyledCard = styled(Card)<StyleProps>`
   max-width: 500px;
   margin: 0.25em;
   padding: 0.3em;
-  margin-top: ${({ isDisplay }) => (isDisplay ? "0.85em" : "0em")};
+  margin-top: ${({ isDisplay }) => (isDisplay ? "0.65em" : "0em")};
   ${({ user }) => user == "true" && "margin-left: auto"};
   margin-bottom: 3px;
   background-color: ${({ user }) =>
