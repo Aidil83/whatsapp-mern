@@ -5,7 +5,6 @@ import { StyledMoreVertIcon } from "../Header/Header.styles";
 import * as api from "../../api/wsApi";
 import {
   InputSection,
-  MyProfilePic,
   PaneSide,
   SidebarContainer,
   SidebarHeader,
@@ -24,19 +23,12 @@ import Avatar from "@material-ui/core/Avatar";
 
 const Sidebar = () => {
   const [isDrawer, setIsDrawer] = useState<boolean>(false);
-  // const groupInfoData = useSelector(groupInfoSelector);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
   const router = useRouter();
 
   const { data, isLoading } = useQuery("rooms", api.getRooms);
-
-  const options = ["Profile", "My account", "Sign in"];
-
-  const handleClick = (event: any): void => {
-    setAnchorEl(event.currentTarget);
-  };
 
   const handleClose = (id: number) => {
     if (id === 2) {

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IChip } from "../../components/CreateGroup/CreateGroup";
 import { RootState } from "../configureStore";
+import { IChip } from "../../components/CreateGroup/CreateGroup";
 
 const initialState: IChip[] = [];
 

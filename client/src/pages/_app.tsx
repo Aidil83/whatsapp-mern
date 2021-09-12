@@ -1,10 +1,9 @@
 import { AppProps } from "next/app";
-import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { Provider } from "react-redux";
-import { ThemeProvider } from "styled-components";
 import { store } from "../redux/configureStore";
+import { ThemeProvider } from "styled-components";
 import theme from "../styles/theme";
 
 const client = new QueryClient();
