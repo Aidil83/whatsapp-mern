@@ -1,9 +1,9 @@
-import React, { forwardRef, useRef } from "react";
+import React, { useEffect } from "react";
 import Toolbar from "@material-ui/core/Toolbar";
 import InputBase from "@material-ui/core/InputBase";
 import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
-import { PhoneForwardedRounded } from "@material-ui/icons";
+import gsap from "gsap";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -50,10 +50,10 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(1, 1, 1, 0),
       // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-      transition: theme.transitions.create("width"),
       width: "100%",
       [theme.breakpoints.up("sm")]: {
-        width: "20ch",
+        width: "0ch",
+        opacity: 0,
       },
     },
   })
@@ -65,9 +65,20 @@ interface ISB {
 
 const Searchbox = ({ searchboxRef }: ISB) => {
   const classes = useStyles();
+  let containerRef = React.useRef(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     searchboxRef?.current?.focus();
+
+    gsap.fromTo(
+      searchboxRef?.current,
+      { opacity: 0, width: "0ch" },
+      {
+        opacity: 1,
+        width: "20ch",
+        duration: 0.4,
+      }
+    );
   }, []);
 
   return (

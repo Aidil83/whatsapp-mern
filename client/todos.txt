@@ -1,3 +1,4 @@
+[ ] Work on searchbox animation.
 [ ] Work on add new contact with image.
 [ ] Fix warning error logs.
 [ ] Work on post request room after user submit sidebar.

@@ -1,20 +1,13 @@
 import styled from "styled-components";
 import { AppearanceType, SizeType } from "@atlaskit/avatar";
 import AvatarGroup from "@atlaskit/avatar-group";
-import { Fragment, useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { clickChatSelector } from "../../../redux/slices/clickChat.slice";
 import { useDispatch, useSelector } from "react-redux";
 import { IChip } from "../../CreateGroup/CreateGroup";
 import { setUsername } from "../../../redux/slices/username.slice";
 import GroupModal from "./GroupModal";
-
-const ButtonGroup = styled.div`
-  margin: 8px;
-  text-align: center;
-  color: orange;
-  background-color: orange;
-`;
 
 interface IAvatarGroupProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -75,6 +68,7 @@ const AvatarGroupOverridesExample = ({
       );
     }
   }, [isOpen]);
+
   return (
     <Container ref={(e: any) => (animateGroupAvatars = e)}>
       <AvatarGroup
