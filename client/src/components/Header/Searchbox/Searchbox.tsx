@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
       position: "relative",
       borderRadius: theme.shape.borderRadius,
       backgroundColor: "rgba(218, 218, 218, 0.85)",
+      overflow: "hidden",
       "&:hover": {
         backgroundColor: "#e2e2e2",
       },
@@ -31,7 +32,8 @@ const useStyles = makeStyles((theme: Theme) =>
       width: "100%",
       [theme.breakpoints.up("sm")]: {
         marginLeft: theme.spacing(1),
-        width: "auto",
+        width: "0ch",
+        opacity: 0,
       },
     },
     searchIcon: {
@@ -52,8 +54,8 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
       width: "100%",
       [theme.breakpoints.up("sm")]: {
-        width: "0ch",
         opacity: 0,
+        width: "0ch",
       },
     },
   })
@@ -71,6 +73,15 @@ const Searchbox = ({ searchboxRef }: ISB) => {
     searchboxRef?.current?.focus();
 
     gsap.fromTo(
+      containerRef?.current,
+      { opacity: 0, width: "0ch" },
+      {
+        opacity: 1,
+        width: "28ch",
+        duration: 0.4,
+      }
+    );
+    gsap.fromTo(
       searchboxRef?.current,
       { opacity: 0, width: "0ch" },
       {
@@ -83,7 +94,7 @@ const Searchbox = ({ searchboxRef }: ISB) => {
 
   return (
     <Toolbar>
-      <div className={classes.search}>
+      <div className={classes.search} ref={containerRef}>
         <div className={classes.searchIcon}>
           <SearchIcon />
         </div>
