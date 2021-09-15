@@ -70,9 +70,11 @@ const Header = () => {
           <StyledSearchIcon />
         </IconButton>
       )}
-      <OutsideClickHandler onOutsideClick={() => setIsSearchbox(false)}>
-        {isSearchbox && <Searchbox searchboxRef={searchboxRef} />}
-      </OutsideClickHandler>
+      {isSearchbox && (
+        <OutsideClickHandler onOutsideClick={() => setIsSearchbox(false)}>
+          <Searchbox searchboxRef={searchboxRef} />
+        </OutsideClickHandler>
+      )}
       <IconButton>
         <StyledMoreVertIcon />
       </IconButton>
