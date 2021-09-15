@@ -39,13 +39,11 @@ const AvatarGroupOverridesExample = ({
   }));
 
   useEffect(() => {
-    if (isOpen === true) {
+    if (isOpen) {
       gsap.fromTo(
         animateGroupAvatars,
         { opacity: 0, x: -20, width: 0 },
         {
-          display: "flex",
-          visibility: "visible",
           opacity: 1,
           x: 0,
           width: 188,
@@ -53,12 +51,11 @@ const AvatarGroupOverridesExample = ({
         }
       );
     }
-    if (isOpen === false) {
+    if (!isOpen) {
       gsap.fromTo(
         animateGroupAvatars,
         { opacity: 1, x: 0 },
         {
-          display: "none",
           opacity: 0,
           x: -20,
           width: 0,
@@ -94,5 +91,4 @@ export default AvatarGroupOverridesExample;
 const Container = styled.div<any>`
   margin-left: 10px;
   margin-top: 2px;
-  visibility: hidden;
 `;
