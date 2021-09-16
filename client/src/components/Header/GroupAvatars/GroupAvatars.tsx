@@ -12,17 +12,21 @@ import GroupModal from "./GroupModal";
 interface IAvatarGroupProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setIsDisabled: React.Dispatch<React.SetStateAction<boolean>>;
+  handleClickProfile: () => void;
   isOpen: boolean;
+  animateGroupAvatars: any;
 }
 
-const AvatarGroupOverridesExample = ({
+const GroupAvatars = ({
   setIsOpen,
   isOpen,
+  animateGroupAvatars,
+  handleClickProfile,
 }: IAvatarGroupProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { members } = useSelector(clickChatSelector);
   const dispatch = useDispatch();
-  let animateGroupAvatars = useRef(null);
+  const tween: any = useRef(null);
 
   const data = members.map((d: IChip) => ({
     key: d.id,
@@ -38,31 +42,38 @@ const AvatarGroupOverridesExample = ({
     },
   }));
 
+  const openAvatars = (isOpen: boolean) => {
+    tween.current = gsap.timeline().to(
+      animateGroupAvatars,
+      // { opacity: 0, x: -20, width: 0 },
+      {
+        opacity: 1,
+        // x: 25,
+        width: 188,
+        duration: 0.5,
+        onComplete: handleClickProfile,
+      }
+    );
+    if (isOpen) {
+      tween.current.play();
+    } else {
+      tween.current.reverse();
+    }
+
+    return () => {
+      tween.kill();
+    };
+  };
+
+  useEffect(() => {
+    openAvatars(isOpen);
+  }, []);
+
   useEffect(() => {
     if (isOpen) {
-      gsap.fromTo(
-        animateGroupAvatars,
-        { opacity: 0, x: -20, width: 0 },
-        {
-          opacity: 1,
-          x: 0,
-          width: 188,
-          duration: 0.5,
-        }
-      );
-    }
-    if (!isOpen) {
-      gsap.fromTo(
-        animateGroupAvatars,
-        { opacity: 1, x: 0 },
-        {
-          opacity: 0,
-          x: -20,
-          width: 0,
-          duration: 0.3,
-          ease: "linear",
-        }
-      );
+      tween.current.play();
+    } else {
+      tween.current.reverse();
     }
   }, [isOpen]);
 
@@ -86,9 +97,11 @@ const AvatarGroupOverridesExample = ({
   );
 };
 
-export default AvatarGroupOverridesExample;
+export default GroupAvatars;
 
 const Container = styled.div<any>`
   margin-left: 10px;
   margin-top: 2px;
+  opacity: 0;
+  width: 0;
 `;

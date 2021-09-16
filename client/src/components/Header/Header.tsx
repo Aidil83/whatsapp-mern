@@ -23,10 +23,13 @@ const Header = () => {
   const [isSearchbox, setIsSearchbox] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   let searchboxRef = useRef(null);
+  let animateGroupAvatars = useRef(null);
+
+  React.useEffect(() => {}, [isOpen]);
 
   const handleClickProfile = () => {
     setIsDisabled(false);
-    setIsOpen(!isOpen);
+    setIsOpen(true);
   };
 
   const handleClickSearchbox = () => {
@@ -50,11 +53,15 @@ const Header = () => {
             A
           </Avatar>
         )}
+        {/* {isOpen && ( */}
         <GroupAvatars
           setIsOpen={setIsOpen}
           isOpen={isOpen}
           setIsDisabled={setIsDisabled}
+          animateGroupAvatars={animateGroupAvatars}
+          handleClickProfile={handleClickProfile}
         />
+        {/* )} */}
       </OutsideClickHandler>
       <NameWrapper>
         <TitleName>{roomName}</TitleName>
