@@ -49,9 +49,9 @@ const GroupAvatars = ({
       {
         opacity: 1,
         // x: 25,
+        display: "block",
         width: 188,
         duration: 0.5,
-        onComplete: handleClickProfile,
       }
     );
     if (isOpen) {
@@ -104,4 +104,5 @@ const Container = styled.div<any>`
   margin-top: 2px;
   opacity: 0;
   width: 0;
+  display: none;
 `;

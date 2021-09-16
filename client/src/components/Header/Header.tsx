@@ -29,7 +29,7 @@ const Header = () => {
 
   const handleClickProfile = () => {
     setIsDisabled(false);
-    setIsOpen(true);
+    setIsOpen(!isOpen);
   };
 
   const handleClickSearchbox = () => {
