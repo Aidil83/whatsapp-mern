@@ -53,7 +53,6 @@ const Header = () => {
             A
           </Avatar>
         )}
-        {/* {isOpen && ( */}
         <GroupAvatars
           setIsOpen={setIsOpen}
           isOpen={isOpen}
@@ -61,7 +60,6 @@ const Header = () => {
           animateGroupAvatars={animateGroupAvatars}
           handleClickProfile={handleClickProfile}
         />
-        {/* )} */}
       </OutsideClickHandler>
       <NameWrapper>
         <TitleName>{roomName}</TitleName>

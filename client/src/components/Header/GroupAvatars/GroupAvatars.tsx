@@ -48,7 +48,7 @@ const GroupAvatars = ({
       // { opacity: 0, x: -20, width: 0 },
       {
         opacity: 1,
-        // x: 25,
+        x: 25,
         display: "block",
         width: 188,
         duration: 0.5,
@@ -105,4 +105,6 @@ const Container = styled.div<any>`
   opacity: 0;
   width: 0;
   display: none;
+  position: relative;
+  left: -25px;
 `;
