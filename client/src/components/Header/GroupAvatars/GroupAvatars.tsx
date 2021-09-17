@@ -21,7 +21,6 @@ const GroupAvatars = ({
   setIsOpen,
   isOpen,
   animateGroupAvatars,
-  handleClickProfile,
 }: IAvatarGroupProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { members } = useSelector(clickChatSelector);
@@ -43,17 +42,13 @@ const GroupAvatars = ({
   }));
 
   const openAvatars = (isOpen: boolean) => {
-    tween.current = gsap.timeline().to(
-      animateGroupAvatars,
-      // { opacity: 0, x: -20, width: 0 },
-      {
-        opacity: 1,
-        x: 25,
-        display: "block",
-        width: 188,
-        duration: 0.5,
-      }
-    );
+    tween.current = gsap.timeline().to(animateGroupAvatars, {
+      opacity: 1,
+      x: 25,
+      display: "block",
+      width: 188,
+      duration: 0.5,
+    });
     if (isOpen) {
       tween.current.play();
     } else {
