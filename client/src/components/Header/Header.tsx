@@ -23,7 +23,7 @@ const Header = () => {
   const [isSearchbox, setIsSearchbox] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   let animateGroupAvatars = useRef(null);
-  let searchboxRef = useRef(null);
+  let searchboxRef = useRef<HTMLInputElement>(null);
 
   React.useEffect(() => {}, [isOpen]);
 

@@ -87,7 +87,7 @@ const Searchbox = ({ searchboxRef }: ISB) => {
       { opacity: 0, width: "0ch" },
       {
         opacity: 1,
-        width: "20ch",
+        width: "28ch",
         duration: 0.4,
       }
     );
@@ -111,7 +111,7 @@ const Searchbox = ({ searchboxRef }: ISB) => {
     //   </div>
     // </Toolbar>
     <Styledform>
-      <input type="text" />
+      <input type="text" placeholder="Search..." ref={searchboxRef} />
     </Styledform>
   );
 };
@@ -127,16 +127,17 @@ const Styledform = styled.form`
   max-height: 30px;
   width: 100%;
   height: 100%;
-  background-color: #fff;
+  background-color: rgba(134, 134, 134, 0.25);
   border-radius: 5px;
   overflow: hidden;
-  /* &:hover {
-    background-color: #e2e2e2;
-  } */
+  &:hover {
+    background-color: rgba(135, 134, 134, 0.2);
+  }
   input {
     /* position: absolute;
     top: 0;
     left: 0; */
+    background-color: transparent;
     padding: 1em;
     border: none;
     outline: none;
