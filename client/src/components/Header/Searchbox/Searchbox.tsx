@@ -63,35 +63,37 @@ import styled from "styled-components";
 // );
 
 interface ISB {
+  isSearchbox: boolean;
   searchboxRef: React.MutableRefObject<HTMLInputElement | null>;
 }
 
-const Searchbox = ({ searchboxRef }: ISB) => {
+const Searchbox = ({ isSearchbox, searchboxRef }: ISB) => {
   // const classes = useStyles();
   let containerRef = React.useRef(null);
+  const tween: any = React.useRef(null);
+
+  useEffect(() => {
+    tween.current = gsap.timeline().to(searchboxRef.current, {
+      display: "block",
+      opacity: 1,
+      width: "28ch",
+      duration: 0.4,
+    });
+
+    return () => {
+      tween.kill();
+    };
+  }, []);
 
   useEffect(() => {
     searchboxRef?.current?.focus();
 
-    gsap.fromTo(
-      containerRef?.current,
-      { opacity: 0, width: "0ch" },
-      {
-        opacity: 1,
-        width: "28ch",
-        duration: 0.4,
-      }
-    );
-    gsap.fromTo(
-      searchboxRef?.current,
-      { opacity: 0, width: "0ch" },
-      {
-        opacity: 1,
-        width: "28ch",
-        duration: 0.4,
-      }
-    );
-  }, []);
+    if (isSearchbox) {
+      tween.current.play();
+    } else {
+      tween.current.reverse();
+    }
+  }, [isSearchbox]);
 
   return (
     // <Toolbar>
@@ -137,6 +139,8 @@ const Styledform = styled.form`
     /* position: absolute;
     top: 0;
     left: 0; */
+    width: 0ch;
+    display: none;
     background-color: transparent;
     padding: 1em;
     border: none;

@@ -23,7 +23,7 @@ const Header = () => {
   const [isSearchbox, setIsSearchbox] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   let animateGroupAvatars = useRef(null);
-  let searchboxRef = useRef<HTMLInputElement>(null);
+  const searchboxRef = useRef<HTMLInputElement>(null);
 
   React.useEffect(() => {}, [isOpen]);
 
@@ -70,16 +70,16 @@ const Header = () => {
             )}
         </DescriptionName>
       </NameWrapper>
-      {!isSearchbox && (
-        <IconButton onClick={handleClickSearchbox}>
-          <StyledSearchIcon />
-        </IconButton>
-      )}
-      {isSearchbox && (
-        <OutsideClickHandler onOutsideClick={() => setIsSearchbox(false)}>
-          <Searchbox searchboxRef={searchboxRef} />
-        </OutsideClickHandler>
-      )}
+      {/* {!isSearchbox && ( */}
+      <IconButton onClick={handleClickSearchbox}>
+        <StyledSearchIcon />
+      </IconButton>
+      {/* )} */}
+      {/* {isSearchbox && ( */}
+      <OutsideClickHandler onOutsideClick={() => setIsSearchbox(false)}>
+        <Searchbox isSearchbox={isSearchbox} searchboxRef={searchboxRef} />
+      </OutsideClickHandler>
+      {/* )} */}
       <IconButton>
         <StyledMoreVertIcon />
       </IconButton>

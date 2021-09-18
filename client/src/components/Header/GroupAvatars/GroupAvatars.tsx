@@ -41,7 +41,7 @@ const GroupAvatars = ({
     },
   }));
 
-  const openAvatars = (isOpen: boolean) => {
+  useEffect(() => {
     tween.current = gsap.timeline().to(animateGroupAvatars, {
       opacity: 1,
       x: 25,
@@ -49,19 +49,15 @@ const GroupAvatars = ({
       width: 188,
       duration: 0.5,
     });
-    if (isOpen) {
-      tween.current.play();
-    } else {
-      tween.current.reverse();
-    }
+    // if (isOpen) {
+    //   tween.current.play();
+    // } else {
+    //   tween.current.reverse();
+    // }
 
     return () => {
       tween.kill();
     };
-  };
-
-  useEffect(() => {
-    openAvatars(isOpen);
   }, []);
 
   useEffect(() => {
