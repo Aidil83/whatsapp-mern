@@ -49,10 +49,6 @@ const GroupAvatars = ({
       width: 188,
       duration: 0.5,
     });
-
-    return () => {
-      tween.kill();
-    };
   }, []);
 
   useEffect(() => {
