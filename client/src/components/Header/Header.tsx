@@ -1,5 +1,4 @@
 import { Avatar } from "@material-ui/core";
-import IconButton from "@material-ui/core/IconButton";
 import React, { useRef, useState } from "react";
 import OutsideClickHandler from "react-outside-click-handler";
 import { useSelector } from "react-redux";
@@ -16,6 +15,7 @@ import {
   TitleName,
 } from "./Header.styles";
 import Searchbox from "./Searchbox/Searchbox";
+import IconButton from "@material-ui/core/IconButton";
 
 const Header = () => {
   const { roomName, image, members } = useSelector(clickChatSelector);
@@ -71,13 +71,14 @@ const Header = () => {
         </DescriptionName>
       </NameWrapper>
       {/* {!isSearchbox && ( */}
-      <IconButton onClick={handleClickSearchbox}>
-        <StyledSearchIcon />
-      </IconButton>
       {/* )} */}
       {/* {isSearchbox && ( */}
       <OutsideClickHandler onOutsideClick={() => setIsSearchbox(false)}>
-        <Searchbox isSearchbox={isSearchbox} searchboxRef={searchboxRef} />
+        <Searchbox
+          isSearchbox={isSearchbox}
+          searchboxRef={searchboxRef}
+          handleClickSearchbox={handleClickSearchbox}
+        />
       </OutsideClickHandler>
       {/* )} */}
       <IconButton>
