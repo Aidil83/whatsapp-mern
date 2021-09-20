@@ -50,9 +50,9 @@ const GroupAvatars = ({
       duration: 0.5,
     });
 
-    // return () => {
-    //   tween.kill();
-    // };
+    return () => {
+      tween.kill();
+    };
   }, []);
 
   useEffect(() => {

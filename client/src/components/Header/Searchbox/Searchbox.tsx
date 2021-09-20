@@ -80,9 +80,9 @@ const Searchbox = ({ isSearchbox, searchboxRef }: ISB) => {
       duration: 0.4,
     });
 
-    return () => {
-      tween.kill();
-    };
+    // return () => {
+    //   tween.kill();
+    // };
   }, []);
 
   useEffect(() => {
