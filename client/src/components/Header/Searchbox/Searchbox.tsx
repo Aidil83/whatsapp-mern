@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import gsap from "gsap";
 import styled from "styled-components";
-import IconButton from "@material-ui/core/IconButton";
 import { StyledSearchIcon } from "../Header.styles";
 
 interface ISB {
