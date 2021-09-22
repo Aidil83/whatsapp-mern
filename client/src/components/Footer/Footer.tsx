@@ -13,6 +13,7 @@ import * as api from "../../api/wsApi";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { clickChatSelector } from "../../redux/slices/clickChat.slice";
 import { IChip } from "../CreateGroup/CreateGroup";
+import "emoji-picker-element";
 
 const Footer = () => {
   const { username } = useSelector(usernameSelector);
@@ -94,6 +95,7 @@ const Footer = () => {
       <IconButton size="small">
         <StyledSmileIcons />
       </IconButton>
+      <emoji-picker></emoji-picker>
       <IconButton size="small">
         <StyledClipIcons />
       </IconButton>
