@@ -11,7 +11,6 @@ import {
   DescriptionName,
   NameWrapper,
   StyledMoreVertIcon,
-  StyledSearchIcon,
   TitleName,
 } from "./Header.styles";
 import Searchbox from "./Searchbox/Searchbox";
@@ -70,9 +69,6 @@ const Header = () => {
             )}
         </DescriptionName>
       </NameWrapper>
-      {/* {!isSearchbox && ( */}
-      {/* )} */}
-      {/* {isSearchbox && ( */}
       <OutsideClickHandler onOutsideClick={() => setIsSearchbox(false)}>
         <Searchbox
           isSearchbox={isSearchbox}
@@ -80,7 +76,6 @@ const Header = () => {
           handleClickSearchbox={handleClickSearchbox}
         />
       </OutsideClickHandler>
-      {/* )} */}
       <IconButton>
         <StyledMoreVertIcon />
       </IconButton>

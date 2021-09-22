@@ -16,18 +16,27 @@ const Searchbox = ({
   handleClickSearchbox,
 }: ISB) => {
   const tween: any = React.useRef(null);
+  const tween2: any = React.useRef(null);
+  let containerRef: any = React.useRef(null);
 
   useEffect(() => {
-    tween.current = gsap.timeline().to(searchboxRef.current, {
+    tween.current = gsap.timeline().to(containerRef.current, {
       opacity: 1,
-      width: "28ch",
-      height: 25,
-      backgroundColor: "rgba(134, 134, 134, 0.25)",
+      minwidth: "20ch",
+      height: 35,
+      backgroundColor: "rgb(212,212,212, .4)",
+      duration: 0.4,
+    });
+    tween2.current = gsap.timeline().to(searchboxRef.current, {
+      opacity: 1,
+      width: "20ch",
+      height: 35,
       duration: 0.4,
     });
 
     return () => {
       tween.current.kill();
+      tween2.current.kill();
     };
   }, []);
 
@@ -35,16 +44,16 @@ const Searchbox = ({
     if (isSearchbox) {
       searchboxRef?.current?.focus();
       tween.current.play();
+      tween2.current.play();
     } else {
       tween.current.reverse();
+      tween2.current.reverse();
     }
   }, [isSearchbox]);
 
   return (
-    <Styledform isSearchbox={isSearchbox}>
-      <IconButton onClick={handleClickSearchbox}>
-        <StyledSearchIcon />
-      </IconButton>
+    <Styledform ref={containerRef}>
+      <StyleSearchIcon onClick={handleClickSearchbox} />
       <input type="text" placeholder="Search..." ref={searchboxRef} />
     </Styledform>
   );
@@ -52,34 +61,31 @@ const Searchbox = ({
 
 export default Searchbox;
 
-const Styledform = styled.form<{ isSearchbox: boolean }>`
+const Styledform = styled.form`
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  position: relative;
-  min-height: 30px;
-  max-height: 30px;
-  width: 100%;
+  justify-content: start;
+  min-height: 35px;
+  max-height: 35px;
   height: 100%;
-  background-color: ${({ isSearchbox }) =>
-    isSearchbox ? "rgba(134, 134, 134, 0.25)" : "transparent"};
+  background-color: transparent;
   border-radius: 5px;
   overflow: hidden;
-  &:hover {
-    /* background-color: rgba(135, 134, 134, 0.2); */
-  }
   input {
-    /* position: absolute;
-    top: 0;
-    left: 0; */
-    width: 0ch;
-    /* display: none; */
-    background-color: transparent;
-    padding: 0em;
+    width: 0px;
+    background-color: #e3e3e3;
     border: none;
     outline: none;
-    min-width: inherit;
     min-height: inherit;
-    opacity: 1;
+    opacity: 0;
+  }
+`;
+
+const StyleSearchIcon = styled(StyledSearchIcon)`
+  margin: 0.5em;
+  cursor: pointer;
+  &:hover {
+    color: gray;
   }
 `;
