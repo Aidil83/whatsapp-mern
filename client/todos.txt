@@ -1,4 +1,3 @@
-[ ] Work on searchbox animation.
 [ ] Work on add new contact with image.
 [ ] Fix warning error logs.
 [ ] Work on post request room after user submit sidebar.
@@ -8,6 +7,7 @@
 [ ] Work on default image on header body component.
 
 [x] Completed Todos.
+   [x] Work on searchbox animation.
    [x] Work on gsap for members profile.
    [x] Work on repeating names from appearing.
       [x] Work on same user margin-top on white text. same user refresh problem.

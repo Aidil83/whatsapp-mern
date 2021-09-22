@@ -24,13 +24,13 @@ const Searchbox = ({
       minwidth: "20ch",
       height: 35,
       backgroundColor: "rgb(212,212,212, .4)",
-      duration: 0.4,
+      duration: 0.7,
     });
     tween2.current = gsap.timeline().to(searchboxRef.current, {
       opacity: 1,
       width: "20ch",
       height: 35,
-      duration: 0.4,
+      duration: 0.5,
     });
 
     return () => {
