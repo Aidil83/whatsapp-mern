@@ -14,6 +14,7 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 import { clickChatSelector } from "../../redux/slices/clickChat.slice";
 import { IChip } from "../CreateGroup/CreateGroup";
 import Picker from "emoji-picker-react";
+import OutsideClickHandler from "react-outside-click-handler";
 
 const Footer = () => {
   const { username } = useSelector(usernameSelector);
@@ -21,7 +22,7 @@ const Footer = () => {
   const [nameDisplay, setNameDisplay] = useState<boolean>(true);
   const [input, setInput] = useState<string>("");
   const [chosenEmoji, setChosenEmoji] = useState<string>("");
-  const [onCloseEmoji, setOnCloseEmoji] = useState<boolean>(false);
+  const [isEmoji, setIsEmoji] = useState<boolean>(false);
 
   const { data: latestMessage } = useQuery(
     "currentMessage",
@@ -100,20 +101,34 @@ const Footer = () => {
     unified: string;
   }
 
+  const handleEmojiClick = (): void => {
+    setChosenEmoji("");
+    console.log(isEmoji);
+    setIsEmoji(!isEmoji);
+  };
+
+  const outsideEmojiClick = (): void => {
+    setChosenEmoji("");
+    setIsEmoji(false);
+  };
+
   const onEmojiClick = (event: any, emojiObject: IEmoji) => {
-    setChosenEmoji(emojiObject.emoji);
+    setInput((prevInput: string) => prevInput + emojiObject.emoji);
+    setIsEmoji(true);
   };
 
   return (
     <FooterContainer>
-      <IconButton size="small">
-        <StyledSmileIcons />
-      </IconButton>
-      {onCloseEmoji && (
-        <div style={{ position: "absolute", left: 0, bottom: 60 }}>
-          <Picker onEmojiClick={onEmojiClick} />
-        </div>
-      )}
+      <OutsideClickHandler onOutsideClick={outsideEmojiClick}>
+        <IconButton size="small" onClick={handleEmojiClick}>
+          <StyledSmileIcons />
+        </IconButton>
+        {isEmoji && (
+          <div style={{ position: "absolute", left: 0, bottom: 60 }}>
+            <Picker onEmojiClick={onEmojiClick} />
+          </div>
+        )}
+      </OutsideClickHandler>
       <IconButton size="small">
         <StyledClipIcons />
       </IconButton>
