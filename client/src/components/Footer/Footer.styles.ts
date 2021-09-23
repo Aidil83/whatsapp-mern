@@ -7,6 +7,7 @@ export const sharedIconStyle = css`
   color: ${({ theme }) => theme.light};
 `;
 export const FooterContainer = styled.div`
+  position: relative;
   height: 60px;
   width: 100%;
   display: flex;

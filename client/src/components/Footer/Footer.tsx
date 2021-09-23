@@ -20,7 +20,8 @@ const Footer = () => {
   const { roomName, members } = useSelector(clickChatSelector);
   const [nameDisplay, setNameDisplay] = useState<boolean>(true);
   const [input, setInput] = useState<string>("");
-  const [chosenEmoji, setChosenEmoji] = useState<any>(null);
+  const [chosenEmoji, setChosenEmoji] = useState<string>("");
+  const [onCloseEmoji, setOnCloseEmoji] = useState<boolean>(false);
 
   const { data: latestMessage } = useQuery(
     "currentMessage",
@@ -91,8 +92,16 @@ const Footer = () => {
     }
   };
 
-  const onEmojiClick = (event: any, emojiObject: any) => {
-    setChosenEmoji(emojiObject);
+  interface IEmoji {
+    activeSkinTone: string;
+    emoji: string;
+    names: string[];
+    originalUnified: string;
+    unified: string;
+  }
+
+  const onEmojiClick = (event: any, emojiObject: IEmoji) => {
+    setChosenEmoji(emojiObject.emoji);
   };
 
   return (
@@ -100,12 +109,11 @@ const Footer = () => {
       <IconButton size="small">
         <StyledSmileIcons />
       </IconButton>
-      <div>
-        <Picker
-          onEmojiClick={onEmojiClick}
-          pickerStyle={{ position: "absolute", top: 550 }}
-        />
-      </div>
+      {onCloseEmoji && (
+        <div style={{ position: "absolute", left: 0, bottom: 60 }}>
+          <Picker onEmojiClick={onEmojiClick} />
+        </div>
+      )}
       <IconButton size="small">
         <StyledClipIcons />
       </IconButton>
