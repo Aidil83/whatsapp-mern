@@ -13,13 +13,14 @@ import * as api from "../../api/wsApi";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { clickChatSelector } from "../../redux/slices/clickChat.slice";
 import { IChip } from "../CreateGroup/CreateGroup";
-import "emoji-picker-element";
+import Picker from "emoji-picker-react";
 
 const Footer = () => {
   const { username } = useSelector(usernameSelector);
   const { roomName, members } = useSelector(clickChatSelector);
   const [nameDisplay, setNameDisplay] = useState<boolean>(true);
   const [input, setInput] = useState<string>("");
+  const [chosenEmoji, setChosenEmoji] = useState<any>(null);
 
   const { data: latestMessage } = useQuery(
     "currentMessage",
@@ -90,12 +91,21 @@ const Footer = () => {
     }
   };
 
+  const onEmojiClick = (event: any, emojiObject: any) => {
+    setChosenEmoji(emojiObject);
+  };
+
   return (
     <FooterContainer>
       <IconButton size="small">
         <StyledSmileIcons />
       </IconButton>
-      <emoji-picker></emoji-picker>
+      <div>
+        <Picker
+          onEmojiClick={onEmojiClick}
+          pickerStyle={{ position: "absolute", top: 550 }}
+        />
+      </div>
       <IconButton size="small">
         <StyledClipIcons />
       </IconButton>

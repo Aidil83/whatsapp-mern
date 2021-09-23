@@ -19,7 +19,7 @@
     "@types/react-outside-click-handler": "^1.3.0",
     "axios": "^0.21.1",
     "cloudinary-react": "^1.7.0",
-    "emoji-picker-element": "^1.8.1",
+    "emoji-picker-react": "^3.4.8",
     "gsap": "^3.7.1",
     "image-file-to-base64-exif": "^1.0.3",
     "luxon": "^2.0.2",
