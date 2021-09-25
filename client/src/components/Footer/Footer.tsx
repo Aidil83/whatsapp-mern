@@ -13,8 +13,9 @@ import * as api from "../../api/wsApi";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { clickChatSelector } from "../../redux/slices/clickChat.slice";
 import { IChip } from "../CreateGroup/CreateGroup";
-import Picker from "emoji-picker-react";
 import OutsideClickHandler from "react-outside-click-handler";
+import dynamic from "next/dynamic";
+const Picker = dynamic(() => import("emoji-picker-react"), { ssr: false });
 
 const Footer = () => {
   const { username } = useSelector(usernameSelector);
