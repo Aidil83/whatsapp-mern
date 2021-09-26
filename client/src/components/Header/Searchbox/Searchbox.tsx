@@ -50,8 +50,13 @@ const Searchbox = ({
     }
   }, [isSearchbox]);
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // handleClickSearchbox();
+  };
+
   return (
-    <Styledform ref={containerRef}>
+    <Styledform ref={containerRef} onSubmit={handleSubmit}>
       <StyleSearchIcon onClick={handleClickSearchbox} />
       <input type="text" placeholder="Search..." ref={searchboxRef} />
     </Styledform>

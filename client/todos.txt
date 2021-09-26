@@ -1,5 +1,4 @@
-[x] Work on emoji picker from footer component to body component.
-   [ ] Use margin bottom.
+[ ] Work on Searchbox submit form state. Maybe use form validation library?
 [ ] Work on add new contact with image.
 [ ] Fix warning error logs.
 [ ] Work on post request room after user submit sidebar.
@@ -9,6 +8,8 @@
 [ ] Work on default image on header body component.
 
 [x] Completed Todos.
+   [x] Work on emoji picker from footer component to body component.
+      [X] Use margin bottom.
    [x] Work on searchbox animation.
    [x] Work on gsap for members profile.
    [x] Work on repeating names from appearing.
