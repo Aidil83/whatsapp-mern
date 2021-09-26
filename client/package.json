@@ -20,6 +20,7 @@
     "axios": "^0.21.1",
     "cloudinary-react": "^1.7.0",
     "emoji-picker-react": "^3.4.8",
+    "formik": "^2.2.9",
     "gsap": "^3.7.1",
     "image-file-to-base64-exif": "^1.0.3",
     "luxon": "^2.0.2",
