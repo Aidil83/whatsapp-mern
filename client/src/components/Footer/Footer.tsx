@@ -22,7 +22,6 @@ const Footer = () => {
   const { roomName, members } = useSelector(clickChatSelector);
   const [nameDisplay, setNameDisplay] = useState<boolean>(true);
   const [input, setInput] = useState<string>("");
-  const [chosenEmoji, setChosenEmoji] = useState<string>("");
   const [isEmoji, setIsEmoji] = useState<boolean>(false);
 
   const { data: latestMessage } = useQuery(
@@ -39,10 +38,6 @@ const Footer = () => {
   });
 
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(setUsername(prompt("Please enter your name") ?? "Guest"));
-  // }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setInput(e.target.value);
@@ -103,13 +98,10 @@ const Footer = () => {
   }
 
   const handleEmojiClick = (): void => {
-    setChosenEmoji("");
-    console.log(isEmoji);
     setIsEmoji(!isEmoji);
   };
 
   const outsideEmojiClick = (): void => {
-    setChosenEmoji("");
     setIsEmoji(false);
   };
 

@@ -24,8 +24,6 @@ const Header = () => {
   let animateGroupAvatars = useRef(null);
   const searchboxRef = useRef<HTMLInputElement>(null);
 
-  React.useEffect(() => {}, [isOpen]);
-
   const handleClickProfile = () => {
     setIsDisabled(false);
     setIsOpen(!isOpen);

@@ -52,7 +52,6 @@ const Searchbox = ({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // handleClickSearchbox();
   };
 
   return (

@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { useRouter } from "next/dist/client/router";
 import { useDispatch, useSelector } from "react-redux";
 import { setUsername } from "../redux/slices/username.slice";
-import { storedContactsSelector } from "../redux/slices/storedContacts.slice";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
@@ -100,7 +99,6 @@ const LoginWrapper = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 12px;
-  /* padding: 6em; */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   background-color: #fbfbfb;
 `;
