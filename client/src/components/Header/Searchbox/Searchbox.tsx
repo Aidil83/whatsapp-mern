@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import gsap from "gsap";
 import styled from "styled-components";
 import { StyledSearchIcon } from "../Header.styles";
-import { Formik } from "formik";
+import { Form, Formik } from "formik";
 
 interface ISB {
   isSearchbox: boolean;
@@ -60,12 +60,8 @@ const Searchbox = ({
   };
 
   return (
-    <Formik
-      innerRef={containerRef}
-      initialValues={initialValues}
-      onSubmit={handleSubmit}
-    >
-      <StyledForm>
+    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      <StyledForm ref={containerRef}>
         <StyleSearchIcon onClick={handleClickSearchbox} />
         <input type="text" placeholder="Search..." ref={searchboxRef} />
       </StyledForm>
@@ -75,7 +71,7 @@ const Searchbox = ({
 
 export default Searchbox;
 
-const StyledForm = styled.form`
+const StyledForm = styled(Form)`
   position: relative;
   display: flex;
   align-items: center;
