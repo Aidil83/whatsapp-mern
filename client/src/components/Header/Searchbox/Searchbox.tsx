@@ -51,8 +51,8 @@ const Searchbox = ({
     }
   }, [isSearchbox]);
 
-  const handleSubmit = () => {
-    console.log("submitted");
+  const onSubmit = (data: any) => {
+    console.log("submitted: -> ", data);
   };
 
   const initialValues = {
@@ -60,12 +60,12 @@ const Searchbox = ({
   };
 
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+    <Formik initialValues={initialValues} onSubmit={onSubmit}>
       <StyledForm ref={containerRef}>
         <StyleSearchIcon onClick={handleClickSearchbox} />
         <StyledField
           id=""
-          name=""
+          name="search"
           placeholder="Search..."
           innerRef={searchboxRef}
         />

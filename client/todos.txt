@@ -1,4 +1,5 @@
 [ ] Work on Searchbox submit form state. Maybe use form validation library?
+   [ ] Fix object object issue.
 [ ] Work on add new contact with image.
 [ ] Fix warning error logs.
 [ ] Work on post request room after user submit sidebar.
