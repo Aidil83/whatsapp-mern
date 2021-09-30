@@ -61,15 +61,18 @@ const Searchbox = ({
 
   return (
     <Formik initialValues={initialValues} onSubmit={onSubmit}>
-      <StyledForm ref={containerRef}>
-        <StyleSearchIcon onClick={handleClickSearchbox} />
-        <StyledField
-          id=""
-          name="search"
-          placeholder="Search..."
-          innerRef={searchboxRef}
-        />
-      </StyledForm>
+      {({ values, handleChange, handleSubmit }) => (
+        <StyledForm ref={containerRef}>
+          <StyleSearchIcon onClick={handleClickSearchbox} />
+          <StyledField
+            name="search..."
+            value={values.search}
+            onChange={handleChange}
+            placeholder="Search..."
+            innerRef={searchboxRef}
+          />
+        </StyledForm>
+      )}
     </Formik>
   );
 };
