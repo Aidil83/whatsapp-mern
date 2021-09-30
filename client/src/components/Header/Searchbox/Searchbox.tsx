@@ -51,13 +51,18 @@ const Searchbox = ({
     }
   }, [isSearchbox]);
 
-  // interface resetForm
-  interface IResetForm {
-    resetForm: FormikActions<{ search: string }>["resetForm"];
+  type FormValues = {
+    search: string;
+  };
+
+  interface IResetForm<FormValues> {
+    resetForm: FormikActions<FormValues>["resetForm"];
   }
 
-  const onSubmit = (data: { search: string }, { resetForm }: IResetForm) => {
-    console.log("submitted: -> ", data);
+  const onSubmit = (
+    data: FormValues,
+    { resetForm }: IResetForm<FormValues>
+  ) => {
     resetForm();
   };
 
