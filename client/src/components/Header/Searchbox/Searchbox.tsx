@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import gsap from "gsap";
 import styled from "styled-components";
 import { StyledSearchIcon } from "../Header.styles";
-import { Field, Form, Formik } from "formik";
+import { Field, Form, Formik, FormikHelpers as FormikActions } from "formik";
 
 interface ISB {
   isSearchbox: boolean;
@@ -51,21 +51,23 @@ const Searchbox = ({
     }
   }, [isSearchbox]);
 
-  const onSubmit = (data: any) => {
-    console.log("submitted: -> ", data);
-  };
+  // interface resetForm
+  interface IResetForm {
+    resetForm: FormikActions<{ search: string }>["resetForm"];
+  }
 
-  const initialValues = {
-    search: "",
+  const onSubmit = (data: { search: string }, { resetForm }: IResetForm) => {
+    console.log("submitted: -> ", data);
+    resetForm();
   };
 
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>
-      {({ values, handleChange, handleSubmit }) => (
+    <Formik initialValues={{ search: "" }} onSubmit={onSubmit}>
+      {({ values, handleChange }) => (
         <StyledForm ref={containerRef}>
           <StyleSearchIcon onClick={handleClickSearchbox} />
           <StyledField
-            name="search..."
+            name="search"
             value={values.search}
             onChange={handleChange}
             placeholder="Search..."
