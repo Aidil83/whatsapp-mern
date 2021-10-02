@@ -22,16 +22,16 @@ const Searchbox = ({
   useEffect(() => {
     tween.current = gsap.timeline().to(containerRef.current, {
       opacity: 1,
-      minwidth: "20ch",
+      minwidth: "30ch",
       height: 35,
       backgroundColor: "rgb(212,212,212, .4)",
-      duration: 0.4,
+      duration: 0.5,
     });
     tween2.current = gsap.timeline().to(searchboxRef.current, {
       opacity: 1,
-      width: "20ch",
+      width: "30ch",
       height: 35,
-      duration: 0.4,
+      duration: 0.5,
     });
 
     return () => {
@@ -63,6 +63,7 @@ const Searchbox = ({
     data: FormValues,
     { resetForm }: IResetForm<FormValues>
   ) => {
+    console.log(data);
     resetForm();
   };
 
