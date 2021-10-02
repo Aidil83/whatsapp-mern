@@ -3,6 +3,8 @@ import gsap from "gsap";
 import styled from "styled-components";
 import { StyledSearchIcon } from "../Header.styles";
 import { Field, Form, Formik, FormikHelpers as FormikActions } from "formik";
+import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
+gsap.registerPlugin(ScrollToPlugin);
 
 interface ISB {
   isSearchbox: boolean;
@@ -51,6 +53,18 @@ const Searchbox = ({
     }
   }, [isSearchbox]);
 
+  // useEffect(() => {
+  //   const scrollTop = () => {
+  //     gsap.to(window, {
+  //       duration: 0.7,
+  //       scrollTo: {
+  //         y: "top",
+  //         offsetY: 70,
+  //       },
+  //     });
+  //   };
+  // }, []);
+
   type FormValues = {
     search: string;
   };
@@ -79,11 +93,28 @@ const Searchbox = ({
             placeholder="Search..."
             innerRef={searchboxRef}
           />
+          <div
+            style={{ backgroundColor: "red", width: 100, height: 100 }}
+          ></div>
         </StyledForm>
       )}
     </Formik>
   );
 };
+
+export async function getStaticProps() {
+  // Call an external API endpoint to get posts
+  const res = await fetch("https://.../posts");
+  const posts = await res.json();
+
+  // By returning { props: { posts } }, the Blog component
+  // will receive `posts` as a prop at build time
+  return {
+    props: {
+      posts,
+    },
+  };
+}
 
 export default Searchbox;
 
