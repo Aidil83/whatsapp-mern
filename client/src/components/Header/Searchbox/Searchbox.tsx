@@ -3,6 +3,8 @@ import gsap from "gsap";
 import styled from "styled-components";
 import { StyledSearchIcon } from "../Header.styles";
 import { Field, Form, Formik, FormikHelpers as FormikActions } from "formik";
+import Stack from "@mui/material/Stack";
+import Autocomplete from "@mui/material/Autocomplete";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -93,28 +95,12 @@ const Searchbox = ({
             placeholder="Search..."
             innerRef={searchboxRef}
           />
-          <div
-            style={{ backgroundColor: "red", width: 100, height: 100 }}
-          ></div>
+          <section></section>
         </StyledForm>
       )}
     </Formik>
   );
 };
-
-export async function getStaticProps() {
-  // Call an external API endpoint to get posts
-  const res = await fetch("https://.../posts");
-  const posts = await res.json();
-
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
-  return {
-    props: {
-      posts,
-    },
-  };
-}
 
 export default Searchbox;
 
@@ -129,6 +115,18 @@ const StyledForm = styled(Form)`
   background-color: transparent;
   border-radius: 5px;
   overflow: hidden;
+
+  & section {
+    position: absolute;
+    z-index: 100;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    height: 500px;
+    background-color: red;
+    border-radius: 5px;
+    overflow: hidden;
+  }
 `;
 
 const StyledField = styled(Field)`
@@ -141,6 +139,7 @@ const StyledField = styled(Field)`
 `;
 
 const StyleSearchIcon = styled(StyledSearchIcon)`
+  position: relative;
   margin: 0.5em;
   cursor: pointer;
   &:hover {
