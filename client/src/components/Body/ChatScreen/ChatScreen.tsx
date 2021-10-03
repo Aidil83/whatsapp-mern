@@ -1,13 +1,12 @@
 import { BodyWallpaper } from "../Body.styles";
 import Message from "../Message/Message";
 import FlipMove from "react-flip-move";
-import { useQuery } from "react-query";
 import * as api from "../../../api/wsApi";
 import { IMessages } from "../../../interfaces/types";
 import AlwaysScrollToBottom from "../AlwaysScrollToBottom";
 
 const ChatScreen = () => {
-  const { data } = useQuery<IMessages[]>("messages", api.getMessagesData);
+  const { data } = api.useMessages();
 
   return (
     <BodyWallpaper>

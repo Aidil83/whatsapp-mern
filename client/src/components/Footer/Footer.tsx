@@ -10,7 +10,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { setIsOpen, usernameSelector } from "../../redux/slices/username.slice";
 import * as api from "../../api/wsApi";
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { clickChatSelector } from "../../redux/slices/clickChat.slice";
 import { IChip } from "../CreateGroup/CreateGroup";
 import OutsideClickHandler from "react-outside-click-handler";
