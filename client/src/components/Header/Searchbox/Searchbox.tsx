@@ -6,6 +6,7 @@ import { Field, Form, Formik, FormikHelpers as FormikActions } from "formik";
 import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
+import { useQuery } from "react-query";
 gsap.registerPlugin(ScrollToPlugin);
 
 interface ISB {
@@ -88,6 +89,24 @@ const Searchbox = ({
       {({ values, handleChange }) => (
         <StyledForm ref={containerRef}>
           <StyleSearchIcon onClick={handleClickSearchbox} />
+          {/* <Stack spacing={2} sx={{ width: 300 }}>
+            <Autocomplete
+              freeSolo
+              id="free-solo-2-demo"
+              disableClearable
+              options={top100Films.map((option) => option.title)}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Search input"
+                  InputProps={{
+                    ...params.InputProps,
+                    type: "search",
+                  }}
+                />
+              )}
+            />
+          </Stack> */}
           <StyledField
             name="search"
             value={values.search}

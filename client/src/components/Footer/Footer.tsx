@@ -24,10 +24,7 @@ const Footer = () => {
   const [input, setInput] = useState<string>("");
   const [isEmoji, setIsEmoji] = useState<boolean>(false);
 
-  const { data: latestMessage } = useQuery(
-    "currentMessage",
-    api.getLatestMessageData
-  );
+  const { data: latestMessage } = api.useMessages();
 
   const queryClient = useQueryClient();
   const { isLoading, mutate } = useMutation(api.postMessage, {
