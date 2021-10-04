@@ -1,5 +1,10 @@
 import axios from "axios";
-import { useQuery } from "react-query";
+import {
+  QueryClient,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from "react-query";
 import { IMessages } from "../interfaces/types";
 import { IMembers } from "../redux/slices/members.slice";
 
@@ -7,17 +12,11 @@ const api = axios.create({
   baseURL: "http://localhost:9000",
 });
 
-// export const getMessagesData = () =>
-//   api.get("/messages/sync").then((res) => res.data);
-
 export const useMessages = () => {
   return useQuery("messages", () =>
     api.get("/messages/sync").then((res) => res.data)
   );
 };
-
-// export const getLatestMessageData = () =>
-//   api.get("/latest_message/sync").then((res) => res.data);
 
 export const useLatestMessage = () => {
   return useQuery("latestMessage", () =>
@@ -25,10 +24,40 @@ export const useLatestMessage = () => {
   );
 };
 
-export const postMessage = (postMessage: IMessages) =>
-  api.post("/messages/new", postMessage).then((res) => res.data);
+export const usePostMessage = () => {
+  const queryClient = useQueryClient();
 
-export const getRooms = () => api.get("/rooms/sync").then((res) => res.data);
+  const postMessage = (postMessage: IMessages) =>
+    api.post("/messages/new", postMessage).then((res) => res.data);
 
-export const postRoom = (postRoom: IMembers) =>
-  api.post("/rooms/new", postRoom).then((res) => res.data);
+  return useMutation(postMessage, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("messages");
+      queryClient.invalidateQueries("latestMessage");
+    },
+  });
+};
+
+export const useGetRooms = () => {
+  return useQuery("rooms", () =>
+    api.get("/rooms/sync").then((res) => res.data)
+  );
+};
+
+export const usePostRoom = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation(
+    (postRoom: IMembers) => {
+      return api.post("/rooms/new", postRoom).then((res) => {
+        console.log(res.data);
+        return res.data;
+      });
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("rooms");
+      },
+    }
+  );
+};

@@ -44,9 +44,10 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
   const [previewImage, setPreviewImage] = useState<string | Blob>("");
   const [group, setGroup] = useState<IGroupInfoStore>(defaultValues);
 
+  const { mutate } = api.usePostRoom();
+
   const data = useSelector(membersSelector); // Pull data from redux member slice.
   const dispatch = useDispatch();
-  const { isLoading, mutate } = useMutation(api.postRoom);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setGroup((prev) => ({

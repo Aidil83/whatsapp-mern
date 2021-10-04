@@ -26,13 +26,7 @@ const Footer = () => {
 
   const { data: latestMessage } = api.useLatestMessage();
 
-  const queryClient = useQueryClient();
-  const { mutate } = useMutation(api.postMessage, {
-    onSuccess: () => {
-      queryClient.invalidateQueries("messages");
-      queryClient.invalidateQueries("latestMessage");
-    },
-  });
+  const { mutate } = api.usePostMessage();
 
   const dispatch = useDispatch();
 

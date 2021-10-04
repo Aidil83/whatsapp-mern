@@ -28,7 +28,7 @@ const Sidebar = () => {
 
   const router = useRouter();
 
-  const { data, isLoading } = useQuery("rooms", api.getRooms);
+  const { data, isLoading } = api.useGetRooms();
 
   const handleClose = (id: number) => {
     if (id === 2) {
