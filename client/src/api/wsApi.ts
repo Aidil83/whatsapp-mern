@@ -11,13 +11,19 @@ const api = axios.create({
 //   api.get("/messages/sync").then((res) => res.data);
 
 export const useMessages = () => {
-  return useQuery("currentMessage", () =>
+  return useQuery("messages", () =>
     api.get("/messages/sync").then((res) => res.data)
   );
 };
 
-export const getLatestMessageData = () =>
-  api.get("/latest_message/sync").then((res) => res.data);
+// export const getLatestMessageData = () =>
+//   api.get("/latest_message/sync").then((res) => res.data);
+
+export const useLatestMessage = () => {
+  return useQuery("latestMessage", () =>
+    api.get("/latest_message/sync").then((res) => res.data)
+  );
+};
 
 export const postMessage = (postMessage: IMessages) =>
   api.post("/messages/new", postMessage).then((res) => res.data);

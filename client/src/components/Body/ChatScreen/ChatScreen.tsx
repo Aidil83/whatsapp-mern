@@ -6,12 +6,12 @@ import { IMessages } from "../../../interfaces/types";
 import AlwaysScrollToBottom from "../AlwaysScrollToBottom";
 
 const ChatScreen = () => {
-  const { data } = api.useMessages();
+  const { data: messages } = api.useMessages();
 
   return (
     <BodyWallpaper>
       <FlipMove duration={250} easing="ease-out">
-        {data?.map((messageData: IMessages) => (
+        {messages?.map((messageData: IMessages) => (
           <Message key={messageData._id} messageData={messageData} />
         ))}
       </FlipMove>

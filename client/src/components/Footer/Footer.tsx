@@ -24,13 +24,13 @@ const Footer = () => {
   const [input, setInput] = useState<string>("");
   const [isEmoji, setIsEmoji] = useState<boolean>(false);
 
-  const { data: latestMessage } = api.useMessages();
+  const { data: latestMessage } = api.useLatestMessage();
 
   const queryClient = useQueryClient();
-  const { isLoading, mutate } = useMutation(api.postMessage, {
+  const { mutate } = useMutation(api.postMessage, {
     onSuccess: () => {
       queryClient.invalidateQueries("messages");
-      queryClient.invalidateQueries("currentMessage");
+      queryClient.invalidateQueries("latestMessage");
     },
   });
 
