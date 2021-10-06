@@ -73,8 +73,13 @@ const Sidebar = () => {
             <input placeholder="Search or start new chat..." />
           </PaneSide>
         </InputSection>
-        {isLoading && <CircularProgress color="inherit" />}
-        {!isLoading &&
+        {!isLoading && (
+          <CircularProgress
+            color="info"
+            style={{ position: "relative", left: "45%", top: 100 }}
+          />
+        )}
+        {isLoading &&
           data?.map((item: any, id: number) => (
             <SidebarChat item={item} key={id} id={id} />
           ))}
