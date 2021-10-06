@@ -14,12 +14,12 @@ import {
   StyledStatusIcon,
 } from "./Sidebar.styles";
 import SidebarChat from "./SidebarChat/SidebarChat";
-import { useQuery } from "react-query";
 import { useRouter } from "next/dist/client/router";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Fade from "@material-ui/core/Fade";
 import Avatar from "@material-ui/core/Avatar";
+import { CircularProgress } from "@mui/material";
 
 const Sidebar = () => {
   const [isDrawer, setIsDrawer] = useState<boolean>(false);
@@ -73,6 +73,7 @@ const Sidebar = () => {
             <input placeholder="Search or start new chat..." />
           </PaneSide>
         </InputSection>
+        {isLoading && <CircularProgress color="inherit" />}
         {!isLoading &&
           data?.map((item: any, id: number) => (
             <SidebarChat item={item} key={id} id={id} />

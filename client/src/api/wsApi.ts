@@ -55,7 +55,7 @@ export const usePostRoom = () => {
       });
     },
     {
-      onSuccess: () => {
+      onSuccess: (data) => {
         queryClient.invalidateQueries("rooms");
       },
     }

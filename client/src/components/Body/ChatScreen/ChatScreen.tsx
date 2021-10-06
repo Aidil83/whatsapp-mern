@@ -6,7 +6,7 @@ import { IMessages } from "../../../interfaces/types";
 import AlwaysScrollToBottom from "../AlwaysScrollToBottom";
 
 const ChatScreen = () => {
-  const { data: messages } = api.useMessages();
+  const { data: messages, isLoading } = api.useMessages();
 
   return (
     <BodyWallpaper>
