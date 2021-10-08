@@ -13,7 +13,7 @@ const api = axios.create({
 });
 
 export const useMessages = () => {
-  return useQuery("messages", () =>
+  return useQuery<IMessages[]>("messages", () =>
     api.get("/messages/sync").then((res) => res.data)
   );
 };
