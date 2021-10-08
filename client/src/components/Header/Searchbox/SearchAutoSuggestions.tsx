@@ -1,25 +1,47 @@
-import { Stack } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
-import { Field } from "formik";
 import { IMessages } from "../../../interfaces/types";
 import * as api from "../../../api/wsApi";
+import { useEffect } from "react";
+import { StyledField } from "./Searchbox";
 
-function SearchAutoSuggestions() {
+interface props {
+  values: { search: string };
+  handleChange: any;
+  searchboxRef: any;
+  isSearchbox: boolean;
+}
+
+function SearchAutoSuggestions({
+  values,
+  handleChange,
+  searchboxRef,
+  isSearchbox,
+}: props) {
   const { data: messages } = api.useMessages();
+
+  useEffect(() => {
+    console.log("searchboxref: ->", searchboxRef.current);
+  }, [isSearchbox]);
 
   if (typeof messages === "undefined") {
     return null;
   }
 
   return (
-    <Stack spacing={2} sx={{ width: 300 }}>
-      <Autocomplete
-        id="free-solo-demo"
-        freeSolo
-        options={messages.map((option: IMessages) => option.message)}
-        renderInput={(params) => <Field {...params} label="freeSolo" />}
-      />
-    </Stack>
+    <Autocomplete
+      freeSolo
+      options={messages.map((option: IMessages) => option.message)}
+      renderInput={(params) => (
+        <StyledField
+          name="search"
+          value={values.search}
+          onChange={handleChange}
+          placeholder="Search..."
+          innerRef={searchboxRef}
+          {...params}
+        />
+      )}
+    />
   );
 }
 

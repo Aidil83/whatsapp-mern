@@ -5,6 +5,7 @@ import { StyledSearchIcon } from "../Header.styles";
 import { Field, Form, Formik, FormikHelpers as FormikActions } from "formik";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 import { useQuery } from "react-query";
+import SearchAutoSuggestions from "./SearchAutoSuggestions";
 gsap.registerPlugin(ScrollToPlugin);
 
 interface ISB {
@@ -88,32 +89,19 @@ const Searchbox = ({
       {({ values, handleChange }) => (
         <StyledForm ref={containerRef}>
           <StyleSearchIcon onClick={handleClickSearchbox} />
-          {/* <Stack spacing={2} sx={{ width: 300 }}>
-            <Autocomplete
-              freeSolo
-              id="free-solo-2-demo"
-              disableClearable
-              options={top100Films.map((option) => option.title)}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Search input"
-                  InputProps={{
-                    ...params.InputProps,
-                    type: "search",
-                  }}
-                />
-              )}
-            />
-          </Stack> */}
-          <StyledField
+          <SearchAutoSuggestions
+            values={values}
+            handleChange={handleChange}
+            searchboxRef={searchboxRef}
+            isSearchbox={isSearchbox}
+          />
+          {/* <StyledField
             name="search"
             value={values.search}
             onChange={handleChange}
             placeholder="Search..."
             innerRef={searchboxRef}
-          />
-          <section></section>
+          /> */}
         </StyledForm>
       )}
     </Formik>
@@ -133,27 +121,15 @@ const StyledForm = styled(Form)`
   background-color: transparent;
   border-radius: 5px;
   overflow: hidden;
-
-  & section {
-    position: absolute;
-    z-index: 100;
-    top: 20px;
-    left: 0;
-    width: 100%;
-    height: 500px;
-    background-color: red;
-    border-radius: 5px;
-    overflow: hidden;
-  }
 `;
 
-const StyledField = styled(Field)`
-  width: 0px;
+export const StyledField = styled(Field)`
+  width: 100px;
   background-color: #e3e3e3;
   border: none;
   outline: none;
   min-height: inherit;
-  opacity: 0;
+  opacity: 1;
 `;
 
 const StyleSearchIcon = styled(StyledSearchIcon)`
