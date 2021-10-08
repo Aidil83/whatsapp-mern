@@ -3,8 +3,6 @@ import gsap from "gsap";
 import styled from "styled-components";
 import { StyledSearchIcon } from "../Header.styles";
 import { Field, Form, Formik, FormikHelpers as FormikActions } from "formik";
-import Stack from "@mui/material/Stack";
-import Autocomplete from "@mui/material/Autocomplete";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 import { useQuery } from "react-query";
 gsap.registerPlugin(ScrollToPlugin);
