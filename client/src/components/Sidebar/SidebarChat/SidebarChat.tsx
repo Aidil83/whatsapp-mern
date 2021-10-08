@@ -5,7 +5,8 @@ import { DefaultImage, StyledContact } from "./SidebarChat.styles";
 import { useRouter } from "next/dist/client/router";
 import { useDispatch } from "react-redux";
 import { goToChat } from "../../../redux/slices/clickChat.slice";
-import { Avatar } from "@material-ui/core";
+import Avatar from "@mui/material/Avatar";
+import { Image, Transformation } from "cloudinary-react";
 
 interface Props {
   item: IGroupInfoStore;
@@ -28,9 +29,25 @@ const SidebarChat = ({ item, id }: Props) => {
         <StyledContact onClick={() => openChat(id)}>
           {!item.image && <DefaultImage />}
           {item.image && (
-            <Avatar src={item?.image} alt="" style={{ height: 50, width: 50 }}>
-              A
+            <Avatar>
+              <Image
+                cloudName="dvqkqzqjm"
+                publicId={item.image}
+                crop="scale"
+                width="300"
+              />
             </Avatar>
+            // <Avatar
+            //   src={item?.image}
+            //   alt=""
+            //   sx={{
+            //     height: "50px !important",
+            //     width: "50px !important",
+            //     cursor: "pointer",
+            //   }}
+            // >
+            //   A
+            // </Avatar>
           )}
           <div
             style={{

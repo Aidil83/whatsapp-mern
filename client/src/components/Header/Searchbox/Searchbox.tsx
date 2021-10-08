@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import gsap from "gsap";
 import styled from "styled-components";
 import { StyledSearchIcon } from "../Header.styles";
@@ -20,6 +20,7 @@ const Searchbox = ({
   searchboxRef,
   handleClickSearchbox,
 }: ISB) => {
+  const [searchValue, setSearchValue] = useState("");
   const tween: any = React.useRef(null);
   const tween2: any = React.useRef(null);
   let containerRef: any = React.useRef(null);

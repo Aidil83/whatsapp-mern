@@ -1,4 +1,3 @@
-import { Avatar } from "@material-ui/core";
 import React, { useRef, useState } from "react";
 import OutsideClickHandler from "react-outside-click-handler";
 import { useSelector } from "react-redux";
@@ -6,6 +5,7 @@ import { clickChatSelector } from "../../redux/slices/clickChat.slice";
 import { IChip } from "../CreateGroup/CreateGroup";
 import { DefaultImage } from "../Sidebar/SidebarChat/SidebarChat.styles";
 import GroupAvatars from "./GroupAvatars/GroupAvatars";
+import Avatar from "@mui/material/Avatar";
 import {
   Container,
   DescriptionName,
@@ -45,7 +45,11 @@ const Header = () => {
           <Avatar
             onClick={handleClickProfile}
             src={image}
-            style={{ height: 50, width: 50, cursor: "pointer" }}
+            sx={{
+              height: "50px !important",
+              width: "50px !important",
+              cursor: "pointer",
+            }}
           >
             A
           </Avatar>

@@ -1,3 +1,4 @@
+[ ] Watch youtube video guy talking about cloudinary in NextJS.
 [ ] Work on autocomplete searchbox from message list filter.
 [ ] Work on Searchbox submit form state. Maybe use form validation library?
    [x] Fix object object issue.
