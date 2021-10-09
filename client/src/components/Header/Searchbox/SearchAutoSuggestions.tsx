@@ -3,6 +3,7 @@ import { IMessages } from "../../../interfaces/types";
 import * as api from "../../../api/wsApi";
 import { useEffect } from "react";
 import { StyledField } from "./Searchbox";
+import { TextField } from "@mui/material";
 
 interface props {
   values: { search: string };
@@ -37,7 +38,7 @@ function SearchAutoSuggestions({
           value={values.search}
           onChange={handleChange}
           placeholder="Search..."
-          innerRef={searchboxRef}
+          ref={searchboxRef}
           {...params}
         />
       )}

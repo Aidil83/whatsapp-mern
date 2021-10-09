@@ -6,6 +6,7 @@ import { Field, Form, Formik, FormikHelpers as FormikActions } from "formik";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 import { useQuery } from "react-query";
 import SearchAutoSuggestions from "./SearchAutoSuggestions";
+import { TextField } from "@mui/material";
 gsap.registerPlugin(ScrollToPlugin);
 
 interface ISB {
@@ -27,14 +28,16 @@ const Searchbox = ({
   useEffect(() => {
     tween.current = gsap.timeline().to(containerRef.current, {
       opacity: 1,
-      minwidth: "30ch",
       height: 35,
+      width: "100%",
+      minWidth: "30ch",
       backgroundColor: "rgb(212,212,212, .4)",
       duration: 0.5,
     });
     tween2.current = gsap.timeline().to(searchboxRef.current, {
       opacity: 1,
       width: "30ch",
+      minWidth: "30ch",
       height: 35,
       duration: 0.5,
     });
@@ -115,16 +118,22 @@ const StyledForm = styled(Form)`
   display: flex;
   align-items: center;
   justify-content: start;
+  width: 0ch;
+  min-width: 42px;
   min-height: 35px;
   max-height: 35px;
   height: 100%;
   background-color: transparent;
   border-radius: 5px;
   overflow: hidden;
+  & .css-1kpdewa-MuiAutocomplete-root {
+    width: 100%;
+  }
 `;
 
-export const StyledField = styled(Field)`
-  width: 100px;
+export const StyledField = styled(TextField)`
+  width: 0ch;
+  min-width: 0ch;
   background-color: #e3e3e3;
   border: none;
   outline: none;
