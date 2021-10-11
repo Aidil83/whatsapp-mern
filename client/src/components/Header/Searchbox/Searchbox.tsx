@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { StyledSearchIcon } from "../Header.styles";
 import { Field, Form, Formik, FormikHelpers as FormikActions } from "formik";
 import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
-import { useQuery } from "react-query";
 import SearchAutoSuggestions from "./SearchAutoSuggestions";
 import { TextField } from "@mui/material";
 gsap.registerPlugin(ScrollToPlugin);
@@ -29,14 +28,12 @@ const Searchbox = ({
     tween.current = gsap.timeline().to(containerRef.current, {
       opacity: 1,
       height: 35,
-      width: "100%",
       minWidth: "30ch",
       backgroundColor: "rgb(212,212,212, .4)",
       duration: 0.5,
     });
     tween2.current = gsap.timeline().to(searchboxRef.current, {
       opacity: 1,
-      width: "30ch",
       minWidth: "30ch",
       height: 35,
       duration: 0.5,
@@ -92,19 +89,19 @@ const Searchbox = ({
       {({ values, handleChange }) => (
         <StyledForm ref={containerRef}>
           <StyleSearchIcon onClick={handleClickSearchbox} />
-          <SearchAutoSuggestions
+          {/* <SearchAutoSuggestions
             values={values}
             handleChange={handleChange}
             searchboxRef={searchboxRef}
             isSearchbox={isSearchbox}
-          />
-          {/* <StyledField
+          /> */}
+          <StyledField
             name="search"
             value={values.search}
             onChange={handleChange}
             placeholder="Search..."
             innerRef={searchboxRef}
-          /> */}
+          />
         </StyledForm>
       )}
     </Formik>
@@ -126,19 +123,16 @@ const StyledForm = styled(Form)`
   background-color: transparent;
   border-radius: 5px;
   overflow: hidden;
-  & .css-1kpdewa-MuiAutocomplete-root {
-    width: 100%;
-  }
 `;
 
-export const StyledField = styled(TextField)`
-  width: 0ch;
+export const StyledField = styled(Field)`
+  width: 100%;
   min-width: 0ch;
   background-color: #e3e3e3;
   border: none;
   outline: none;
   min-height: inherit;
-  opacity: 1;
+  opacity: 0;
 `;
 
 const StyleSearchIcon = styled(StyledSearchIcon)`

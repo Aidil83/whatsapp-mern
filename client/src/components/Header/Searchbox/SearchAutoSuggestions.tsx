@@ -3,7 +3,6 @@ import { IMessages } from "../../../interfaces/types";
 import * as api from "../../../api/wsApi";
 import { useEffect } from "react";
 import { StyledField } from "./Searchbox";
-import { TextField } from "@mui/material";
 
 interface props {
   values: { search: string };
@@ -21,7 +20,7 @@ function SearchAutoSuggestions({
   const { data: messages } = api.useMessages();
 
   useEffect(() => {
-    console.log("searchboxref: ->", searchboxRef.current);
+    // console.log("searchboxref: ->", searchboxRef.current);
   }, [isSearchbox]);
 
   if (typeof messages === "undefined") {
