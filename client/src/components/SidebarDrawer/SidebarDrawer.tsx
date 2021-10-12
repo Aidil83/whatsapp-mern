@@ -3,6 +3,7 @@ import SwipeableViews from "react-swipeable-views";
 import Drawer from "@material-ui/core/Drawer";
 import { DrawerContainer } from "./SidebarDrawer.styles";
 import { NewChat, CreateGroup, GroupInfo } from "..";
+import AddContact from "../AddContact/AddContact";
 
 interface Props {
   isDrawer: boolean;
@@ -20,6 +21,7 @@ const SidebarDrawer = ({ isDrawer, setIsDrawer }: Props) => {
             <NewChat setIsDrawer={setIsDrawer} setStep={setStep} />
             <CreateGroup setStep={setStep} />
             <GroupInfo setStep={setStep} setIsDrawer={setIsDrawer} />
+            <AddContact setStep={setStep} setIsDrawer={setIsDrawer} />
           </SwipeableViews>
         </DrawerContainer>
       </Drawer>
