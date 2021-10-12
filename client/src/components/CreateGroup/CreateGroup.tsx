@@ -40,15 +40,6 @@ export interface Props extends ISetStep {
   setIsContactDrawer: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-// export const defaultContacts: IChip[] = [
-//   { id: 0, name: "Ali", image: "" },
-//   { id: 1, name: "Arthur", image: "" },
-//   { id: 2, name: "Marvin", image: "" },
-//   { id: 3, name: "Jake", image: "" },
-//   { id: 4, name: "Daniel", image: "" },
-//   { id: 5, name: "Brian", image: "" },
-// ];
-
 const CreateGroup = ({ setStep, setIsContactDrawer }: Props) => {
   const storedContacts = useSelector(storedContactsSelector);
   const storedChips = useSelector(chipSelector);

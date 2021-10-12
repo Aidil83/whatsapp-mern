@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { ISetStep } from "../CreateGroup/CreateGroup";
-import { useMutation } from "react-query";
 import axios from "axios";
 /* ------------------------------- Material UI ------------------------------ */
 import PhotoCamera from "@material-ui/icons/ArrowForward";

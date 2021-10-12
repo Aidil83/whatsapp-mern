@@ -1,3 +1,5 @@
+[ ] remove emotion imports and read styled component mui doc.
+   [ ] migrate mui v4 to v5.
 [ ] Create another swipeable views for add contact functionality.
 [ ] Watch youtube video guy talking about cloudinary in NextJS.
 [ ] Work on autocomplete searchbox from message list filter.

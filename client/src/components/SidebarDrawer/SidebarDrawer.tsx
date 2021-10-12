@@ -33,20 +33,19 @@ const SidebarDrawer = ({ isDrawer, setIsDrawer }: Props) => {
             open={isContactDrawer}
             elevation={0}
           >
-            <SwipeableViews
-              index={stepContact}
-              style={{
-                minWidth: 500,
-                width: "20vw",
-                maxWidth: 500,
-                height: "100%",
-              }}
-            >
-              <AddContact
-                setIsContactDrawer={setIsContactDrawer}
-                setIsDrawer={setIsDrawer}
-              />
-            </SwipeableViews>
+            <DrawerContainer>
+              <SwipeableViews
+                index={stepContact}
+                style={{ height: "100%" }}
+                slideStyle={{ height: "100%" }}
+                containerStyle={{ height: "100%" }}
+              >
+                <AddContact
+                  setIsContactDrawer={setIsContactDrawer}
+                  setIsDrawer={setIsDrawer}
+                />
+              </SwipeableViews>
+            </DrawerContainer>
           </Drawer>
         </DrawerContainer>
       </Drawer>
