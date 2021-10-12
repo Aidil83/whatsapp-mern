@@ -5,16 +5,14 @@ import {
 } from "../SidebarDrawer/SidebarDrawer.styles";
 
 interface Props {
-  setStep: React.Dispatch<React.SetStateAction<number>>;
+  setIsContactDrawer: React.Dispatch<React.SetStateAction<boolean>>;
   setIsDrawer: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function AddContact({ setStep, setIsDrawer }: Props) {
+function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
   return (
     <DrawerHeader>
-      <StyledLeftArrowIcon
-        onClick={() => setStep((prev: number) => prev - 2)}
-      />
+      <StyledLeftArrowIcon onClick={() => setIsContactDrawer(false)} />
       <DrawerTitle>Add Contact</DrawerTitle>
     </DrawerHeader>
   );

@@ -12,6 +12,8 @@ interface Props {
 
 const SidebarDrawer = ({ isDrawer, setIsDrawer }: Props) => {
   const [step, setStep] = useState<number>(0);
+  const [stepContact, setStepContact] = useState<number>(0);
+  const [isContactDrawer, setIsContactDrawer] = useState<boolean>(false);
 
   return (
     <>
@@ -19,10 +21,33 @@ const SidebarDrawer = ({ isDrawer, setIsDrawer }: Props) => {
         <DrawerContainer>
           <SwipeableViews index={step}>
             <NewChat setIsDrawer={setIsDrawer} setStep={setStep} />
-            <CreateGroup setStep={setStep} />
+            <CreateGroup
+              setStep={setStep}
+              setIsContactDrawer={setIsContactDrawer}
+            />
             <GroupInfo setStep={setStep} setIsDrawer={setIsDrawer} />
-            <AddContact setStep={setStep} setIsDrawer={setIsDrawer} />
           </SwipeableViews>
+          <Drawer
+            variant="persistent"
+            anchor="left"
+            open={isContactDrawer}
+            elevation={0}
+          >
+            <SwipeableViews
+              index={stepContact}
+              style={{
+                minWidth: 500,
+                width: "20vw",
+                maxWidth: 500,
+                height: "100%",
+              }}
+            >
+              <AddContact
+                setIsContactDrawer={setIsContactDrawer}
+                setIsDrawer={setIsDrawer}
+              />
+            </SwipeableViews>
+          </Drawer>
         </DrawerContainer>
       </Drawer>
     </>

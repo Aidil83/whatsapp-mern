@@ -33,7 +33,11 @@ export interface IChip {
 
 export interface ISetStep {
   setStep: React.Dispatch<React.SetStateAction<number>>;
-  setIsDrawer: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsDrawer?: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface Props extends ISetStep {
+  setIsContactDrawer: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 // export const defaultContacts: IChip[] = [
@@ -45,7 +49,7 @@ export interface ISetStep {
 //   { id: 5, name: "Brian", image: "" },
 // ];
 
-const CreateGroup = ({ setStep }: Pick<ISetStep, "setStep">) => {
+const CreateGroup = ({ setStep, setIsContactDrawer }: Props) => {
   const storedContacts = useSelector(storedContactsSelector);
   const storedChips = useSelector(chipSelector);
   const dispatch = useDispatch();
@@ -84,7 +88,7 @@ const CreateGroup = ({ setStep }: Pick<ISetStep, "setStep">) => {
           />
         ))}
       </ChipsContainer>
-      <StyledButton onClick={() => setStep((prev: number) => prev + 2)}>
+      <StyledButton onClick={() => setIsContactDrawer(true)}>
         <ButtonCircle>
           <StyledAddPersonIcon />
         </ButtonCircle>
