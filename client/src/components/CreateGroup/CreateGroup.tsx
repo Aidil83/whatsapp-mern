@@ -84,7 +84,7 @@ const CreateGroup = ({ setStep }: Pick<ISetStep, "setStep">) => {
           />
         ))}
       </ChipsContainer>
-      <StyledButton disabled>
+      <StyledButton onClick={() => setStep((prev: number) => prev + 2)}>
         <ButtonCircle>
           <StyledAddPersonIcon />
         </ButtonCircle>
