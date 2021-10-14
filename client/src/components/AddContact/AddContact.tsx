@@ -19,7 +19,7 @@ function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
         <DrawerTitle>Add Contact</DrawerTitle>
       </DrawerHeader>
       <DrawerBody>
-        <form style={{ width: "80%" }}>
+        <form>
           <StyledTextField
             variant="outlined"
             label="Enter Name"
@@ -41,4 +41,10 @@ const DrawerBody = styled.div`
   height: min-content;
   display: flex;
   padding: 1em;
+  & form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+  }
 `;
