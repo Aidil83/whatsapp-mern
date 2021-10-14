@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import TextField from "@material-ui/core/TextField";
 import ButtonBase from "@material-ui/core/ButtonBase";
-import { HiUserGroup } from "react-icons/hi";
+import { HiUser, HiUserGroup } from "react-icons/hi";
 
 type LabelType = {
   bgImage: string | Blob; // Passing Optional Props
@@ -72,7 +72,8 @@ export const StyledLabel = styled.label<LabelType>`
     transition: 0.2s;
   }
 `;
-export const GroupIcon = styled(HiUserGroup)`
+
+const UserGroupIconCSS = css`
   position: absolute;
   z-index: 0;
   top: -43px;
@@ -82,6 +83,18 @@ export const GroupIcon = styled(HiUserGroup)`
   opacity: 0.1;
   width: 100px;
   height: 110px;
+`;
+
+export const GroupIcon = styled(HiUserGroup)`
+  ${UserGroupIconCSS};
+`;
+
+export const UserIcon = styled(HiUser)`
+  ${UserGroupIconCSS};
+  width: 150px;
+  height: 160px;
+  top: -70px;
+  left: -25px;
 `;
 export const StyledTextField = styled(TextField)`
   width: 100%;

@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import {
   DrawerHeader,
   DrawerTitle,
@@ -10,6 +10,7 @@ import {
   StyledLabel,
   StyledTextField,
   StyledUploadWrapper,
+  UserIcon,
 } from "../GroupInfo/GroupInfo.styles";
 import group from "material-ui/svg-icons/social/group";
 import image from "next/image";
@@ -66,7 +67,7 @@ function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
               <div className="profile-layer">
                 <PhotoCamera />
                 {!image && <div>ADD GROUP ICON</div>}
-                {!image && <GroupIcon />}
+                {!image && <UserIcon />}
                 {image && <div>CHANGE GROUP ICON</div>}
               </div>
             </StyledLabel>
