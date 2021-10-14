@@ -1,10 +1,20 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import {
   DrawerHeader,
   DrawerTitle,
   StyledLeftArrowIcon,
 } from "../SidebarDrawer/SidebarDrawer.styles";
-import { StyledTextField } from "../GroupInfo/GroupInfo.styles";
+import {
+  CreateGroupWrapper,
+  GroupIcon,
+  StyledLabel,
+  StyledTextField,
+  StyledUploadWrapper,
+} from "../GroupInfo/GroupInfo.styles";
+import group from "material-ui/svg-icons/social/group";
+import image from "next/image";
+import { useState } from "react";
+import { PhotoCamera } from "@material-ui/icons";
 
 interface Props {
   setIsContactDrawer: React.Dispatch<React.SetStateAction<boolean>>;
@@ -12,6 +22,26 @@ interface Props {
 }
 
 function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
+  const [image, setImage] = useState<string | Blob>("");
+  const [previewImage, setPreviewImage] = useState<string | Blob>("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {};
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    setIsDrawer(false);
+  };
+
+  const selectImage = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    let selected = e?.target?.files?.[0];
+    try {
+      setImage(selected as string | Blob);
+      setPreviewImage(URL.createObjectURL(selected));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <DrawerContainer>
       <DrawerHeader>
@@ -19,6 +49,29 @@ function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
         <DrawerTitle>Add Contact</DrawerTitle>
       </DrawerHeader>
       <DrawerBody>
+        <CreateGroupWrapper
+          css={`
+            height: 300px;
+          `}
+        >
+          <StyledUploadWrapper centerRipple>
+            <input
+              className="hide-input"
+              accept="image/*"
+              id="icon-button-file"
+              type="file"
+              onChange={selectImage}
+            />
+            <StyledLabel htmlFor="icon-button-file" bgImage={previewImage}>
+              <div className="profile-layer">
+                <PhotoCamera />
+                {!image && <div>ADD GROUP ICON</div>}
+                {!image && <GroupIcon />}
+                {image && <div>CHANGE GROUP ICON</div>}
+              </div>
+            </StyledLabel>
+          </StyledUploadWrapper>
+        </CreateGroupWrapper>
         <form>
           <StyledTextField
             variant="outlined"
@@ -40,6 +93,7 @@ const DrawerContainer = styled.div`
 const DrawerBody = styled.div`
   height: min-content;
   display: flex;
+  flex-direction: column;
   padding: 1em;
   & form {
     width: 100%;
