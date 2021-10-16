@@ -66,9 +66,9 @@ function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
             <StyledLabel htmlFor="icon-button-file" bgImage={previewImage}>
               <div className="profile-layer">
                 <PhotoCamera />
-                {!image && <div>ADD GROUP ICON</div>}
+                {!image && <div>ADD ICON</div>}
                 {!image && <UserIcon />}
-                {image && <div>CHANGE GROUP ICON</div>}
+                {image && <div>CHANGE ICON</div>}
               </div>
             </StyledLabel>
           </StyledUploadWrapper>
