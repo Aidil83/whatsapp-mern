@@ -5,6 +5,7 @@ import {
   useQuery,
   useQueryClient,
 } from "react-query";
+import { IChip } from "../components/CreateGroup/CreateGroup";
 import { IMessages } from "../interfaces/types";
 import { IMembers } from "../redux/slices/members.slice";
 
@@ -57,6 +58,30 @@ export const usePostRoom = () => {
     {
       onSuccess: (data) => {
         queryClient.invalidateQueries("rooms");
+      },
+    }
+  );
+};
+
+export const useGetContact = () => {
+  return useQuery("contact", () =>
+    api.get("/contact/sync").then((res) => res.data)
+  );
+};
+
+export const usePostContact = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation(
+    (postContact: IChip) => {
+      return api.post("/contact/new", postContact).then((res) => {
+        console.log(res.data);
+        return res.data;
+      });
+    },
+    {
+      onSuccess: (data) => {
+        queryClient.invalidateQueries("contact");
       },
     }
   );

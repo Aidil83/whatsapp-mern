@@ -5,8 +5,7 @@ import {
   StyledLeftArrowIcon,
 } from "../SidebarDrawer/SidebarDrawer.styles";
 import {
-  CreateGroupWrapper,
-  GroupIcon,
+  CreateGroupWrapper as CreateIconWrapper,
   StyledLabel,
   StyledTextField,
   StyledUploadWrapper,
@@ -50,7 +49,7 @@ function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
         <DrawerTitle>Add Contact</DrawerTitle>
       </DrawerHeader>
       <DrawerBody>
-        <CreateGroupWrapper
+        <CreateIconWrapper
           css={`
             height: 300px;
           `}
@@ -72,7 +71,7 @@ function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
               </div>
             </StyledLabel>
           </StyledUploadWrapper>
-        </CreateGroupWrapper>
+        </CreateIconWrapper>
         <form>
           <StyledTextField
             variant="outlined"
