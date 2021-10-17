@@ -11,8 +11,6 @@ import {
   StyledUploadWrapper,
   UserIcon,
 } from "../GroupInfo/GroupInfo.styles";
-import group from "material-ui/svg-icons/social/group";
-import image from "next/image";
 import { useState } from "react";
 import { PhotoCamera } from "@material-ui/icons";
 

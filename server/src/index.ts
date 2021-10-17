@@ -6,6 +6,7 @@ import helmet from "helmet";
 import "dotenv/config";
 import Messages, { IUser } from "./dbMessages";
 import Rooms, { IRoom } from "./dbRooms";
+import Contact, { IChip } from "./dbContact";
 import Pusher from "pusher";
 
 // App Config
@@ -99,7 +100,7 @@ app.post("/messages/new", (req: Request, res: Response) => {
 
 // Rooms
 app.get("/rooms/sync", (_, res: Response) => {
-  Rooms.find((err, data) => {
+  Rooms.find((err, data: IRoom[]) => {
     if (err) {
       res.status(500).send(err);
     } else {
@@ -120,7 +121,30 @@ app.post("/rooms/new", async (req: Request, res: Response) => {
   });
 });
 
-// API Endpoints
+// Contact
+app.get("/contact/sync", (_, res: Response) => {
+  Contact.find((err, data: IChip[]) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(data);
+    }
+  });
+});
+
+app.post("/contact/new", (req: Request, res: Response) => {
+  const dbContact = req.body;
+
+  Contact.create(dbContact, (err: Error, data: IChip) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(201).send(data);
+    }
+  });
+});
+
+/* ------------------------------ API Endpoints ----------------------------- */
 app.get("/", (_, res: Response) => {
   return res.status(200).send("HELLO EVERYONE");
 });
