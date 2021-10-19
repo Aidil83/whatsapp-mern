@@ -12,7 +12,7 @@ import {
   UserIcon,
 } from "../GroupInfo/GroupInfo.styles";
 import { useState } from "react";
-import { PhotoCamera } from "@material-ui/icons";
+import PhotoCamera from "@material-ui/icons/PhotoCamera";
 
 interface Props {
   setIsContactDrawer: React.Dispatch<React.SetStateAction<boolean>>;
@@ -77,6 +77,21 @@ function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
             name="Name"
             required
           />
+          <StyledTextField
+            variant="outlined"
+            label="Enter About"
+            name="About"
+          />
+          <StyledTextField
+            variant="outlined"
+            label="Enter email"
+            name="Email"
+          />
+          <StyledTextField
+            variant="outlined"
+            label="Enter phone"
+            name="Phone"
+          />
         </form>
       </DrawerBody>
     </DrawerContainer>
@@ -89,14 +104,16 @@ const DrawerContainer = styled.div`
   height: 100%;
 `;
 const DrawerBody = styled.div`
-  height: min-content;
+  height: calc(100% - 120px);
   display: flex;
   flex-direction: column;
   padding: 1em;
   & form {
     width: 100%;
+    height: 50%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-evenly;
     padding: 1em;
   }
 `;
