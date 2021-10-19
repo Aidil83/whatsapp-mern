@@ -49,7 +49,9 @@ function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
       <DrawerBody>
         <CreateIconWrapper
           css={`
-            height: 300px;
+            /* height: 270px; */
+            height: 100%;
+            flex: 0.35;
           `}
         >
           <StyledUploadWrapper centerRipple>
@@ -105,10 +107,14 @@ const DrawerContainer = styled.div`
 `;
 const DrawerBody = styled.div`
   height: calc(100% - 120px);
+  width: 100%;
   display: flex;
+  flex: 0.65;
   flex-direction: column;
   padding: 1em;
+  overflow-y: auto;
   & form {
+    flex: 0.5;
     width: 100%;
     height: 50%;
     display: flex;
