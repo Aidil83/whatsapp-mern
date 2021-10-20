@@ -1,7 +1,7 @@
 import Chip from "@material-ui/core/Chip";
 import Fab from "@material-ui/core/Fab";
 import ArrowForward from "@material-ui/icons/ArrowForward";
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Contact } from "..";
 import { chipSelector, setStoredChips } from "../../redux/slices/chip.slice";
@@ -10,6 +10,7 @@ import {
   setStoredContacts,
   storedContactsSelector,
 } from "../../redux/slices/storedContacts.slice";
+import NextStepBtn from "../NextStepBtn/NextStepBtn";
 import {
   DrawerHeader,
   StyledLeftArrowIcon,
@@ -97,19 +98,7 @@ const CreateGroup = ({ setStep, setIsContactDrawer }: Props) => {
           <Contact name={name} id={id} image={image} />
         </Fragment>
       ))}
-      <SidebarFooterContainer>
-        {/* NOTE: display button if length is greater than 0 */}
-        {storedChips.length > 0 && (
-          <Fab
-            onClick={handleNextBtn}
-            size="medium"
-            aria-label="next"
-            style={{ backgroundColor: "#09E85E", color: "#fff" }}
-          >
-            <ArrowForward />
-          </Fab>
-        )}
-      </SidebarFooterContainer>
+      <NextStepBtn storedChips={storedChips} handleNextBtn={handleNextBtn} />
     </CreateGroupContainer>
   );
 };

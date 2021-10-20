@@ -14,7 +14,7 @@ export const ChipsContainer = styled.div`
 `;
 export const SidebarFooterContainer = styled(FooterContainer)`
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
 `;
 export const StyledContactButton = styled(StyledButton)`
   & .MuiButton-label {

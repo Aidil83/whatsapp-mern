@@ -86,12 +86,12 @@ function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
           />
           <StyledTextField
             variant="outlined"
-            label="Enter email"
+            label="Enter Email"
             name="Email"
           />
           <StyledTextField
             variant="outlined"
-            label="Enter phone"
+            label="Enter Phone"
             name="Phone"
           />
         </form>
