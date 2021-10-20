@@ -1,6 +1,4 @@
 import Chip from "@material-ui/core/Chip";
-import Fab from "@material-ui/core/Fab";
-import ArrowForward from "@material-ui/icons/ArrowForward";
 import React, { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Contact } from "..";
@@ -19,11 +17,7 @@ import {
   ButtonCircle,
   StyledAddPersonIcon,
 } from "../SidebarDrawer/SidebarDrawer.styles";
-import {
-  ChipsContainer,
-  CreateGroupContainer,
-  SidebarFooterContainer,
-} from "./CreateGroup.styles";
+import { ChipsContainer, CreateGroupContainer } from "./CreateGroup.styles";
 
 export interface IChip {
   id: number;
@@ -98,7 +92,9 @@ const CreateGroup = ({ setStep, setIsContactDrawer }: Props) => {
           <Contact name={name} id={id} image={image} />
         </Fragment>
       ))}
-      <NextStepBtn storedChips={storedChips} handleNextBtn={handleNextBtn} />
+      {storedChips.length > 0 && (
+        <NextStepBtn storedChips={storedChips} handleNextBtn={handleNextBtn} />
+      )}
     </CreateGroupContainer>
   );
 };

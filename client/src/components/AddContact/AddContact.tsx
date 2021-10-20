@@ -11,8 +11,23 @@ import {
   StyledUploadWrapper,
   UserIcon,
 } from "../GroupInfo/GroupInfo.styles";
-import { useState } from "react";
+import React, { useState } from "react";
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
+import NextStepBtn from "../../components/NextStepBtn/NextStepBtn";
+
+interface IFieldValue {
+  name: string;
+  about: string;
+  email: string;
+  phone: string;
+}
+
+const DefaultFieldValue: IFieldValue = {
+  name: "",
+  about: "",
+  email: "",
+  phone: "",
+};
 
 interface Props {
   setIsContactDrawer: React.Dispatch<React.SetStateAction<boolean>>;
@@ -22,8 +37,15 @@ interface Props {
 function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
   const [image, setImage] = useState<string | Blob>("");
   const [previewImage, setPreviewImage] = useState<string | Blob>("");
+  const [fieldValue, setFieldValue] = useState<IFieldValue>(DefaultFieldValue);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {};
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    e.preventDefault();
+    setFieldValue((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -40,6 +62,12 @@ function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
     }
   };
 
+  const handleNextBtn = (e: React.MouseEvent<HTMLButtonElement>): void => {
+    e.preventDefault();
+    setFieldValue(DefaultFieldValue);
+    setIsContactDrawer(false);
+  };
+
   return (
     <DrawerContainer>
       <DrawerHeader>
@@ -49,7 +77,6 @@ function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
       <DrawerBody>
         <CreateIconWrapper
           css={`
-            /* height: 270px; */
             height: 100%;
             flex: 0.35;
           `}
@@ -76,25 +103,36 @@ function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
           <StyledTextField
             variant="outlined"
             label="Enter Name"
-            name="Name"
+            name="name"
+            value={fieldValue.name}
+            onChange={handleChange}
             required
           />
           <StyledTextField
             variant="outlined"
             label="Enter About"
-            name="About"
+            name="about"
+            value={fieldValue.about}
+            onChange={handleChange}
           />
           <StyledTextField
             variant="outlined"
             label="Enter Email"
-            name="Email"
+            name="email"
+            value={fieldValue.email}
+            onChange={handleChange}
           />
           <StyledTextField
             variant="outlined"
             label="Enter Phone"
-            name="Phone"
+            name="phone"
+            value={fieldValue.phone}
+            onChange={handleChange}
           />
         </form>
+        {fieldValue.name.length > 0 && (
+          <NextStepBtn handleNextBtn={handleNextBtn} />
+        )}
       </DrawerBody>
     </DrawerContainer>
   );
@@ -104,6 +142,7 @@ export default AddContact;
 
 const DrawerContainer = styled.div`
   height: 100%;
+  background-color: ${({ theme }) => theme.white};
 `;
 const DrawerBody = styled.div`
   height: calc(100% - 120px);

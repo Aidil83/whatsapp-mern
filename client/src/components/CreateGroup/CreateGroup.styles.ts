@@ -4,7 +4,7 @@ import { StyledButton } from "../SidebarDrawer/SidebarDrawer.styles";
 
 export const CreateGroupContainer = styled.div`
   height: 100vh;
-  background-color: ${({ theme }) => theme.sidebarGray};
+  background-color: ${({ theme }) => theme.white};
 `;
 export const ChipsContainer = styled.div`
   display: flex;
@@ -15,6 +15,7 @@ export const ChipsContainer = styled.div`
 export const SidebarFooterContainer = styled(FooterContainer)`
   position: absolute;
   bottom: 10px;
+  background-color: ${({ theme }) => theme.white};
 `;
 export const StyledContactButton = styled(StyledButton)`
   & .MuiButton-label {
