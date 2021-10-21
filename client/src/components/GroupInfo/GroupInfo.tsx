@@ -117,11 +117,11 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
           <input
             className="hide-input"
             accept="image/*"
-            id="icon-button-file"
+            id="group-icon-button-file"
             type="file"
             onChange={selectImage}
           />
-          <StyledLabel htmlFor="icon-button-file" bgImage={previewImage}>
+          <StyledLabel htmlFor="Group-icon-button-file" bgImage={previewImage}>
             <div className="profile-layer">
               <PhotoCamera />
               {!image && <div>ADD GROUP ICON</div>}
