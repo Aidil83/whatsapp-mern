@@ -1,4 +1,5 @@
-[ ] Add nameColor in backend, not frontend.
+[ ] Clear the input when blurred on searchbar.
+[ ] Work on avatar functionality in AddContact component.
 [ ] remove emotion imports and read styled component mui doc.
    [ ] migrate mui v4 to v5.
 [ ] Create another swipeable views for add contact functionality.

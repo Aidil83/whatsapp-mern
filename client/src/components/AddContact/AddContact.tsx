@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import styled from "styled-components";
 import {
   DrawerHeader,
@@ -11,7 +12,6 @@ import {
   StyledUploadWrapper,
   UserIcon,
 } from "../GroupInfo/GroupInfo.styles";
-import React, { useState } from "react";
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
 import NextStepBtn from "../../components/NextStepBtn/NextStepBtn";
 
@@ -62,6 +62,11 @@ function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
     }
   };
 
+  const handlePrevDrawer = (): void => {
+    setFieldValue(DefaultFieldValue);
+    setIsContactDrawer(false);
+  };
+
   const handleNextBtn = (e: React.MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault();
     setFieldValue(DefaultFieldValue);
@@ -71,7 +76,7 @@ function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
   return (
     <DrawerContainer>
       <DrawerHeader>
-        <StyledLeftArrowIcon onClick={() => setIsContactDrawer(false)} />
+        <StyledLeftArrowIcon onClick={handlePrevDrawer} />
         <DrawerTitle>Add Contact</DrawerTitle>
       </DrawerHeader>
       <DrawerBody>
