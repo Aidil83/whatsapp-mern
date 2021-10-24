@@ -14,6 +14,7 @@ import {
 } from "../GroupInfo/GroupInfo.styles";
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
 import NextStepBtn from "../../components/NextStepBtn/NextStepBtn";
+import { usePostContact } from "../../api/wsApi";
 
 interface IFieldValue {
   name: string;
@@ -38,6 +39,8 @@ function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
   const [image, setImage] = useState<string | Blob>("");
   const [previewImage, setPreviewImage] = useState<string | Blob>("");
   const [fieldValue, setFieldValue] = useState<IFieldValue>(DefaultFieldValue);
+
+  const { mutate } = usePostContact();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     e.preventDefault();
@@ -70,6 +73,7 @@ function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
   const handleNextBtn = (e: React.MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault();
     setFieldValue(DefaultFieldValue);
+    mutate();
     setIsContactDrawer(false);
   };
 
