@@ -9,3 +9,11 @@ export interface IMessages {
   __v?: number;
   _id?: string;
 }
+
+export interface Icontact {
+  name: string;
+  image?: string | Blob;
+  about?: string;
+  email?: string;
+  phone?: string;
+}

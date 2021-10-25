@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export interface IChip extends mongoose.Document {
+export interface IContact extends mongoose.Document {
   name: string;
   image?: string;
   about?: string;
@@ -8,7 +8,7 @@ export interface IChip extends mongoose.Document {
   phone?: string;
 }
 
-const ContactSchema = new mongoose.Schema<IChip>({
+const ContactSchema = new mongoose.Schema<IContact>({
   name: { type: String, required: true },
   image: { type: String, required: false },
   about: { type: String, required: false },
@@ -16,5 +16,5 @@ const ContactSchema = new mongoose.Schema<IChip>({
   phone: { type: String, required: false },
 });
 
-const Contact = mongoose.model<IChip>("contact", ContactSchema);
+const Contact = mongoose.model<IContact>("contact", ContactSchema);
 export default Contact;
