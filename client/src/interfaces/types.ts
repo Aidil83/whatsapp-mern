@@ -10,7 +10,7 @@ export interface IMessages {
   _id?: string;
 }
 
-export interface Icontact {
+export interface IContact {
   name: string;
   image?: string | Blob;
   about?: string;

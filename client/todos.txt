@@ -1,4 +1,4 @@
-[ ] Clear the input when blurred on searchbar.
+[ ] useContact in sidebar component.
 [ ] Work on avatar functionality in AddContact component.
 [ ] remove emotion imports and read styled component mui doc.
    [ ] migrate mui v4 to v5.
@@ -32,3 +32,4 @@
    [x] Truncate when messages get lengthy.
    [x] Work on the color in users.
       [x] Use the username slice and create an object that contains username.
+   [x] Clear the input when blurred on searchbar.

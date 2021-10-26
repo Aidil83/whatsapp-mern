@@ -6,7 +6,7 @@ import helmet from "helmet";
 import "dotenv/config";
 import Messages, { IUser } from "./dbMessages";
 import Rooms, { IRoom } from "./dbRooms";
-import Contact, { IChip } from "./dbContact";
+import Contact, { IContact } from "./dbContact";
 import Pusher from "pusher";
 
 // App Config
@@ -123,7 +123,7 @@ app.post("/rooms/new", async (req: Request, res: Response) => {
 
 // Contact
 app.get("/contact/sync", (_, res: Response) => {
-  Contact.find((err, data: IChip[]) => {
+  Contact.find((err, data: IContact[]) => {
     if (err) {
       res.status(500).send(err);
     } else {
@@ -135,7 +135,7 @@ app.get("/contact/sync", (_, res: Response) => {
 app.post("/contact/new", (req: Request, res: Response) => {
   const dbContact = req.body;
 
-  Contact.create(dbContact, (err: Error, data: IChip) => {
+  Contact.create(dbContact, (err: Error, data: IContact) => {
     if (err) {
       res.status(500).send(err);
     } else {
