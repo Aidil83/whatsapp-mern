@@ -6,7 +6,7 @@ import {
   useQueryClient,
 } from "react-query";
 import { IChip } from "../components/CreateGroup/CreateGroup";
-import { Icontact, IMessages } from "../interfaces/types";
+import { IContact, IMessages } from "../interfaces/types";
 import { IMembers } from "../redux/slices/members.slice";
 
 const api = axios.create({
@@ -73,14 +73,14 @@ export const usePostContact = () => {
   const queryClient = useQueryClient();
 
   return useMutation(
-    (postContact: Icontact) => {
+    (postContact: IContact) => {
       return api.post("/contact/new", postContact).then((res) => {
         console.log(res.data);
         return res.data;
       });
     },
     {
-      onSuccess: (data) => {
+      onSuccess: () => {
         queryClient.invalidateQueries("contact");
       },
     }
