@@ -15,6 +15,8 @@ import {
 import PhotoCamera from "@material-ui/icons/PhotoCamera";
 import NextStepBtn from "../../components/NextStepBtn/NextStepBtn";
 import { usePostContact } from "../../api/wsApi";
+import axios from "axios";
+import { IContact } from "../../interfaces/types";
 
 interface IFieldValue {
   name: string;
@@ -72,8 +74,27 @@ function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
 
   const handleNextBtn = (e: React.MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault();
-    setFieldValue(DefaultFieldValue);
-    mutate({ ...fieldValue, image });
+    const formData = new FormData();
+    formData.append("file", image);
+    formData.append("upload_preset", "eyklpgtq");
+
+    if (!previewImage) {
+      mutate(fieldValue);
+    } else {
+      axios
+        .post(
+          "https://api.cloudinary.com/v1_1/aidil-inc/image/upload",
+          formData
+        )
+        .then((res) => {
+          const imageSelected: string = res.data.url;
+          mutate({ ...fieldValue, image: imageSelected });
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+
     setIsContactDrawer(false);
   };
 

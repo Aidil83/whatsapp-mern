@@ -6,8 +6,6 @@ import styled from "styled-components";
 import Pusher from "pusher-js";
 import * as api from "../api/wsApi";
 import { useDispatch } from "react-redux";
-import { getMessages, setMessage } from "../redux/slices/messages.slice";
-import { useQuery } from "react-query";
 
 export default function Home() {
   const dispatch = useDispatch();

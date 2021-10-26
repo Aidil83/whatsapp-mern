@@ -2,6 +2,7 @@ import Chip from "@material-ui/core/Chip";
 import React, { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Contact } from "..";
+import { useGetContact } from "../../api/wsApi";
 import { chipSelector, setStoredChips } from "../../redux/slices/chip.slice";
 import { setMembers } from "../../redux/slices/members.slice";
 import {
@@ -18,12 +19,13 @@ import {
   StyledAddPersonIcon,
 } from "../SidebarDrawer/SidebarDrawer.styles";
 import { ChipsContainer, CreateGroupContainer } from "./CreateGroup.styles";
+import * as api from "../../api/wsApi";
 
 export interface IChip {
-  id: number;
+  _id: number;
   name: string;
   image?: string;
-  nameColor: string;
+  nameColor?: string;
 }
 
 export interface ISetStep {
@@ -39,10 +41,12 @@ const CreateGroup = ({ setStep, setIsContactDrawer }: Props) => {
   const storedContacts = useSelector(storedContactsSelector);
   const storedChips = useSelector(chipSelector);
   const dispatch = useDispatch();
+  const { isLoading, data } = api.useGetContact(dispatch);
+  console.log(storedContacts);
 
   const handleDelete = (chip: IChip) => {
     const filteredChip = storedChips.filter(
-      (item: IChip) => item.id !== chip.id
+      (item: IChip) => item._id !== chip._id
     );
     // remove chip.
     dispatch(setStoredChips(filteredChip));
@@ -87,9 +91,9 @@ const CreateGroup = ({ setStep, setIsContactDrawer }: Props) => {
           Add contact
         </div>
       </StyledButton>
-      {storedContacts.map(({ id, name, image }: IChip) => (
-        <Fragment key={id}>
-          <Contact name={name} id={id} image={image} />
+      {storedContacts.map(({ _id, name, image }: IChip) => (
+        <Fragment key={_id}>
+          <Contact name={name} id={_id} image={image} />
         </Fragment>
       ))}
       {storedChips.length > 0 && (

@@ -27,19 +27,19 @@ const Contacts = ({ id, name, image }: Props) => {
     format: "rgba",
     alpha: 0.5,
   });
-
   const selectedContact = (contact: IContact) => {
     const filteredContacts: IChip[] = storedContacts.filter(
       (item: IChip): boolean => {
-        return item.id !== contact.id;
+        return item._id !== contact._id;
       }
     );
     dispatch(filteredStoredContacts(filteredContacts));
     dispatch(addChip(contact));
   };
+  console.log(id, name, image);
   return (
     <StyledContactButton
-      onClick={() => selectedContact({ id, name, image, nameColor })}
+      onClick={() => selectedContact({ _id: id, name, image, nameColor })}
     >
       <ProfilePic
         src={image || ""}

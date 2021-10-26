@@ -1,13 +1,9 @@
 import axios from "axios";
-import {
-  QueryClient,
-  useMutation,
-  useQuery,
-  useQueryClient,
-} from "react-query";
-import { IChip } from "../components/CreateGroup/CreateGroup";
+import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useDispatch } from "react-redux";
 import { IContact, IMessages } from "../interfaces/types";
 import { IMembers } from "../redux/slices/members.slice";
+import { setStoredContacts } from "../redux/slices/storedContacts.slice";
 
 const api = axios.create({
   baseURL: "http://localhost:9000",
@@ -63,9 +59,15 @@ export const usePostRoom = () => {
   );
 };
 
-export const useGetContact = () => {
-  return useQuery("contact", () =>
-    api.get("/contact/sync").then((res) => res.data)
+export const useGetContact = (dispatch) => {
+  return useQuery(
+    "contact",
+    () => api.get("/contact/sync").then((res) => res.data),
+    {
+      onSuccess: (data: any) => {
+        dispatch(setStoredContacts(data));
+      },
+    }
   );
 };
 
