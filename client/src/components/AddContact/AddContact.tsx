@@ -18,14 +18,7 @@ import { usePostContact } from "../../api/wsApi";
 import axios from "axios";
 import { IContact } from "../../interfaces/types";
 
-interface IFieldValue {
-  name: string;
-  about: string;
-  email: string;
-  phone: string;
-}
-
-const DefaultFieldValue: IFieldValue = {
+const DefaultFieldValue: IContact = {
   name: "",
   about: "",
   email: "",
@@ -40,7 +33,7 @@ interface Props {
 function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
   const [image, setImage] = useState<string | Blob>("");
   const [previewImage, setPreviewImage] = useState<string | Blob>("");
-  const [fieldValue, setFieldValue] = useState<IFieldValue>(DefaultFieldValue);
+  const [fieldValue, setFieldValue] = useState<IContact>(DefaultFieldValue);
 
   const { mutate } = usePostContact();
 

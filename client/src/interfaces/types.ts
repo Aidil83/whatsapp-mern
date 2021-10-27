@@ -11,9 +11,9 @@ export interface IMessages {
 }
 
 export interface IContact {
-  _id: string;
+  _id?: string;
   name: string;
-  image?: string | Blob;
+  image?: string;
   about?: string;
   email?: string;
   phone?: string;

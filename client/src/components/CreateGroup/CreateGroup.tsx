@@ -23,7 +23,7 @@ import * as api from "../../api/wsApi";
 import { IContact } from "../../interfaces/types";
 
 export interface IChip {
-  _id: string;
+  _id?: string;
   name: string;
   image?: string;
   nameColor?: string;
@@ -31,7 +31,7 @@ export interface IChip {
 
 export interface ISetStep {
   setStep: React.Dispatch<React.SetStateAction<number>>;
-  setIsDrawer?: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsDrawer: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface Props extends ISetStep {
