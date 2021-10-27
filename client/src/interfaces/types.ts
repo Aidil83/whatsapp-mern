@@ -7,10 +7,11 @@ export interface IMessages {
   received: boolean;
   updatedAt: Date;
   __v?: number;
-  _id?: string;
+  _id: string;
 }
 
 export interface IContact {
+  _id: string;
   name: string;
   image?: string | Blob;
   about?: string;

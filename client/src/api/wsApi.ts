@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import { useDispatch } from "react-redux";
 import { IContact, IMessages } from "../interfaces/types";
 import { IMembers } from "../redux/slices/members.slice";
 import { setStoredContacts } from "../redux/slices/storedContacts.slice";
@@ -59,7 +58,7 @@ export const usePostRoom = () => {
   );
 };
 
-export const useGetContact = (dispatch) => {
+export const useGetContact = (dispatch: any) => {
   return useQuery(
     "contact",
     () => api.get("/contact/sync").then((res) => res.data),

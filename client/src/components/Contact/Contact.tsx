@@ -1,6 +1,7 @@
 import React from "react";
 import { ProfilePic } from "../Header/Header.styles";
-import { IChip, IChip as IContact } from "../CreateGroup/CreateGroup";
+import { IChip } from "../CreateGroup/CreateGroup";
+import { IContact } from "../../interfaces/types";
 import {
   StyledContactButton,
   SubText,
@@ -13,13 +14,7 @@ import {
 import { addChip } from "../../redux/slices/chip.slice";
 import randomColor from "randomcolor";
 
-interface Props {
-  id: number;
-  name: string;
-  image: string | undefined;
-}
-
-const Contacts = ({ id, name, image }: Props) => {
+const Contact = ({ _id, name, image, about, email, phone }: IContact) => {
   const storedContacts = useSelector(storedContactsSelector);
   const dispatch = useDispatch();
   const nameColor = randomColor({
@@ -27,7 +22,7 @@ const Contacts = ({ id, name, image }: Props) => {
     format: "rgba",
     alpha: 0.5,
   });
-  const selectedContact = (contact: IContact) => {
+  const selectedContact = (contact: IChip) => {
     const filteredContacts: IChip[] = storedContacts.filter(
       (item: IChip): boolean => {
         return item._id !== contact._id;
@@ -36,10 +31,9 @@ const Contacts = ({ id, name, image }: Props) => {
     dispatch(filteredStoredContacts(filteredContacts));
     dispatch(addChip(contact));
   };
-  console.log(id, name, image);
   return (
     <StyledContactButton
-      onClick={() => selectedContact({ _id: id, name, image, nameColor })}
+      onClick={() => selectedContact({ _id, name, image, nameColor })}
     >
       <ProfilePic
         src={image || ""}
@@ -56,10 +50,11 @@ const Contacts = ({ id, name, image }: Props) => {
         }}
       >
         {name}
-        <SubText>Hey there! I am using Whatsapp.</SubText>
+        {about && <SubText>{about}</SubText>}
+        {!about && <SubText>Hey there! I am using Whatsapp.</SubText>}
       </div>
     </StyledContactButton>
   );
 };
 
-export default Contacts;
+export default Contact;

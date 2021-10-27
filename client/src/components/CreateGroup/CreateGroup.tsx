@@ -20,9 +20,10 @@ import {
 } from "../SidebarDrawer/SidebarDrawer.styles";
 import { ChipsContainer, CreateGroupContainer } from "./CreateGroup.styles";
 import * as api from "../../api/wsApi";
+import { IContact } from "../../interfaces/types";
 
 export interface IChip {
-  _id: number;
+  _id: string;
   name: string;
   image?: string;
   nameColor?: string;
@@ -91,9 +92,9 @@ const CreateGroup = ({ setStep, setIsContactDrawer }: Props) => {
           Add contact
         </div>
       </StyledButton>
-      {storedContacts.map(({ _id, name, image }: IChip) => (
-        <Fragment key={_id}>
-          <Contact name={name} id={_id} image={image} />
+      {storedContacts.map((contact: IContact) => (
+        <Fragment key={contact._id}>
+          <Contact {...contact} />
         </Fragment>
       ))}
       {storedChips.length > 0 && (
