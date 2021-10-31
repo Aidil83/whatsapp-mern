@@ -43,7 +43,6 @@ const CreateGroup = ({ setStep, setIsContactDrawer }: Props) => {
   const storedChips = useSelector(chipSelector);
   const dispatch = useDispatch();
   const { isLoading, data } = api.useGetContact(dispatch);
-  console.log(storedContacts);
 
   const handleDelete = (chip: IChip) => {
     const filteredChip = storedChips.filter(

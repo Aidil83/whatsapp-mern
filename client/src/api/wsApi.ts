@@ -63,7 +63,7 @@ export const useGetContact = (dispatch: any) => {
     "contact",
     () => api.get("/contact/sync").then((res) => res.data),
     {
-      onSuccess: (data: any) => {
+      onSuccess: (data: IContact[]) => {
         dispatch(setStoredContacts(data));
       },
     }
