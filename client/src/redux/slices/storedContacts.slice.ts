@@ -12,7 +12,7 @@ export const storedContactsSlice = createSlice({
     resetStoredContacts: (state) => {
       return [];
     },
-    filteredStoredContacts: (state, { payload }: PayloadAction<any>) => {
+    filteredStoredContacts: (state, { payload }: PayloadAction<IChip[]>) => {
       return payload;
     },
   },

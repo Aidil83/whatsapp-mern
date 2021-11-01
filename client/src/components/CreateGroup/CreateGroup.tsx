@@ -2,7 +2,6 @@ import Chip from "@material-ui/core/Chip";
 import React, { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Contact } from "..";
-import { useGetContact } from "../../api/wsApi";
 import { chipSelector, setStoredChips } from "../../redux/slices/chip.slice";
 import { setMembers } from "../../redux/slices/members.slice";
 import {
