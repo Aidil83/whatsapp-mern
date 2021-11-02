@@ -6,8 +6,11 @@ export const storedContactsSlice = createSlice({
   name: "StoredContacts",
   initialState: [] as IChip[],
   reducers: {
-    setStoredContacts: (state, { payload }: PayloadAction<any>) => {
+    setStoredContacts: (state, { payload }: PayloadAction<IChip[]>) => {
       return payload;
+    },
+    setRestoreContact: (state, { payload }: PayloadAction<IChip>) => {
+      state.push(payload);
     },
     resetStoredContacts: (state) => {
       return [];
@@ -20,6 +23,7 @@ export const storedContactsSlice = createSlice({
 
 export const {
   setStoredContacts,
+  setRestoreContact,
   resetStoredContacts,
   filteredStoredContacts,
 } = storedContactsSlice.actions;

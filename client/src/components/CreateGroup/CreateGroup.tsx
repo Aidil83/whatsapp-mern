@@ -5,6 +5,7 @@ import { Contact } from "..";
 import { chipSelector, setStoredChips } from "../../redux/slices/chip.slice";
 import { setMembers } from "../../redux/slices/members.slice";
 import {
+  setRestoreContact,
   setStoredContacts,
   storedContactsSelector,
 } from "../../redux/slices/storedContacts.slice";
@@ -50,7 +51,7 @@ const CreateGroup = ({ setStep, setIsContactDrawer }: Props) => {
     // remove chip.
     dispatch(setStoredChips(filteredChip));
     // Restore contact.
-    dispatch(setStoredContacts(chip));
+    dispatch(setRestoreContact(chip));
   };
 
   const handleNextBtn = (): void => {
