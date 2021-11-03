@@ -33,7 +33,9 @@ const Contact = ({ _id, name, image, about, email, phone }: IContact) => {
   };
   return (
     <StyledContactButton
-      onClick={() => selectedContact({ _id, name, image, nameColor })}
+      onClick={() =>
+        selectedContact({ _id, name, image, nameColor, about, email, phone })
+      }
     >
       <ProfilePic
         src={image || ""}
