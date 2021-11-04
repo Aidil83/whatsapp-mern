@@ -23,13 +23,12 @@ const Contact = ({ _id, name, image, about, email, phone }: IContact) => {
     alpha: 0.5,
   });
   const selectedContact = (contact: IContact & IChip) => {
-    console.log(contact.nameColor);
-    const filteredContacts: IChip[] = storedContacts.filter(
-      (item: IChip): boolean => {
-        return item._id !== contact._id;
-      }
-    );
-    dispatch(filteredStoredContacts(filteredContacts));
+    // const filteredContacts: IChip[] = copyStoredContacts.filter(
+    //   (item: IChip): boolean => {
+    //     return item._id !== contact._id;
+    //   }
+    // );
+    dispatch(filteredStoredContacts({ storedContacts, contact }));
     dispatch(addChip(contact));
   };
   return (

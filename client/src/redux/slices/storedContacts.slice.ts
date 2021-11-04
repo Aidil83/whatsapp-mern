@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IChip } from "../../components/CreateGroup/CreateGroup";
+import { IContact } from "../../interfaces/types";
 import { RootState } from "../configureStore";
 
 export const storedContactsSlice = createSlice({
@@ -15,8 +16,16 @@ export const storedContactsSlice = createSlice({
     resetStoredContacts: (state) => {
       return [];
     },
-    filteredStoredContacts: (state, { payload }: PayloadAction<IChip[]>) => {
-      return payload;
+    filteredStoredContacts: (
+      state,
+      {
+        payload,
+      }: PayloadAction<{ storedContacts: IChip[]; contact: IContact & IChip }>
+    ) => {
+      const index = state.findIndex((i) => i._id === payload.contact._id);
+      if (index >= 0) {
+        state.splice(index, 1);
+      }
     },
   },
 });
