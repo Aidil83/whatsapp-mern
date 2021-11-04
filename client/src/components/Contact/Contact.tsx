@@ -22,7 +22,8 @@ const Contact = ({ _id, name, image, about, email, phone }: IContact) => {
     format: "rgba",
     alpha: 0.5,
   });
-  const selectedContact = (contact: IChip) => {
+  const selectedContact = (contact: IContact & IChip) => {
+    console.log(contact.nameColor);
     const filteredContacts: IChip[] = storedContacts.filter(
       (item: IChip): boolean => {
         return item._id !== contact._id;
