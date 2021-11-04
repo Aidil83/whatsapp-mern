@@ -6,7 +6,13 @@ import { store } from "../redux/configureStore";
 import { ThemeProvider } from "styled-components";
 import theme from "../styles/theme";
 
-const client = new QueryClient();
+const client = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

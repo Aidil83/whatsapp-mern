@@ -23,6 +23,7 @@ export const storedContactsSlice = createSlice({
       }: PayloadAction<{ storedContacts: IChip[]; contact: IContact & IChip }>
     ) => {
       const index = state.findIndex((i) => i._id === payload.contact._id);
+      console.log(index);
       if (index >= 0) {
         state.splice(index, 1);
       }
