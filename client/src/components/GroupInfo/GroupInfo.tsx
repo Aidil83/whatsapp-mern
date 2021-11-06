@@ -121,7 +121,7 @@ const GroupInfo = ({ setStep, setIsDrawer }: ISetStep) => {
             type="file"
             onChange={selectImage}
           />
-          <StyledLabel htmlFor="Group-icon-button-file" bgImage={previewImage}>
+          <StyledLabel htmlFor="group-icon-button-file" bgImage={previewImage}>
             <div className="profile-layer">
               <PhotoCamera />
               {!image && <div>ADD GROUP ICON</div>}
