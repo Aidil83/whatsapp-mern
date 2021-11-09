@@ -26,9 +26,11 @@ const GroupAvatars = ({
   const { members } = useSelector(clickChatSelector);
   const dispatch = useDispatch();
   const tween: any = useRef(null);
+  // usestate count to animate avatars
+  const [count, setCount] = useState(0);
 
   const data = members.map((d: IChip) => ({
-    key: d.id,
+    key: d._id,
     name: d.name,
     src: d.image,
     href: "#",
@@ -46,7 +48,7 @@ const GroupAvatars = ({
       opacity: 1,
       x: 25,
       display: "block",
-      width: 188,
+      width: "fit-content",
       duration: 0.5,
     });
   }, []);
