@@ -23,7 +23,7 @@ export const useLatestMessage = () => {
 export const usePostMessage = () => {
   const queryClient = useQueryClient();
 
-  const postMessage = (postMessage: IMessages) =>
+  const postMessage = (postMessage: any) =>
     api.post("/messages/new", postMessage).then((res) => res.data);
 
   return useMutation(postMessage, {
