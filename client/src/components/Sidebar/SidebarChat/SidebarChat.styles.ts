@@ -7,6 +7,11 @@ export const StyledContact = styled(StyledContactButton)`
     display: flex;
     justify-content: start;
   }
+
+  & .MuiAvatar-root {
+    width: 50px;
+    height: 50px;
+  }
 `;
 export const DefaultImage = styled(GroupIcon)`
   position: revert;

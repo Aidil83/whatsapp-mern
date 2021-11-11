@@ -33,8 +33,15 @@ const SidebarChat = ({ item, id }: Props) => {
               <Image
                 cloudName="dvqkqzqjm"
                 publicId={item.image}
-                crop="scale"
-                width="300"
+                secure="true"
+                responsive
+                style={{
+                  width: "87px",
+                  height: "87px",
+                  objectFit: "contain",
+                  borderRadius: "50%",
+                }}
+                width="auto"
               />
             </Avatar>
             // <Avatar
