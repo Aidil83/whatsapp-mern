@@ -41,21 +41,34 @@ const GroupAvatars = ({
     },
   }));
 
-  useEffect(() => {
-    tween.current = gsap.timeline().to(animateGroupAvatars, {
-      opacity: 1,
-      x: 25,
-      display: "block",
-      width: 200,
-      duration: 0.5,
-    });
-  }, []);
+  // useEffect(() => {
+  //   tween.current = gsap.timeline().to(animateGroupAvatars, {
+  //     opacity: 1,
+  //     x: 25,
+  //     display: "block",
+  //     width: "auto",
+  //     duration: 0.5,
+  //   });
+  // }, []);
 
   useEffect(() => {
     if (isOpen) {
-      tween.current.play();
+      // tween.current.play();
+      tween.current = gsap.timeline().to(animateGroupAvatars, {
+        opacity: 1,
+        x: 25,
+        display: "block",
+        width: "auto",
+        duration: 0.5,
+      });
     } else {
-      tween.current.reverse();
+      tween.current = gsap.timeline().to(animateGroupAvatars, {
+        opacity: 0,
+        x: -25,
+        display: "none",
+        width: "0",
+        duration: 0,
+      });
     }
   }, [isOpen]);
 

@@ -63,13 +63,15 @@ const Header = () => {
         />
       </OutsideClickHandler>
       <NameWrapper>
-        <TitleName>{roomName}</TitleName>
-        <DescriptionName>
-          {members &&
-            members.map(
-              (member: IChip, id: number) => (id ? ", " : "") + member.name
-            )}
-        </DescriptionName>
+        {!isOpen && <TitleName>{roomName}</TitleName>}
+        {!isOpen && (
+          <DescriptionName>
+            {members &&
+              members.map(
+                (member: IChip, id: number) => (id ? ", " : "") + member.name
+              )}
+          </DescriptionName>
+        )}
       </NameWrapper>
       <OutsideClickHandler onOutsideClick={() => setIsSearchbox(false)}>
         <Searchbox

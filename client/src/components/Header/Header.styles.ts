@@ -5,6 +5,7 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { sharedIconStyle } from "../Footer/Footer.styles";
 
 export const Container = styled.header`
+  position: relative;
   height: 59px;
   width: 100%;
   display: flex;
