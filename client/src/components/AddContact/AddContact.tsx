@@ -88,6 +88,7 @@ function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
         });
     }
 
+    setFieldValue(DefaultFieldValue);
     setIsContactDrawer(false);
   };
 

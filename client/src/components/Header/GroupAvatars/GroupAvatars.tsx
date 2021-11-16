@@ -42,16 +42,6 @@ const GroupAvatars = ({
     },
   }));
 
-  // useEffect(() => {
-  //   tween.current = gsap.timeline().to(animateGroupAvatars, {
-  //     opacity: 1,
-  //     x: 25,
-  //     display: "block",
-  //     width: "auto",
-  //     duration: 0.5,
-  //   });
-  // }, []);
-
   useEffect(() => {
     if (isOpen) {
       // tween.current.play();
