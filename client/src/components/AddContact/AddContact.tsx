@@ -72,7 +72,7 @@ function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
     formData.append("upload_preset", "eyklpgtq");
 
     if (!previewImage) {
-      mutate(fieldValue);
+      mutate({ ...fieldValue, image: "/static/images/userOutlined.png" });
     } else {
       axios
         .post(

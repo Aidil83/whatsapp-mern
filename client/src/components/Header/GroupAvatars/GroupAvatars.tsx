@@ -26,6 +26,7 @@ const GroupAvatars = ({
   const { members } = useSelector(clickChatSelector);
   const dispatch = useDispatch();
   const tween: any = useRef(null);
+  console.log(members);
 
   const data = members.map((d: IChip) => ({
     key: d._id,
