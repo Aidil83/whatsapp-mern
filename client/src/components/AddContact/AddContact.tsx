@@ -17,6 +17,7 @@ import NextStepBtn from "../../components/NextStepBtn/NextStepBtn";
 import { usePostContact } from "../../api/wsApi";
 import axios from "axios";
 import { IContact } from "../../interfaces/types";
+import CustomPhoneInput from "./CustomPhoneInput";
 
 const DefaultFieldValue: IContact = {
   name: "",
@@ -146,13 +147,7 @@ function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
             value={fieldValue.email}
             onChange={handleChange}
           />
-          <StyledTextField
-            variant="outlined"
-            label="Enter Phone"
-            name="phone"
-            value={fieldValue.phone}
-            onChange={handleChange}
-          />
+          <CustomPhoneInput />
         </form>
         {fieldValue.name.length > 0 && (
           <NextStepBtn handleNextBtn={handleNextBtn} />
