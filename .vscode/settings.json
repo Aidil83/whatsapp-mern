@@ -7,5 +7,7 @@
   "typescript.inlayHints.variableTypes.enabled": true,
   "editor.guides.bracketPairs": "active",
   "editor.bracketPairColorization.enabled": true,
+  "editor.fontFamily": "cascadia Code",
   // "typescript.inlayHints.enumMemberValues.enabled": true
+	"editor.fontLigatures": true,
 }

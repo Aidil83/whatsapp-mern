@@ -45,13 +45,7 @@ export default function FormattedInputs() {
   };
 
   return (
-    <Box
-      sx={{
-        "& > :not(style)": {
-          m: 1,
-        },
-      }}
-    >
+    <Box>
       <TextField
         label="phone number"
         value={values.phone}
@@ -62,6 +56,7 @@ export default function FormattedInputs() {
           inputComponent: TextMaskCustom as any,
         }}
         variant="outlined"
+        fullWidth
       />
     </Box>
   );
