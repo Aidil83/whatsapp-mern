@@ -44,7 +44,6 @@ const GroupAvatars = ({
 
   useEffect(() => {
     if (isOpen) {
-      // tween.current.play();
       tween.current = gsap.timeline().to(animateGroupAvatars, {
         opacity: 1,
         x: 25,
