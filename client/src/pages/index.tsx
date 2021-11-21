@@ -33,16 +33,30 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <GlobalStyle />
-      <HomeWrapper>
-        <Sidebar />
-        <Body />
-      </HomeWrapper>
+      <IndexContainer>
+        <HomeWrapper>
+          <Sidebar />
+          <Body />
+        </HomeWrapper>
+      </IndexContainer>
     </>
   );
 }
 
-export const HomeWrapper = styled.div`
-  display: flex;
+export const IndexContainer = styled.div`
   width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const HomeWrapper = styled.div`
+  width: 100%;
+  max-width: 1400px;
+  max-height: 880px;
   height: 100%;
+  display: flex;
+  position: relative;
 `;

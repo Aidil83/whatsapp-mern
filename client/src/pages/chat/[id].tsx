@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styled from "styled-components";
-import { HomeWrapper } from "..";
+import { HomeWrapper, IndexContainer } from "..";
 import { Sidebar, Body } from "../../components";
 import UserPrompt from "../../components/Footer/UserPrompt/UserPrompt";
 import GlobalStyle from "../../styles/globalstyles";
@@ -14,11 +14,14 @@ const Chat = () => {
       </Head>
       <Container>
         <GlobalStyle />
-        <HomeWrapper>
-          <Sidebar />
-          <Body />
-          <UserPrompt />
-        </HomeWrapper>
+        <IndexContainer>
+          <GreenStrip />
+          <HomeWrapper>
+            <Sidebar />
+            <Body />
+            <UserPrompt />
+          </HomeWrapper>
+        </IndexContainer>
       </Container>
     </>
   );
@@ -29,4 +32,14 @@ export default Chat;
 const Container = styled.div`
   height: 100vh;
   width: 100%;
+  position: relative;
+  z-index: 1;
+`;
+const GreenStrip = styled.div`
+  width: 100%;
+  height: 142px;
+  background-color: #02917e;
+  position: absolute;
+  top: 0;
+  z-index: 0;
 `;

@@ -21,7 +21,9 @@ const GlobalStyle = createGlobalStyle<Props>`
   #__next {
     width: 100%;
     height: 100vh;
+    background-color: rgb(218, 219, 213);
   }
+
 `;
 
 export default GlobalStyle;
