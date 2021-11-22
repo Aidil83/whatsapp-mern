@@ -55,9 +55,11 @@ export const IndexContainer = styled.div`
 export const HomeWrapper = styled.div`
   width: 100%;
   max-width: 1750px;
-  max-height: 880px;
   height: 100%;
   display: flex;
   position: relative;
   box-shadow: 0px -1px 7px 5px rgb(0 0 0 / 20%);
+  @media (min-width: 1750px) {
+    height: 95%;
+  }
 `;
