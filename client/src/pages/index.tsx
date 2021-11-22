@@ -54,7 +54,7 @@ export const IndexContainer = styled.div`
 
 export const HomeWrapper = styled.div`
   width: 100%;
-  max-width: 1400px;
+  max-width: 1750px;
   max-height: 880px;
   height: 100%;
   display: flex;
