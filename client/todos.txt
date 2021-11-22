@@ -1,3 +1,4 @@
+[ ] add media queries to container's height.
 [ ] useContact in sidebar component.
 [ ] Work on avatar functionality in AddContact component.
 [ ] remove emotion imports and read styled component mui doc.

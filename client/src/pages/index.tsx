@@ -59,4 +59,5 @@ export const HomeWrapper = styled.div`
   height: 100%;
   display: flex;
   position: relative;
+  box-shadow: 0px -1px 7px 5px rgb(0 0 0 / 20%);
 `;

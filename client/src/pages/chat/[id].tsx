@@ -30,7 +30,7 @@ const Chat = () => {
 export default Chat;
 
 const Container = styled.div`
-  height: 100vh;
+  height: 90%;
   width: 100%;
   position: relative;
   z-index: 1;
