@@ -6,6 +6,7 @@ import styled from "styled-components";
 import Pusher from "pusher-js";
 import * as api from "../api/wsApi";
 import { useDispatch } from "react-redux";
+import { GreenStrip } from "./chat/[id]";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ export default function Home() {
       </Head>
       <GlobalStyle />
       <IndexContainer>
+        <GreenStrip />
         <HomeWrapper>
           <Sidebar />
           <Body />

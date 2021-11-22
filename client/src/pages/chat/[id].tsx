@@ -35,7 +35,7 @@ const Container = styled.div`
   position: relative;
   z-index: 1;
 `;
-const GreenStrip = styled.div`
+export const GreenStrip = styled.div`
   width: 100%;
   height: 142px;
   background-color: #02917e;
