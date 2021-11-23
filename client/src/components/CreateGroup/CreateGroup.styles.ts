@@ -15,6 +15,9 @@ export const ChipsContainer = styled.div`
 export const SidebarFooterContainer = styled(FooterContainer)`
   position: absolute;
   bottom: 10px;
+  @media (min-width: 1750px) {
+    bottom: 50px;
+  }
   background-color: ${({ theme }) => theme.white};
 `;
 export const StyledContactButton = styled(StyledButton)`
