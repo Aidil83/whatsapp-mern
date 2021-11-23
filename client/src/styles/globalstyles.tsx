@@ -23,7 +23,6 @@ const GlobalStyle = createGlobalStyle<Props>`
     height: 100vh;
     background-color: rgb(218, 219, 213);
   }
-
 `;
 
 export default GlobalStyle;

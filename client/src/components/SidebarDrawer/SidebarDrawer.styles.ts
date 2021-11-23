@@ -9,6 +9,7 @@ export const DrawerContainer = styled.div`
   width: 20vw;
   max-width: 500px;
   height: 100%;
+  overflow: hidden;
   & .MuiButton-label {
     justify-content: flex-start;
     padding: 0;

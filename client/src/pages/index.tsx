@@ -63,5 +63,6 @@ export const HomeWrapper = styled.div`
   box-shadow: 0px -1px 7px 5px rgb(0 0 0 / 20%);
   @media (min-width: 1750px) {
     height: 95%;
+    overflow: hidden;
   }
 `;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SwipeableViews from "react-swipeable-views";
-import Drawer from "@material-ui/core/Drawer";
+import Drawer from "@mui/material/Drawer";
 import { DrawerContainer } from "./SidebarDrawer.styles";
 import { NewChat, CreateGroup, GroupInfo } from "..";
 import AddContact from "../AddContact/AddContact";
@@ -17,7 +17,13 @@ const SidebarDrawer = ({ isDrawer, setIsDrawer }: Props) => {
 
   return (
     <>
-      <Drawer variant="persistent" anchor="left" open={isDrawer} elevation={0}>
+      <Drawer
+        variant="persistent"
+        open={isDrawer}
+        elevation={0}
+        anchor="left"
+        PaperProps={{ style: { position: "absolute", overflow: "hidden" } }}
+      >
         <DrawerContainer>
           <SwipeableViews index={step}>
             <NewChat setIsDrawer={setIsDrawer} setStep={setStep} />
