@@ -64,6 +64,7 @@ function AddContact({ setIsContactDrawer, setIsDrawer }: Props) {
   const handlePrevDrawer = (): void => {
     setFieldValue(DefaultFieldValue);
     setIsContactDrawer(false);
+    setPreviewImage("");
   };
 
   const handleNextBtn = (e: React.MouseEvent<HTMLButtonElement>): void => {
