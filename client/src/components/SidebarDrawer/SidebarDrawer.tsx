@@ -38,6 +38,7 @@ const SidebarDrawer = ({ isDrawer, setIsDrawer }: Props) => {
             anchor="left"
             open={isContactDrawer}
             elevation={0}
+            PaperProps={{ style: { position: "absolute", overflow: "hidden" } }}
           >
             <DrawerContainer>
               <SwipeableViews

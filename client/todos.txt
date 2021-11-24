@@ -1,3 +1,5 @@
+[ ] Fix add contact component drawer similar to the one in the sidebar component.
+[ ] Change profile picture functionality.
 [x] add media queries to container's height.
 [ ] useContact in sidebar component.
 [ ] Work on avatar functionality in AddContact component.
