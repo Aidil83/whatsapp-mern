@@ -31,7 +31,7 @@ export interface IChip {
 
 export interface ISetStep {
   setStep: React.Dispatch<React.SetStateAction<number>>;
-  setIsDrawer: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsDrawer?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface Props extends ISetStep {

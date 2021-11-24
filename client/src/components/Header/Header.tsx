@@ -15,9 +15,11 @@ import {
 } from "./Header.styles";
 import Searchbox from "./Searchbox/Searchbox";
 import IconButton from "@material-ui/core/IconButton";
+import { usernameSelector } from "../../redux/slices/username.slice";
 
 const Header = () => {
   const { roomName, image, members } = useSelector(clickChatSelector);
+  const { username } = useSelector(usernameSelector);
   const [isOpen, setIsOpen] = useState(false);
   const [isSearchbox, setIsSearchbox] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
@@ -67,9 +69,10 @@ const Header = () => {
         {!isOpen && (
           <DescriptionName>
             {members &&
-              members.map(
-                (member: IChip, id: number) => (id ? ", " : "") + member.name
+              members.map((member: IChip) =>
+                username !== member.name ? member.name + ", " : ""
               )}
+            {username ? "You" : ""}
           </DescriptionName>
         )}
       </NameWrapper>

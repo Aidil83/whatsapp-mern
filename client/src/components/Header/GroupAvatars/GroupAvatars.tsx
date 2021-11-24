@@ -6,7 +6,10 @@ import gsap from "gsap";
 import { clickChatSelector } from "../../../redux/slices/clickChat.slice";
 import { useDispatch, useSelector } from "react-redux";
 import { IChip } from "../../CreateGroup/CreateGroup";
-import { setUsername } from "../../../redux/slices/username.slice";
+import {
+  setUsername,
+  usernameSelector,
+} from "../../../redux/slices/username.slice";
 import GroupModal from "./GroupModal";
 
 interface IAvatarGroupProps {
@@ -24,23 +27,28 @@ const GroupAvatars = ({
 }: IAvatarGroupProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { members } = useSelector(clickChatSelector);
+  const { username } = useSelector(usernameSelector);
   const dispatch = useDispatch();
   const tween: any = useRef(null);
   console.log(members);
 
-  const data = members.map((d: IChip) => ({
-    key: d._id,
-    name: d.name,
-    src: d.image,
-    href: "#",
-    appearance: "circle" as AppearanceType,
-    size: "medium" as SizeType,
-    enableTooltip: true,
-    onClick: () => {
-      dispatch(setUsername(d.name));
-      setIsOpen(false);
-    },
-  }));
+  const data = members.map((d: IChip) => {
+    return {
+      key: d._id,
+      name: d.name,
+      src: d.image,
+      href: "#",
+      appearance: "circle" as AppearanceType,
+      size: "medium" as SizeType,
+      enableTooltip: true,
+      onClick: () => {
+        dispatch(setUsername(d.name));
+        setIsOpen(false);
+      },
+    };
+  });
+
+  const filteredData = data.filter((d: any) => d.name !== username);
 
   useEffect(() => {
     if (isOpen) {
@@ -67,7 +75,7 @@ const GroupAvatars = ({
       <AvatarGroup
         testId="overrides"
         appearance="stack"
-        data={data}
+        data={filteredData}
         size="large"
         onMoreClick={(event: React.MouseEvent<HTMLButtonElement>) => {
           setAnchorEl(event.currentTarget);
