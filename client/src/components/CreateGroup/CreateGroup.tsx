@@ -2,9 +2,15 @@ import Chip from "@material-ui/core/Chip";
 import React, { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Contact } from "..";
-import { chipSelector, setStoredChips } from "../../redux/slices/chip.slice";
+import {
+  chipSelector,
+  resetChip,
+  setStoredChips,
+} from "../../redux/slices/chip.slice";
 import { setMembers } from "../../redux/slices/members.slice";
 import {
+  resetStoredContacts,
+  restoreAllContacts,
   setRestoreContact,
   setStoredContacts,
   storedContactsSelector,
@@ -54,6 +60,12 @@ const CreateGroup = ({ setStep, setIsContactDrawer }: Props) => {
     dispatch(setRestoreContact(chip));
   };
 
+  const handlePrevBtn = () => {
+    setStep((prev: number) => prev - 1);
+    dispatch(restoreAllContacts(storedChips));
+    dispatch(resetChip());
+  };
+
   const handleNextBtn = (): void => {
     dispatch(setMembers(storedChips));
     setStep((prev: number) => prev + 1);
@@ -62,9 +74,7 @@ const CreateGroup = ({ setStep, setIsContactDrawer }: Props) => {
   return (
     <CreateGroupContainer>
       <DrawerHeader>
-        <StyledLeftArrowIcon
-          onClick={() => setStep((prev: number) => prev - 1)}
-        />
+        <StyledLeftArrowIcon onClick={handlePrevBtn} />
         <DrawerTitle>Add group participants</DrawerTitle>
       </DrawerHeader>
       <ChipsContainer>

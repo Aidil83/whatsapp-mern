@@ -16,6 +16,11 @@ export const storedContactsSlice = createSlice({
     resetStoredContacts: (state) => {
       return [];
     },
+    restoreAllContacts: (state, { payload }: PayloadAction<IChip[]>) => {
+      payload.forEach((contact: IChip) => {
+        state.push(contact);
+      });
+    },
     filteredStoredContacts: (
       state,
       {
@@ -34,6 +39,7 @@ export const {
   setStoredContacts,
   setRestoreContact,
   resetStoredContacts,
+  restoreAllContacts,
   filteredStoredContacts,
 } = storedContactsSlice.actions;
 export const storedContactsSelector = (state: RootState) =>
