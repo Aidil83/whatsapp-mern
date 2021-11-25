@@ -102,6 +102,7 @@ const Footer = () => {
   const onEmojiClick = (event: any, emojiObject: IEmoji) => {
     setInput((prevInput: string) => prevInput + emojiObject.emoji);
     setIsEmoji(true);
+    setIsTyping(true);
   };
 
   return (
