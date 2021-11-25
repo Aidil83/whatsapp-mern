@@ -1,3 +1,4 @@
+[ ] Work on the edit comment functionality.
 [ ] Show date on sidebar and chat similar to whatsapp web.
 [ ] Fix searchbox styling in sidebar.
 [ ] Do not display user's profile if selected already.

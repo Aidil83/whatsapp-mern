@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import IconButton from "@material-ui/core/IconButton";
 import {
   FooterContainer,
@@ -31,12 +31,19 @@ const Footer = () => {
 
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (input === "") setIsTyping(false);
+  }, [input]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setInput(e.target.value);
+
     setIsTyping(true);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>
+  ) => {
     e.preventDefault();
 
     const isMember = members.find(
@@ -79,7 +86,6 @@ const Footer = () => {
         updatedAt: new Date(),
       });
       setInput("");
-      setIsTyping(false);
     }
   };
 
@@ -121,11 +127,17 @@ const Footer = () => {
         <StyledClipIcons />
       </IconButton>
       <form style={{ width: "100%" }} onSubmit={handleSubmit}>
-        <StyledInput
-          value={input}
-          onChange={handleChange}
-          placeholder="Type a message..."
-        />
+        <OutsideClickHandler
+          onOutsideClick={() => {
+            if (input === "") return setIsTyping(false);
+          }}
+        >
+          <StyledInput
+            value={input}
+            onChange={handleChange}
+            placeholder="Type a message..."
+          />
+        </OutsideClickHandler>
       </form>
       {!isTyping && (
         <IconButton style={{ marginLeft: 10 }}>
@@ -133,11 +145,9 @@ const Footer = () => {
         </IconButton>
       )}
       {isTyping && (
-        <OutsideClickHandler onOutsideClick={() => setIsTyping(false)}>
-          <IconButton style={{ marginLeft: 10 }}>
-            <StyledSendIcon />
-          </IconButton>
-        </OutsideClickHandler>
+        <IconButton style={{ marginLeft: 10 }} onClick={handleSubmit}>
+          <StyledSendIcon />
+        </IconButton>
       )}
     </FooterContainer>
   );
