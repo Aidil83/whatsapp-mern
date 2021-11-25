@@ -2,9 +2,10 @@ import styled, { css } from "styled-components";
 import InsertEmoticon from "@material-ui/icons/InsertEmoticon";
 import AttachFile from "@material-ui/icons/AttachFile";
 import MicIcon from "@material-ui/icons/Mic";
+import SendIcon from "@mui/icons-material/Send";
 
 export const sharedIconStyle = css`
-  color: ${({ theme }) => theme.light};
+  color: ${({ theme }) => theme.medium};
 `;
 export const FooterContainer = styled.div`
   position: relative;
@@ -40,5 +41,8 @@ export const StyledInput = styled.input`
 `;
 export const StyledMicIcon = styled(MicIcon)`
   ${sharedIconStyle};
-  margin: 0 0.2em;
+`;
+
+export const StyledSendIcon = styled(SendIcon)`
+  ${sharedIconStyle};
 `;

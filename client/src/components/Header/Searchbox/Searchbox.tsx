@@ -139,7 +139,8 @@ const StyleSearchIcon = styled(StyledSearchIcon)`
   position: relative;
   margin: 0.5em;
   cursor: pointer;
+  color: ${({ theme }) => theme.medium};
   &:hover {
-    color: gray;
+    color: #000000;
   }
 `;

@@ -5,6 +5,7 @@ import {
   StyledClipIcons,
   StyledInput,
   StyledMicIcon,
+  StyledSendIcon,
   StyledSmileIcons,
 } from "./Footer.styles";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,6 +23,7 @@ const Footer = () => {
   const [nameDisplay, setNameDisplay] = useState<boolean>(true);
   const [input, setInput] = useState<string>("");
   const [isEmoji, setIsEmoji] = useState<boolean>(false);
+  const [isTyping, setIsTyping] = useState<boolean>(false);
 
   const { data: latestMessage } = api.useLatestMessage();
 
@@ -31,6 +33,7 @@ const Footer = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setInput(e.target.value);
+    setIsTyping(true);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -76,6 +79,7 @@ const Footer = () => {
         updatedAt: new Date(),
       });
       setInput("");
+      setIsTyping(false);
     }
   };
 
@@ -122,9 +126,18 @@ const Footer = () => {
           placeholder="Type a message..."
         />
       </form>
-      <IconButton>
-        <StyledMicIcon />
-      </IconButton>
+      {!isTyping && (
+        <IconButton style={{ marginLeft: 10 }}>
+          <StyledMicIcon />
+        </IconButton>
+      )}
+      {isTyping && (
+        <OutsideClickHandler onOutsideClick={() => setIsTyping(false)}>
+          <IconButton style={{ marginLeft: 10 }}>
+            <StyledSendIcon />
+          </IconButton>
+        </OutsideClickHandler>
+      )}
     </FooterContainer>
   );
 };
