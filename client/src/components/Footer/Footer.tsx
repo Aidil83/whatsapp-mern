@@ -104,8 +104,9 @@ const Footer = () => {
   const outsideEmojiClick = (): void => {
     setIsEmoji(false);
   };
-
-  const onEmojiClick = (event: any, emojiObject: IEmoji) => {
+  // emojiObject needs to be in the 2nd param.
+  const onEmojiClick = (_: any, emojiObject: IEmoji) => {
+    console.log(emojiObject.emoji);
     setInput((prevInput: string) => prevInput + emojiObject.emoji);
     setIsEmoji(true);
     setIsTyping(true);
