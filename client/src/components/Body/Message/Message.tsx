@@ -6,6 +6,7 @@ import { usernameSelector } from "../../../redux/slices/username.slice";
 import { IMessages } from "../../../interfaces/types";
 import { clickChatSelector } from "../../../redux/slices/clickChat.slice";
 import { DateTime } from "luxon";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 // FC do not have a ref, which is needed for react-flip-move to work. Hence, forwardRef is needed.
 const Message = forwardRef(
@@ -40,7 +41,9 @@ const Message = forwardRef(
                     {messageData.message}
                   </h3>
                 </Typography>
-
+                <MessageOptions>
+                  <KeyboardArrowDownIcon />
+                </MessageOptions>
                 <MessageTime>
                   <Timestamp>
                     {/* Converts unix time to international time */}
@@ -126,6 +129,18 @@ const Timestamp = styled.span`
   font-size: 0.7rem;
   font-weight: normal;
   color: gray;
+`;
+const MessageOptions = styled.div`
+  position: absolute;
+  right: 0px;
+  top: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  height: fit-content;
+  color: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
 `;
 
 export default Message;
