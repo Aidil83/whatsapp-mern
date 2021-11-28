@@ -64,7 +64,7 @@ export const PaneSide = styled.div`
     box-shadow: 0 0 4px rgb(21, 187, 238);
   }
   & input {
-    width: 100%;
+    width: min-content;
     border: none;
     padding: 0.25em 0em 0.25em 1em;
     &:focus {
