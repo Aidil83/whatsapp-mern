@@ -38,9 +38,9 @@ export default function GroupModal({
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        {members?.map(({ id, name, image }: IChip) => {
+        {members?.map(({ _id, name, image }: IChip) => {
           return (
-            <MenuItem key={id} onClick={() => handleClick(name)}>
+            <MenuItem key={_id} onClick={() => handleClick(name)}>
               <ListItemAvatar>
                 <Avatar alt={name} src={image} />
               </ListItemAvatar>
