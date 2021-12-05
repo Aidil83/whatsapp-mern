@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, useRef } from "react";
 import styled from "styled-components";
 import { Typography, CardContent, Card } from "@material-ui/core";
 import { useSelector } from "react-redux";
@@ -19,6 +19,41 @@ const Message = forwardRef(
 
     // Convert ISO to local time
     const dt = DateTime.fromISO(messageData.updatedAt.toString());
+    let messageOptionsRef: any = useRef(null);
+    let tween: any = useRef(null);
+
+    // useEffect(() => {
+    //   tween.current = gsap.timeline().to(containerRef.current, {
+    //     opacity: 1,
+    //     height: 35,
+    //     minWidth: "30ch",
+    //     backgroundColor: "rgb(212,212,212, .4)",
+    //     duration: 0.5,
+    //   });
+    //   tween2.current = gsap.timeline().to(searchboxRef.current, {
+    //     opacity: 1,
+    //     minWidth: "30ch",
+    //     height: 35,
+    //     duration: 0.5,
+    //   });
+
+    //   return () => {
+    //     tween.current.kill();
+    //     tween2.current.kill();
+    //   };
+    // }, []);
+
+    // useEffect(() => {
+    //   if (isSearchbox) {
+    //     searchboxRef?.current?.focus();
+    //     tween.current.play();
+    //     tween2.current.play();
+    //   } else {
+    //     tween.current.reverse();
+    //     tween2.current.reverse();
+    //   }
+    // }, [isSearchbox]);
+
     return (
       <>
         {isChatName && (
@@ -41,7 +76,7 @@ const Message = forwardRef(
                     {messageData.message}
                   </h3>
                 </Typography>
-                <MessageOptions>
+                <MessageOptions ref={messageOptionsRef}>
                   <KeyboardArrowDownIcon />
                 </MessageOptions>
                 <MessageTime>
