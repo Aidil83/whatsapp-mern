@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import gsap from "gsap";
 import styled from "styled-components";
 import { StyledSearchIcon } from "../Header.styles";
 import { Field, Form, Formik, FormikHelpers as FormikActions } from "formik";
-import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 import SearchAutoSuggestions from "./SearchAutoSuggestions";
 import { TextField } from "@mui/material";
+import gsap from "gsap";
+import { ScrollToPlugin } from "gsap/dist/ScrollToPlugin";
 gsap.registerPlugin(ScrollToPlugin);
 
 interface ISB {

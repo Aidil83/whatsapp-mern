@@ -1,4 +1,4 @@
-import { forwardRef, useRef } from "react";
+import { forwardRef, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { Typography, CardContent, Card } from "@material-ui/core";
 import { useSelector } from "react-redux";
@@ -7,6 +7,7 @@ import { IMessages } from "../../../interfaces/types";
 import { clickChatSelector } from "../../../redux/slices/clickChat.slice";
 import { DateTime } from "luxon";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import gsap from "gsap";
 
 // FC do not have a ref, which is needed for react-flip-move to work. Hence, forwardRef is needed.
 const Message = forwardRef(
@@ -22,26 +23,18 @@ const Message = forwardRef(
     let messageOptionsRef: any = useRef(null);
     let tween: any = useRef(null);
 
-    // useEffect(() => {
-    //   tween.current = gsap.timeline().to(containerRef.current, {
-    //     opacity: 1,
-    //     height: 35,
-    //     minWidth: "30ch",
-    //     backgroundColor: "rgb(212,212,212, .4)",
-    //     duration: 0.5,
-    //   });
-    //   tween2.current = gsap.timeline().to(searchboxRef.current, {
-    //     opacity: 1,
-    //     minWidth: "30ch",
-    //     height: 35,
-    //     duration: 0.5,
-    //   });
-
-    //   return () => {
-    //     tween.current.kill();
-    //     tween2.current.kill();
-    //   };
-    // }, []);
+    useEffect(() => {
+      tween.current = gsap.timeline().to(messageOptionsRef.current, {
+        opacity: 1,
+        height: 35,
+        minWidth: "30ch",
+        backgroundColor: "rgb(212,212,212, .4)",
+        duration: 0.5,
+      });
+      return () => {
+        tween.current.kill();
+      };
+    }, []);
 
     // useEffect(() => {
     //   if (isSearchbox) {
