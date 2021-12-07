@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useRef } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { Typography, CardContent, Card } from "@material-ui/core";
 import { useSelector } from "react-redux";
@@ -14,6 +14,7 @@ const Message = forwardRef(
   ({ messageData }: { messageData: IMessages }, ref) => {
     const { username } = useSelector(usernameSelector);
     const chat = useSelector(clickChatSelector);
+    const [isHoverMessage, setIsHoverMessage] = useState(false);
 
     const isUser = username === messageData.name;
     const isChatName = messageData.roomName === chat.roomName;
@@ -36,16 +37,14 @@ const Message = forwardRef(
       };
     }, []);
 
-    // useEffect(() => {
-    //   if (isSearchbox) {
-    //     searchboxRef?.current?.focus();
-    //     tween.current.play();
-    //     tween2.current.play();
-    //   } else {
-    //     tween.current.reverse();
-    //     tween2.current.reverse();
-    //   }
-    // }, [isSearchbox]);
+    useEffect(() => {
+      if (isHoverMessage) {
+        messageOptionsRef?.current?.focus();
+        tween.current.play();
+      } else {
+        tween.current.reverse();
+      }
+    }, [isHoverMessage]);
 
     return (
       <>
@@ -54,6 +53,8 @@ const Message = forwardRef(
             user={isUser.toString()}
             ref={ref}
             isDisplay={!isUser && messageData.isDisplay}
+            onMouseEnter={() => setIsHoverMessage(true)}
+            onMouseLeave={() => setIsHoverMessage(false)}
           >
             <CardContent>
               <MessageDesc
@@ -93,6 +94,7 @@ interface StyleProps {
   user: string;
   isDisplay: boolean;
   color?: string;
+  onHover?: () => void;
 }
 
 type isDisplayColor = Pick<StyleProps, "isDisplay" | "color">;
@@ -162,7 +164,7 @@ const MessageOptions = styled.div`
   position: absolute;
   right: 0px;
   top: 1px;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   width: fit-content;
