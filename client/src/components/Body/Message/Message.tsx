@@ -26,9 +26,8 @@ const Message = forwardRef(
 
     useEffect(() => {
       tween.current = gsap.timeline().to(messageOptionsRef.current, {
-        opacity: 1,
         height: 35,
-        minWidth: "30ch",
+        minWidth: "3ch",
         backgroundColor: "rgb(212,212,212, .4)",
         duration: 0.5,
       });
@@ -39,7 +38,6 @@ const Message = forwardRef(
 
     useEffect(() => {
       if (isHoverMessage) {
-        messageOptionsRef?.current?.focus();
         tween.current.play();
       } else {
         tween.current.reverse();
@@ -164,7 +162,6 @@ const MessageOptions = styled.div`
   position: absolute;
   right: 0px;
   top: 1px;
-  display: none;
   align-items: center;
   justify-content: center;
   width: fit-content;
