@@ -25,24 +25,36 @@ const Message = forwardRef(
     let tween: any = useRef(null);
 
     useEffect(() => {
-      tween.current = gsap.timeline().to(messageOptionsRef.current, {
-        height: 35,
-        minWidth: "3ch",
-        backgroundColor: "rgb(212,212,212, .4)",
-        duration: 0.5,
-      });
+      if (isHoverMessage) {
+        tween.current = gsap.timeline().to(messageOptionsRef.current, {
+          right: -5,
+          zIndex: 1,
+          height: "100%",
+          width: "3ch",
+          backgroundColor: "#fff",
+          duration: 0.3,
+        });
+      } else {
+        tween.current = gsap.timeline().to(messageOptionsRef.current, {
+          right: -20,
+          height: "100%",
+          width: "0%",
+          backgroundColor: "#fff",
+          duration: 0.1,
+        });
+      }
       return () => {
         tween.current.kill();
       };
-    }, []);
+    }, [isChatName, isHoverMessage]);
 
-    useEffect(() => {
-      if (isHoverMessage) {
-        tween.current.play();
-      } else {
-        tween.current.reverse();
-      }
-    }, [isHoverMessage]);
+    // useEffect(() => {
+    //   if (isHoverMessage) {
+    //     tween.current.play();
+    //   } else {
+    //     tween.current.reverse();
+    //   }
+    // }, [isHoverMessage]);
 
     return (
       <>
@@ -164,9 +176,10 @@ const MessageOptions = styled.div`
   top: 1px;
   align-items: center;
   justify-content: center;
-  width: fit-content;
-  height: fit-content;
+  width: 0%;
+  height: 0%;
   color: rgba(0, 0, 0, 0.25);
+  background-color: rgb(212, 212, 212, 0.4);
   cursor: pointer;
 `;
 

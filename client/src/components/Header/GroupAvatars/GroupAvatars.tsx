@@ -30,7 +30,6 @@ const GroupAvatars = ({
   const { username } = useSelector(usernameSelector);
   const dispatch = useDispatch();
   const tween: any = useRef(null);
-  console.log(members);
 
   const data = members.map((d: IChip) => {
     return {
