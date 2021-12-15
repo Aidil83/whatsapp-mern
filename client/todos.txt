@@ -1,3 +1,4 @@
+[ ] Replace Selct component with the menu component from MUI.
 [ ] Work on the edit comment functionality similar to discord.
    [ ] Use percentage instead of px.
 [ ] Show date on sidebar and chat similar to whatsapp web.

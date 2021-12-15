@@ -8,6 +8,8 @@ import { clickChatSelector } from "../../../redux/slices/clickChat.slice";
 import { DateTime } from "luxon";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import gsap from "gsap";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 
 // FC do not have a ref, which is needed for react-flip-move to work. Hence, forwardRef is needed.
 const Message = forwardRef(
@@ -15,6 +17,11 @@ const Message = forwardRef(
     const { username } = useSelector(usernameSelector);
     const chat = useSelector(clickChatSelector);
     const [isHoverMessage, setIsHoverMessage] = useState(false);
+    const [options, setOptions] = useState("");
+
+    const handleChange = (event: SelectChangeEvent) => {
+      setOptions(event.target.value as string);
+    };
 
     const isUser = username === messageData.name;
     const isChatName = messageData.roomName === chat.roomName;
@@ -83,7 +90,26 @@ const Message = forwardRef(
                   </h3>
                 </Typography>
                 <MessageOptions ref={messageOptionsRef}>
-                  <KeyboardArrowDownIcon />
+                  <Select
+                    value={options}
+                    onChange={handleChange}
+                    IconComponent={() => (
+                      <KeyboardArrowDownIcon
+                        fontSize="medium"
+                        color="disabled"
+                      />
+                    )}
+                    sx={{
+                      "& .MuiOutlinedInput-notchedOutline": {
+                        display: "flex",
+                        justifyContent: "right",
+                      },
+                    }}
+                  >
+                    <MenuItem value={10}>Ten</MenuItem>
+                    <MenuItem value={20}>Twenty</MenuItem>
+                    <MenuItem value={30}>Thirty</MenuItem>
+                  </Select>
                 </MessageOptions>
                 <MessageTime>
                   <Timestamp>
