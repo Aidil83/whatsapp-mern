@@ -30,17 +30,19 @@ const Message = forwardRef(
           right: -5,
           zIndex: 1,
           height: "100%",
-          width: "3ch",
-          backgroundColor: "#fff",
+          width: "4ch",
+          background:
+            "linear-gradient(90deg, rgba(255,255,255,0.600717787114846) 0%, rgba(255,255,255,1) 45%)",
           duration: 0.3,
         });
       } else {
         tween.current = gsap.timeline().to(messageOptionsRef.current, {
-          right: -20,
+          right: -22,
           height: "100%",
           width: "0%",
-          backgroundColor: "#fff",
-          duration: 0.1,
+          background:
+            "linear-gradient(90deg, rgba(255,255,255,0.600717787114846) 0%, rgba(255,255,255,1) 45%)",
+          duration: 0.05,
         });
       }
       return () => {
@@ -174,8 +176,8 @@ const MessageOptions = styled.div`
   position: absolute;
   right: 0px;
   top: 1px;
-  align-items: center;
-  justify-content: center;
+  display: flex;
+  justify-content: right;
   width: 0%;
   height: 0%;
   color: rgba(0, 0, 0, 0.25);
