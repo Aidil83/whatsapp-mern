@@ -1,15 +1,15 @@
 import { forwardRef, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { Typography, CardContent, Card } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 import { useSelector } from "react-redux";
 import { usernameSelector } from "../../../redux/slices/username.slice";
 import { IMessages } from "../../../interfaces/types";
 import { clickChatSelector } from "../../../redux/slices/clickChat.slice";
 import { DateTime } from "luxon";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import gsap from "gsap";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
+import MoreOptions from "./MoreOptions";
 
 // FC do not have a ref, which is needed for react-flip-move to work. Hence, forwardRef is needed.
 const Message = forwardRef(
@@ -19,7 +19,7 @@ const Message = forwardRef(
     const [isHoverMessage, setIsHoverMessage] = useState(false);
     const [options, setOptions] = useState("");
 
-    const handleChange = (event: SelectChangeEvent) => {
+    const handleChange = (event: any) => {
       setOptions(event.target.value as string);
     };
 
@@ -34,7 +34,7 @@ const Message = forwardRef(
     useEffect(() => {
       if (isHoverMessage) {
         tween.current = gsap.timeline().to(messageOptionsRef.current, {
-          right: -5,
+          right: 5,
           zIndex: 1,
           height: "100%",
           width: "4ch",
@@ -44,7 +44,7 @@ const Message = forwardRef(
         });
       } else {
         tween.current = gsap.timeline().to(messageOptionsRef.current, {
-          right: -22,
+          right: -2,
           height: "100%",
           width: "0%",
           background:
@@ -90,26 +90,7 @@ const Message = forwardRef(
                   </h3>
                 </Typography>
                 <MessageOptions ref={messageOptionsRef}>
-                  <Select
-                    value={options}
-                    onChange={handleChange}
-                    IconComponent={() => (
-                      <KeyboardArrowDownIcon
-                        fontSize="medium"
-                        color="disabled"
-                      />
-                    )}
-                    sx={{
-                      "& .MuiOutlinedInput-notchedOutline": {
-                        display: "flex",
-                        justifyContent: "right",
-                      },
-                    }}
-                  >
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                  </Select>
+                  <MoreOptions />
                 </MessageOptions>
                 <MessageTime>
                   <Timestamp>
@@ -204,11 +185,16 @@ const MessageOptions = styled.div`
   top: 1px;
   display: flex;
   justify-content: right;
+  flex-direction: column;
   width: 0%;
   height: 0%;
   color: rgba(0, 0, 0, 0.25);
   background-color: rgb(212, 212, 212, 0.4);
   cursor: pointer;
+  & .MuiMenu-list {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export default Message;

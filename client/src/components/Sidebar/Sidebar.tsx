@@ -19,7 +19,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Fade from "@material-ui/core/Fade";
 import Avatar from "@material-ui/core/Avatar";
-import { CircularProgress } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const Sidebar = () => {
   const [isDrawer, setIsDrawer] = useState<boolean>(false);
